@@ -166,15 +166,9 @@ xterm*|rxvt*)
 *)
     ;;
 esac
-
-
-
-
-
-
 #
 #   Section 13: Unused aliases
-### ===========================================================================  ###
+### ======================================================================  ###
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
@@ -222,30 +216,3 @@ echo -ne "${RED}\b+${NC}"
 #
 #   Section 15: Notes
 ### ===========================================================================  ###
-
-#
-#
-#   Section 16: Welcome Screen
-### ===========================================================================  ###
-
-clear
-for i in `seq 1 28` ; do rotate;
-done ;
-echo -ne "${WHITE} Welcome to the Terrordome! ${NC}";
-for i in `seq 1 28` ; do rotate;
-done ;
-echo "";
-echo -e ${LIGHTBLUE}`lsb_release -d` ;
-echo -e "Kernel Information: " `uname -smr`;
-echo -e ${LIGHTBLUE}`bash --version | head -1`;echo ""
-echo -ne "Hello $USER, today is "; date
-echo -e "${WHITE}"; cal ; echo ""; 
-# echo -ne "${CYAN}";netinfo;
-# mountedinfo ; echo ""
-echo -ne "${LIGHTBLUE}Uptime for this computer is ";uptime | awk /'up/ {print $3,$4,$5}'
-for i in `seq 1 28` ; do rotate;
-done ;
-echo -ne "${WHITE} http://suburbanalities.com ${NC}";
-for i in `seq 1 28` ; do rotate;
-done ;echo "";
-echo ""; echo ""
