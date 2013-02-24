@@ -17,23 +17,6 @@ set expandtab
 "
 set encoding=utf-8
 set relativenumber
-set undofile
-"
-" let mapleader = ","
-"
-nnoremap / /\v
-vnoremap / /\v
-set ignorecase
-set smartcase
-set gdefault
-set incsearch
-set showmatch
-set hlsearch
-"The <leader><space> mapping makes it easy to clear out a search by typing ,<space>.
-" nnoremap <leader><space> :noh<cr>
-nnoremap <tab> %
-vnoremap <tab> %
-"
 "
 set wrap
 set textwidth=79
