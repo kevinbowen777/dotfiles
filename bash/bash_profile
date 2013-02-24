@@ -1,0 +1,3 @@
+PATH=$PATH:/home/kbowen/algs4/bin
+export PATH
+test -r ~/algs4/bin/config.sh && source ~/algs4/bin/config.sh
