@@ -8,6 +8,9 @@ set backspace=indent,eol,start
 syntax on
 "
 " " Enable file type detection and do language-dependent indenting.
+filetype off
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
 filetype plugin indent on
 "
 set tabstop=4
@@ -38,3 +41,4 @@ inoremap <right> <nop>
 inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
+
