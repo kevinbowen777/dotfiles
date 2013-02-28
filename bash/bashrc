@@ -60,10 +60,11 @@
 shopt -s histappend
 
 # don't put duplicate lines or lines starting with space in the history.
+unset HISTFILESIZE
 HISTCONTROL=erasedups:ignoreboth
-HISTSIZE=1000   # History size for current shell only
+HISTSIZE=3000   # History size for current shell only
 HISTFILESIZE=2000
-
+export HISTSIZE
 export HISTCONTROL=erasedups:ignoreboth
 export HISTTIMEFORMAT="$(echo -e ${BCyan})[%d/%m %H:%M:%S]$(echo -e ${NC}) "
 
