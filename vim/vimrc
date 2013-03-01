@@ -6,13 +6,14 @@ set nocompatible
 set backspace=indent,eol,start
 " Switch syntax highlighting on
 syntax on
-"
+""""
 " " Enable file type detection and do language-dependent indenting.
 filetype off
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 filetype plugin indent on
-" Indentation
+"
+"
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -42,12 +43,6 @@ inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
-" " Enable file type detection and do language-dependent indenting.
-filetype off
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
-filetype plugin indent on
-"
 "-----------------------------------------------------------------------------
 """ NERD Tree Plugin Settings
 "-----------------------------------------------------------------------------
