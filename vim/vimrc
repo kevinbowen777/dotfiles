@@ -23,6 +23,7 @@ set encoding=utf-8
 set relativenumber
 "
 set wrap
+set linebreak
 set textwidth=79
 set colorcolumn=80
 "
