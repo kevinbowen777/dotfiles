@@ -1,33 +1,46 @@
 " Use Vim settings, rather than Vi settings (much better!).
-" " This must be first, because it changes other options as a side effect
+" This must be first, because it changes other options as a side effect
+"
 set nocompatible
 "
-" Make backspace behave in a sane manner.
-set backspace=indent,eol,start
 " Switch syntax highlighting on
+"
 syntax on
-""""
-" " Enable file type detection and do language-dependent indenting.
+"
+" Enable file type detection and do language-dependent indenting.
+"
 filetype off
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 filetype plugin indent on
 "
 "
+" Behavior
+set backspace=indent,eol,start
+set history=50
+set incsearch
+"
+" Indentation
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
 "
-set encoding=utf-8
-set relativenumber
 "
+" Appearance
+set relativenumber
+set laststatus=2
 set wrap
 set linebreak
 set textwidth=79
 set colorcolumn=80
 "
-" The following eight commands disable the arrow keys.
+" Tab-completion in command-line mode
+"
+set wildmode=full
+set wildmenu
+"
+" The following commands disable the arrow keys.
 "
 nnoremap <up> <nop>
 nnoremap <down> <nop>
@@ -38,14 +51,13 @@ inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
 "
-" The following 3 lines disable the help key.
+" The following lines disable the help key.
 "
 inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
-
 "-----------------------------------------------------------------------------
-""" NERD Tree Plugin Settings
+"   NERD Tree Plugin Settings
 "-----------------------------------------------------------------------------
 """ Toggle the NERD Tree on an off with F7
 nmap <F7> :NERDTreeToggle<CR>
@@ -63,3 +75,17 @@ let NERDTreeIgnore=[ '\.ncb$', '\.suo$', '\.vcproj\.RIMNET', '\.obj$',
                    \  '\.intermediate\.manifest$', '^mt.deps' ]
 
 map,r :NERDTreeFind<CR>
+"
+" Set color scheme
+"
+colorscheme anotherdark
+"
+" Set statusline
+"
+set statusline=*\[%n]                               "Buffer number
+set statusline+=%F%m%r%h%w\                         "File+path 
+set statusline+=%{fugitive#statusline()}\           "Git status 
+set statusline+=[%{strlen(&fenc)?&fenc:&enc}]\      "Encoding
+set statusline+=%{&ff}\                             "FileFormat (dos/unix) 
+set statusline+=\ %=\ row:%l/%L\ (%03p%%)           "Rownumber/total (%)
+set statusline+=%0*\ \ %m%r%w\ %P\ \                "Modified? Readonly? Top/bot.
