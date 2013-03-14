@@ -32,7 +32,7 @@ set relativenumber
 set laststatus=2
 set wrap
 set linebreak
-set textwidth=79
+set textwidth=72
 set colorcolumn=80
 "
 " Tab-completion in command-line mode
@@ -89,3 +89,6 @@ set statusline+=[%{strlen(&fenc)?&fenc:&enc}]\      "Encoding
 set statusline+=%{&ff}\                             "FileFormat (dos/unix) 
 set statusline+=\ %=\ row:%l/%L\ (%03p%%)           "Rownumber/total (%)
 set statusline+=%0*\ \ %m%r%w\ %P\ \                "Modified? Readonly? Top/bot.
+"
+"
+"

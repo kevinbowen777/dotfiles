@@ -63,7 +63,7 @@ shopt -s histappend
 unset HISTFILESIZE
 HISTCONTROL=erasedups:ignoreboth
 HISTSIZE=3000   # History size for current shell only
-HISTFILESIZE=2000
+HISTFILESIZE=5000
 export HISTSIZE
 export HISTCONTROL=erasedups:ignoreboth
 export HISTTIMEFORMAT="$(echo -e ${BCyan})[%d/%m %H:%M:%S]$(echo -e ${NC}) "
@@ -210,3 +210,9 @@ unset color_prompt force_color_prompt
 #
 #   Section 15: Notes
 ### ======================================================================  ###
+
+export PERL_LOCAL_LIB_ROOT="/home/kbowen/perl5";
+export PERL_MB_OPT="--install_base /home/kbowen/perl5";
+export PERL_MM_OPT="INSTALL_BASE=/home/kbowen/perl5";
+export PERL5LIB="/home/kbowen/perl5/lib/perl5/i686-linux-gnu-thread-multi-64int:/home/kbowen/perl5/lib/perl5";
+export PATH="/home/kbowen/perl5/bin:$PATH";
