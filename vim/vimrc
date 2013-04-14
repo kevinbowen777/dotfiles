@@ -92,3 +92,4 @@ set statusline+=%0*\ \ %m%r%w\ %P\ \                "Modified? Readonly? Top/bot
 "
 "
 "
+map <f2> :w\|!python %
