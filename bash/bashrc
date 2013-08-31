@@ -214,3 +214,5 @@ unset color_prompt force_color_prompt
 #   Section 15: Notes
 ### ======================================================================  ###
 export PATH=/usr/local/bin/cmus/bin:$PATH
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
