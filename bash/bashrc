@@ -23,7 +23,7 @@
 # http://shelldorado.com/scripts/categories.html
 # http://www.dotfiles.org/
 #
-#		A large portion of this script was initially stolen from:
+#		A large portion of this script was initially appropriated from:
 #			http://tldp.org/LDP/abs/html/sample-bashrc.html
 #   
 #                               Sections
@@ -69,8 +69,6 @@ export HISTCONTROL=ignoredups:erasedups
 export HISTTIMEFORMAT="$(echo -e ${BCyan})[%d/%m %H:%M:%S]$(echo -e ${NC}) "
 export PROMPT_COMMAND="history -a; history -c; history -r;
 $PROMPT_COMMAND"
-export LFS=/mnt/lfs
-
 #
 #   Section 3: Sourced aliases and alias definitions.
 ### ======================================================================= ###
@@ -105,7 +103,7 @@ alias hist='history | grep $1' #Requires one input
 alias doct='cd /home/kbowen/docs/tech'
 alias docto='cd /home/kbowen/Downloads/torrents'
 alias docts='cd /home/kbowen/Downloads/software'
-alias algo='cd ~/algs4'
+# alias algo='cd ~/algs4'
 alias g='vim --remote-silent'
 
 # Add an "alert" alias for long running commands.  Use like so:
@@ -114,7 +112,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 MYVIMRC=~/.vimrc
 
-# Define a few Color's
+# Define a few colors
 BLACK='\e[0;30m'
 BLUE='\e[0;34m'
 GREEN='\e[0;32m'
@@ -214,5 +212,5 @@ unset color_prompt force_color_prompt
 #   Section 15: Notes
 ### ======================================================================  ###
 export PATH=/usr/local/bin/cmus/bin:$PATH
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+# used for Ruby Virtual Manager. Not currently used
+#PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
