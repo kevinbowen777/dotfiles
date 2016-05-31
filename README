@@ -15,6 +15,7 @@ Create symlinks:
     ln -s ~/dotfiles/vim/vimrc ~/.vimrc
     ln -s ~/dotfiles/vim/gvimrc ~/.gvimrc
     ln -s ~/dotfiles/vim ~/.vim
+    ln -s ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
 
 I put Vim's backup and swap files in `~/tmp`, so that directory must exist. To
 be sure, run: 
