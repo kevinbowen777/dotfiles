@@ -1,9 +1,96 @@
 " Use Vim settings, rather than Vi settings (much better!).
-" " This must be first, because it changes other options as a side effect
+" This must be first, because it changes other options as a side effect
+"
 set nocompatible
 "
-" Make backspace behave in a sane manner.
-set backspace=indent,eol,start
 " Switch syntax highlighting on
+"
 syntax on
 "
+" Enable file type detection and do language-dependent indenting.
+"
+filetype off
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+filetype plugin indent on
+"
+"
+" Behavior
+set backspace=indent,eol,start
+set history=50
+set incsearch
+"
+" Indentation
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+"
+"
+" Appearance
+set relativenumber
+set laststatus=2
+set wrap
+set linebreak
+set textwidth=72
+set colorcolumn=80
+"
+" Tab-completion in command-line mode
+"
+set wildmode=full
+set wildmenu
+"
+" The following commands disable the arrow keys.
+"
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+"
+" The following lines disable the help key.
+"
+inoremap <F1> <ESC>
+nnoremap <F1> <ESC>
+vnoremap <F1> <ESC>
+"-----------------------------------------------------------------------------
+"   NERD Tree Plugin Settings
+"-----------------------------------------------------------------------------
+""" Toggle the NERD Tree on an off with F7
+nmap <F7> :NERDTreeToggle<CR>
+
+" Close the NERD Tree with Shift-F7
+nmap <S-F7> :NERDTreeClose<CR>
+"
+" Show the bookmarks table on startup
+let NERDTreeShowBookmarks=1
+"
+" Don't display these kinds of files
+let NERDTreeIgnore=[ '\.ncb$', '\.suo$', '\.vcproj\.RIMNET', '\.obj$',
+                   \ '\.ilk$', '^BuildLog.htm$', '\.pdb$', '\.idb$',
+                   \ '\.embed\.manifest$', '\.embed\.manifest.res$',
+                   \  '\.intermediate\.manifest$', '^mt.deps' ]
+
+map,r :NERDTreeFind<CR>
+"
+" Set color scheme
+"
+set t_Co=256
+colorscheme asuldark 
+"
+" Set statusline
+"
+set statusline=*\[%n]                               "Buffer number
+set statusline+=%F%m%r%h%w\                         "File+path 
+set statusline+=%{fugitive#statusline()}\           "Git status 
+set statusline+=[%{strlen(&fenc)?&fenc:&enc}]\      "Encoding
+set statusline+=%{&ff}\                             "FileFormat (dos/unix) 
+set statusline+=\ %=\ row:%l/%L\ (%03p%%)           "Rownumber/total (%)
+set statusline+=%0*\ \ %m%r%w\ %P\ \                "Modified? Readonly? Top/bot.
+"
+"
+"
+map <f2> :w\|!python %

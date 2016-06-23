@@ -2,9 +2,9 @@
 #
 # Personal $HOME/.bashrc file
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
-# Version: 2.0
+# Version: 2.1
 #
-# Last modified: Tues Feb 28 01:23:00 PST 2013
+# Last modified: Tues June 20 01:23:00 PST 2016
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # 
@@ -55,21 +55,36 @@
 #   Section 2: Exports
 ### ======================================================================= ###
 
-
+set -o vi
 # append to the history file, don't overwrite it
 shopt -s histappend
 
 # don't put duplicate lines or lines starting with space in the history.
 unset HISTFILESIZE
 HISTCONTROL=ignoredups:erasedups
-HISTSIZE=7000   # History size for current shell only
-HISTFILESIZE=7000
+HISTSIZE=1000   # History size for current shell only
+HISTFILESIZE=1000
 export HISTSIZE
 export HISTCONTROL=ignoredups:erasedups
 export HISTTIMEFORMAT="$(echo -e ${BCyan})[%d/%m %H:%M:%S]$(echo -e ${NC}) "
 export PROMPT_COMMAND="history -a; history -c; history -r;
 $PROMPT_COMMAND"
 #
+export LESS_TERMCAP_mb=$(printf '\e[01;31m') # enter blinking mode - red
+export LESS_TERMCAP_md=$(printf '\e[01;35m') # enter double-bright mode
+export LESS_TERMCAP_me=$(printf '\e[0m') # turn off all appearance modes
+export LESS_TERMCAP_se=$(printf '\e[0m') # leave standout mode    
+export LESS_TERMCAP_so=$(printf '\e[01;33m') # enter standout mode -
+export LESS_TERMCAP_ue=$(printf '\e[0m') # leave underline mode
+export LESS_TERMCAP_us=$(printf '\e[04;36m') # enter underline mode
+#
+#export LESS_TERMCAP_mb=$(printf '\e[01;31m') # enter blinking mode
+#export LESS_TERMCAP_md=$(printf '\e[01;38;5;75m') # enter double-bright
+#export LESS_TERMCAP_me=$(printf '\e[0m') # turn off all appearance modes
+#export LESS_TERMCAP_se=$(printf '\e[0m') # leave standout mode
+#export LESS_TERMCAP_so=$(printf '\e[01;33m') # enter standout mode
+#export LESS_TERMCAP_ue=$(printf '\e[0m') # leave underline mode
+#export LESS_TERMCAP_us=$(printf '\e[04;38;5;200m') # enter underline
 #   Section 3: Sourced aliases and alias definitions.
 ### ======================================================================= ###
 
@@ -101,10 +116,8 @@ alias l='ls -CF'
 alias scripts='cd /home/kbowen/docs/tech/scripts'
 alias hist='history | grep $1' #Requires one input
 alias doct='cd /home/kbowen/docs/tech'
-alias docto='cd /home/kbowen/Downloads/torrents'
-alias docts='cd /home/kbowen/Downloads/software'
-# alias algo='cd ~/algs4'
-alias g='vim --remote-silent'
+alias docto='cd /home/kbowen/downloads/torrents'
+alias docts='cd /home/kbowen/downloads/software'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -157,7 +170,10 @@ fi
 case "$TERM" in
     xterm-color) color_prompt=yes;;
 esac
-
+#
+if [ -n "$DISPLAY" -a "$TERM" == "xterm" ]; then
+        export TERM=xterm-256color
+fi
 
 
 # If this is an xterm set the title to user@host:dir
@@ -174,7 +190,7 @@ esac
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-#force_color_prompt=yes
+force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then

@@ -7,6 +7,11 @@ set nocompatible
 "
 syntax on
 "
+" temp file locations
+set undodir=~/tmp/.undo//
+set backupdir=~/tmp/.backup//
+set directory=~/tmp/.swp//
+"
 " Enable file type detection and do language-dependent indenting.
 "
 filetype off
@@ -78,6 +83,7 @@ map,r :NERDTreeFind<CR>
 "
 " Set color scheme
 "
+set t_Co=256
 colorscheme anotherdark
 "
 " Set statusline
