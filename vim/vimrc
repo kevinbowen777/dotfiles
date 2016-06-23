@@ -1,4 +1,5 @@
 " Use Vim settings, rather than Vi settings (much better!).
+"
 " This must be first, because it changes other options as a side effect
 "
 set nocompatible
@@ -16,7 +17,7 @@ set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
 
 " Always show statusline
 set laststatus=2
-" temp file locations
+" temp file locations. make sure subdirectories are created in ~/tmp
 set undodir=~/tmp/.undo//
 set backupdir=~/tmp/.backup//
 set directory=~/tmp/.swp//
