@@ -7,6 +7,15 @@ set nocompatible
 "
 syntax on
 "
+" Set color scheme
+set t_Co=256
+"colorscheme anotherdark
+"
+" Set statusline
+set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
+
+" Always show statusline
+set laststatus=2
 " temp file locations
 set undodir=~/tmp/.undo//
 set backupdir=~/tmp/.backup//
@@ -81,20 +90,16 @@ let NERDTreeIgnore=[ '\.ncb$', '\.suo$', '\.vcproj\.RIMNET', '\.obj$',
 
 map,r :NERDTreeFind<CR>
 "
-" Set color scheme
-"
-set t_Co=256
+" Set statusline
 colorscheme anotherdark
 "
-" Set statusline
-"
-set statusline=*\[%n]                               "Buffer number
-set statusline+=%F%m%r%h%w\                         "File+path 
-set statusline+=%{fugitive#statusline()}\           "Git status 
-set statusline+=[%{strlen(&fenc)?&fenc:&enc}]\      "Encoding
-set statusline+=%{&ff}\                             "FileFormat (dos/unix) 
-set statusline+=\ %=\ row:%l/%L\ (%03p%%)           "Rownumber/total (%)
-set statusline+=%0*\ \ %m%r%w\ %P\ \                "Modified? Readonly? Top/bot.
+"set statusline=*\[%n]                               "Buffer number
+"set statusline+=%F%m%r%h%w\                         "File+path 
+"set statusline+=%{fugitive#statusline()}\           "Git status 
+"set statusline+=[%{strlen(&fenc)?&fenc:&enc}]\      "Encoding
+"set statusline+=%{&ff}\                             "FileFormat (dos/unix) 
+"set statusline+=\ %=\ row:%l/%L\ (%03p%%)           "Rownumber/total (%)
+"set statusline+=%0*\ \ %m%r%w\ %P\ \                "Modified? Readonly? Top/bot.
 "
 "
 "
