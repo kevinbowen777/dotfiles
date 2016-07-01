@@ -31,6 +31,16 @@ My preferences for Vim are stored in `dotfiles/vim/vimrc` and `dotfiles/vim/gvim
 respectively. All plugins and scripts are stored in the `dotfiles/vim`
 directory.
 
+# Powerline plug-in installation
+The current vim configuration depends upon havin the powerline plug-in
+installed. The .bashrc and .tmux.conf files have the necessary code to run with
+powerline; but, they are currently commented out.
+
+To install powerline:
+	sudo pip install git+git://github.com/Lokaltog/powerline
+
+For detailed instructions, see: http://askubuntu.com/a/283909/106495
+
 ## Adding Plugin Bundles ##
 
 Plugins that are published on github can be installed as submodules. For
