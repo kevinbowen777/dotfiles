@@ -105,6 +105,5 @@ colorscheme anotherdark
 " map Caps_Lock to Esc
 "au VimEnter * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 "au VimLeave * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
-map! <Caps_lock> <Esc>
 "
-"map <f2> :w\|!python %
+"
