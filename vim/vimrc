@@ -25,7 +25,8 @@ set directory=~/tmp/.swp//
 " Enable file type detection and do language-dependent indenting.
 "
 filetype off
-call pathogen#runtime_append_all_bundles()
+execute pathogen#infect()
+"call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 filetype plugin indent on
 "
