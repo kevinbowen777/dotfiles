@@ -120,10 +120,11 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias scripts='cd /home/kbowen/docs/tech/scripts'
-alias hist='history | grep $1' #Requires one input
+#alias hist='history | grep $1' #Requires one input
 alias doct='cd /home/kbowen/docs/tech'
 alias docto='cd /home/kbowen/downloads/torrents'
 alias docts='cd /home/kbowen/downloads/software'
+alias gvim='gvim -geometry 97x46+513+85'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -184,7 +185,7 @@ fi
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
-xterm*|rxvt*)
+xterm*|xfce4*|rxvt*)
     PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
     ;;
 *)
@@ -233,9 +234,6 @@ unset color_prompt force_color_prompt
 #
 #   Section 15: Notes
 ### ======================================================================  ###
-export PATH=/usr/local/bin/cmus/bin:$PATH
-# used for Ruby Virtual Manager. Not currently used
-#PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 PATH="/home/kbowen/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/home/kbowen/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;

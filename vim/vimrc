@@ -8,6 +8,7 @@ set nocompatible
 "
 syntax on
 "
+set encoding=utf-8
 " Set color scheme
 set t_Co=256
 "colorscheme anotherdark

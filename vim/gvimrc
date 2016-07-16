@@ -3,6 +3,8 @@
 "
 set nocompatible
 "
+set lines=44
+set columns=95
 " Switch syntax highlighting on
 "
 syntax on
@@ -12,89 +14,19 @@ syntax on
 set t_Co=256
 colorscheme tabula 
 "colorscheme asuldark 
-""
-" This must be first, because it changes other options as a side effect
-"
-set nocompatible
-"
-" Switch syntax highlighting on
-"
-syntax on
-"
+"Strictly necessary for Powerline
+set encoding=utf-8
+"Set to whatever font you like.
+set guifont=Inconsolata-dz\ for\ Powerline\ Italic\ 10
+"set guifont=Anonymice\ Powerline
+"set guifont=Monofur\for\ Powerline
+"set guifont=Arimo\ Bold\ for\ Powerline
+"set guifont=Roboto\ Mono\ Bold\ for\ Powerline
 " Enable file type detection and do language-dependent indenting.
 "
 filetype off
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
-filetype plugin indent on
-"
-"
-" Behavior
-set backspace=indent,eol,start
-set history=50
-set incsearch
-"
-" Indentation
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set expandtab
-"
-"
-" Appearance
-set relativenumber
-set laststatus=2
-set wrap
-set linebreak
-set textwidth=72
-set colorcolumn=80
-"
-" Tab-completion in command-line mode
-"
-set wildmode=full
-set wildmenu
-"
-" The following commands disable the arrow keys.
-"
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
-"
-" The following lines disable the help key.
-"
-inoremap <F1> <ESC>
-nnoremap <F1> <ESC>
-vnoremap <F1> <ESC>
-"-----------------------------------------------------------------------------
-"   NERD Tree Plugin Settings
-"-----------------------------------------------------------------------------
-""" Toggle the NERD Tree on an off with F7
-nmap <F7> :NERDTreeToggle<CR>
-
-" Close the NERD Tree with Shift-F7
-nmap <S-F7> :NERDTreeClose<CR>
-"
-" Show the bookmarks table on startup
-let NERDTreeShowBookmarks=1
-"
-" Don't display these kinds of files
-let NERDTreeIgnore=[ '\.ncb$', '\.suo$', '\.vcproj\.RIMNET', '\.obj$',
-                   \ '\.ilk$', '^BuildLog.htm$', '\.pdb$', '\.idb$',
-                   \ '\.embed\.manifest$', '\.embed\.manifest.res$',
-                   \  '\.intermediate\.manifest$', '^mt.deps' ]
-
-map,r :NERDTreeFind<CR>
-"
-"
-" Enable file type detection and do language-dependent indenting.
-"
-filetype off
-call pathogen#runtime_append_all_bundles()
+"call pathogen#runtime_append_all_bundles()
+execute pathogen#infect()
 call pathogen#helptags()
 filetype plugin indent on
 "
