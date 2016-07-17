@@ -125,6 +125,9 @@ alias doct='cd /home/kbowen/docs/tech'
 alias docto='cd /home/kbowen/downloads/torrents'
 alias docts='cd /home/kbowen/downloads/software'
 alias gvim='gvim -geometry 97x46+513+85'
+alias mu='amixer -D pulse sset Master 10%+'
+alias md='amixer -D pulse sset Master 10%-'
+
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
