@@ -10,3 +10,9 @@
 [submodule "vim/bundle/scroll"]
 	path = vim/bundle/scroll
 	url = https://github.com/vim-scripts/ScrollColors.git
+[submodule "vim/bundle/vim-misc"]
+	path = vim/bundle/vim-misc
+	url = https://github.com/xolox/vim-misc.git
+[submodule "vim/bundle/vim-session"]
+	path = vim/bundle/vim-session
+	url = https://github.com/xolox/vim-session.git

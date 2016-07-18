@@ -4,7 +4,7 @@
 set nocompatible
 "
 set lines=44
-set columns=95
+set columns=165
 " Switch syntax highlighting on
 "
 syntax on
