@@ -1,6 +1,6 @@
 " ~/dotfiles/vim/sessions/default.vim:
 " Vim session script.
-" Created by session.vim 2.13.1 on 17 July 2016 at 21:07:33.
+" Created by session.vim 2.13.1 on 18 July 2016 at 15:15:57.
 " Open this file in Vim and run :source % to restore your session.
 
 set guioptions=aegimrLtT
@@ -25,8 +25,6 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
 endif
 set shortmess=aoO
 badd +1 Dropbox/Public/scratchpad.txt
-badd +2 .bashrc
-badd +7 .gvimrc
 badd +1 Dropbox/Public/python_scratchpad-20160706.txt
 silent! argdel *
 edit Dropbox/Public/scratchpad.txt
@@ -39,8 +37,8 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
-exe '1resize ' . ((&lines * 22 + 23) / 46)
-exe '2resize ' . ((&lines * 21 + 23) / 46)
+exe '1resize ' . ((&lines * 21 + 22) / 44)
+exe '2resize ' . ((&lines * 20 + 22) / 44)
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -51,7 +49,7 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 11) / 22)
+let s:l = 1 - ((0 * winheight(0) + 10) / 21)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -69,15 +67,15 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 10) / 21)
+let s:l = 1 - ((0 * winheight(0) + 10) / 20)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 1
 normal! 0
 wincmd w
-exe '1resize ' . ((&lines * 22 + 23) / 46)
-exe '2resize ' . ((&lines * 21 + 23) / 46)
+exe '1resize ' . ((&lines * 21 + 22) / 44)
+exe '2resize ' . ((&lines * 20 + 22) / 44)
 tabnext 1
 if exists('s:wipebuf')
 "   silent exe 'bwipe ' . s:wipebuf

@@ -1,6 +1,6 @@
 " ~/dotfiles/vim/sessions/daily_workspace.vim:
 " Vim session script.
-" Created by session.vim 2.13.1 on 17 July 2016 at 21:05:05.
+" Created by session.vim 2.13.1 on 18 July 2016 at 14:48:06.
 " Open this file in Vim and run :source % to restore your session.
 
 set guioptions=aegimrLtT
@@ -28,9 +28,14 @@ badd +1 Dropbox/Public/scratchpad.txt
 badd +2 .bashrc
 badd +7 .gvimrc
 badd +1 Dropbox/Public/python_scratchpad-20160706.txt
+badd +1 .tmux.conf
 silent! argdel *
 edit Dropbox/Public/scratchpad.txt
 set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
 wincmd _ | wincmd |
 split
 1wincmd k
@@ -39,9 +44,14 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
-exe '1resize ' . ((&lines * 22 + 23) / 46)
-exe '2resize ' . ((&lines * 21 + 23) / 46)
+exe 'vert 1resize ' . ((&columns * 56 + 82) / 165)
+exe '2resize ' . ((&lines * 21 + 22) / 44)
+exe 'vert 2resize ' . ((&columns * 108 + 82) / 165)
+exe '3resize ' . ((&lines * 20 + 22) / 44)
+exe 'vert 3resize ' . ((&columns * 108 + 82) / 165)
 argglobal
+enew
+" file NERD_tree_1
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -49,17 +59,9 @@ setlocal fdi=#
 setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 11) / 22)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-1
-normal! 0
+setlocal nofen
 wincmd w
 argglobal
-edit Dropbox/Public/python_scratchpad-20160706.txt
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -74,10 +76,32 @@ if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 1
+normal! 08|
+wincmd w
+argglobal
+edit .tmux.conf
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 66 - ((13 * winheight(0) + 10) / 20)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+66
 normal! 0
 wincmd w
-exe '1resize ' . ((&lines * 22 + 23) / 46)
-exe '2resize ' . ((&lines * 21 + 23) / 46)
+2wincmd w
+exe 'vert 1resize ' . ((&columns * 56 + 82) / 165)
+exe '2resize ' . ((&lines * 21 + 22) / 44)
+exe 'vert 2resize ' . ((&columns * 108 + 82) / 165)
+exe '3resize ' . ((&lines * 20 + 22) / 44)
+exe 'vert 3resize ' . ((&columns * 108 + 82) / 165)
 tabnext 1
 if exists('s:wipebuf')
 "   silent exe 'bwipe ' . s:wipebuf
@@ -95,6 +119,19 @@ let &so = s:so_save | let &siso = s:siso_save
 " by :mksession out of the box).
 
 1wincmd w
+tabnext 1
+let s:bufnr_save = bufnr("%")
+let s:cwd_save = getcwd()
+NERDTree ~/
+if !getbufvar(s:bufnr_save, '&modified')
+  let s:wipebuflines = getbufline(s:bufnr_save, 1, '$')
+  if len(s:wipebuflines) <= 1 && empty(get(s:wipebuflines, 0, ''))
+    silent execute 'bwipeout' s:bufnr_save
+  endif
+endif
+execute "cd" fnameescape(s:cwd_save)
+1resize 42|vert 1resize 56|2resize 21|vert 2resize 108|3resize 20|vert 3resize 108|
+2wincmd w
 tabnext 1
 if exists('s:wipebuf')
   if empty(bufname(s:wipebuf))
