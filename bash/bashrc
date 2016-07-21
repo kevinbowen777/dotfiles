@@ -242,7 +242,7 @@ unset color_prompt force_color_prompt
 ### ======================================================================  ###
 
 PATH="/home/kbowen/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/home/kbowen/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/home/kbowen/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/home/kbowen/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/kbowen/perl5"; export PERL_MM_OPT;
+PERL5LIB="/home/kbowen/dev/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/kbowen/dev/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/kbowen/dev/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/kbowen/dev/perl5"; export PERL_MM_OPT;

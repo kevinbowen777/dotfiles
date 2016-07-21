@@ -1,5 +1,0 @@
-pane	daily_workspace	0	:vi	1	:*	0	:/home/kbowen	0	bash	:
-pane	daily_workspace	0	:vi	1	:*	1	:/home/kbowen	0	bash	:
-pane	daily_workspace	0	:vi	1	:*	2	:/home/kbowen	1	vi	:vi docs/bands to investigate.txt~
-window	daily_workspace	0	1	:*	a89c,238x54,0,0{119x54,0,0,0,118x54,120,0[118x27,120,0,1,118x26,120,28,2]}
-state	daily_workspace	
