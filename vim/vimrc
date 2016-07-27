@@ -1,65 +1,57 @@
-" Use Vim settings, rather than Vi settings (much better!).
-"
-" This must be first, because it changes other options as a side effect
-"
-set nocompatible
-"
-" Switch syntax highlighting on
-"
-syntax on
-"
-set encoding=utf-8
-" Set color scheme
-set t_Co=256
-"colorscheme anotherdark
-"
-" Set statusline
-set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
 
-" Always show statusline
+
+set nocompatible
+
+" Switch syntax highlighting on
+
+syntax on
+set encoding=utf-8
+set t_Co=256
+
+" Set statusline
+
+set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
 set laststatus=2
-" temp file locations. make sure subdirectories are created in ~/tmp
-set undodir=~/tmp/.undo//
-set backupdir=~/tmp/.backup//
-set directory=~/tmp/.swp//
-"
+ 
 " Enable file type detection and do language-dependent indenting.
-"
+
 filetype off
 execute pathogen#infect()
-"call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 filetype plugin indent on
-"
-"
+
 " Behavior
+
 set backspace=indent,eol,start
 set history=50
 set incsearch
 set fileformat=unix
-"
+
 " Indentation
+
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
-"
-"
+set foldmethod=marker
+nnoremap <space> za
+
 " Appearance
+
 set relativenumber
 set laststatus=2
 set wrap
 set linebreak
 set textwidth=72
 set colorcolumn=80
-"
+
 " Tab-completion in command-line mode
-"
+
 set wildmode=full
 set wildmenu
-"
+
 " The following commands disable the arrow keys.
-"
+
 nnoremap <up> <nop>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
@@ -68,9 +60,9 @@ inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
-"
+
 " The following lines disable the help key.
-"
+
 inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
@@ -94,19 +86,10 @@ let NERDTreeIgnore=[ '\.ncb$', '\.suo$', '\.vcproj\.RIMNET', '\.obj$',
 
 map,r :NERDTreeFind<CR>
 "
-" Set statusline
 colorscheme anotherdark
-"
-"set statusline=*\[%n]                               "Buffer number
-"set statusline+=%F%m%r%h%w\                         "File+path 
-"set statusline+=%{fugitive#statusline()}\           "Git status 
-"set statusline+=[%{strlen(&fenc)?&fenc:&enc}]\      "Encoding
-"set statusline+=%{&ff}\                             "FileFormat (dos/unix) 
-"set statusline+=\ %=\ row:%l/%L\ (%03p%%)           "Rownumber/total (%)
-"set statusline+=%0*\ \ %m%r%w\ %P\ \                "Modified? Readonly? Top/bot.
-"
-" map Caps_Lock to Esc
-"au VimEnter * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
-"au VimLeave * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
-"
-"
+" 
+" temp file locations. make sure subdirectories are created in ~/tmp
+set undodir=~/tmp/.undo//
+set backupdir=~/tmp/.backup//
+set directory=~/tmp/.swp//
+""
