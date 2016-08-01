@@ -15,7 +15,7 @@
 # other interactive features like your prompt.
 #
 # To pick up the latest recommended .bashrc content,
-# look in /etc/defaults/etc/skel/.bashrc
+# look in /etc/skel/.bashrc
 # 
 # The majority of the code here assumes that you are on a GNU system
 # system. For additional information, see:
