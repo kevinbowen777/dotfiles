@@ -1,6 +1,9 @@
 [submodule "vim/bundle/vim-fugitive"]
 	path = vim/bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
+[submodule "vim/bundle/vim-flake8"]
+	path = vim/bundle/vim-flake8
+	url = https://github.com/scrooloose/syntastic/syntax_checkers/python/flake8.git
 [submodule "vim/bundle/nerdtree"]
 	path = vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
@@ -15,4 +18,17 @@
 	url = https://github.com/xolox/vim-misc.git
 [submodule "vim/bundle/vim-session"]
 	path = vim/bundle/vim-session
-	url = https://github.com/xolox/vim-session.git
+    url = https://github.com/xolox/vim-session.git
+[submodule "vim/bundle/syntastic"]
+	path = vim/bundle/syntastic
+    url = https://github.com/scrooloose/syntastic.git
+[submodule "tmux/plugins/tmux-resurrect"]
+	path = tmux/plugins/tmux-resurrect
+	url = https://github.com/tmux-plugins/tmux-resurrect.git
+[submodule "tmux/plugins/tmux-sensible"]
+	path = tmux/plugins/tmux-sensible
+	url = https://github.com/tmux-plugins/tmux-sensible.git
+[submodule "tmux/plugins/tpm"]
+	path = tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm.git
+
