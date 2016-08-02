@@ -20,20 +20,7 @@ execute pathogen#infect()
 call pathogen#helptags()
 filetype plugin indent on
 
-" Behavior
-set backspace=indent,eol,start
-set history=50
-set incsearch
-set fileformat=unix
-
-" Indentation
-set autoindent
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set expandtab
-set foldmethod=marker
-nnoremap <space> za
+colorscheme anotherdark
 
 " Appearance
 set relativenumber
@@ -43,11 +30,36 @@ set linebreak
 set textwidth=79
 set colorcolumn=80
 
+" Behavior
+set backspace=indent,eol,start
+set history=50
+set incsearch
+set hlsearch
+set fileformat=unix
+
+" Indentation
+set autoindent
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+
+" Folding
+set foldmethod=marker
+nnoremap <space> za
+
+" Use the below highlight group when displaying bad whitespace is desired.
+highlight BadWhitespace ctermbg=red guibg=red
+" Display tabs at the beginning of a line in Python mode as bad.
+au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
+" Make trailing whitespace be flagged as bad.
+ au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
 " Tab-completion in command-line mode
 set wildmode=full
 set wildmenu
 
-" The following commands disable the arrow keys.
+" Disable the arrow keys in normal and insert mode. Leave for visual mode.
 nnoremap <up> <nop>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
@@ -57,17 +69,14 @@ inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
 
-" The following lines disable the help key.
+" Disable the help key.
 inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
-" Flag unecessary whitespace
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
-
-"-----------------------------------------------------------------------------
+"------------------------------------------"
 "   NERD Tree Plugin Settings
-"-----------------------------------------------------------------------------
+"------------------------------------------"
 """ Toggle the NERD Tree on and off with F7
 nmap <F7> :NERDTreeToggle<CR>
 
@@ -84,10 +93,10 @@ let NERDTreeIgnore=[ '\.ncb$', '\.suo$', '\.vcproj\.RIMNET', '\.obj$',
                    \  '\.intermediate\.manifest$', '^mt.deps' ]
 
 map,r :NERDTreeFind<CR>
-"
-colorscheme anotherdark
-" 
-" syntastic plugin settings
+
+" -----------------------------------------" 
+"   syntastic plugin settings
+" -----------------------------------------"
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
