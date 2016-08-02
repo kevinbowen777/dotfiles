@@ -3,12 +3,16 @@
 set nocompatible
 
 " Switch syntax highlighting on
+let python_highlight_all=1
 syntax on
 set encoding=utf-8
 set t_Co=256
 
 " Set statusline
 set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
  
 " Enable file type detection and do language-dependent indenting.
 filetype off
@@ -83,6 +87,13 @@ map,r :NERDTreeFind<CR>
 "
 colorscheme anotherdark
 " 
+" syntastic plugin settings
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+
 " temp file locations. make sure subdirectories are created in ~/tmp
 set undodir=~/tmp/.undo//
 set backupdir=~/tmp/.backup//
