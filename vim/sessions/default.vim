@@ -1,6 +1,6 @@
 " ~/dotfiles/vim/sessions/default.vim:
 " Vim session script.
-" Created by session.vim 2.13.1 on 01 August 2016 at 15:42:35.
+" Created by session.vim 2.13.1 on 01 August 2016 at 22:19:59.
 " Open this file in Vim and run :source % to restore your session.
 
 set guioptions=aegimrLtT
@@ -29,7 +29,7 @@ badd +1 Dropbox/Public/python_scratchpad-20160706.txt
 badd +4 Dropbox/Public/quotes_randomly_remembered.txt
 badd +1 b4
 badd +3 /media/kbowen/storage/docs/personal/typing_test.txt
-badd +1 Dropbox/Public/bands\ to\ investigate.txt
+badd +67 Dropbox/Public/bands\ to\ investigate.txt
 argglobal
 silent! argdel *
 edit Dropbox/Public/scratchpad.txt
@@ -46,11 +46,11 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 39 + 70) / 141)
-exe '2resize ' . ((&lines * 19 + 22) / 44)
-exe 'vert 2resize ' . ((&columns * 101 + 70) / 141)
-exe '3resize ' . ((&lines * 22 + 22) / 44)
-exe 'vert 3resize ' . ((&columns * 101 + 70) / 141)
+exe 'vert 1resize ' . ((&columns * 33 + 68) / 136)
+exe '2resize ' . ((&lines * 19 + 23) / 46)
+exe 'vert 2resize ' . ((&columns * 102 + 68) / 136)
+exe '3resize ' . ((&lines * 22 + 23) / 46)
+exe 'vert 3resize ' . ((&columns * 102 + 68) / 136)
 argglobal
 enew
 " file NERD_tree_1
@@ -81,8 +81,8 @@ normal! zt
 normal! 0
 wincmd w
 argglobal
-edit Dropbox/Public/bands\ to\ investigate.txt
-setlocal fdm=manual
+edit Dropbox/Public/python_scratchpad-20160706.txt
+setlocal fdm=marker
 setlocal fde=0
 setlocal fmr={{{,}}}
 setlocal fdi=#
@@ -90,20 +90,19 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-silent! normal! zE
-let s:l = 67 - ((21 * winheight(0) + 11) / 22)
+let s:l = 1 - ((0 * winheight(0) + 11) / 22)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-67
-normal! 024|
+1
+normal! 0
 wincmd w
 3wincmd w
-exe 'vert 1resize ' . ((&columns * 39 + 70) / 141)
-exe '2resize ' . ((&lines * 19 + 22) / 44)
-exe 'vert 2resize ' . ((&columns * 101 + 70) / 141)
-exe '3resize ' . ((&lines * 22 + 22) / 44)
-exe 'vert 3resize ' . ((&columns * 101 + 70) / 141)
+exe 'vert 1resize ' . ((&columns * 33 + 68) / 136)
+exe '2resize ' . ((&lines * 19 + 23) / 46)
+exe 'vert 2resize ' . ((&columns * 102 + 68) / 136)
+exe '3resize ' . ((&lines * 22 + 23) / 46)
+exe 'vert 3resize ' . ((&columns * 102 + 68) / 136)
 tabnext 1
 if exists('s:wipebuf')
 "   silent exe 'bwipe ' . s:wipebuf
@@ -132,7 +131,7 @@ if !getbufvar(s:bufnr_save, '&modified')
   endif
 endif
 execute "cd" fnameescape(s:cwd_save)
-1resize 42|vert 1resize 39|2resize 19|vert 2resize 101|3resize 22|vert 3resize 101|
+1resize 42|vert 1resize 33|2resize 19|vert 2resize 102|3resize 22|vert 3resize 102|
 3wincmd w
 tabnext 1
 if exists('s:wipebuf')

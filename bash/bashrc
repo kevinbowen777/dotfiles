@@ -92,8 +92,8 @@ _pip_completion()
 }
 complete -o default -F _pip_completion pip
 # pip bash completion end
-
-export PYVIRT_HOME=$/home/kbowen/.virtualenvs
+export WORKON_HOME=$HOME/.virtualenvs
+#export PYVIRT_HOME=$/home/kbowen/.virtualenvs
 source ~/.local/bin/virtualenvwrapper.sh
 export PIP_VIRTUALENV_BASE=/home/kbowen/.virtualenvs
 

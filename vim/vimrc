@@ -8,7 +8,7 @@ syntax on
 set encoding=utf-8
 set t_Co=256
 
-" Set statusline
+" Set statusline with powerline and syntastic plugins
 set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -101,7 +101,9 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-
+let g:syntastic_error_symbol = "✗"
+let g:syntastic_warning_symbol = "⚠"
+let g:syntastic_python_checkers = ['pep8', 'flake8', 'python', 'pep257']
 
 " temp file locations. make sure subdirectories are created in ~/tmp
 set undodir=~/tmp/.undo//
