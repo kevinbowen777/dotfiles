@@ -160,8 +160,6 @@ alias doct='cd /home/kbowen/docs/tech'
 alias docto='cd /home/kbowen/downloads/torrents'
 alias docts='cd /home/kbowen/downloads/software'
 alias gvim='gvim -geometry 97x46+513+85'
-alias mu='amixer -D pulse sset Master 10%+'
-alias md='amixer -D pulse sset Master 10%-'
 #}}}
 ### ==================================================================== ###
 #   Section 4: Workstation aliases
@@ -186,6 +184,13 @@ alias abu='ssh  -X kbowen@abulafia'
 ### ==================================================================== ###
 #{{{
 #alias abu='ssh  -X kbowen@abulafia' 
+alias mu1='amixer -q -D pulse sset Master 1%+'
+alias md1='amixer -q -D pulse sset Master 1%-'
+alias mu5='amixer -q -D pulse sset Master 5%+'
+alias md5='amixer -q -D pulse sset Master 5%-'
+alias mu='amixer -q -D pulse sset Master 10%+'
+alias md='amixer -q -D pulse sset Master 10%-'
+#
 #}}}
 ### ==================================================================== ###
 #   Section 8: Unused aliases (Aliases not in use )
