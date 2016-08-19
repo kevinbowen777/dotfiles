@@ -1,6 +1,6 @@
 " ~/dotfiles/vim/sessions/default.vim:
 " Vim session script.
-" Created by session.vim 2.13.1 on 01 August 2016 at 22:19:59.
+" Created by session.vim 2.13.1 on 19 August 2016 at 12:13:00.
 " Open this file in Vim and run :source % to restore your session.
 
 set guioptions=aegimrLtT
@@ -46,11 +46,11 @@ set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 33 + 68) / 136)
+exe 'vert 1resize ' . ((&columns * 32 + 60) / 120)
 exe '2resize ' . ((&lines * 19 + 23) / 46)
-exe 'vert 2resize ' . ((&columns * 102 + 68) / 136)
+exe 'vert 2resize ' . ((&columns * 87 + 60) / 120)
 exe '3resize ' . ((&lines * 22 + 23) / 46)
-exe 'vert 3resize ' . ((&columns * 102 + 68) / 136)
+exe 'vert 3resize ' . ((&columns * 87 + 60) / 120)
 argglobal
 enew
 " file NERD_tree_1
@@ -73,11 +73,11 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 38 - ((17 * winheight(0) + 9) / 19)
+let s:l = 1 - ((0 * winheight(0) + 9) / 19)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-38
+1
 normal! 0
 wincmd w
 argglobal
@@ -97,12 +97,12 @@ normal! zt
 1
 normal! 0
 wincmd w
-3wincmd w
-exe 'vert 1resize ' . ((&columns * 33 + 68) / 136)
+2wincmd w
+exe 'vert 1resize ' . ((&columns * 32 + 60) / 120)
 exe '2resize ' . ((&lines * 19 + 23) / 46)
-exe 'vert 2resize ' . ((&columns * 102 + 68) / 136)
+exe 'vert 2resize ' . ((&columns * 87 + 60) / 120)
 exe '3resize ' . ((&lines * 22 + 23) / 46)
-exe 'vert 3resize ' . ((&columns * 102 + 68) / 136)
+exe 'vert 3resize ' . ((&columns * 87 + 60) / 120)
 tabnext 1
 if exists('s:wipebuf')
 "   silent exe 'bwipe ' . s:wipebuf
@@ -131,8 +131,8 @@ if !getbufvar(s:bufnr_save, '&modified')
   endif
 endif
 execute "cd" fnameescape(s:cwd_save)
-1resize 42|vert 1resize 33|2resize 19|vert 2resize 102|3resize 22|vert 3resize 102|
-3wincmd w
+1resize 42|vert 1resize 32|2resize 19|vert 2resize 87|3resize 22|vert 3resize 87|
+2wincmd w
 tabnext 1
 if exists('s:wipebuf')
   if empty(bufname(s:wipebuf))
