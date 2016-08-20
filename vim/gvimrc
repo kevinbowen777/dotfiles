@@ -1,5 +1,4 @@
-" Use Vim settings, rather than vi settings (much better!).
-" This must be first, because it changes other options as a side effect
+" Gvim settings
 "
 set nocompatible
 "
@@ -72,6 +71,10 @@ inoremap <right> <nop>
 inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
+"
+" enable right mouse click functionality
+set mousemodel=popup
+"
 "-----------------------------------------------------------------------------
 "   NERD Tree Plugin Settings
 "-----------------------------------------------------------------------------
