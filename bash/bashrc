@@ -183,7 +183,8 @@ alias abu='ssh  -X kbowen@abulafia'
 #   Section 7: Hardware control aliases(Control cd/dvd/scanners/audio/etc) 
 ### ==================================================================== ###
 #{{{
-#alias abu='ssh  -X kbowen@abulafia' 
+setxkbmap -option caps:swapescape:w
+# volume controla
 alias mu1='amixer -q -D pulse sset Master 1%+'
 alias md1='amixer -q -D pulse sset Master 1%-'
 alias mu5='amixer -q -D pulse sset Master 5%+'
