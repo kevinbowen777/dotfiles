@@ -120,7 +120,6 @@ NC='\e[0m'              # No Color
 
 # Workaround for suppress d-bus spurious errors: Launchpad bug #1193236
 export NO_AT_BRIDGE=1
-
 #}}}
 ### ==================================================================== ###
 #   Section 3: Sourced aliases and alias definitions.
@@ -186,7 +185,7 @@ alias abu='ssh  -X kbowen@abulafia'
 #   Section 7: Hardware control aliases(Control cd/dvd/scanners/audio/etc) 
 ### ==================================================================== ###
 #{{{
-setxkbmap -option caps:swapescape
+setxkbmap -option caps:escape
 # volume controla
 alias mu1='amixer -q -D pulse sset Master 1%+'
 alias md1='amixer -q -D pulse sset Master 1%-'
