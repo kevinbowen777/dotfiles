@@ -132,32 +132,26 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
-# enable color support of ls and also add handy aliases
+# enable color support of ls 
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-
-
-
+fi
+# uncomment following three lines to enable powerline for bash
 #if [ -f /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh ]; then
 #    source /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh
 #fi
 
 #### Aliases  
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 alias g='vim --remote-silent'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias scripts='cd /home/kbowen/docs/tech/scripts'
-#alias hist='history | grep $1' #Requires one input
+alias hist='history | grep $1' #Requires one input
 alias doct='cd /home/kbowen/docs/tech'
 alias docto='cd /home/kbowen/downloads/torrents'
 alias docts='cd /home/kbowen/downloads/software'
