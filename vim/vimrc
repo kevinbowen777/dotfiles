@@ -103,6 +103,14 @@ let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "⚠"
 let g:syntastic_python_checkers = ['pep8', 'flake8', 'python', 'pep257']
 
+" ----------------------------------------"
+"  vimwiki plugin settings
+" ----------------------------------------"
+let wiki = {}
+let g:vimwikidir = $HOME . "/Dropbox/personal/administrativa/vimwiki"
+let wiki.path = g:vimwikidir
+let g:vimwiki_list=[wiki]
+
 " mappings to move lines. allows for moving blocks of text in visual
 " mode
 nnoremap <A-j> :m .+1<CR>==
