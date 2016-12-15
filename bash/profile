@@ -20,6 +20,7 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
-#export GOOGLE_API_KEY=AIzaSyD84mjWvcmrFzF1WQZbWJgoRuuKjy7xnqU
-#export GOOGLE_DEFAULT_CLIENT_ID=844356736161.apps.googleusercontent.com
-#export GOOGLE_DEFAULT_CLIENT_SECRET=C3YlJv3mUJVSz7vwDh90y4gL
+# below is for use with powerline configuration
+if [ -d "$HOME/.local/bin" ]; then
+        PATH="$HOME/.local/bin:$PATH"
+fi
