@@ -182,12 +182,12 @@ alias abu='ssh  -X kbowen@abulafia'
 #{{{
 setxkbmap -option caps:escape
 # volume controla
-alias mu1='amixer -q -D pulse sset Master 1%+'
-alias md1='amixer -q -D pulse sset Master 1%-'
-alias mu5='amixer -q -D pulse sset Master 5%+'
-alias md5='amixer -q -D pulse sset Master 5%-'
-alias mu='amixer -q -D pulse sset Master 10%+'
-alias md='amixer -q -D pulse sset Master 10%-'
+alias mu1='amixer sset Master 1%+'
+alias md1='amixer sset Master 1%-'
+alias mu5='amixer sset Master 5%+'
+alias md5='amixer sset Master 5%-'
+alias mu='amixer set Master 10%+'
+alias md='amixer sset Master 10%-'
 #
 #}}}
 ### ==================================================================== ###
