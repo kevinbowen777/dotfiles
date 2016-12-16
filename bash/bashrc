@@ -258,3 +258,5 @@ unset color_prompt force_color_prompt
 #alias WELOME='ssh  -X kbowen@abulafia' 
 #}}}
 
+# Added by anaconda3-4.2.0
+export PATH=/home/kbowen/anaconda3/bin:$PATH
