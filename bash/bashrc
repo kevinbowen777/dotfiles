@@ -94,11 +94,6 @@ _pip_completion()
 complete -o default -F _pip_completion pip
 # pip bash completion end
 
-# virtualenv setup
-export WORKON_HOME=$HOME/.virtualenvs
-source ~/.local/bin/virtualenvwrapper.sh
-export PIP_VIRTUALENV_BASE=/home/kbowen/.virtualenvs
-
 # Define a few colors
 BLACK='\e[0;30m'
 BLUE='\e[0;34m'
@@ -263,8 +258,3 @@ unset color_prompt force_color_prompt
 #alias WELOME='ssh  -X kbowen@abulafia' 
 #}}}
 
-# added by Anaconda2 4.1.1 installer
-export PATH="/home/kbowen/anaconda2/bin:$PATH"
-
-# added by Anaconda3 4.1.1 installer
-#export PATH="/home/kbowen/anaconda3/bin:$PATH"
