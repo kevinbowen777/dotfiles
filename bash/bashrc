@@ -147,7 +147,6 @@ alias l='ls -CF'
 alias scripts='cd /home/kbowen/docs/tech/scripts'
 alias hist='history | grep $1' #Requires one input
 alias doct='cd /home/kbowen/docs/tech'
-alias docto='cd /home/kbowen/downloads/torrents'
 alias docts='cd /home/kbowen/downloads/software'
 alias gvim='gvim -geometry 97x46+513+85'
 #}}}
@@ -214,11 +213,19 @@ fi
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|xfce4*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+    PS1="\[\e]0;\u@\h: \w\a\]$PS1"
     ;;
 *)
     ;;
 esac
+
+#case "$TERM" in
+#xterm*|xfce4*|rxvt*)
+#    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+#    ;;
+#*)
+#    ;;
+#esac
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
@@ -239,8 +246,11 @@ unset color_prompt force_color_prompt
 #
 # changes prompt when remotely ssh into a client
 #
+if [ -n "$SSH_CLIENT" ]; then text=" [ssh-session]"
+fi
+export PS1='\[\e[1;31m\]\u@\h:\w${text}$\[\e[m\] '
 #if [ -n "$SSH_CLIENT" ]; then text=" ssh"
-
+#
 #fi
 #}}}
 ### ==================================================================== ###
