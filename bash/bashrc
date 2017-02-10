@@ -226,6 +226,10 @@ unset color_prompt force_color_prompt
 if [ -n "$SSH_CLIENT" ]; then text=" [ssh-session]"
 # export PS1='\[\e[1;31m\]\u@\h:\w${text}$\[\e[m\] '
 fi
+if [ -z "$SSH_AUTH_SOCK" ] ; then
+      eval `ssh-agent -s`
+        ssh-add
+fi
 #}}}
 ### ==================================================================== ###
 #   Section 10: Notes 
