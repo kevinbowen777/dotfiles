@@ -243,3 +243,4 @@ fi
 #{{{
 #alias WELOME='ssh  -X kbowen@abulafia' 
 #}}}
+export CLASSPATH=$CLASSPATH:/home/kbowen/bin/jyVis/lib/JyVis.jar

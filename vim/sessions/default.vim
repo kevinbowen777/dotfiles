@@ -1,6 +1,6 @@
 " ~/dotfiles/vim/sessions/default.vim:
 " Vim session script.
-" Created by session.vim 2.13.1 on 25 December 2016 at 06:56:12.
+" Created by session.vim 2.13.1 on 28 December 2016 at 02:54:19.
 " Open this file in Vim and run :source % to restore your session.
 
 set guioptions=aegimrLtT
@@ -25,10 +25,7 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
 endif
 set shortmess=aoO
 badd +251 .bashrc
-badd +14 ~/Dropbox/personal/administrativa/vimwiki/index.wiki
-badd +6 ~/Dropbox/personal/administrativa/vimwiki/Code\ Snippets.wiki
-badd +21 ~/Dropbox/personal/administrativa/vimwiki/Git\ cheats.wiki
-badd +72 ~/.tmux.conf
+badd +7 ~/Dropbox/personal/administrativa/vimwiki/index.wiki
 argglobal
 silent! argdel *
 argadd .bashrc
@@ -48,12 +45,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 14 - ((13 * winheight(0) + 21) / 43)
+let s:l = 7 - ((6 * winheight(0) + 23) / 47)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-14
-normal! 0
+7
+normal! 010|
 tabnext 1
 if exists('s:wipebuf')
 "   silent exe 'bwipe ' . s:wipebuf
