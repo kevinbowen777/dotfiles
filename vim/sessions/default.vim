@@ -1,6 +1,6 @@
 " ~/dotfiles/vim/sessions/default.vim:
 " Vim session script.
-" Created by session.vim 2.13.1 on 02 March 2017 at 12:11:25.
+" Created by session.vim 2.13.1 on 07 March 2018 at 10:46:50.
 " Open this file in Vim and run :source % to restore your session.
 
 set guioptions=aegimrLtT
@@ -25,23 +25,20 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
 endif
 set shortmess=aoO
 badd +15 ~/Dropbox/personal/administrativa/vimwiki/index.wiki
-badd +1 ~/Dropbox/personal/administrativa/vimwiki/Must-have\ Applications.wiki
 badd +61 ~/.bashrc
 badd +14 ~/.tmux.conf
-badd +7 ~/Dropbox/personal/administrativa/vimwiki/Code\ Snippets.wiki
-badd +1 ~/Dropbox/personal/administrativa/vimwiki/Git\ cheats.wiki
-badd +1 ~/Dropbox/personal/administrativa/vimwiki/Fixes\ &\ Hacks.wiki
+badd +21 .vimrc
 argglobal
 silent! argdel *
 argadd ~/.bashrc
-edit ~/Dropbox/personal/administrativa/vimwiki/Code\ Snippets.wiki
+edit .vimrc
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
 argglobal
-setlocal fdm=manual
+setlocal fdm=marker
 setlocal fde=0
 setlocal fmr={{{,}}}
 setlocal fdi=#
@@ -49,13 +46,12 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-silent! normal! zE
-let s:l = 7 - ((6 * winheight(0) + 32) / 65)
+let s:l = 6 - ((5 * winheight(0) + 29) / 59)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-7
-normal! 05|
+6
+normal! 0
 tabnext 1
 if exists('s:wipebuf')
 "   silent exe 'bwipe ' . s:wipebuf

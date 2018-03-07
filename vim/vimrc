@@ -5,7 +5,6 @@ set nocompatible
 
 " Switch syntax highlighting on
 let python_highlight_all=1
-syntax on
 set encoding=utf-8
 set t_Co=256
 
@@ -20,6 +19,7 @@ filetype off
 execute pathogen#infect()
 call pathogen#helptags()
 filetype plugin indent on
+syntax on
 
 colorscheme anotherdark
 
@@ -124,3 +124,8 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
 set undodir=~/tmp/.undo//
 set backupdir=~/tmp/.backup//
 set directory=~/tmp/.swp//
+
+" load NerdFont
+set guifont=DroidSansMono\ Nerd\ Font\ 11
+let g:webdevicons_enable = 1
+let g:webdevicons_enable_nerdtree = 1
