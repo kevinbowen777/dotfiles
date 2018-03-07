@@ -250,7 +250,6 @@ ssh-add -l > /dev/null || ssh-add
 #{{{
 #alias WELOME='ssh  -X kbowen@abulafia' 
 #}}}
-export CLASSPATH=$CLASSPATH:/home/kbowen/bin/jyVis/lib/JyVis.jar
-
-# added by Anaconda3 4.3.0 installer
-export PATH="/home/kbowen/anaconda3/bin:$PATH"
+# added by Anaconda3 installer
+export PATH="/home/kbowen/anaconda/bin:$PATH"
+export RSTUDIO_WHICH_R=/home/kbowen/anaconda/bin/R
