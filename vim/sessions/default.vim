@@ -1,6 +1,6 @@
 " ~/dotfiles/vim/sessions/default.vim:
 " Vim session script.
-" Created by session.vim 2.13.1 on 07 March 2018 at 10:46:50.
+" Created by session.vim 2.13.1 on 22 May 2018 at 22:02:30.
 " Open this file in Vim and run :source % to restore your session.
 
 set guioptions=aegimrLtT
@@ -24,21 +24,21 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +15 ~/Dropbox/personal/administrativa/vimwiki/index.wiki
+badd +7 ~/Dropbox/personal/administrativa/vimwiki/index.wiki
 badd +61 ~/.bashrc
 badd +14 ~/.tmux.conf
-badd +21 .vimrc
+badd +6 .vimrc
 argglobal
 silent! argdel *
 argadd ~/.bashrc
-edit .vimrc
+edit ~/Dropbox/personal/administrativa/vimwiki/index.wiki
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
 argglobal
-setlocal fdm=marker
+setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
 setlocal fdi=#
@@ -46,11 +46,12 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 6 - ((5 * winheight(0) + 29) / 59)
+silent! normal! zE
+let s:l = 7 - ((6 * winheight(0) + 29) / 59)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-6
+7
 normal! 0
 tabnext 1
 if exists('s:wipebuf')

@@ -76,10 +76,7 @@ export LESS_TERMCAP_so=$(printf '\e[01;33m') # enter standout mode -
 export LESS_TERMCAP_ue=$(printf '\e[0m') # leave underline mode
 export LESS_TERMCAP_us=$(printf '\e[04;36m') # enter underline mode
 #
-PATH="${PATH}:/home/kbowen/anaconda3/bin:/home/kbowen/anaconda3/envs/sandboxR/bin:/home/kbowen/bin/eclipse"; export PATH;
-#PATH="${PATH:+:${PATH}}"; export PATH;
-#export PATH=/home/kbowen/anaconda3/bin:$PATH
-export RSTUDIO_WHICH_R=/home/kbowen/anaconda3/envs/sandboxR/bin/R
+PATH="${PATH}:/home/kbowen/anaconda/bin:"; export PATH;
 
 # pip bash completion start
 _pip_completion()
@@ -252,4 +249,3 @@ ssh-add -l > /dev/null || ssh-add
 #}}}
 # added by Anaconda3 installer
 export PATH="/home/kbowen/anaconda/bin:$PATH"
-export RSTUDIO_WHICH_R=/home/kbowen/anaconda/bin/R
