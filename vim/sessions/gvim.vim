@@ -1,10 +1,10 @@
-" ~/dotfiles/vim/sessions/default.vim:
+" ~/dotfiles/vim/sessions/gvim.vim:
 " Vim session script.
-" Created by session.vim 2.13.1 on 19 June 2018 at 12:47:01.
+" Created by session.vim 2.13.1 on 17 June 2018 at 23:26:28.
 " Open this file in Vim and run :source % to restore your session.
 
 set guioptions=aegimrLtT
-silent! set guifont=
+silent! set guifont=Inconsolata-dz\ for\ Powerline\ Italic\ 10
 if exists('g:syntax_on') != 1 | syntax on | endif
 if exists('g:did_load_filetypes') != 1 | filetype on | endif
 if exists('g:did_load_ftplugin') != 1 | filetype plugin on | endif
@@ -12,7 +12,7 @@ if exists('g:did_indent_on') != 1 | filetype indent on | endif
 if &background != 'dark'
 	set background=dark
 endif
-if !exists('g:colors_name') || g:colors_name != 'anotherdark' | colorscheme anotherdark | endif
+if !exists('g:colors_name') || g:colors_name != 'tabula' | colorscheme tabula | endif
 call setqflist([])
 let SessionLoad = 1
 if &cp | set nocp | endif
@@ -24,25 +24,16 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +19 ~/Dropbox/personal/administrativa/vimwiki/index.wiki
-badd +61 ~/.bashrc
-badd +14 ~/.tmux.conf
-badd +117 .vimrc
-badd +1 ~/Dropbox/personal/administrativa/vimwiki/Common\ tips.wiki
-badd +22 ~/Dropbox/personal/administrativa/vimwiki/Code\ Snippets.wiki
-badd +1 ~/Dropbox/personal/administrativa/vimwiki/AWK\ resources\ and\ tips.wiki
-badd +0 ~/Dropbox/personal/administrativa/vimwiki/Git\ cheats.wiki
 argglobal
 silent! argdel *
-argadd ~/.bashrc
-edit ~/Dropbox/personal/administrativa/vimwiki/Git\ cheats.wiki
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
 argglobal
-setlocal fdm=manual
+enew
+setlocal fdm=marker
 setlocal fde=0
 setlocal fmr={{{,}}}
 setlocal fdi=#
@@ -50,13 +41,6 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 29) / 59)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-1
-normal! 0
 tabnext 1
 if exists('s:wipebuf')
 "   silent exe 'bwipe ' . s:wipebuf
