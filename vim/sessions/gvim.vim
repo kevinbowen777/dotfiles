@@ -1,6 +1,6 @@
 " ~/dotfiles/vim/sessions/gvim.vim:
 " Vim session script.
-" Created by session.vim 2.13.1 on 17 June 2018 at 23:26:28.
+" Created by session.vim 2.13.1 on 21 June 2018 at 20:13:29.
 " Open this file in Vim and run :source % to restore your session.
 
 set guioptions=aegimrLtT
@@ -24,15 +24,17 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
+badd +13 ~/docs/bash_notes.txt
+badd +1 LinuxAdminTraining.txt
 argglobal
 silent! argdel *
+edit LinuxAdminTraining.txt
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
 argglobal
-enew
 setlocal fdm=marker
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -41,6 +43,12 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
+let s:l = 16 - ((15 * winheight(0) + 29) / 58)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+16
+normal! 04|
 tabnext 1
 if exists('s:wipebuf')
 "   silent exe 'bwipe ' . s:wipebuf
