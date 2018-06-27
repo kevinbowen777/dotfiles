@@ -4,30 +4,14 @@
 #{{{
 # Personal $HOME/.bashrc file
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
-# Version: 2.2
-# Current location: http://www.github.com/kevinbowen777
-# Last modified: Tues June 5 2018
+# Version: 2.3
+# Source : http://www.github.com/kevinbowen777
+# Last modified: Wed June 27 2018
 # ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # 
-# This file is read (normally) by interactive shells only.
-# This is the place to define your aliases, funtions, and
-# other interactive features like your prompt.
-#
-# To pick up the latest recommended .bashrc content,
+# To pick up the latest default .bashrc content,
 # look in /etc/skel/.bashrc
 # 
-# The majority of the code here assumes that you are on a GNU system
-# system. For additional information, see:
-# http://bashscripts.org/forum/viewtopic.php?f=28&t=174 
-# http://tldp.org/LDP/abs/index.html
-# http://www.caliban.org/bash
-# http://shelldorado.com/scripts/categories.html
-# http://www.dotfiles.org/
-#
-#		A large portion of this script was initially appropriated from:
-#			http://tldp.org/LDP/abs/html/sample-bashrc.html
-#   
 #                               Sections
 #
 #  1)    Header                     (This section)
@@ -37,10 +21,7 @@
 #  5)    Remote Server aliases      (SSH to remote servers) 
 #  6)    Script aliases             (Links to some bashscripts) 
 #  7)    Hardware control aliases   (Control cd/dvd/scanners/audio/etc) 
-#  8)    Unused aliases             (Aliases that aren't in use on the system)
-#  9)    Special functions          (More of a function than an alias.. here) 
-#  10)   Notes                      (that should be self explanatory  ) 
-#  11)   Welcome Screen             (Code to display as bash starts up)
+#  8)    Special functions          (More of a function than an alias) 
 #
 #
 ### =================================================== ###
@@ -149,19 +130,7 @@ alias gvim='gvim -geometry 97x46+513+85'
 alias abu='ssh  -X kbowen@abulafia' 
 #}}}
 ### ==================================================================== ###
-#   Section 5: Remote Server aliases
-### ==================================================================== ###
-#{{{
-#alias abu='ssh  -X kbowen@abulafia' 
-#}}}
-### ==================================================================== ###
-#   Section 6: Script aliases(Links to some bashscripts)
-### ==================================================================== ###
-#{{{
-#alias abu='ssh  -X kbowen@abulafia' 
-#}}}
-### ==================================================================== ###
-#   Section 7: Hardware control aliases(Control cd/dvd/scanners/audio/etc) 
+#   Section 5: Hardware control aliases(Control cd/dvd/scanners/audio/etc) 
 ### ==================================================================== ###
 #{{{
 setxkbmap -option caps:escape
@@ -175,13 +144,7 @@ alias md='amixer sset Master 10%-'
 #
 #}}}
 ### ==================================================================== ###
-#   Section 8: Unused aliases (Aliases not in use )
-### ==================================================================== ###
-#{{{
-#alias abu='ssh  -X kbowen@abulafia' 
-#}}}
-### ==================================================================== ###
-#   Section 9: Special functions (More of a function than an alias.. here) 
+#   Section 6: Special functions (More of a function than an alias.. here) 
 ### ==================================================================== ###
 #{{{
 
@@ -235,17 +198,4 @@ fi
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 ssh-add -l > /dev/null || ssh-add
 #}}}
-### ==================================================================== ###
-#   Section 10: Notes 
-### ==================================================================== ###
-#{{{
-#alias abu='ssh  -X kbowen@abulafia' 
-#}}}
-### ==================================================================== ###
-#   Section 11: Welcome Screen 
-### ==================================================================== ###
-#{{{
-#alias WELOME='ssh  -X kbowen@abulafia' 
-#}}}
-# added by Anaconda3 installer
-export PATH="/home/kbowen/anaconda/bin:$PATH"
+###
