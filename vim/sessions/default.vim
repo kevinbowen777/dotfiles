@@ -1,6 +1,6 @@
 " ~/dotfiles/vim/sessions/default.vim:
 " Vim session script.
-" Created by session.vim 2.13.1 on 27 June 2018 at 15:56:43.
+" Created by session.vim 2.13.1 on 27 June 2018 at 18:08:48.
 " Open this file in Vim and run :source % to restore your session.
 
 set guioptions=aegimrLtT
@@ -30,10 +30,11 @@ badd +12 ~/.tmux.conf
 badd +1 .vimrc
 badd +22 ~/Dropbox/personal/administrativa/vimwiki/Code\ Snippets.wiki
 badd +5 ~/Dropbox/personal/administrativa/vimwiki/Git\ cheats.wiki
+badd +0 ~/dotfiles/LICENSE
 argglobal
 silent! argdel *
 argadd ~/.bashrc
-edit ~/.tmux.conf
+edit ~/dotfiles/LICENSE
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -48,11 +49,11 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 12 - ((11 * winheight(0) + 30) / 60)
+let s:l = 1 - ((0 * winheight(0) + 30) / 60)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-12
+1
 normal! 0
 tabnext 1
 if exists('s:wipebuf')
