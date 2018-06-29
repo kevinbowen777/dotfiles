@@ -10,4 +10,4 @@ __pycache__
 *~
 *.log
 tmux_resurrect_2016*
-~/dotfiles/vim/sessions/default.vim
+default.vim
