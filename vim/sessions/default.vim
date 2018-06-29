@@ -1,6 +1,6 @@
 " ~/dotfiles/vim/sessions/default.vim:
 " Vim session script.
-" Created by session.vim 2.13.1 on 27 June 2018 at 18:08:48.
+" Created by session.vim 2.13.1 on 28 June 2018 at 18:49:06.
 " Open this file in Vim and run :source % to restore your session.
 
 set guioptions=aegimrLtT
@@ -25,16 +25,16 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
 endif
 set shortmess=aoO
 badd +19 ~/Dropbox/personal/administrativa/vimwiki/index.wiki
-badd +1 ~/.bashrc
+badd +6 ~/.bashrc
 badd +12 ~/.tmux.conf
 badd +1 .vimrc
 badd +22 ~/Dropbox/personal/administrativa/vimwiki/Code\ Snippets.wiki
 badd +5 ~/Dropbox/personal/administrativa/vimwiki/Git\ cheats.wiki
-badd +0 ~/dotfiles/LICENSE
+badd +4 ~/Dropbox/personal/administrativa/vimwiki/Vim\ tips.wiki
 argglobal
 silent! argdel *
 argadd ~/.bashrc
-edit ~/dotfiles/LICENSE
+edit ~/.tmux.conf
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
