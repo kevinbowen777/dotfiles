@@ -38,7 +38,8 @@ powerline; but, they are currently commented out.
 To install powerline:
 	sudo pip install git+git://github.com/Lokaltog/powerline
 
-For detailed instructions, see: http://askubuntu.com/a/283909/106495
+For detailed instructions, see the wiki for this repo:
+https://github.com/kevinbowen777/dotfiles/wiki/Powerline-Plugin-Installation-Instructions   
 
 ## Adding Plugin Bundles ##
 
