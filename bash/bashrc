@@ -59,16 +59,6 @@ export LESS_TERMCAP_us=$(printf '\e[04;36m') # enter underline mode
 #
 PATH="${PATH}:/home/kbowen/anaconda/bin:"; export PATH;
 
-# pip bash completion start
-_pip_completion()
-{
-    COMPREPLY=( $( COMP_WORDS="${COMP_WORDS[*]}" \
-                   COMP_CWORD=$COMP_CWORD \
-                   PIP_AUTO_COMPLETE=1 $1 ) )
-}
-complete -o default -F _pip_completion pip
-# pip bash completion end
-
 # Define a few colors
 BLACK='\e[0;30m'
 BLUE='\e[0;34m'
