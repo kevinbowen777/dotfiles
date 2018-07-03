@@ -175,14 +175,13 @@ unset color_prompt force_color_prompt
 #
 # changes prompt when remotely ssh into a client
 #
-if [ -n "$SSH_CLIENT" ]; then text=" [ssh-session]"
-# export PS1='\[\e[1;31m\]\u@\h:\w${text}$\[\e[m\] '
+if [ -n "$SSH_CLIENT" ]; then text=" [remote]"
+
+export PS1='\[\033[01;35m\]\u@\h\[\033[00m\]:\[\033[01;
+34m\]\w${text}$\[\033[01;37m\]  '
+#  export PS1='\[\e[1;31m\]\u@\h:\w${text}$\[\e[m\] '
 fi
-# 
-#if [ -z "$SSH_AUTH_SOCK" ] ; then
-#      eval `ssh-agent -s`
-#        ssh-add
-#fi
+ 
 # check ssh-agent and add keys. Hopefully only prompting once for password
 if [ ! -S ~/.ssh/ssh_auth_sock ]; then
       eval `ssh-agent`
