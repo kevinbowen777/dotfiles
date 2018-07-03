@@ -120,7 +120,8 @@ alias ip='ip -color'
 #   Section 4: Workstation aliases
 ### ==================================================================== ###
 #{{{
-alias abu='ssh  -X kbowen@abulafia' 
+# alias for CentOS spacewalk VM
+alias space='ssh  -X kbowen@spacewalk' 
 #}}}
 ### ==================================================================== ###
 #   Section 5: Hardware control aliases(Control cd/dvd/scanners/audio/etc) 
