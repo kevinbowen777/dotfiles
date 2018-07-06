@@ -34,6 +34,9 @@ call pathogen#helptags()
 filetype plugin indent on
 syntax on
 
+" Add a marker (the $) at the end of change.
+set cpoptions+=$
+
 colorscheme anotherdark
 
 " Appearance
