@@ -83,11 +83,6 @@ inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
 
-" Disable the help key.
-inoremap <F1> <ESC>
-nnoremap <F1> <ESC>
-vnoremap <F1> <ESC>
-
 "------------------------------------------"
 "   NERD Tree Plugin Settings
 "------------------------------------------"
