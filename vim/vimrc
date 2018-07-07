@@ -14,7 +14,8 @@
 "
 "
 set nocompatible
-"set sessionoptions-=options
+" Don't persist options and mappings because it can corrupt sessions.
+set sessionoptions-=options
 
 " Switch syntax highlighting on
 let python_highlight_all=1
