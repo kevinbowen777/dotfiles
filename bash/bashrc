@@ -113,6 +113,7 @@ alias hist='history | grep $1' #Requires one input
 alias gvim='gvim -geometry 97x46+513+85'
 alias info='pinfo'
 alias ip='ip -color'
+alias cl='clear'
 
 #}}}
 ### ==================================================================== ###
