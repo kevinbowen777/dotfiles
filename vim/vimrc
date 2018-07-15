@@ -38,7 +38,7 @@ filetype plugin indent on
 syntax on
 
 " Add a marker (the $) at the end of change.
-set cpoptions+=$
+" set cpoptions+=$
 
 colorscheme anotherdark
 
