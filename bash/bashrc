@@ -45,8 +45,7 @@ HISTFILESIZE=1000
 export HISTSIZE
 export HISTCONTROL=ignoredups:erasedups
 export HISTTIMEFORMAT="$(echo -e ${BCyan})[%d/%m %H:%M:%S]$(echo -e ${NC}) "
-export PROMPT_COMMAND="history -a; history -c; history -r;
-$PROMPT_COMMAND"
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 #
 export LESS_TERMCAP_mb=$(printf '\e[01;31m') # enter blinking mode - red
 export LESS_TERMCAP_md=$(printf '\e[01;35m') # enter double-bright mode
@@ -176,10 +175,8 @@ unset color_prompt force_color_prompt
 
 # Changes prompt when remotely ssh'd into this host 
 if [ -n "$SSH_CLIENT" ]; then text=" [remote]"
-
-export PS1='\[\033[01;35m\]\u@\h\[\033[00m\]:\[\033[01;
-34m\]\w${text}$\[\033[01;37m\]  '
-#  export PS1='\[\e[1;31m\]\u@\h:\w${text}$\[\e[m\] '
+    export PS1='\[\033[01;35m\]\u@\h\[\033[00m\]:\[\033[01; 34m\]\w${text}$\[\033[01;37m\]  '
+    # export PS1='\[\e[1;31m\]\u@\h:\w${text}$\[\e[m\] '
 fi
  
 # Check ssh-agent and add keys. 
@@ -187,12 +184,17 @@ if [ ! -S ~/.ssh/ssh_auth_sock ]; then
       eval `ssh-agent`
         ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
 fi
+
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 ssh-add -l > /dev/null || ssh-add
 
 # Function to create notes from the CLI.
-notes() {
-    echo $1 >> $HOME/docs/notes.md
+note() {
+if [ ! -z "$1" ]; then
+  echo $(date +"%Y%m%d-%H:%M:%S") $@ >> $HOME/docs/notes.md
+else
+  cat $HOME/docs/notes.md
+fi
 }
 #}}}
 ###
