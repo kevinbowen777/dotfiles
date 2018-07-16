@@ -37,7 +37,7 @@ shopt -s histappend
 shopt -s checkwinsize
 MYVIMRC=~/.vimrc
 
-# don't put duplicate lines or lines starting with space in the history.
+# History control
 unset HISTFILESIZE
 HISTCONTROL=ignoredups:erasedups
 HISTSIZE=1000   # History size for current shell only
@@ -46,6 +46,7 @@ export HISTSIZE
 export HISTCONTROL=ignoredups:erasedups
 export HISTTIMEFORMAT="$(echo -e ${BCyan})[%d/%m %H:%M:%S]$(echo -e ${NC}) "
 export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+
 #
 export LESS_TERMCAP_mb=$(printf '\e[01;31m') # enter blinking mode - red
 export LESS_TERMCAP_md=$(printf '\e[01;35m') # enter double-bright mode
