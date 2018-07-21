@@ -58,9 +58,6 @@ export LESS_TERMCAP_us=$(printf '\e[04;36m') # enter underline mode
 #
 PATH="${PATH}:/home/kbowen/anaconda/bin:"; export PATH;
 
-CALIBRE_USE_SYSTEM_THEME=1
-export CALIBRE_USE_SYSTEM_THEME
-
 # Define a few colors
 BLACK='\e[0;30m'
 BLUE='\e[0;34m'
