@@ -77,6 +77,10 @@ YELLOW='\e[1;33m'
 WHITE='\e[1;37m'
 NC='\e[0m'              # No Color
 
+
+# Workaround for suppressnig d-bus spurious errors: Launchpad bug #1193236
+export NO_AT_BRIDGE=1
+
 #}}}
 ### ==================================================================== ###
 #   Section 3: Sourced aliases and alias definitions.
