@@ -45,7 +45,7 @@ For detailed instructions, [see the wiki](https://github.com/kevinbowen777/dotfi
 ## Adding Plugin Bundles ##
 
 Plugins that are published on github can be installed as submodules. For
-example, to install the [Nerdtree bundle][ntree], follow these steps:
+example, to install the [Nerdtree bundle](http://github.com/scrooloose/nerdtree.git), follow these steps:
 
     cd ~/dotfiles
     git submodule add http://github.com/scrooloose/nerdtree.git/
@@ -72,7 +72,3 @@ starting any sessions, enter `<prefix>+<shift>+<I>`.
 
 ## License
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-
-
-[ntree](http://github.com/scrooloose/nerdtree.git) (http://github.com/scrooloose/nerdtree.git)
