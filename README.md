@@ -71,9 +71,9 @@ N.B.:
 On first run of tmux, remember to initialize your tmux plugins. Before 
 starting any sessions, enter `<prefix>+<shift>+<I>`.
 
-## Licence
+## License
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
 
-[![ntree](http://github.com/scrooloose/nerdtree.git)]
+[![ntree](http://github.com/scrooloose/nerdtree.git)](http://github.com/scrooloose/nerdtree.git)
