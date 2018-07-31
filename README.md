@@ -40,8 +40,7 @@ powerline; but, they are currently commented out.
 To install powerline:
 	sudo pip install git+git://github.com/Lokaltog/powerline
 
-For detailed instructions, see the wiki for this repo:
-https://github.com/kevinbowen777/dotfiles/wiki/Powerline-Plugin-Installation-Instructions   
+For detailed instructions, [![see the wiki for this repo:](https://github.com/kevinbowen777/dotfiles/wiki/Powerline-Plugin-Installation-Instructions)]
 
 ## Adding Plugin Bundles ##
 
@@ -76,4 +75,4 @@ starting any sessions, enter `<prefix>+<shift>+<I>`.
 
 
 
-![](http://github.com/scrooloose/nerdtree.git)
+[![ntree](http://github.com/scrooloose/nerdtree.git)] (http://github.com/scrooloose/nerdtree.git)
