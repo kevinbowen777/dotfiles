@@ -76,4 +76,4 @@ starting any sessions, enter `<prefix>+<shift>+<I>`.
 
 
 
-[![ntree](http://github.com/scrooloose/nerdtree.git)](http://github.com/scrooloose/nerdtree.git)
+![](http://github.com/scrooloose/nerdtree.git)
