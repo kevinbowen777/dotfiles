@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.com/username/projectname.svg?branch=master)](https://travis-ci.com/username/projectname)
 
-#Installation
+# Installation #
 
     git clone git://github.com/kevinbowen777/dotfiles.git
 
@@ -66,9 +66,12 @@ Commit these changes as follows:
     git commit -m "Added the nerdtree plug-in 
     git push origin master
 
-N.B.: On first run of tmux, remember to initialize your tmux plugins. Before 
+N.B.: 
+
+On first run of tmux, remember to initialize your tmux plugins. Before 
 starting any sessions, enter `<prefix>+<shift>+<I>`.
 
+## Licence
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
