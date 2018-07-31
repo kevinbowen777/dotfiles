@@ -1,7 +1,5 @@
 # dotfiles
 
-[![Build Status](https://travis-ci.com/username/projectname.svg?branch=master)](https://travis-ci.com/username/projectname)
-
 ## Installation #
 
     git clone git://github.com/kevinbowen777/dotfiles.git
