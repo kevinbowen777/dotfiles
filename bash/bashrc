@@ -60,9 +60,13 @@ PATH="${PATH}:/home/kbowen/anaconda/bin:"; export PATH;
 
 # Define a few colors
 BLACK='\e[0;30m'
+black='\e[0;30m'
 BLUE='\e[0;34m'
+blue='\e[0;34m'
 GREEN='\e[0;32m'
+green='\e[0;32m'
 CYAN='\e[0;36m'
+cyan='\e[0;36m'
 RED='\e[0;31m'
 PURPLE='\e[0;35m'
 BROWN='\e[0;33m'
