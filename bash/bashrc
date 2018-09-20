@@ -199,3 +199,6 @@ fi
 }
 #}}}
 ###
+
+# added by Anaconda3 installer
+export PATH="/home/kbowen/anaconda/bin:$PATH"
