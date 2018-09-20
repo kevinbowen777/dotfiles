@@ -16,12 +16,6 @@
 [submodule "vim/bundle/Colour-Sampler-Pack"]
 	path = vim/bundle/Colour-Sampler-Pack
 	url = https://github.com/vim-scripts/Colour-Sampler-Pack.git
-[submodule "vim-session"]
-	path = vim-session
-	url = https://github.com/xolox/vim-session.git
-[submodule "vimwiki"]
-	path = vimwiki
-	url = https://github.com/vimwiki/vimwiki
 [submodule "vim/bundle/vim-misc"]
 	path = vim/bundle/vim-misc
 	url = https://github.com/xolox/vim-misc.git
