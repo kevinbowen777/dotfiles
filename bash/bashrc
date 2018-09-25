@@ -197,6 +197,10 @@ else
   cat $HOME/docs/notes.md
 fi
 }
+# Changes prompt when remotely ssh'd into host
+if [ -n "$SSH_CLIENT" ]; then text=" [remote]"
+    export PS1='\[\033[01;35m\]\u@\h\[\033[00m\]:\[\033[01; 34m\]\w${text}$\[\033[01;37m\]  '
+fi
 #}}}
 ###
 
