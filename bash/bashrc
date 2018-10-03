@@ -125,6 +125,7 @@ alias info='pinfo'
 alias ip='ip -color'
 alias cl='clear'
 alias dict='sdcv'
+alias psc='ps xawf -eo pid,user,cgroup,args'
 
 #}}}
 ### ==================================================================== ###
@@ -132,7 +133,7 @@ alias dict='sdcv'
 ### ==================================================================== ###
 #{{{
 # alias for CentOS spacewalk VM
-alias space='ssh  -X kbowen@spacewalk' 
+alias space='ssh kbowen@spacewalk' 
 #}}}
 ### ==================================================================== ###
 #   Section 5: Hardware control aliases(Control cd/dvd/scanners/audio/etc) 
