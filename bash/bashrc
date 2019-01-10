@@ -47,8 +47,7 @@ export HISTCONTROL=ignoredups:erasedups
 export HISTTIMEFORMAT="$(echo -e ${BCyan})[%d/%m %H:%M:%S]$(echo -e ${NC}) "
 # export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 PROMPT_COMMAND='echo -en "\033]0; $("pwd") \a"'
-export CALIBRE_USE_SYSTEM_THEME=1
-export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+#export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 export GPODDER_HOME=~/music/gpodder
 export GPODDER_DOWNLOAD_DIR=~/music/gpodder/downloads
 #
@@ -60,8 +59,7 @@ export LESS_TERMCAP_so=$(printf '\e[01;33m') # enter standout mode -
 export LESS_TERMCAP_ue=$(printf '\e[0m') # leave underline mode
 export LESS_TERMCAP_us=$(printf '\e[04;36m') # enter underline mode
 #
-#PATH="${PATH}:/home/kbowen/anaconda/bin"; export PATH;
-PATH="/home/kbowen/bin:/home/kbowen/.local/bin:/home/kbowen/anaconda/bin:${PATH}"; export PATH;
+PATH="${PATH}:/home/kbowen/bin:/home/kbowen/.local/bin:/home/kbowen/anaconda/bin:"; export PATH;
 
 # Define a few colors
 BLACK='\e[0;30m'
@@ -127,7 +125,7 @@ alias ip='ip -color'
 alias cl='clear'
 alias dict='sdcv'
 alias psc='ps xawf -eo pid,user,cgroup,args'
-
+alias etym='etym.py'
 #}}}
 ### ==================================================================== ###
 #   Section 4: Workstation aliases
@@ -206,5 +204,3 @@ fi
 #}}}
 ###
 
-# added by Anaconda3 installer
-export PATH="/home/kbowen/anaconda/bin:$PATH"
