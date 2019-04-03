@@ -7,7 +7,7 @@
 " Version: 1.1
 " Author: Kevin Bowen kevin.bowen@gmail.com
 " 
-" Updated: 20180703
+" Updated: 20190402
 "
 " -------------------------------------------------------------------------- #
 "
@@ -61,7 +61,7 @@ set fileformat=unix
 " Indentation
 set autoindent
 set tabstop=4
-set shiftwidth=8
+set shiftwidth=4
 set softtabstop=8
 set noexpandtab
 
