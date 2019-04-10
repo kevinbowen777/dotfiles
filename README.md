@@ -18,6 +18,7 @@ Create symlinks:
     ln -s ~/dotfiles/vim/gvimrc ~/.gvimrc
     ln -s ~/dotfiles/vim ~/.vim
     ln -s ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
+	ln -s ~/dotfiles/Xresources ~/.Xresources
 
 Vim's backup and swap files are stored in `~/tmp`, so that directory must exist.
 
@@ -33,9 +34,8 @@ respectively. All plugins and scripts are stored in the `dotfiles/vim`
 directory.
 
 ## Powerline plug-in installation
-The current vim configuration depends upon havin the powerline plug-in
-installed. The .bashrc and .tmux.conf files have the necessary code to run with
-powerline; but, they are currently commented out.
+The current vim configuration depends upon having the powerline plug-in
+installed. The .bashrc and .tmux.conf files have the necessary code to run with powerline; but, they are currently commented out.
 
 To install powerline:
 	sudo pip install git+git://github.com/Lokaltog/powerline
