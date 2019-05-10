@@ -116,7 +116,13 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "⚠"
-let g:syntastic_python_checkers = ['pep8', 'flake8', 'python', 'pep257']
+let g:syntastic_python_checkers = ['pep8', 'python']
+" see :h syntastic-loclist-callback
+function! SyntasticCheckHook(errors)
+	if !empty(a:errors)
+		let g:syntastic_loc_list_height = min([len(a:errors), 10])
+	endif
+endfunction
 
 " ----------------------------------------"
 "  vimwiki plugin settings
