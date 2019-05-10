@@ -129,6 +129,8 @@ alias cl='clear'
 alias dict='sdcv'
 alias psc='ps xawf -eo pid,user,cgroup,args'
 alias etym='etym.py'
+alias ipy='ipython'
+alias cdoc='cdoc.sh'
 #}}}
 ### ==================================================================== ###
 #   Section 4: Workstation aliases
