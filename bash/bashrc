@@ -122,7 +122,7 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias hist='history | grep $1' #Requires one input
-alias gvim='gvim -geometry 97x46+513+85'
+alias gvim='gvim -geometry 80x50+513+85'
 alias info='pinfo'
 alias ip='ip -color'
 alias cl='clear'
@@ -131,6 +131,16 @@ alias psc='ps xawf -eo pid,user,cgroup,args'
 alias etym='etym.py'
 alias ipy='ipython'
 alias cdoc='cdoc.sh'
+alias mlb='mlbscores.py'
+alias mlbwest='mlb -s | head -n21 | tail -n6'
+alias sourceb='source ~/.bashrc'
+alias meminfo='free -m -l -t'
+alias ports='netstat -tulanp'
+alias psmem='ps auxf | sort -nr -k -4'
+alias psmem10='ps auxf | sort -nr -k -4 | head -10'
+alias pscpu='ps auxf | sort -nr -k 3'
+alias pscpu10'ps auxf | sort -nr -k 3 | head -10'
+
 #}}}
 ### ==================================================================== ###
 #   Section 4: Workstation aliases
@@ -209,3 +219,19 @@ fi
 #}}}
 ###
 #source /home/kbowen/anaconda/etc/profile.d/conda.sh
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/kbowen/anaconda/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/kbowen/anaconda/etc/profile.d/conda.sh" ]; then
+        . "/home/kbowen/anaconda/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/kbowen/anaconda/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
