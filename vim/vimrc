@@ -4,10 +4,10 @@
 " Purpose: Set vim configuration
 " Requirements:
 "
-" Version: 1.1
+" Version: 1.11
 " Author: Kevin Bowen kevin.bowen@gmail.com
 " 
-" Updated: 20190402
+" Updated: 20190612
 "
 " -------------------------------------------------------------------------- #
 "
@@ -156,3 +156,6 @@ set guifont=DroidSansMono\ Nerd\ Font\ 11
 let g:webdevicons_enable = 1
 let g:webdevicons_enable_nerdtree = 1
 "
+" fix for CVE-2019-12735
+set modelines=0
+set nomodeline
