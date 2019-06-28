@@ -18,7 +18,7 @@ Create symlinks:
     ln -s ~/dotfiles/vim/gvimrc ~/.gvimrc
     ln -s ~/dotfiles/vim ~/.vim
     ln -s ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
-	ln -s ~/dotfiles/Xresources ~/.Xresources
+	ln -s ~/dotfiles/bash/Xresources ~/.Xresources
 
 Vim's backup and swap files are stored in `~/tmp`, so that directory must exist.
 
