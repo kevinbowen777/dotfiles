@@ -62,7 +62,8 @@ export LESS_TERMCAP_so=$(printf '\e[01;33m') # enter standout mode -
 export LESS_TERMCAP_ue=$(printf '\e[0m') # leave underline mode
 export LESS_TERMCAP_us=$(printf '\e[04;36m') # enter underline mode
 #
-PATH="/home/kbowen/anaconda/bin:${PATH}:/home/kbowen/bin:/home/kbowen/.local/bin:"; export PATH;
+# PATH="/home/kbowen/anaconda/bin:${PATH}:/home/kbowen/bin:/home/kbowen/.local/bin:"; export PATH;
+PATH="${PATH}:/home/kbowen/bin:/home/kbowen/.local/bin:"; export PATH;
 
 # Define a few colors
 BLACK='\e[0;30m'
@@ -129,7 +130,7 @@ alias cl='clear'
 alias dict='sdcv'
 alias psc='ps xawf -eo pid,user,cgroup,args'
 alias etym='etym.py'
-alias ipy='ipython'
+alias ipy='ipython3'
 alias cdoc='cdoc.sh'
 alias mlb='mlbscores.py'
 alias mlbwest='mlb -s | head -n21 | tail -n6'
@@ -218,20 +219,3 @@ if [ -n "$SSH_CLIENT" ]; then text=" [remote]"
 fi
 #}}}
 ###
-#source /home/kbowen/anaconda/etc/profile.d/conda.sh
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/kbowen/anaconda/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/kbowen/anaconda/etc/profile.d/conda.sh" ]; then
-        . "/home/kbowen/anaconda/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/kbowen/anaconda/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
