@@ -142,6 +142,10 @@ alias psmem10='ps auxf | sort -nr -k -4 | head -10'
 alias pscpu='ps auxf | sort -nr -k 3'
 alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
 alias sandbox='cd ~/dev/sandbox'
+alias mi='~/bin/map_it.py'
+alias ms='~/bin/movie_search.py'
+alias ts='~/bin/torrent_search.py'
+alias ws='~/bin/wiki_search.py'
 
 #}}}
 ### ==================================================================== ###
