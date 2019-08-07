@@ -13,3 +13,8 @@ __pycache__
 tmux_resurrect_2016*
 default.vim
 gvim.vim
+vim/bundle/python-mode/.bumpversion.cfg
+vim/bundle/python-mode/.github/
+vim/bundle/python-mode/.gitignore
+vim/bundle/python-mode/.gitmodules
+vim/bundle/python-mode/.travis.yml
