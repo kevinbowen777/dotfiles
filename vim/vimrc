@@ -27,6 +27,7 @@ set t_Co=256
 set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%{FugitiveStatusline()}
 set statusline+=%*
 set showtabline=2 " Always display the tabline, even if there is only one tab.
  
