@@ -4,10 +4,10 @@
 " Purpose: Set vim configuration
 " Requirements:
 "
-" Version: 1.11
+" Version: 1.12
 " Author: Kevin Bowen kevin.bowen@gmail.com
 " 
-" Updated: 20190612
+" Updated: 20190731
 "
 " -------------------------------------------------------------------------- #
 "
@@ -36,6 +36,16 @@ execute pathogen#infect()
 call pathogen#helptags()
 filetype plugin indent on
 syntax on
+
+" map the escape sequences to their Alt combinations.
+let c='a'
+while c <= 'z'
+  exec "set <A-".c.">=\e".c
+  exec "imap \e".c." <A-".c.">"
+  let c = nr2char(1+char2nr(c))
+endw
+
+set timeout ttimeoutlen=50
 
 " Add a marker (the $) at the end of change.
 " set cpoptions+=$
@@ -139,12 +149,18 @@ let g:session_autosave = 'yes'
 let g:session_autosave_periodic = 10
 
 " Mappings to move lines.
-nnoremap <C-j> :m .+1<CR>==
-nnoremap <C-k> :m .-2<CR>==
-inoremap <C-j> <Esc>:m .+1<CR>==gi
-inoremap <C-k> <Esc>:m .-2<CR>==gi
-vnoremap <C-j> :m '>+1<CR>gv=gv
-vnoremap <C-k> :m '<-2<CR>gv=gv
+" nnoremap <C-j> :m .+1<CR>==
+" nnoremap <C-k> :m .-2<CR>==
+" inoremap <C-j> <Esc>:m .+1<CR>==gi
+" inoremap <C-k> <Esc>:m .-2<CR>==gi
+" vnoremap <C-j> :m '>+1<CR>gv=gv
+" vnoremap <C-k> :m '<-2<CR>gv=gv
+
+" Ctrl-j/k deletes blank line below/above, and Alt-j/k inserts.
+nnoremap <silent><C-j> m`:silent +g/\m^\s*$/d<CR>``:noh<CR>
+nnoremap <silent><C-k> m`:silent -g/\m^\s*$/d<CR>``:noh<CR>
+nnoremap <silent><A-j> :set paste<CR>m`o<Esc>``:set nopaste<CR>
+nnoremap <silent><A-k> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 
 " temp file locations. make sure subdirectories are created in ~/tmp
 set undodir=~/tmp/.undo//
