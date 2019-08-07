@@ -4,9 +4,9 @@
 #{{{
 # Personal $HOME/.bashrc file
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
-# Version: 2.3
+# Version: 2.4
 # Source : http://www.github.com/kevinbowen777
-# Last modified: Thurs Aug 23 2018
+# Last modified: Tue July 26 2019
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # 
 # To pick up the latest default .bashrc content,
@@ -186,7 +186,7 @@ fi
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
     xterm*|xfce4*|rxvt*)
-    PS1='\[\e[0;35m\]\u\[\e[0m\]@\[\e[0;36m\]\h\[\033[91m\]:\[\033[01;96m\]\w\[\033[01;92m\] $ '
+    PS1='\[\e[0;35m\]\u\[\e[0m\]@\[\e[0;36m\]\h\[\033[91m\]:\[\033[01;96m\]\w$(__docker_machine_ps1)\[\033[01;92m\] $ '
     ;;
     *)
     ;;
