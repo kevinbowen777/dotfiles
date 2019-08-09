@@ -1,3 +1,8 @@
-PATH=$PATH:/home/kbowen/algs4/bin
-export PATH
-test -r ~/algs4/bin/config.sh && source ~/algs4/bin/config.sh
+#
+# ~/.bash_profile
+#
+#  Version: 0.0.1
+#  Modified: 20190809
+
+[[ -f ~/.bashrc ]] && . ~/.bashrc
+export GPG_TTY=$(tty)
