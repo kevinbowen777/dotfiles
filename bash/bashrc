@@ -132,6 +132,9 @@ alias psc='ps xawf -eo pid,user,cgroup,args'
 alias etym='etym.py'
 alias ipy='ipython3'
 alias cdoc='cdoc.sh'
+alias mpause='audtool --playback-pause'
+alias mplay='audtool --playback-play'
+alias mstop='audtool --playback-stop'
 alias mlb='mlbscores.py'
 alias mlbwest='mlb -s | head -n21 | tail -n6'
 alias sourceb='source ~/.bashrc'
@@ -146,6 +149,7 @@ alias mi='~/bin/map_it.py'
 alias ms='~/bin/movie_search.py'
 alias ts='~/bin/torrent_search.py'
 alias ws='~/bin/wiki_search.py'
+
 
 #}}}
 ### ==================================================================== ###
