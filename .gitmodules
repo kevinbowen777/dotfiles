@@ -13,8 +13,8 @@
 [submodule "tmux/plugins/tpm"]
 	path = tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm.git
-[submodule "vim/bundle/Colour-Sampler-Pack"]
-	path = vim/bundle/Colour-Sampler-Pack
+[submodule "vim/bundle/colors"]
+	path = vim/bundle/colors
 	url = https://github.com/vim-scripts/Colour-Sampler-Pack.git
 [submodule "vim/bundle/vim-misc"]
 	path = vim/bundle/vim-misc
