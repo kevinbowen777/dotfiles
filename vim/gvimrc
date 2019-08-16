@@ -15,8 +15,8 @@
 set nocompatible
 set modelines=0
 set nomodeline
-" set sessionoptions+=resize
-" set sessionoptions+=winpos
+set sessionoptions+=resize
+set sessionoptions+=winpos
 set undofile
 
 " Switch syntax highlighting on
@@ -137,8 +137,8 @@ let g:vimwiki_list=[wiki]
 " --------------------------------------------------------------------------- "
 "  VimSession plugin settings
 " --------------------------------------------------------------------------- "
-let g:session_autosave = 'yes'
-let g:session_autosave_periodic = 30
+" let g:session_autosave = 'yes'
+" let g:session_autosave_periodic = 30
 
 " --------------------------------------------------------------------------- "
 "  pymode plugin settings
@@ -162,5 +162,4 @@ set clipboard=unnamedplus"
 " Clear filter when using the browse dialog
 autocmd FileType * let b:browsefilter = ''
 
-let g:session_autoload='yes'
-
+ " let g:session_autoload='yes'
