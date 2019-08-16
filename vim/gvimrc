@@ -161,3 +161,5 @@ set clipboard=unnamedplus"
 
 " Clear filter when using the browse dialog
 autocmd FileType * let b:browsefilter = ''
+
+let g:session_autoload='yes'
