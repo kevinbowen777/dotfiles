@@ -1,9 +1,22 @@
-" Gvim settings
+" -------------------------------------------------------------------------- "
+"
+" Name: gvimrc 
+" Purpose: Set gvim configuration
+" Requirements:
+"
+" Version: 1.01
+" Author: Kevin Bowen kevin.bowen@gmail.com
+" 
+" Updated: 20190805
+"
+" -------------------------------------------------------------------------- #
+"
+"
 "
 set nocompatible
 "
-set lines=44
-set columns=165
+" set lines=44
+" set columns=165
 " Switch syntax highlighting on
 "
 syntax on
@@ -16,7 +29,7 @@ colorscheme tabula
 "Strictly necessary for Powerline
 set encoding=utf-8
 "Set to whatever font you like.
-set guifont=Inconsolata-dz\ for\ Powerline\ Italic\ 10
+" set guifont=Inconsolata-dz\ for\ Powerline\ Italic\ 10
 "set guifont=Anonymice\ Powerline
 "set guifont=Monofur\for\ Powerline
 "set guifont=Arimo\ Bold\ for\ Powerline
@@ -97,14 +110,22 @@ map,r :NERDTreeFind<CR>
 "
 "
 " Set statusline
+" set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/"
+" set statusline=*\[%n]                               "Buffer number
+" set statusline+=%F%m%r%h%w                         "File+path 
+" set statusline+=%{fugitive#statusline()}           "Git status 
+" set statusline+=[%{strlen(&fenc)?&fenc:&enc}]      "Encoding
+" set statusline+=%{&ff}                             "FileFormat (dos/unix) 
+" set statusline+=\ %=\ row:%l/%L\ (%03p%%)           "Rownumber/total (%)
+" set statusline+=%0*\ \ %m%r%w\ %P\ \                "Modified? Readonly? Top/bot.
 "
-"set statusline=*\[%n]                               "Buffer number
-"set statusline+=%F%m%r%h%w\                         "File+path 
-"set statusline+=%{fugitive#statusline()}\           "Git status 
-"set statusline+=[%{strlen(&fenc)?&fenc:&enc}]\      "Encoding
-"set statusline+=%{&ff}\                             "FileFormat (dos/unix) 
-"set statusline+=\ %=\ row:%l/%L\ (%03p%%)           "Rownumber/total (%)
-"set statusline+=%0*\ \ %m%r%w\ %P\ \                "Modified? Readonly? Top/bot.
-"
-"
+" Set statusline with powerline and syntastic plugins
+set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
+set statusline+=%#warningmsg#
+set statusline+=%{FugitiveStatusline()}
+set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%{fugitive#statusline()}
+set statusline+=%*
+set showtabline=2 " Always display the tabline, even if there is only one tab."
+
 set clipboard=unnamedplus"
