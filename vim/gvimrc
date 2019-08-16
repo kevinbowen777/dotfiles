@@ -158,7 +158,7 @@ au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
 " Make trailing whitespace be flagged as bad.
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
-set clipboard=unnamedplus"
+set clipboard^=unnamed,unnamedplus
 
 " Clear filter when using the browse dialog
 autocmd FileType * let b:browsefilter = ''
