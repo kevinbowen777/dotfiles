@@ -22,7 +22,6 @@ set undofile
 " Switch syntax highlighting on
 syntax on
 let python_highlight_all=1
-colorscheme anotherdark
 set encoding=utf-8
 set t_Co=256
 
@@ -31,6 +30,7 @@ filetype off              " force reloading *after* pathogen loaded
 execute pathogen#infect()
 call pathogen#helptags()
 filetype plugin indent on " enable detection, plugins, and indentation in one step
+colorscheme anotherdark
 
 " Appearance
 set relativenumber
@@ -157,3 +157,5 @@ highlight BadWhitespace ctermbg=red guibg=red
 au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
 " Make trailing whitespace be flagged as bad.
  au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+
