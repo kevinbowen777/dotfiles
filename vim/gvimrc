@@ -15,8 +15,8 @@
 set nocompatible
 set modelines=0
 set nomodeline
-" Don't persist options and mappings because it can corrupt sessions.
-set sessionoptions-=options
+set sessionoptions+=resize
+set sessionoptions+=winpos
 set undofile
 
 " Switch syntax highlighting on
@@ -163,3 +163,5 @@ set clipboard=unnamedplus"
 autocmd FileType * let b:browsefilter = ''
 
 let g:session_autoload='yes'
+set guifont=Andale\ Mono\ 10
+
