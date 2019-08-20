@@ -4,9 +4,9 @@
 #{{{
 # Personal $HOME/.bashrc file
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
-# Version: 2.4
+# Version: 2.50
 # Source : http://www.github.com/kevinbowen777
-# Last modified: Sun Augut 11 2019
+# Last modified: Sun Augut 20 2019
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # 
 # To pick up the latest default .bashrc content,
