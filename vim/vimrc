@@ -158,4 +158,7 @@ au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
 " Make trailing whitespace be flagged as bad.
  au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
-
+" Automatically add headers to new bash, perl, and python files.
+au bufnewfile *.sh 0r ~/dotfiles/vim/templates/bash_basic_header.temp
+au bufnewfile *.pl 0r ~/dotfiles/vim/templates/perl_basic_header.temp
+au bufnewfile *.py 0r ~/dotfiles/vim/templates/python_basic_header.temp
