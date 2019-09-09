@@ -6,7 +6,7 @@
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
 # Version: 2.50
 # Source : http://www.github.com/kevinbowen777
-# Last modified: Sun Augut 22 2019
+# Last modified: Sun Sept 09 2019
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # 
 # To pick up the latest default .bashrc content,
@@ -190,7 +190,7 @@ fi
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
     xterm*|xfce4*|rxvt*)
-    PS1='\[\e[0;35m\]\u\[\e[0m\]@\[\e[0;36m\]\h\[\033[91m\]:\[\033[01;96m\]\w$\[\033[01;92m\] $ '
+    PS1='\[\e[0;35m\]\u\[\e[0m\]@\[\e[0;36m\]\h\[\033[91m\]:\[\033[01;96m\]\w\[\033[01;92m\]\$ '
     ;;
     *)
     ;;
@@ -216,7 +216,7 @@ ssh-add -l > /dev/null || ssh-add ~/.ssh/id_rsa_kbowen_git_2019
 
 # Changes prompt when remotely ssh'd into host
 if [ -n "$SSH_CLIENT" ]; then text=" [remote]"
-    export PS1='\[\033[01;35m\]\u@\h\[\033[00m\]:\[\033[01; 34m\]\w${text}$\[\033[01;37m\]  '
+    export PS1='\[\033[01;35m\]\u@\h\[\033[00m\]:\[\033[01; 34m\]\w${text}$\[\033[01;37m\] '
 fi
 #}}}
 ###
