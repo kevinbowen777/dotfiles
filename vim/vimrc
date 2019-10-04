@@ -120,6 +120,8 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "⚠"
 let g:syntastic_python_checkers = ['pep8', 'python', 'flake8', 'python3']
+let g:syntastic_enable_perl_checker = 1
+let g:syntastic_perl_checkers = ['perl', 'podchecker', 'perlcritic']
 
 function! SyntasticCheckHook(errors)
 	if !empty(a:errors)
@@ -159,6 +161,6 @@ au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
  au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 " Automatically add headers to new bash, perl, and python files.
-au bufnewfile *.sh 0r ~/dotfiles/vim/templates/bash_basic_header.temp
-au bufnewfile *.pl 0r ~/dotfiles/vim/templates/perl_basic_header.temp
-au bufnewfile *.py 0r ~/dotfiles/vim/templates/python_basic_header.temp
+au bufnewfile *.sh 0r ~/dotfiles/vim/templates/bash_basic_header.template
+au bufnewfile *.pl 0r ~/dotfiles/vim/templates/perl_basic_header.template
+au bufnewfile *.py 0r ~/dotfiles/vim/templates/python_basic_header.template
