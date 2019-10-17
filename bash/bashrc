@@ -35,7 +35,7 @@ set -o vi
 # append to the history file, don't overwrite it
 shopt -s histappend
 shopt -s checkwinsize
-MYVIMRC=~/.vimrc
+export MYVIMRC=~/.vimrc
 
 # History control
 unset HISTFILESIZE
@@ -138,6 +138,8 @@ alias mlb='mlbscores.py'
 alias mlbwest='mlb -s | head -n21 | tail -n6'
 alias sourceb='source ~/.bashrc'
 alias meminfo='free -m -l -t'
+alias pd='perldoc'
+alias perdoc='perldoc'
 alias ports='netstat -tulanp'
 alias psmem='ps auxf | sort -nr -k -4'
 alias psmem10='ps auxf | sort -nr -k -4 | head -10'
@@ -218,7 +220,13 @@ ssh-add -l > /dev/null || ssh-add ~/.ssh/id_rsa_kbowen_git_2019
 
 # Changes prompt when remotely ssh'd into host
 if [ -n "$SSH_CLIENT" ]; then text=" [remote]"
-    export PS1='\[\033[01;35m\]\u@\h\[\033[00m\]:\[\033[01; 34m\]\w${text}$\[\033[01;37m\] '
+    export PS1='\[\033[01;35m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w${text}$\[\033[01;37m\] '
 fi
 #}}}
 ###
+
+PATH="/home/kbowen/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/kbowen/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/kbowen/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/kbowen/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/kbowen/perl5"; export PERL_MM_OPT;
