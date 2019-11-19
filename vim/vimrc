@@ -1,15 +1,15 @@
-"{{{ ----------------------------------------------------------------------- "
+"{{{ ---------------------------------------------------------------------- "
 "
 " Name: .vimrc 
 " Purpose: Set vim configuration
 " Requirements:
 "
-" Version: 1.18
+" Version: 1.19
 " Author: Kevin Bowen kevin.bowen@gmail.com
 " 
-" Updated: 20190817
+" Updated: 20191119
 "
-" -------------------------------------------------------------------------- "
+" ------------------------------------------------------------------------- "
 "}}}
 
 set nocompatible
@@ -29,7 +29,7 @@ set t_Co=256
 filetype off              " force reloading *after* pathogen loaded
 execute pathogen#infect()
 call pathogen#helptags()
-filetype plugin indent on " enable detection, plugins, and indentation in one step
+filetype plugin indent on " enable detection, plugins, indentation in one step
 colorscheme anotherdark
 
 " Appearance
@@ -77,14 +77,14 @@ set undodir=~/tmp/.undo//
 set backupdir=~/tmp/.backup//
 set directory=~/tmp/.swp//
 
-"--------------------------------------------------------------------------- "
+" ------------------------------------------------------------------------- "
 "   NERD Tree Plugin Settings
-"--------------------------------------------------------------------------- "
+" ------------------------------------------------------------------------- "
 "{{{
-""" Toggle the NERD Tree on and off with F7
+"   Toggle the NERD Tree on and off with F7
 nmap <F7> :NERDTreeToggle<CR>
 
-""" Close the NERD Tree with Shift-F7
+"   Close the NERD Tree with Shift-F7
 nmap <S-F7> :NERDTreeClose<CR>
 
 " Show the bookmarks table on startup
@@ -99,9 +99,9 @@ let NERDTreeIgnore=[ '\.ncb$', '\.dummy$', '\.suo$', '\.vcproj\.RIMNET', '\.obj$
 map,r :NERDTreeFind<CR>
 "}}}
 
-" --------------------------------------------------------------------------- " 
+" ------------------------------------------------------------------------- " 
 "   Powerline settings
-" --------------------------------------------------------------------------- "
+" ------------------------------------------------------------------------- "
 set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
 set statusline+=%#warningmsg#
 set statusline+=%{FugitiveStatusline()}
@@ -109,9 +109,9 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 set showtabline=2 " Always display the tabline, even if there is only one tab.
 
-" --------------------------------------------------------------------------- " 
+" ------------------------------------------------------------------------- " 
 "   syntastic plugin settings
-" --------------------------------------------------------------------------- "
+" ------------------------------------------------------------------------- "
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -129,23 +129,23 @@ function! SyntasticCheckHook(errors)
 	endif
 endfunction
 
-" --------------------------------------------------------------------------- "
+" ------------------------------------------------------------------------- "
 "  vimwiki plugin settings
-" --------------------------------------------------------------------------- "
+" ------------------------------------------------------------------------- "
 let wiki = {}
 let g:vimwikidir = $HOME . "/Dropbox/personal/administrativa/vimwiki"
 let wiki.path = g:vimwikidir
 let g:vimwiki_list=[wiki]
 
-" --------------------------------------------------------------------------- "
+" ------------------------------------------------------------------------- "
 "  VimSession plugin settings
-" --------------------------------------------------------------------------- "
+" ------------------------------------------------------------------------- "
 let g:session_autosave = 'yes'
 let g:session_autosave_periodic = 30
 
-" --------------------------------------------------------------------------- "
+" ------------------------------------------------------------------------- "
 "  pymode plugin settings
-" --------------------------------------------------------------------------- "
+" ------------------------------------------------------------------------- "
 let g:pymode_python = 'python3'
 
 " load NerdFont
