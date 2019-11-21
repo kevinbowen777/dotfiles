@@ -4,9 +4,9 @@
 #{{{
 # Personal $HOME/.bashrc file
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
-# Version: 2.50
+# Version: 2.51
 # Source : http://www.github.com/kevinbowen777
-# Last modified: Sun Sept 09 2019
+# Last modified: Wed Nov 18 2019
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # 
 # To pick up the latest default .bashrc content,
@@ -41,10 +41,12 @@ export MYVIMRC=~/.vimrc
 unset HISTFILESIZE
 HISTCONTROL=ignoredups:erasedups
 HISTSIZE=1000   # History size for current shell only
-HISTFILESIZE=1000
+HISTFILESIZE=5000
 export HISTSIZE
 export HISTCONTROL=ignoredups:erasedups
-export HISTTIMEFORMAT="$(echo -e ${BCyan})[%d/%m %H:%M:%S]$(echo -e ${NC}) "
+export HISTIGNORE="ls:ps:history:cl:exit:sourceb"
+export HISTTIMEFORMAT="$(echo -e ${CYAN})[%d/%m %H:%M:%S]$(echo -e ${PURPLE}) "
+# export HISTTIMEFORMAT="$(echo -e ${CYAN})[%d/%m %H:%M:%S]${NC} "
 # export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 PROMPT_COMMAND='echo -en "\033]0; $("pwd") \a"'
 # Set XDG User-level variables
@@ -61,33 +63,44 @@ export LESS_TERMCAP_se=$(printf '\e[0m') # leave standout mode
 export LESS_TERMCAP_so=$(printf '\e[01;33m') # enter standout mode -
 export LESS_TERMCAP_ue=$(printf '\e[0m') # leave underline mode
 export LESS_TERMCAP_us=$(printf '\e[04;36m') # enter underline mode
-#
-# PATH="/home/kbowen/anaconda/bin:${PATH}:/home/kbowen/bin:/home/kbowen/.local/bin:"; export PATH;
+ 
 PATH="${PATH}:/home/kbowen/bin:/home/kbowen/.local/bin:"; export PATH;
 
-# Define a few colors
-BLACK='\e[0;30m'
-black='\e[0;30m'
-BLUE='\e[0;34m'
-blue='\e[0;34m'
-GREEN='\e[0;32m'
-green='\e[0;32m'
-CYAN='\e[0;36m'
-cyan='\e[0;36m'
-RED='\e[0;31m'
-PURPLE='\e[0;35m'
-BROWN='\e[0;33m'
-LIGHTGRAY='\e[0;37m'
-DARKGRAY='\e[1;30m'
-LIGHTBLUE='\e[1;34m'
-LIGHTGREEN='\e[1;32m'
-LIGHTCYAN='\e[1;36m'
-LIGHTRED='\e[1;31m'
-LIGHTPURPLE='\e[1;35m'
-YELLOW='\e[1;33m'
-WHITE='\e[1;37m'
-NC='\e[0m'              # No Color
+# Color Definitions
+# {{{ -----------------------------------------------------------------
 
+# Normal colors
+export BLACK='\e[0;30m'
+export RED='\e[0;31m'
+export GREEN='\e[0;32m'
+export YELLOW='\e[0;33m'
+export BLUE='\e[0;34m'
+export PURPLE='\e[0;35m'
+export CYAN='\e[0;36m'
+export WHITE='\e[1;37m'
+
+# Bold colors
+export BBLACK='\e[1;30m'
+export BRED='\e[1;31m'
+export BGREEN='\e[1;32m'
+export BYELLOW='\e[1;33m'
+export BBLUE='\e[1;34m'
+export BPURPLE='\e[1;35m'
+export BCYAN='\e[1;36m'
+export BWHITE='\e[1;37m'
+
+# Background colors
+export ON_BLACK='\e[0;40m'
+export ON_RED='\e[0;41m'
+export ON_GREEN='\e[0;42m'
+export ON_YELLOW='\e[0;43m'
+export ON_BLUE='\e[0;44m'
+export ON_PURPLE='\e[0;45m'
+export ON_CYAN='\e[0;46m'
+export ON_WHITE='\e[1;47m'
+
+export NC='\e[0m'	# No Color
+#}}} -------------------------------------------------------------------
 
 # Workaround for suppressing d-bus spurious errors: Launchpad bug #1193236
 export NO_AT_BRIDGE=1
@@ -114,34 +127,36 @@ fi
 #fi
 
 #### Aliases  
-alias ls='ls --color=auto -N'
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
+alias cdoc='cdoc.sh'
+alias cl='clear'
+alias dict='sdcv'
+alias dot='cd /home/kbowen/dotfiles'
+alias dotf='cd ~/dotfiles'
 alias ed='ed -p"★ > " --verbose'
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+alias egrep='egrep --color=auto'
+alias etym='etym.py'
+alias fgrep='fgrep --color=auto'
+alias grep='grep --color=auto'
 alias hist='history | grep $1' #Requires one input
 alias info='pinfo'
 alias ip='ip -color'
-alias cl='clear'
-alias dict='sdcv'
-alias dotf='cd ~/dotfiles'
-alias psc='ps xawf -eo pid,user,cgroup,args'
-alias etym='etym.py'
 alias ipy='ipython3'
-alias cdoc='cdoc.sh'
+alias l='ls -CF'
+alias la='ls -A'
+alias ll='ls -alF'
+alias ls='ls --color=auto -N'
+alias meminfo='free -m -l -t'
+alias mi='~/bin/map_it.py'
 alias mpause='audtool --playback-pause'
 alias mplay='audtool --playback-play'
 alias mstop='audtool --playback-stop'
 alias mlb='mlbscores.py'
 alias mlbwest='mlb -s | head -n21 | tail -n6'
-alias sourceb='source ~/.bashrc'
-alias meminfo='free -m -l -t'
+alias ms='~/bin/movie_search.py'
 alias pd='perldoc'
 alias perdoc='perldoc'
 alias ports='netstat -tulanp'
+alias psc='ps xawf -eo pid,user,cgroup,args'
 alias psmem='ps auxf | sort -nr -k -4'
 alias psmem10='ps auxf | sort -nr -k -4 | head -10'
 alias pscpu='ps auxf | sort -nr -k 3'
@@ -149,10 +164,9 @@ alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
 alias renlow='rename 'y/A-Z/a-z/''
 alias renup='rename 'y/a-z/A-Z/''
 alias sandbox='cd ~/dev/sandbox'
+alias sourceb='source ~/.bashrc'
 alias trace='traceroute --resolve-hostnames'
 alias traceroute='traceroute --resolve-hostnames'
-alias mi='~/bin/map_it.py'
-alias ms='~/bin/movie_search.py'
 alias ts='~/bin/torrent_search.py'
 alias ws='~/bin/wiki_search.py'
 
