@@ -52,7 +52,7 @@ set autoindent
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
-set noexpandtab
+set expandtab
 
 " Folding
 set foldmethod=marker
@@ -61,6 +61,12 @@ nnoremap <space> za
 " Tab-completion in command-line mode
 set wildmode=full
 set wildmenu
+
+" Shortcut to rapidly toggle 'set list'
+nmap <leader>l :set list!<CR>
+
+" Use symbols for tabstops and EOLs
+set listchars=tab:▸\ ,eol:¬
 
 " Disable the arrow keys in normal and insert mode. Leave for visual mode.
 nnoremap <up> <nop>
@@ -76,28 +82,6 @@ inoremap <right> <nop>
 set undodir=~/tmp/.undo//
 set backupdir=~/tmp/.backup//
 set directory=~/tmp/.swp//
-
-" ------------------------------------------------------------------------- "
-"   NERD Tree Plugin Settings
-" ------------------------------------------------------------------------- "
-"{{{
-"   Toggle the NERD Tree on and off with F7
-nmap <F7> :NERDTreeToggle<CR>
-
-"   Close the NERD Tree with Shift-F7
-nmap <S-F7> :NERDTreeClose<CR>
-
-" Show the bookmarks table on startup
-let NERDTreeShowBookmarks=1
-
-" Ignore displaying the following file types in NERDTree
-let NERDTreeIgnore=[ '\.ncb$', '\.dummy$', '\.suo$', '\.vcproj\.RIMNET', '\.obj$',
-                   \ '\.ilk$', '^BuildLog.htm$', '\.pdb$', '\.idb$',
-                   \ '\.embed\.manifest$', '\.embed\.manifest.res$',
-                   \  '\.intermediate\.manifest$', '^mt.deps' ]
-
-map,r :NERDTreeFind<CR>
-"}}}
 
 " ------------------------------------------------------------------------- " 
 "   Powerline settings
