@@ -4,9 +4,9 @@
 #{{{
 # Personal $HOME/.bashrc file
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
-# Version: 2.51
+# Version: 2.52
 # Source : http://www.github.com/kevinbowen777
-# Last modified: Wed Nov 18 2019
+# Last modified: Wed Nov 22 2019
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # 
 # To pick up the latest default .bashrc content,
@@ -49,13 +49,15 @@ export HISTTIMEFORMAT="$(echo -e ${CYAN})[%d/%m %H:%M:%S]$(echo -e ${PURPLE}) "
 # export HISTTIMEFORMAT="$(echo -e ${CYAN})[%d/%m %H:%M:%S]${NC} "
 # export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 PROMPT_COMMAND='echo -en "\033]0; $("pwd") \a"'
+
 # Set XDG User-level variables
 export XDG_DATA_HOME=$HOME/.local
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 #
 export SSL_CERT_DIR=/etc/ssl/certs/
-#
+
+# For colorizing man pages and info
 export LESS_TERMCAP_mb=$(printf '\e[01;31m') # enter blinking mode - red
 export LESS_TERMCAP_md=$(printf '\e[01;35m') # enter double-bright mode
 export LESS_TERMCAP_me=$(printf '\e[0m') # turn off all appearance modes
@@ -64,6 +66,13 @@ export LESS_TERMCAP_so=$(printf '\e[01;33m') # enter standout mode -
 export LESS_TERMCAP_ue=$(printf '\e[0m') # leave underline mode
 export LESS_TERMCAP_us=$(printf '\e[04;36m') # enter underline mode
  
+# Perl paths
+PATH="/home/kbowen/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/kbowen/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/kbowen/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/kbowen/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/kbowen/perl5"; export PERL_MM_OPT;
+
 PATH="${PATH}:/home/kbowen/bin:/home/kbowen/.local/bin:"; export PATH;
 
 # Color Definitions
@@ -73,10 +82,14 @@ PATH="${PATH}:/home/kbowen/bin:/home/kbowen/.local/bin:"; export PATH;
 export BLACK='\e[0;30m'
 export RED='\e[0;31m'
 export GREEN='\e[0;32m'
+export LIGHT_GREEN='\e[1;32m'
 export YELLOW='\e[0;33m'
-export BLUE='\e[0;34m'
+export BLUE='\e[0;35m'
+export LIGHT_GRAY="\[\033[0;37m\]"
+export MAGENTA="\[\033[0;35m\]"
 export PURPLE='\e[0;35m'
 export CYAN='\e[0;36m'
+export VIOLET='\[\033[01;35m\]'
 export WHITE='\e[1;37m'
 
 # Bold colors
@@ -141,6 +154,7 @@ alias hist='history | grep $1' #Requires one input
 alias info='pinfo'
 alias ip='ip -color'
 alias ipy='ipython3'
+alias klav='vi ~/.local/share/klavaro/stat_velo.txt'
 alias l='ls -CF'
 alias la='ls -A'
 alias ll='ls -alF'
@@ -163,6 +177,7 @@ alias pscpu='ps auxf | sort -nr -k 3'
 alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
 alias renlow='rename 'y/A-Z/a-z/''
 alias renup='rename 'y/a-z/A-Z/''
+alias sand='cd ~/dev/sandbox'
 alias sandbox='cd ~/dev/sandbox'
 alias sourceb='source ~/.bashrc'
 alias trace='traceroute --resolve-hostnames'
@@ -237,11 +252,6 @@ ssh-add -l > /dev/null || ssh-add ~/.ssh/id_rsa_kbowen_git_2019
 if [ -n "$SSH_CLIENT" ]; then text=" [remote]"
     export PS1='\[\033[01;35m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w${text}$\[\033[01;37m\] '
 fi
-#}}}
-###
 
-PATH="/home/kbowen/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/home/kbowen/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/home/kbowen/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/home/kbowen/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/kbowen/perl5"; export PERL_MM_OPT;
+#}}}
+
