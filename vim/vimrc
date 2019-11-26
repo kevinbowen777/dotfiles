@@ -37,7 +37,7 @@ set relativenumber
 set laststatus=2
 set wrap
 set linebreak
-set textwidth=72
+set textwidth=78
 set colorcolumn=80
 
 " Behavior
@@ -67,6 +67,12 @@ nmap <leader>l :set list!<CR>
 
 " Use symbols for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
+
+" Simplify moving between windows
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
 
 " Disable the arrow keys in normal and insert mode. Leave for visual mode.
 nnoremap <up> <nop>
