@@ -184,6 +184,7 @@ alias trace='traceroute --resolve-hostnames'
 alias traceroute='traceroute --resolve-hostnames'
 alias ts='~/bin/torrent_search.py'
 alias ws='~/bin/wiki_search.py'
+alias xfdev='cd ~/dev/sandbox/xfce'
 
 
 #}}}

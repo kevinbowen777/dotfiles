@@ -13,6 +13,7 @@
 
 export EDITOR=/usr/bin/vim
 export QT_QPA_PLATFORMTHEME="qt5ct"
+export QT_PLATFORM_PLUGIN="qt5ct"
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
 # if running bash
