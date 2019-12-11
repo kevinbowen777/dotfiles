@@ -4,10 +4,10 @@
 " Purpose: Set vim configuration
 " Requirements:
 "
-" Version: 1.19
+" Version: 1.20
 " Author: Kevin Bowen kevin.bowen@gmail.com
 " 
-" Updated: 20191119
+" Updated: 20191211
 "
 " ------------------------------------------------------------------------- "
 "}}}
@@ -74,16 +74,6 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
-" Disable the arrow keys in normal and insert mode. Leave for visual mode.
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
-
 " Temp file locations. Make sure subdirectories are created in ~/tmp
 set undodir=~/tmp/.undo//
 set backupdir=~/tmp/.backup//
@@ -105,7 +95,7 @@ set showtabline=2 " Always display the tabline, even if there is only one tab.
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "⚠"
@@ -132,11 +122,6 @@ let g:vimwiki_list=[wiki]
 " ------------------------------------------------------------------------- "
 let g:session_autosave = 'yes'
 let g:session_autosave_periodic = 30
-
-" ------------------------------------------------------------------------- "
-"  pymode plugin settings
-" ------------------------------------------------------------------------- "
-let g:pymode_python = 'python3'
 
 " load NerdFont
 set guifont=DroidSansMono\ Nerd\ Font\ 11
