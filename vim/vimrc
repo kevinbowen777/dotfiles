@@ -16,12 +16,9 @@ set nocompatible
 set modelines=0
 set nomodeline
 " Don't persist options and mappings because it can corrupt sessions.
-" set sessionoptions-=options
+set sessionoptions-=options
 set undofile
 
-" Switch syntax highlighting on
-syntax on
-let python_highlight_all=1
 set encoding=utf-8
 set t_Co=256
 
@@ -31,6 +28,10 @@ execute pathogen#infect()
 call pathogen#helptags()
 filetype plugin indent on " enable detection, plugins, indentation in one step
 colorscheme anotherdark
+
+" Switch syntax highlighting on
+syntax on
+let python_highlight_all=1
 
 " Appearance
 set relativenumber
@@ -95,7 +96,7 @@ set showtabline=2 " Always display the tabline, even if there is only one tab.
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "⚠"
@@ -105,7 +106,7 @@ let g:syntastic_perl_checkers = ['perl', 'podchecker', 'perlcritic']
 
 function! SyntasticCheckHook(errors)
 	if !empty(a:errors)
-		let g:syntastic_loc_list_height = min([len(a:errors), 10])
+		let g:syntastic_loc_list_height = min([len(a:errors), 5])
 	endif
 endfunction
 
@@ -126,7 +127,6 @@ let g:session_autosave_periodic = 30
 " load NerdFont
 set guifont=DroidSansMono\ Nerd\ Font\ 11
 let g:webdevicons_enable = 1
-let g:webdevicons_enable_nerdtree = 1
 
 " Use the below highlight group when displaying bad whitespace is desired.
 highlight BadWhitespace ctermbg=red guibg=red
