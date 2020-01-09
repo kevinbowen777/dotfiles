@@ -104,6 +104,12 @@ let g:syntastic_python_checkers = ['pep8', 'python', 'flake8', 'python3']
 let g:syntastic_enable_perl_checker = 1
 let g:syntastic_perl_checkers = ['perl', 'podchecker', 'perlcritic']
 
+let g:syntastic_c_compiler = 'gcc'
+let g:syntastic_c_config_file = '~/dotfiles/vim/vim_config_c'
+let g:syntastic_check_header = 0
+let g:syntastic_c_no_include_search = 1
+let g:syntastic_c_auto_refresh_includes = 1
+
 function! SyntasticCheckHook(errors)
 	if !empty(a:errors)
 		let g:syntastic_loc_list_height = min([len(a:errors), 5])
@@ -139,3 +145,5 @@ au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
 au bufnewfile *.sh 0r ~/dotfiles/vim/templates/bash_basic_header.template
 au bufnewfile *.pl 0r ~/dotfiles/vim/templates/perl_basic_header.template
 au bufnewfile *.py 0r ~/dotfiles/vim/templates/python_basic_header.template
+
+autocmd FileType *.c,*.h setlocal expandtab shiftwidth=2 tabstop=2
