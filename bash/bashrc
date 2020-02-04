@@ -141,7 +141,7 @@ fi
 
 #### Aliases  
 alias cdoc='cdoc.sh'
-alias cl='clear'
+alias cl='clear -x'
 alias dict='sdcv'
 alias dot='cd /home/kbowen/dotfiles'
 alias dotf='cd ~/dotfiles'
@@ -255,4 +255,6 @@ if [ -n "$SSH_CLIENT" ]; then text=" [remote]"
 fi
 
 #}}}
+export ANSIBLE_HOSTS=/etc/ansible/hosts
 
+complete -C /home/kbowen/bin/vault vault
