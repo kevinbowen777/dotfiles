@@ -258,3 +258,7 @@ fi
 export ANSIBLE_HOSTS=/etc/ansible/hosts
 
 complete -C /home/kbowen/bin/vault vault
+# Ruby is needed to work with Jekyll
+# Install Ruby Gems to ~/gems
+export GEM_HOME="$HOME/gems"
+export PATH="$HOME/gems/bin:$PATH"
