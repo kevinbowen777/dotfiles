@@ -4,9 +4,9 @@
 #{{{
 # Personal $HOME/.bashrc file
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
-# Version: 2.52
-# Source : http://www.github.com/kevinbowen777
-# Last modified: Thu Dec 12 2019
+# Version: 2.6
+# Source : http://www.github.com/kevinbowen777/dotfiles.git
+# Last modified: 20200214
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # 
 # To pick up the latest default .bashrc content,
@@ -256,6 +256,7 @@ fi
 
 #}}}
 export ANSIBLE_HOSTS=/etc/ansible/hosts
+export ANSIBLE_INVENTORY=/etc/ansible/hosts
 
 complete -C /home/kbowen/bin/vault vault
 # Ruby is needed to work with Jekyll
