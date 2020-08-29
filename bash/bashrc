@@ -183,6 +183,7 @@ alias sourceb='source ~/.bashrc'
 alias trace='traceroute --resolve-hostnames'
 alias traceroute='traceroute --resolve-hostnames'
 alias ts='~/bin/torrent_search.py'
+alias vimwik='vi ~/Dropbox/personal/administrativa/vimwiki/index.wiki'
 alias ws='~/bin/wiki_search.py'
 alias xfdev='cd ~/dev/sandbox/xfce'
 
