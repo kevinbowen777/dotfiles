@@ -130,6 +130,15 @@ let g:vimwiki_list=[wiki]
 let g:session_autosave = 'yes'
 let g:session_autosave_periodic = 30
 
+" ------------------------------------------------------------------------- "
+" ansible-vim plugin settings
+" ------------------------------------------------------------------------- "
+let g:ansible_unindent_after_newline = 1
+let g:ansible_attribute_highlight = "ob"
+let g:ansible_name_highlight = 'b'
+let g:ansible_extra_keywords_highlight = 1
+let g:ansible_template_syntaxes = { '*.rb.j2': 'ruby' }
+
 " load NerdFont
 set guifont=DroidSansMono\ Nerd\ Font\ 11
 let g:webdevicons_enable = 1
