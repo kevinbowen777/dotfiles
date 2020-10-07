@@ -83,7 +83,8 @@ set directory=~/tmp/.swp//
 " ------------------------------------------------------------------------- " 
 "   Powerline settings
 " ------------------------------------------------------------------------- "
-set rtp+=/usr/local/lib/python3.8/dist-packages/powerline/bindings/vim/
+set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
+" set rtp+=/usr/local/lib/python3.8/dist-packages/powerline/bindings/vim/
 set statusline+=%#warningmsg#
 set statusline+=%{FugitiveStatusline()}
 set statusline+=%{SyntasticStatuslineFlag()}
