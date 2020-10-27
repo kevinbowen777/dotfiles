@@ -18,6 +18,7 @@ set nomodeline
 " Don't persist options and mappings because it can corrupt sessions.
 set sessionoptions-=options
 set undofile
+set timeoutlen=10 ttimeoutlen=10
 
 set encoding=utf-8
 set t_Co=256
