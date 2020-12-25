@@ -4,10 +4,10 @@
 " Purpose: Set vim configuration
 " Requirements:
 "
-" Version: 1.20
+" Version: 1.21
 " Author: Kevin Bowen kevin.bowen@gmail.com
 " 
-" Updated: 20191211
+" Updated: 20201225
 "
 " ------------------------------------------------------------------------- "
 "}}}
@@ -75,6 +75,14 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+
+" Disable arrow keys
+for key in ['<Up>', '<Down>', '<Left>', '<Right>']
+  exec 'noremap' key '<Nop>'
+  exec 'inoremap' key '<Nop>'
+  exec 'cnoremap' key '<Nop>'
+  exec 'vnoremap' key '<Nop>'
+endfor
 
 " Temp file locations. Make sure subdirectories are created in ~/tmp
 set undodir=~/tmp/.undo//
@@ -159,3 +167,4 @@ au bufnewfile *.py 0r ~/dotfiles/vim/templates/python_basic_header.template
 
 autocmd FileType *.c,*.h setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType yaml setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType *.js setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2

@@ -156,8 +156,8 @@ alias ip='ip -color'
 alias ipy='ipython3'
 alias klav='vi ~/.local/share/klavaro/stat_velo.txt'
 alias l='ls -CF'
-alias la='ls -A'
-alias ll='ls -alF'
+alias la='ls -aF'
+alias ll='ls -lF'
 alias ls='ls --color=auto -N'
 alias meminfo='free -m -l -t'
 alias mi='~/bin/map_it.py'
@@ -260,7 +260,6 @@ export ANSIBLE_HOSTS=/etc/ansible/hosts
 export ANSIBLE_INVENTORY=/etc/ansible/hosts
 
 complete -C /home/kbowen/bin/vault vault
-# Ruby is needed to work with Jekyll
 # Install Ruby Gems to ~/gems
-export GEM_HOME="$HOME/gems"
-export PATH="$HOME/gems/bin:$PATH"
+export GEM_HOME="$HOME/bin/gems"
+export PATH="$HOME/bin/gems/bin:$PATH"
