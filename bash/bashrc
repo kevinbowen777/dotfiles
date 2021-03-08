@@ -67,11 +67,11 @@ export LESS_TERMCAP_ue=$(printf '\e[0m') # leave underline mode
 export LESS_TERMCAP_us=$(printf '\e[04;36m') # enter underline mode
  
 # Perl paths
-PATH="/home/kbowen/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/home/kbowen/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/home/kbowen/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/home/kbowen/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/kbowen/perl5"; export PERL_MM_OPT;
+PATH="/home/kbowen/bin/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/kbowen/bin/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/kbowen/bin/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/kbowen/bin/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/kbowen/bin/perl5"; export PERL_MM_OPT;
 
 PATH="${PATH}:/home/kbowen/bin:/home/kbowen/.local/bin:"; export PATH;
 
@@ -145,6 +145,8 @@ alias cl='clear -x'
 alias dict='sdcv'
 alias dot='cd /home/kbowen/dotfiles'
 alias dotf='cd ~/dotfiles'
+alias druse='sudo -u www-data'
+alias druco='sudo -u www-data composer'
 alias ed='ed -p"★ > " --verbose'
 alias egrep='egrep --color=auto'
 alias etym='etym.py'
