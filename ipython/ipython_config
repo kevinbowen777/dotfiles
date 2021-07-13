@@ -31,8 +31,9 @@
 ## lines of code to run at IPython startup.
 #c.InteractiveShellApp.exec_lines = []
 c.InteractiveShellApp.exec_lines = [
-    "from friendly_traceback.ipython import *",
-    "set_formatter('rich')"
+    "from friendly.ipython import *",
+    #"from friendly_traceback.ipython import *",
+    #"set_formatter('rich')"
     #"set_formatter('jupyter')"
     ]
 ## A list of dotted module names of IPython extensions to load.
