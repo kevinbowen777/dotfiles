@@ -272,6 +272,7 @@ complete -C /home/kbowen/bin/vault vault
 export GEM_HOME="$HOME/bin/gems"
 export PATH="$HOME/bin/gems/bin:$PATH"
 # Add paths for virtualenvwrapper - 20210922
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 export WORKON_HOME=$HOME/dev/sandbox/python/venvs
 export PROJECT_HOME=$HOME/dev/sandbox
 source /home/kbowen/.local/bin/virtualenvwrapper.sh
