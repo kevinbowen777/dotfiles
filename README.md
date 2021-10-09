@@ -23,6 +23,7 @@ Create symlinks:
     ln -s ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
 	ln -s ~/dotfiles/bash/Xresources ~/.Xresources
 	ln -s ~/dotfiles/ipython/ipython_config ~/.ipython/profile_default/ipython_config.py
+    ln -s ~/dotfiles/ipython/vars_ids.py ~/.local/lib/vars_ids.py
 
 Vim's backup and swap files are stored in `~/tmp`, so that directory must exist.
 

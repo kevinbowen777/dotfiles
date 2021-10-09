@@ -27,6 +27,9 @@
 
 ## List of files to run at IPython startup.
 #c.InteractiveShellApp.exec_files = []
+c.InteractiveShellApp.exec_files = [
+    '/home/kbowen/.local/lib/vars_ids.py'
+    ]
 
 ## lines of code to run at IPython startup.
 #c.InteractiveShellApp.exec_lines = []
