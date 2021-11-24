@@ -257,7 +257,7 @@ if [ ! -S ~/.ssh/ssh_auth_sock ]; then
 fi
 
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
-ssh-add -l > /dev/null || ssh-add ~/.ssh/id_rsa_kbowen_git_2019
+ssh-add -l > /dev/null || ssh-add ~/.ssh/wintermute_local_key_2022
 
 # Changes prompt when remotely ssh'd into host
 if [ -n "$SSH_CLIENT" ]; then text=" [remote]"
