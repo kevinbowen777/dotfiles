@@ -267,7 +267,7 @@ fi
 #}}}
 export ANSIBLE_HOSTS=/etc/ansible/hosts
 export ANSIBLE_INVENTORY=/etc/ansible/hosts
-
+export PGPASS='/home/kbowen/.pgpass'
 complete -C /home/kbowen/bin/vault vault
 # Install Ruby Gems to ~/gems
 export GEM_HOME="$HOME/bin/gems"
