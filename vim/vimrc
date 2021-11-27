@@ -92,8 +92,8 @@ set directory=~/tmp/.swp//
 " ------------------------------------------------------------------------- " 
 "   Powerline settings
 " ------------------------------------------------------------------------- "
-set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
-"set rtp+=~/.local/lib/python3.9/site-packages/powerline/bindings/vim/
+"set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
+set rtp+=~/.local/lib/python3.9/site-packages/powerline/bindings/vim/
 set statusline+=%#warningmsg#
 set statusline+=%{FugitiveStatusline()}
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -164,7 +164,9 @@ au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
 au bufnewfile *.sh 0r ~/dotfiles/vim/templates/bash_basic_header.template
 au bufnewfile *.pl 0r ~/dotfiles/vim/templates/perl_basic_header.template
 au bufnewfile *.py 0r ~/dotfiles/vim/templates/python_basic_header.template
+au bufnewfile *.html 0r ~/dotfiles/vim/templates/html_boilerplate.template
 
 autocmd FileType *.c,*.h setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType yaml setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType *.js setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType html setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
