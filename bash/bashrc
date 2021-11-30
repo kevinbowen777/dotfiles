@@ -257,8 +257,8 @@ if [ ! -S ~/.ssh/ssh_auth_sock ]; then
 fi
 
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
-ssh-add -l > /dev/null || ssh-add ~/.ssh/wintermute_local_key_2022
-# ssh-add -l > /dev/null || ssh-add ~/.ssh/jabberwock_local_key_2022
+# ssh-add -l > /dev/null || ssh-add ~/.ssh/wintermute_local_key_2022
+ssh-add -l > /dev/null || ssh-add ~/.ssh/jabberwock_local_key_2022
 
 # Changes prompt when remotely ssh'd into host
 if [ -n "$SSH_CLIENT" ]; then text=" [remote]"
