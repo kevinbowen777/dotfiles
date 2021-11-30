@@ -258,6 +258,7 @@ fi
 
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 ssh-add -l > /dev/null || ssh-add ~/.ssh/wintermute_local_key_2022
+# ssh-add -l > /dev/null || ssh-add ~/.ssh/jabberwock_local_key_2022
 
 # Changes prompt when remotely ssh'd into host
 if [ -n "$SSH_CLIENT" ]; then text=" [remote]"
@@ -267,8 +268,10 @@ fi
 #}}}
 export ANSIBLE_HOSTS=/etc/ansible/hosts
 export ANSIBLE_INVENTORY=/etc/ansible/hosts
-export PGPASS='/home/kbowen/.pgpass'
 complete -C /home/kbowen/bin/vault vault
+
+export DATABASE_URL=postgres://$(whoami)
+export PGPASS='/home/kbowen/.pgpass'
 # Install Ruby Gems to ~/gems
 export GEM_HOME="$HOME/bin/gems"
 export PATH="$HOME/bin/gems/bin:$PATH"
