@@ -133,7 +133,7 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 # enable color support of ls 
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    test -r ~/.dir_colors && eval "$(dircolors -b ~/.dir_colors)" || eval "$(dircolors -b)"
 fi
 # uncomment following three lines to enable powerline for bash
 #if [ -f /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh ]; then
