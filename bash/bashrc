@@ -194,7 +194,7 @@ alias vi='/usr/bin/vim'
 alias vimwik='vi ~/Dropbox/personal/administrativa/vimwiki/index.wiki'
 alias ws='~/bin/wiki_search.py'
 alias xfdev='cd ~/dev/sandbox/xfce'
-alias xfrepo='cd ~/dev/sandbox/xfce/xfce-repocapp'
+alias xfrepo='cd ~/dev/sandbox/xfce/xfce_repocapp'
 
 
 #}}}
@@ -281,3 +281,5 @@ export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 export WORKON_HOME=$HOME/dev/sandbox/python/venvs
 export PROJECT_HOME=$HOME/dev/sandbox
 source /home/kbowen/.local/bin/virtualenvwrapper.sh
+
+export PYCHARM_JDK="/home/kbowen/.jbr/jbr_jcef-11_0_11-linux-x64-b1504.16/"
