@@ -287,3 +287,4 @@ export PROJECT_HOME=$HOME/dev/sandbox
 source /home/kbowen/.local/bin/virtualenvwrapper.sh
 
 export PYCHARM_JDK="/home/kbowen/.jbr/jbr_jcef-11_0_11-linux-x64-b1504.16/"
+. "$HOME/.cargo/env"
