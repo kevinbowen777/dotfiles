@@ -7,3 +7,5 @@
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 export GPG_TTY=$(tty)
 . "$HOME/.cargo/env"
+
+export PATH="$HOME/.poetry/bin:$PATH"

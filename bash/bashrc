@@ -135,10 +135,6 @@ fi
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dir_colors && eval "$(dircolors -b ~/.dir_colors)" || eval "$(dircolors -b)"
 fi
-# uncomment following three lines to enable powerline for bash
-#if [ -f /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh ]; then
-#    source /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh
-#fi
 
 #### Aliases  
 alias cdoc='cdoc.sh'
@@ -190,6 +186,7 @@ alias sur='sudo apt autoremove'
 alias trace='traceroute --resolve-hostnames'
 alias traceroute='traceroute --resolve-hostnames'
 alias ts='~/bin/torrent_search.py'
+alias vens='cd ~/dev/sandbox/python/venvs'
 alias vi='/usr/bin/vim'
 alias vimwik='vi ~/Dropbox/personal/administrativa/vimwiki/index.wiki'
 alias ws='~/bin/wiki_search.py'
@@ -270,15 +267,9 @@ if [ -n "$SSH_CLIENT" ]; then text=" [remote]"
 fi
 
 #}}}
-export ANSIBLE_HOSTS=/etc/ansible/hosts
-export ANSIBLE_INVENTORY=/etc/ansible/hosts
-complete -C /home/kbowen/bin/vault vault
 
 export DATABASE_URL=postgres://$(whoami)
 export PGPASS='/home/kbowen/.pgpass'
-# Install Ruby Gems to ~/gems
-export GEM_HOME="$HOME/bin/gems"
-export PATH="$HOME/bin/gems/bin:$PATH"
 
 # directories for virtualenvwrapper - 20210922
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
