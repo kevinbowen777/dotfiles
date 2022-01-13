@@ -25,6 +25,8 @@ Create symlinks:
 	ln -s ~/dotfiles/ipython/ipython_config ~/.ipython/profile_default/ipython_config.py
     ln -s ~/dotfiles/ipython/vars_ids.py ~/.local/lib/vars_ids.py
     ln -s ~/dotfiles/bash/dir_colors ~/.dir_colors
+    ln -s ~/dotfiles/git/gitmessage ~/.gitmessage
+    # git config --global commit.template ~/.gitmessage to enable gitmessage
 
 Vim's backup and swap files are stored in `~/tmp`, so that directory must exist.
 
