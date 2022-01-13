@@ -186,7 +186,8 @@ alias sur='sudo apt autoremove'
 alias trace='traceroute --resolve-hostnames'
 alias traceroute='traceroute --resolve-hostnames'
 alias ts='~/bin/torrent_search.py'
-alias vens='cd ~/dev/sandbox/python/venvs'
+alias venvs='cd ~/dev/sandbox/python/venvs'
+alias venv='cd ~/dev/sandbox/python/venvs'
 alias vi='/usr/bin/vim'
 alias vimwik='vi ~/Dropbox/personal/administrativa/vimwiki/index.wiki'
 alias ws='~/bin/wiki_search.py'
@@ -278,4 +279,3 @@ export PROJECT_HOME=$HOME/dev/sandbox
 source /home/kbowen/.local/bin/virtualenvwrapper.sh
 
 export PYCHARM_JDK="/home/kbowen/.jbr/jbr_jcef-11_0_11-linux-x64-b1504.16/"
-. "$HOME/.cargo/env"
