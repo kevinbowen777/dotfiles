@@ -1,11 +1,83 @@
-Xft*antialias:      true
-Xft*autohint:       true
-xterm*font: *-fixed-*-*-*-14-*
-XTerm.vt100.geometry: 180x56
-XTerm.vt100.translations: #override \n\
+!---- Xterm terminal settings 
+!
+! name: ~/.Xresources
+! updated: 20220115
+!
+! reload config:
+!   xrdb -load ~/.Xresources
+!
+! Allow xterm to report TERM variable correctly
+xterm.termName: xterm-256color
+
+! Size ========
+xterm.vt100.geometry: 80x48
+
+! Color ========
+xterm*background: #011622
+xterm*foreground: Green
+! xterm*foreground: WhiteSmoke
+
+! Fonts ========
+! set font and fontsize
+xterm*faceName: DejaVu Sans Mono
+xterm*faceSize: 12
+
+! VT Font Menu: Unreadable
+xterm*faceSize1: 8
+! VT font menu: Tiny
+xterm*faceSize2: 10
+! VT font menu: Medium
+xterm*faceSize3: 12
+! VT font menu: Large
+xterm*faceSize4: 16
+! VT font menu: Huge
+xterm*faceSize5: 22
+
+! Ensure locale is set up for UTF-8
+xterm.vt100.locale: true
+
+! Cursor ========
+! pointer and cursor (blinking and color)
+xterm*pointerColor: white
+xterm*pointerColorBackground: black
+xterm*cursorColor: white
+xterm*cursorBlink: true
+
+!! Selecting Text ========
+! Only select text
+xterm*highlightSelection: true
+! Remove trailing spaces
+xterm*trimSelection: true
+
+!! Scrolling ========
+! Use: Shift-Pageup / Shift-Pagedown to scroll or mousewheel
+! Lines of output that you can scroll back over
+xterm*saveLines: 16384
+
+! Turn the scrollbar on, and put it on the right
+xterm.vt100.scrollBar: true
+xterm.vt100.scrollbar.width: 12
+xterm*scrollBar: true
+xterm*rightScrollBar: true
+
+! Keybindings ========
+! - Change fontsize on the fly
+!    Ctrl+plus = increase
+!    Ctrl+minus = decrease
+!    Ctrl+0 = default)
+! - Copy/Paste hotkey
+!    Ctrl+Shift+c = copy
+!    Ctrl+Shift+v = paste
+! - Open URL (clickable links)
+!   1) double click to highlight the full url
+!   2) Shift + click it to open it
+xterm.vt100.translations: #override \n\
   Ctrl <Key> minus: smaller-vt-font() \n\
-  Ctrl <Key> plus: larger-vt-font()
-XTerm*scrollBar:    true
-XTerm*rightScrollBar:   false
-XTerm*saveLines:    10000
-XTerm*toolBar:      On
+  Ctrl <Key> plus: larger-vt-font() \n\
+  Ctrl <Key> 0: set-vt-font(d) \n\
+  Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
+  Ctrl Shift <Key>V: insert-selection(CLIPBOARD) \n\
+  Shift <Btn1Up>: exec-formatted("xdg-open '%t'", PRIMARY) \n\
+  <Btn1Up>: select-end(PRIMARY, CLIPBOARD, CUT_BUFFER0) \n\
+  <Btn2Up>: insert-selection(PRIMARY)
+
