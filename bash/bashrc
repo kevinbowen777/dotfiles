@@ -134,6 +134,13 @@ fi
 # enable color support of ls 
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dir_colors && eval "$(dircolors -b ~/.dir_colors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
 fi
 
 #### Aliases  
@@ -157,7 +164,7 @@ alias klav='vi ~/.local/share/klavaro/stat_velo.txt'
 alias l='ls -CF'
 alias la='ls -aF'
 alias ll='ls -lF'
-alias ls='ls --color=auto -N'
+alias ls='ls --color=auto'
 alias meminfo='free -m -l -t'
 alias mi='~/bin/map_it.py'
 alias mpause='audtool --playback-pause'
@@ -223,7 +230,7 @@ alias md='amixer sset Master 10%-'
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color) color_prompt=yes;;
+    xterm-color|*-256color) color_prompt=yes;;
 esac
 #
 if [ -n "$DISPLAY" -a "$TERM" == "xterm" ]; then
