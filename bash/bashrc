@@ -160,7 +160,6 @@ alias hist='history | grep $1' #Requires one input
 alias info='pinfo'
 alias ip='ip -color'
 alias ipy='ipython3'
-alias klav='vi ~/.local/share/klavaro/stat_velo.txt'
 alias l='ls -CF'
 alias la='ls -aF'
 alias ll='ls -lF'
@@ -176,6 +175,7 @@ alias ms='~/bin/movie_search.py'
 alias pd='perldoc'
 alias perdoc='perldoc'
 alias ports='netstat -tulanp'
+alias proj='cd ~/dev/projects'
 alias psc='ps xawf -eo pid,user,cgroup,args'
 alias psmem='ps auxf | sort -nr -k -4'
 alias psmem10='ps auxf | sort -nr -k -4 | head -10'
@@ -183,8 +183,6 @@ alias pscpu='ps auxf | sort -nr -k 3'
 alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
 alias renlow='rename 'y/A-Z/a-z/''
 alias renup='rename 'y/a-z/A-Z/''
-alias sand='cd ~/dev/sandbox'
-alias sandbox='cd ~/dev/sandbox'
 alias sourceb='source ~/.bashrc'
 alias sucharm='sudo /opt/pycharm/bin/pycharm.sh'
 alias sug='sudo apt upgrade'
@@ -193,13 +191,13 @@ alias sur='sudo apt autoremove'
 alias trace='traceroute --resolve-hostnames'
 alias traceroute='traceroute --resolve-hostnames'
 alias ts='~/bin/torrent_search.py'
-alias venvs='cd ~/dev/sandbox/python/venvs'
-alias venv='cd ~/dev/sandbox/python/venvs'
+alias venvs='cd ~/dev/python/venvs'
+alias venv='cd ~/dev//python/venvs'
 alias vi='/usr/bin/vim'
 alias vimwik='vi ~/Dropbox/personal/administrativa/vimwiki/index.wiki'
 alias ws='~/bin/wiki_search.py'
-alias xfdev='cd ~/dev/sandbox/xfce'
-alias xfrepo='cd ~/dev/sandbox/xfce/xfce_repocapp'
+alias xfdev='cd ~/dev/xfce'
+alias xfrepo='cd ~/dev/xfce/xfce-repocapp'
 
 
 #}}}
@@ -281,8 +279,8 @@ export PGPASS='/home/kbowen/.pgpass'
 
 # directories for virtualenvwrapper - 20210922
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-export WORKON_HOME=$HOME/dev/sandbox/python/venvs
-export PROJECT_HOME=$HOME/dev/sandbox
+export WORKON_HOME=$HOME/dev/python/venvs
+export PROJECT_HOME=$HOME/dev/projects
 source /home/kbowen/.local/bin/virtualenvwrapper.sh
 
 # use PyCharm's built-in JDK - 20211124
