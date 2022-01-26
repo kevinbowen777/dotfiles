@@ -83,6 +83,11 @@ for key in ['<Up>', '<Down>', '<Left>', '<Right>']
   exec 'vnoremap' key '<Nop>'
 endfor
 
+" set highlight links in help
+autocmd BufEnter * set conceallevel=0                                                     
+autocmd BufEnter * hi link HelpBar Normal                                                 
+autocmd BufEnter * hi link HelpStar Normal
+
 " Temp file locations. Make sure subdirectories are created in ~/tmp
 set undodir=~/tmp/.undo//
 set backupdir=~/tmp/.backup//
