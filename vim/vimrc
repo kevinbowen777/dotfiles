@@ -19,7 +19,6 @@ set nomodeline
 set sessionoptions-=options
 set undofile
 set timeoutlen=10 ttimeoutlen=10
-
 set encoding=utf-8
 set t_Co=256
 
@@ -88,10 +87,35 @@ endfor
 set undodir=~/tmp/.undo//
 set backupdir=~/tmp/.backup//
 set directory=~/tmp/.swp//
+"{{{
+" ------------------------------------------------------------------------- "
+" NERDTree settings
+" ------------------------------------------------------------------------- "
+"{{{
+" Toggle the NERD Tree on and off with F7
+nmap <F7> :NERDTreeToggle<CR>
 
+" Close the NERD Tree with Shift-F7
+nmap <S-F7> :NERDTreeClose<CR>
+
+" Show the bookmarks table on startup
+let NERDTreeShowBookmarks=1
+
+" Ignore displaying the following file types in NERDTree
+let NERDTreeIgnore=[ '\.ncb$', '\.dummy$', '\.suo$', '\.vcproj\.RIMNET', '\.obj$',
+                   \ '\.ilk$', '^BuildLog.htm$', '\.pdb$', '\.idb$',
+                   \ '\.embed\.manifest$', '\.embed\.manifest.res$',
+                   \  '\.intermediate\.manifest$', '^mt.deps' ]
+
+map,r :NERDTreeFind<CR>
+
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+"}}}
 " ------------------------------------------------------------------------- " 
 "   Powerline settings
 " ------------------------------------------------------------------------- "
+"{{{
 " set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
 set rtp+=~/.local/lib/python3.10/site-packages/powerline/bindings/vim/
 set statusline+=%#warningmsg#
@@ -99,11 +123,11 @@ set statusline+=%{FugitiveStatusline()}
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 set showtabline=2 " Always display the tabline, even if there is only one tab.
-
+"}}}
 " ------------------------------------------------------------------------- " 
 "   syntastic plugin settings
 " ------------------------------------------------------------------------- "
-
+"{{{
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -125,15 +149,16 @@ function! SyntasticCheckHook(errors)
 		let g:syntastic_loc_list_height = min([len(a:errors), 5])
 	endif
 endfunction
-
+"}}}
 " ------------------------------------------------------------------------- "
 "  vimwiki plugin settings
 " ------------------------------------------------------------------------- "
+"{{{
 let wiki = {}
 let g:vimwikidir = $HOME . "/Dropbox/personal/administrativa/vimwiki"
 let wiki.path = g:vimwikidir
 let g:vimwiki_list=[wiki]
-
+"}}}
 " ------------------------------------------------------------------------- "
 "  VimSession plugin settings
 " ------------------------------------------------------------------------- "
@@ -148,10 +173,11 @@ let g:ansible_attribute_highlight = "ob"
 let g:ansible_name_highlight = 'b'
 let g:ansible_extra_keywords_highlight = 1
 let g:ansible_template_syntaxes = { '*.rb.j2': 'ruby' }
-
+"}}}
 " load NerdFont
 set guifont=DroidSansMono\ Nerd\ Font\ 11
 let g:webdevicons_enable = 1
+let g:webdevicons_enable_nerdtree = 1
 
 " Use the below highlight group when displaying bad whitespace is desired.
 highlight BadWhitespace ctermbg=red guibg=red
