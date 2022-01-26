@@ -200,14 +200,23 @@ let g:session_autosave = 'yes'
 let g:session_autosave_periodic = 30
 
 " ------------------------------------------------------------------------- "
-" ansible-vim plugin settings
+" python-mode plugin settings
 " ------------------------------------------------------------------------- "
-let g:ansible_unindent_after_newline = 1
-let g:ansible_attribute_highlight = "ob"
-let g:ansible_name_highlight = 'b'
-let g:ansible_extra_keywords_highlight = 1
-let g:ansible_template_syntaxes = { '*.rb.j2': 'ruby' }
+let g:pymode = 1
+let g:pymode_option = 1
+let g:pymode_options_max_line_length = 79
+let g:pymode_options_colorcolumn = 1
+let g:pymode_quickfix_minheight = 3
+let g:pymode_quickfix_maxheight = 6
+let g:pymode_preview_height = &previewheight
+let g:pymode_preview_position = 'botright'
+let g:pymode_indent = 1
+let g:pymode_motion = 1
+let g:pymode_doc = 1
+let g:pymode_doc_bind = 'K'
+
 "}}}
+
 " load NerdFont
 set guifont=DroidSansMono\ Nerd\ Font\ 11
 let g:webdevicons_enable = 1
