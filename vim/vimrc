@@ -21,7 +21,12 @@ set undofile
 set timeoutlen=10 ttimeoutlen=10
 set encoding=utf-8
 set t_Co=256
+set showcmd
 
+call plug#begin('~/dotfiles/vim/bundle')
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+call plug#end()
 " Enable file type detection and do language-dependent indenting.
 filetype off              " force reloading *after* pathogen loaded
 execute pathogen#infect()
@@ -156,7 +161,8 @@ call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#151515')
 " ------------------------------------------------------------------------- "
 "{{{
 " set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
-set rtp+=~/.local/lib/python3.10/site-packages/powerline/bindings/vim/
+"set rtp+=~/.local/lib/python3.10/site-packages/powerline/bindings/vim/
+set rtp+=/usr/lib/python3.10/site-packages/powerline/bindings/vim/
 set statusline+=%#warningmsg#
 set statusline+=%{FugitiveStatusline()}
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -173,7 +179,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "⚠"
-let g:syntastic_python_checkers = ['python', 'flake8', 'python3']
+let g:syntastic_python_checkers = ['python', 'flake8', 'pep8', 'python3']
 let g:syntastic_enable_perl_checker = 1
 let g:syntastic_perl_checkers = ['perl', 'podchecker', 'perlcritic']
 
@@ -219,6 +225,16 @@ let g:pymode_indent = 1
 let g:pymode_motion = 1
 let g:pymode_doc = 1
 let g:pymode_doc_bind = 'K'
+
+" ------------------------------------------------------------------------- "
+"  FZF plugin settings
+" ------------------------------------------------------------------------- "
+let g:fzf_layout = { 'down': '40%'}
+
+nnoremap <silent> <C-f> :Files<CR>
+nnoremap <silent> <C-r> :Rg<CR>
+
+
 
 "}}}
 
