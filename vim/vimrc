@@ -23,6 +23,16 @@ set timeoutlen=10 ttimeoutlen=10
 set encoding=utf-8
 set t_Co=256
 
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/dotfiles/vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/dotfiles/vim/bundle')
+
+call plug#end()
+
 " Enable file type detection and do language-dependent indenting.
 filetype off              " force reloading *after* pathogen loaded
 execute pathogen#infect()
