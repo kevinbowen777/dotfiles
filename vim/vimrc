@@ -4,10 +4,10 @@
 " Purpose: Set vim configuration
 " Requirements:
 "
-" Version: 1.21
+" Version: 1.22
 " Author: Kevin Bowen kevin.bowen@gmail.com
 " 
-" Updated: 20201225
+" Updated: 20210130
 "
 " ------------------------------------------------------------------------- "
 "}}}
@@ -53,6 +53,9 @@ set colorcolumn=80
 set laststatus=2
 set linebreak
 set relativenumber
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved
+set signcolumn=yes
 set textwidth=78
 set wrap
 
