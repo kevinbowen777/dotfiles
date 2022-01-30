@@ -21,7 +21,6 @@ set undofile
 set timeoutlen=10 ttimeoutlen=10
 set encoding=utf-8
 set t_Co=256
-set showcmd
 
 call plug#begin('~/dotfiles/vim/bundle')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -176,7 +175,7 @@ set showtabline=2 " Always display the tabline, even if there is only one tab.
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_wq = 1
 let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "⚠"
 let g:syntastic_python_checkers = ['python', 'flake8', 'pep8', 'python3']
@@ -188,6 +187,9 @@ let g:syntastic_c_config_file = '~/dotfiles/vim/vim_config_c'
 let g:syntastic_check_header = 0
 let g:syntastic_c_no_include_search = 1
 let g:syntastic_c_auto_refresh_includes = 1
+let g:syntastic_quiet_messages={'level':'warnings'}
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': ['.py'] }
+nnoremap <C-w>E :SyntasticCheck<CR>
 
 function! SyntasticCheckHook(errors)
 	if !empty(a:errors)
@@ -225,6 +227,7 @@ let g:pymode_indent = 1
 let g:pymode_motion = 1
 let g:pymode_doc = 1
 let g:pymode_doc_bind = 'K'
+let g:pymode_lint_on_write = 0
 
 " ------------------------------------------------------------------------- "
 "  FZF plugin settings
@@ -232,7 +235,7 @@ let g:pymode_doc_bind = 'K'
 let g:fzf_layout = { 'down': '40%'}
 
 nnoremap <silent> <C-f> :Files<CR>
-nnoremap <silent> <C-r> :Rg<CR>
+" nnoremap <silent> <C-r> :Rg<CR>
 
 
 
