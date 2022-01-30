@@ -29,16 +29,22 @@ set cmdheight=2
 
 call plug#begin('~/dotfiles/vim/bundle')
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'preservim/nerdtree'
+Plug 'python-mode/python-mode'
+Plug 'ryanoasis/vim-devicons'
+Plug 'tpope/vim-fugitive'
+Plug 'vimwiki/vimwiki'
+Plug 'vim-syntastic/syntastic'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-session'
 
 call plug#end()
 
 " Enable file type detection and do language-dependent indenting.
-filetype off              " force reloading *after* pathogen loaded
-execute pathogen#infect()
-call pathogen#helptags()
+filetype off             
 filetype plugin indent on " enable detection, plugins, indentation in one step
 colorscheme murphy
 
