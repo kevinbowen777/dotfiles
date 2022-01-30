@@ -12,14 +12,17 @@
 " ------------------------------------------------------------------------- "
 "}}}
 
+set nobackup
+set nowritebackup
 set nocompatible
 set modelines=0
 set nomodeline
 " Don't persist options and mappings because it can corrupt sessions.
 set sessionoptions-=options
+set shortmess+=c
 set undofile
 set timeoutlen=10 ttimeoutlen=10
-
+set updatetime=300
 set encoding=utf-8
 set t_Co=256
 
@@ -45,12 +48,13 @@ syntax on
 let python_highlight_all=1
 
 " Appearance
-set relativenumber
-set laststatus=2
-set wrap
-set linebreak
-set textwidth=78
+set cmdheight=2
 set colorcolumn=80
+set laststatus=2
+set linebreak
+set relativenumber
+set textwidth=78
+set wrap
 
 " Behavior
 set backspace=indent,eol,start
@@ -61,10 +65,10 @@ set fileformat=unix
 
 " Indentation
 set autoindent
+set expandtab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
-set expandtab
 
 " Folding
 set foldmethod=marker
