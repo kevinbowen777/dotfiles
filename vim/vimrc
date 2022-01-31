@@ -36,6 +36,7 @@ endif
 
 call plug#begin('~/dotfiles/vim/bundle')
 
+Plug 'pearofducks/ansible-vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-fugitive'
 Plug 'vimwiki/vimwiki'
@@ -45,11 +46,6 @@ Plug 'xolox/vim-session'
 
 call plug#end()
 
-" Enable file type detection and do language-dependent indenting.
-filetype off              " force reloading *after* pathogen loaded
-execute pathogen#infect()
-call pathogen#helptags()
-filetype plugin indent on " enable detection, plugins, indentation in one step
 colorscheme murphy
 
 " Switch syntax highlighting on
