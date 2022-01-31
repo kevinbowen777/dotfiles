@@ -37,10 +37,11 @@ endif
 call plug#begin('~/dotfiles/vim/bundle')
 
 Plug 'pearofducks/ansible-vim'
+Plug 'preservim/nerdtree'
+Plug 'vim-syntastic/syntastic'
+Plug 'vimwiki/vimwiki'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-fugitive'
-Plug 'vimwiki/vimwiki'
-Plug 'vim-syntastic/syntastic'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 
@@ -121,6 +122,82 @@ set directory=~/tmp/.swp//
 "   Plugin Settings Section
 " ------------------------------------------------------------------------- "
 "{{{
+" ------------------------------------------------------------------------- "
+"   Ansible-vim Plugin Settings
+" ------------------------------------------------------------------------- "
+"{{{
+
+let g:ansible_unindent_after_newline = 1
+let g:ansible_attribute_highlight = "ob"
+let g:ansible_name_highlight = 'b'
+let g:ansible_extra_keywords_highlight = 1
+let g:ansible_template_syntaxes = { '*.rb.j2': 'ruby' }
+
+"}}}
+" ------------------------------------------------------------------------- "
+"   NERDTree Plugin Settings
+" ------------------------------------------------------------------------- "
+"{{{
+
+" load NerdFont
+set guifont=DroidSansMono\ Nerd\ Font\ 11
+let g:webdevicons_enable = 1
+let g:webdevicons_enable_nerdtree = 1
+
+" Toggle the NERD Tree on and off with F7
+nmap <F7> :NERDTreeToggle<CR>
+
+" Close the NERD Tree with Shift-F7
+nmap <S-F7> :NERDTreeClose<CR>
+
+" Show the bookmarks table on startup
+let NERDTreeShowBookmarks=1
+
+" Ignore displaying the following file types in NERDTree
+let NERDTreeIgnore=[ '\.ncb$', '\.dummy$', '\.suo$', '\.vcproj\.RIMNET', '\.obj$',
+                   \ '\.ilk$', '^BuildLog.htm$', '\.pdb$', '\.idb$',
+                   \ '\.embed\.manifest$', '\.embed\.manifest.res$',
+                   \  '\.intermediate\.manifest$', '^mt.deps' ]
+
+map,r :NERDTreeFind<CR>
+
+" Refresh the current folder if any changes
+autocmd BufEnter NERD_tree_* | execute 'normal R'
+au CursorHold * if exists("t:NerdTreeBufName") | call <SNR>15_refreshRoot() | endif
+
+"Reload the window if directory is changed
+augroup DIRCHANGE
+    au!
+    autocmd DirChanged global :NERDTreeCWD
+augroup END
+
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+" NERDTress File highlighting
+function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+endfunction
+
+call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
+call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('config', 'green', 'none', 'green', '#151515')
+call NERDTreeHighlightFile('conf', 'green', 'none', 'green', '#151515')
+call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
+call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
+call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
+call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
+call NERDTreeHighlightFile('py', 'blue', 'none', '#3366FF', '#151515')
+call NERDTreeHighlightFile('gitconfig', 'Gray', 'none', '#686868', '#151515')
+call NERDTreeHighlightFile('gitignore', 'Gray', 'none', '#686868', '#151515')
+call NERDTreeHighlightFile('bashrc', 'Gray', 'none', '#686868', '#151515')
+call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#151515')
+
+"}}}
 " ------------------------------------------------------------------------- " 
 "   Powerline Plugin Settings
 " ------------------------------------------------------------------------- "
@@ -185,24 +262,7 @@ let g:session_autosave = 'yes'
 let g:session_autosave_periodic = 30
 
 "}}}
-" ------------------------------------------------------------------------- "
-"   Ansible-vim Plugin Settings
-" ------------------------------------------------------------------------- "
-"{{{
-
-let g:ansible_unindent_after_newline = 1
-let g:ansible_attribute_highlight = "ob"
-let g:ansible_name_highlight = 'b'
-let g:ansible_extra_keywords_highlight = 1
-let g:ansible_template_syntaxes = { '*.rb.j2': 'ruby' }
-
 "}}}
-
-"}}}
-
-" load NerdFont
-set guifont=DroidSansMono\ Nerd\ Font\ 11
-let g:webdevicons_enable = 1
 
 " Use the below highlight group when displaying bad whitespace is desired.
 highlight BadWhitespace ctermbg=red guibg=red
