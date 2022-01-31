@@ -6,7 +6,7 @@
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
 # Version: 2.6
 # Source : http://www.github.com/kevinbowen777/dotfiles.git
-# Last modified: 20211124
+# Last modified: 20220131
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # 
 # To pick up the latest default .bashrc content,
@@ -290,14 +290,15 @@ export PYCHARM_JDK="/home/kbowen/.jbr/jbr_jcef-11_0_11-linux-x64-b1504.16/"
 # poetry tab completions - 2022014
 poetry completions bash > /etc/bash_completion.d/poetry.bash-completion
 
-
-
-
+# for use with flask_demo dev - 20220120
 export FLASK_APP=flask_demo.py
 export FLASK_DEBUG=1
 export FLASK_ADMIN=kevinbowen@protonmail.com
 
-
-# BEGIN_KITTY_SHELL_INTEGRATION
+# 20220114
+# BEGIN_KITTY_SHELL_INTEGRATION 
 if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
 # END_KITTY_SHELL_INTEGRATION
+
+# FZF export default layout - 20220131
+export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --preview '(highlight -O ansi {} || bat --color=always {}) 2> /dev/null | head -500'"
