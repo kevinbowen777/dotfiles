@@ -28,3 +28,6 @@
 [submodule "vim/bundle/ansible-vim"]
 	path = vim/bundle/ansible-vim
 	url = https://github.com/pearofducks/ansible-vim
+[submodule "vim/bundle/vim-plug"]
+	path = vim/bundle/vim-plug
+	url = https://github.com/junegunn/vim-plug

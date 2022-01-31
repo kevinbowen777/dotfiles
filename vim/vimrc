@@ -37,6 +37,7 @@ endif
 call plug#begin('~/dotfiles/vim/bundle')
 
 Plug 'junegunn/vim-plug'
+Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
@@ -125,8 +126,6 @@ set directory=~/tmp/.swp//
 " ------------------------------------------------------------------------- "
 "{{{
 
-" set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
-" set rtp+=~/.local/lib/python3.9/site-packages/powerline/bindings/vim/
 set rtp+=~/.local/lib/python3.8/site-packages/powerline/bindings/vim/
 set statusline+=%#warningmsg#
 set statusline+=%{FugitiveStatusline()}
@@ -143,10 +142,11 @@ set showtabline=2 " Always display the tabline, even if there is only one tab.
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_wq = 1
 let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "⚠"
 let g:syntastic_python_checkers = ['pep8', 'python', 'flake8', 'python3']
+
 let g:syntastic_enable_perl_checker = 1
 let g:syntastic_perl_checkers = ['perl', 'podchecker', 'perlcritic']
 
@@ -155,6 +155,8 @@ let g:syntastic_c_config_file = '~/dotfiles/vim/vim_config_c'
 let g:syntastic_check_header = 0
 let g:syntastic_c_no_include_search = 1
 let g:syntastic_c_auto_refresh_includes = 1
+
+nnoremap <C-w>E :SyntasticCheck<CR>
 
 function! SyntasticCheckHook(errors)
 	if !empty(a:errors)
@@ -167,6 +169,7 @@ endfunction
 "   VimWiki Plugin Settings
 " ------------------------------------------------------------------------- "
 "{{{
+
 let wiki = {}
 let g:vimwikidir = $HOME . "/Dropbox/personal/administrativa/vimwiki"
 let wiki.path = g:vimwikidir
@@ -177,19 +180,22 @@ let g:vimwiki_list=[wiki]
 "   VimSession Plugin Settings
 " ------------------------------------------------------------------------- "
 "{{{
+
 let g:session_autosave = 'yes'
 let g:session_autosave_periodic = 30
 
 "}}}
 " ------------------------------------------------------------------------- "
-"   ansible-vim plugin settings
+"   Ansible-vim Plugin Settings
 " ------------------------------------------------------------------------- "
 "{{{
+
 let g:ansible_unindent_after_newline = 1
 let g:ansible_attribute_highlight = "ob"
 let g:ansible_name_highlight = 'b'
 let g:ansible_extra_keywords_highlight = 1
 let g:ansible_template_syntaxes = { '*.rb.j2': 'ruby' }
+
 "}}}
 
 "}}}
