@@ -21,10 +21,11 @@ set nomodeline
 set sessionoptions-=options
 set shortmess+=c
 set undofile
-set timeoutlen=10 ttimeoutlen=10
+set timeoutlen=500 ttimeoutlen=300
 set updatetime=300
 set encoding=utf-8
 set t_Co=256
+let mapleader = ","
 
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/dotfiles/vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
