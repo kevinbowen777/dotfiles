@@ -1,16 +1,4 @@
-"{{{ ---------------------------------------------------------------------- "
-"
-" Name: .vimrc 
-" Purpose: Set vim configuration
-" Requirements:
-"
-" Version: 1.22
-" Author: Kevin Bowen kevin.bowen@gmail.com
-" 
-" Updated: 20210130
-"
-" ------------------------------------------------------------------------- "
-"}}}
+
 
 set nobackup
 set nowritebackup
@@ -37,6 +25,8 @@ endif
 call plug#begin('~/dotfiles/vim/bundle')
 
 Plug 'pearofducks/ansible-vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
 Plug 'vim-syntastic/syntastic'
 Plug 'vimwiki/vimwiki'
@@ -122,6 +112,23 @@ set directory=~/tmp/.swp//
 "   Plugin Settings Section
 " ------------------------------------------------------------------------- "
 "{{{
+" ------------------------------------------------------------------------- "
+"   FZF Plugin Settings
+" ------------------------------------------------------------------------- "
+"{{{
+
+let g:fzf_layout = { 'down': '40%'}
+
+nnoremap <silent> <leader>f :Files<CR>
+nnoremap <silent> <leader>s :Rg<CR>
+" nnoremap <silent> <leader><space> :Buffers<CR>
+" nnoremap <silent> <leader>A :Windows<CR>
+" nnoremap <silent> <leader>l :BLines<CR>
+" nnoremap <silent> <leader>o :BTags<CR>
+" nnoremap <silent> <leader>t :Tags<CR>
+" nnoremap <silent> <leader>? :History<CR>
+
+"}}}
 " ------------------------------------------------------------------------- "
 "   Ansible-vim Plugin Settings
 " ------------------------------------------------------------------------- "
