@@ -37,7 +37,11 @@ endif
 call plug#begin('~/dotfiles/vim/bundle')
 
 Plug 'ryanoasis/vim-devicons'
+Plug 'tpope/vim-fugitive'
+Plug 'vimwiki/vimwiki'
 Plug 'vim-syntastic/syntastic'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-session'
 
 call plug#end()
 
