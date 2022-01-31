@@ -50,6 +50,7 @@ let python_highlight_all=1
 " Appearance
 set cmdheight=2
 set colorcolumn=80
+highlight ColorColumn ctermbg=DarkMagenta guibg=DarkMagenta
 set laststatus=2
 set linebreak
 set relativenumber
