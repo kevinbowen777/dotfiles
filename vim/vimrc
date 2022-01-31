@@ -2,12 +2,12 @@
 "
 " Name: .vimrc 
 " Purpose: Set vim configuration
-" Requirements:
+" Requirements: vim-plug
 "
-" Version: 1.21
+" Version: 1.22
 " Author: Kevin Bowen kevin.bowen@gmail.com
 " 
-" Updated: 20201225
+" Updated: 20210130
 "
 " ------------------------------------------------------------------------- "
 "}}}
@@ -21,16 +21,24 @@ set nomodeline
 set sessionoptions-=options
 set shortmess+=c
 set undofile
-set timeoutlen=10 ttimeoutlen=0
+set timeoutlen=300 ttimeoutlen=300
 set updatetime=300
 set encoding=utf-8
 set t_Co=256
-set cmdheight=2
+set showcmd
+let mapleader = ","
+
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/dotfiles/vim/'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
 call plug#begin('~/dotfiles/vim/bundle')
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/vim-plug'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'preservim/nerdtree'
 Plug 'python-mode/python-mode'
@@ -43,22 +51,22 @@ Plug 'xolox/vim-session'
 
 call plug#end()
 
-" Enable file type detection and do language-dependent indenting.
-filetype off             
-filetype plugin indent on " enable detection, plugins, indentation in one step
 colorscheme murphy
-
-" Switch syntax highlighting on
 syntax on
 let python_highlight_all=1
 
 " Appearance
-set relativenumber
-set laststatus=2
-set wrap
-set linebreak
-set textwidth=78
+set cmdheight=2
 set colorcolumn=80
+highlight ColorColumn ctermbg=DarkMagenta guibg=DarkMagenta
+set laststatus=2
+set linebreak
+set relativenumber
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+set signcolumn=yes
+set textwidth=78
+set wrap
 
 " Behavior
 set backspace=indent,eol,start
@@ -69,10 +77,10 @@ set fileformat=unix
 
 " Indentation
 set autoindent
+set expandtab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
-set expandtab
 
 " Folding
 set foldmethod=marker
@@ -83,7 +91,7 @@ set wildmode=full
 set wildmenu
 
 " Shortcut to rapidly toggle 'set list'
-nmap <leader>l :set list!<CR>
+nnoremap <leader>l :set list!<cr>
 
 " Use symbols for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
@@ -111,14 +119,21 @@ autocmd BufEnter * hi link HelpStar Normal
 set undodir=~/tmp/.undo//
 set backupdir=~/tmp/.backup//
 set directory=~/tmp/.swp//
+
 " ------------------------------------------------------------------------- "
-" All plugin settings
-" ------------------------------------------------------------------------- "
-"{{{
-" ------------------------------------------------------------------------- "
-"    NERDTree settings
+"   Plugin Settings Section
 " ------------------------------------------------------------------------- "
 "{{{
+" ------------------------------------------------------------------------- "
+"   NERDTree Plugin Settings
+" ------------------------------------------------------------------------- "
+"{{{
+
+" load NerdFont
+set guifont=DroidSansMono\ Nerd\ Font\ 11
+let g:webdevicons_enable = 1
+let g:webdevicons_enable_nerdtree = 1
+
 " Toggle the NERD Tree on and off with F7
 nmap <F7> :NERDTreeToggle<CR>
 
@@ -174,22 +189,23 @@ call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#151515')
 
 "}}}
 " ------------------------------------------------------------------------- " 
-"    Powerline settings
+"   Powerline Pluging Settings
 " ------------------------------------------------------------------------- "
 "{{{
-" set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
-"set rtp+=~/.local/lib/python3.10/site-packages/powerline/bindings/vim/
+
 set rtp+=/usr/lib/python3.10/site-packages/powerline/bindings/vim/
 set statusline+=%#warningmsg#
 set statusline+=%{FugitiveStatusline()}
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 set showtabline=2 " Always display the tabline, even if there is only one tab.
+
 "}}}
 " ------------------------------------------------------------------------- " 
-"    syntastic plugin settings
+"   Syntastic Plugin Settings
 " ------------------------------------------------------------------------- "
 "{{{
+
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -197,6 +213,7 @@ let g:syntastic_check_on_wq = 1
 let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "⚠"
 let g:syntastic_python_checkers = ['python', 'flake8', 'pep8', 'python3']
+
 let g:syntastic_enable_perl_checker = 1
 let g:syntastic_perl_checkers = ['perl', 'podchecker', 'perlcritic']
 
@@ -205,8 +222,10 @@ let g:syntastic_c_config_file = '~/dotfiles/vim/vim_config_c'
 let g:syntastic_check_header = 0
 let g:syntastic_c_no_include_search = 1
 let g:syntastic_c_auto_refresh_includes = 1
+
 let g:syntastic_quiet_messages={'level':'warnings'}
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': ['.py'] }
+
 nnoremap <C-w>E :SyntasticCheck<CR>
 
 function! SyntasticCheckHook(errors)
@@ -214,28 +233,33 @@ function! SyntasticCheckHook(errors)
 		let g:syntastic_loc_list_height = min([len(a:errors), 5])
 	endif
 endfunction
+
 "}}}
 " ------------------------------------------------------------------------- "
-"    vimwiki plugin settings
+"   Vimwiki Plugin Settings
 " ------------------------------------------------------------------------- "
 "{{{
+
 let wiki = {}
 let g:vimwikidir = $HOME . "/Dropbox/personal/administrativa/vimwiki"
 let wiki.path = g:vimwikidir
 let g:vimwiki_list=[wiki]
+
 "}}}
 " ------------------------------------------------------------------------- "
-"    VimSession plugin settings
+"   VimSession Plugin Settings
 " ------------------------------------------------------------------------- "
 "{{{
+
 let g:session_autosave = 'yes'
 let g:session_autosave_periodic = 30
 
 "}}}
 " ------------------------------------------------------------------------- "
-"    python-mode plugin settings
+"   Python-mode Plugin Settings
 " ------------------------------------------------------------------------- "
 "{{{
+
 let g:pymode = 1
 let g:pymode_option = 1
 let g:pymode_options_max_line_length = 79
@@ -252,9 +276,10 @@ let g:pymode_lint_on_write = 0
 
 "}}}
 " ------------------------------------------------------------------------- "
-"    FZF plugin settings
+"   FZF Plugin Settings
 " ------------------------------------------------------------------------- "
 "{{{
+
 let g:fzf_layout = { 'down': '40%'}
 
 " nnoremap <silent> <C-f> :Files<CR>
@@ -262,12 +287,9 @@ let g:fzf_layout = { 'down': '40%'}
 
 "}}}
 " ------------------------------------------------------------------------- "
-"    coc.nvim plugin settings
+"   coc.nvim Plugin Settings
 " ------------------------------------------------------------------------- "
 "{{{
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-  set signcolumn=yes
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
@@ -383,7 +405,7 @@ command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.org
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings for CoCList
 " Show all diagnostics.
@@ -409,10 +431,6 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 "}}}
 "}}}
 
-" load NerdFont
-set guifont=DroidSansMono\ Nerd\ Font\ 11
-let g:webdevicons_enable = 1
-let g:webdevicons_enable_nerdtree = 1
 
 " Use the below highlight group when displaying bad whitespace is desired.
 highlight BadWhitespace ctermbg=red guibg=red
