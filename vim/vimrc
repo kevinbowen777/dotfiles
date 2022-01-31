@@ -116,9 +116,15 @@ set undodir=~/tmp/.undo//
 set backupdir=~/tmp/.backup//
 set directory=~/tmp/.swp//
 
-" ------------------------------------------------------------------------- " 
-"   Powerline settings
 " ------------------------------------------------------------------------- "
+"   Plugin Settings Section
+" ------------------------------------------------------------------------- "
+"{{{
+" ------------------------------------------------------------------------- " 
+"   Powerline Plugin Settings
+" ------------------------------------------------------------------------- "
+"{{{
+
 " set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
 " set rtp+=~/.local/lib/python3.9/site-packages/powerline/bindings/vim/
 set rtp+=~/.local/lib/python3.8/site-packages/powerline/bindings/vim/
@@ -128,9 +134,11 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 set showtabline=2 " Always display the tabline, even if there is only one tab.
 
+"}}}
 " ------------------------------------------------------------------------- " 
-"   syntastic plugin settings
+"   Syntastic Plugin Settings
 " ------------------------------------------------------------------------- "
+"{{{
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -154,28 +162,37 @@ function! SyntasticCheckHook(errors)
 	endif
 endfunction
 
+"}}}
 " ------------------------------------------------------------------------- "
-"  vimwiki plugin settings
+"   VimWiki Plugin Settings
 " ------------------------------------------------------------------------- "
+"{{{
 let wiki = {}
 let g:vimwikidir = $HOME . "/Dropbox/personal/administrativa/vimwiki"
 let wiki.path = g:vimwikidir
 let g:vimwiki_list=[wiki]
 
+"}}}
 " ------------------------------------------------------------------------- "
-"  VimSession plugin settings
+"   VimSession Plugin Settings
 " ------------------------------------------------------------------------- "
+"{{{
 let g:session_autosave = 'yes'
 let g:session_autosave_periodic = 30
 
+"}}}
 " ------------------------------------------------------------------------- "
-" ansible-vim plugin settings
+"   ansible-vim plugin settings
 " ------------------------------------------------------------------------- "
+"{{{
 let g:ansible_unindent_after_newline = 1
 let g:ansible_attribute_highlight = "ob"
 let g:ansible_name_highlight = 'b'
 let g:ansible_extra_keywords_highlight = 1
 let g:ansible_template_syntaxes = { '*.rb.j2': 'ruby' }
+"}}}
+
+"}}}
 
 " load NerdFont
 set guifont=DroidSansMono\ Nerd\ Font\ 11
