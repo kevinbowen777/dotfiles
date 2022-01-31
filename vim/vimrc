@@ -36,8 +36,8 @@ endif
 
 call plug#begin('~/dotfiles/vim/bundle')
 
-Plug 'junegunn/vim-plug'
 Plug 'ryanoasis/vim-devicons'
+Plug 'vim-syntastic/syntastic'
 
 call plug#end()
 

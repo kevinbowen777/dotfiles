@@ -1,6 +1,6 @@
 [submodule "vim/bundle/syntastic"]
 	path = vim/bundle/syntastic
-    url = https://github.com/scrooloose/syntastic.git
+    url = https://github.com/vim-syntastic/syntastic.git
 [submodule "tmux/plugins/tmux-resurrect"]
 	path = tmux/plugins/tmux-resurrect
 	url = https://github.com/tmux-plugins/tmux-resurrect.git
@@ -28,6 +28,3 @@
 [submodule "vim/bundle/ansible-vim"]
 	path = vim/bundle/ansible-vim
 	url = https://github.com/pearofducks/ansible-vim
-[submodule "vim/bundle/vim-plug"]
-	path = vim/bundle/vim-plug
-	url = https://github.com/junegunn/vim-plug
