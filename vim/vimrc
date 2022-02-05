@@ -5,7 +5,7 @@ set nowritebackup
 set nocompatible
 set modelines=0
 set nomodeline
-" Don't persist options and mappings because it can corrupt sessions.
+" Don't persist options and mappings - may corrupt sessions.
 set sessionoptions-=options
 set shortmess+=c
 set undofile
