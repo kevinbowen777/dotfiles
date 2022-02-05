@@ -38,9 +38,8 @@ Plug 'xolox/vim-session'
 call plug#end()
 
 colorscheme murphy
-
-" Switch syntax highlighting on
 syntax on
+filetype plugin indent on
 let python_highlight_all=1
 
 " Appearance
@@ -79,7 +78,7 @@ set wildmode=full
 set wildmenu
 
 " Shortcut to rapidly toggle 'set list'
-nmap <leader>l :set list!<CR>
+nnoremap <leader>l :set list!<CR>
 
 " Use symbols for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
