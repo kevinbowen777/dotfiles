@@ -40,7 +40,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
-Plug 'python-mode/python-mode'
+Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plug 'vim-syntastic/syntastic'
 Plug 'vimwiki/vimwiki'
 Plug 'ryanoasis/vim-devicons'
@@ -52,6 +52,7 @@ call plug#end()
 
 colorscheme murphy
 syntax on
+filetype plugin indent on
 let python_highlight_all=1
 
 " Appearance
@@ -110,8 +111,8 @@ for key in ['<Up>', '<Down>', '<Left>', '<Right>']
 endfor
 
 " set highlight links in help
-autocmd BufEnter * set conceallevel=0                                                     
-autocmd BufEnter * hi link HelpBar Normal                                                 
+autocmd BufEnter * set conceallevel=0
+autocmd BufEnter * hi link HelpBar Normal
 autocmd BufEnter * hi link HelpStar Normal
 
 " Temp file locations. Make sure subdirectories are created in ~/tmp
@@ -351,7 +352,7 @@ call NERDTreeHighlightFile('bashrc', 'Gray', 'none', '#686868', '#151515')
 call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#151515')
 
 "}}}
-" ------------------------------------------------------------------------- " 
+" ------------------------------------------------------------------------- "
 "   Powerline Pluging Settings
 " ------------------------------------------------------------------------- "
 "{{{
@@ -382,9 +383,11 @@ let g:pymode_motion = 1
 let g:pymode_doc = 1
 let g:pymode_doc_bind = 'K'
 let g:pymode_lint_on_write = 0
+let g:pymode_virtualenv = 1
+let g_pymode_virtualenv_path = "$HOME/dev/python/venvs"
 
 "}}}
-" ------------------------------------------------------------------------- " 
+" ------------------------------------------------------------------------- "
 "   Syntastic Plugin Settings
 " ------------------------------------------------------------------------- "
 "{{{
