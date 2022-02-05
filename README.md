@@ -36,39 +36,25 @@ Vim's backup and swap files are stored in `~/tmp`, so that directory must exist.
 ## VIM #
 
 Preferences for Vim are stored in `dotfiles/vim/vimrc` and `dotfiles/vim/gvimrc`
-respectively. All plugins and scripts are stored in the `dotfiles/vim`
+respectively. Plugins and scripts are stored in the `dotfiles/vim/bundle`
 directory.
 
 ## Powerline plug-in installation
 The current vim configuration depends upon having the powerline plug-in
-installed. The .bashrc and .tmux.conf files have the necessary code to run with powerline; but, they are currently commented out.
+installed.
 
 To install powerline:
-	sudo pip install git+git://github.com/Lokaltog/powerline
-
+    Where possible, just use the package available in the current, active
+    distro. If that is not possible, try:
+    ```
+	pip install --user git+git://github.com/Lokaltog/powerline
+    ```
 For detailed instructions, [see the wiki](https://github.com/kevinbowen777/dotfiles/wiki/Powerline-Plugin-Installation-Instructions).
 
 ### Adding Plugin Bundles ##
 
-Plugins that are published on github can be installed as submodules. For
-example, to install the [Nerdtree bundle](http://github.com/scrooloose/nerdtree.git), follow these steps:
-
-    cd ~/dotfiles
-    git submodule add http://github.com/scrooloose/nerdtree.git/vim/bundle/nerdtree 
-
-This will update the `.gitmodules` file by appending something like:
-
-    [submodule "vim/bundle/nerdtree"]
-        path = vim/bundle/nerdtree
-        url = http://github.com/scrooloose/nerdtree.git
-
-This will also checkout out the git repo into the `vim/bundle/nerdtree` directory.
-
-Commit these changes as follows:
-
-    git add .
-    git commit -m "Added the nerdtree plug-in."
-    git push origin master
+N.B.: As of 202201, plugins are installed using
+[vim-plug](https://github.com/junegunn/vim-plug)
 
 N.B.: 
 
