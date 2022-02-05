@@ -290,8 +290,8 @@ export PYCHARM_JDK="/home/kbowen/.jbr/jbr_jcef-11_0_11-linux-x64-b1504.16/"
 # poetry tab completions - 2022014
 poetry completions bash > /etc/bash_completion.d/poetry.bash-completion
 
-# for use with flask_demo dev - 20220120
-export FLASK_APP=flask_demo.py
+# for use with flask_chat dev - 20220120
+export FLASK_APP=flask_chat.py
 export FLASK_DEBUG=1
 export FLASK_ADMIN=kevinbowen@protonmail.com
 
