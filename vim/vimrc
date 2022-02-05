@@ -112,23 +112,6 @@ set directory=~/tmp/.swp//
 " ------------------------------------------------------------------------- "
 "{{{
 " ------------------------------------------------------------------------- "
-"   FZF Plugin Settings
-" ------------------------------------------------------------------------- "
-"{{{
-
-let g:fzf_layout = { 'down': '40%'}
-
-nnoremap <silent> <leader>f :Files<CR>
-nnoremap <silent> <leader>s :Rg<CR>
-" nnoremap <silent> <leader><space> :Buffers<CR>
-" nnoremap <silent> <leader>A :Windows<CR>
-" nnoremap <silent> <leader>l :BLines<CR>
-" nnoremap <silent> <leader>o :BTags<CR>
-" nnoremap <silent> <leader>t :Tags<CR>
-" nnoremap <silent> <leader>? :History<CR>
-
-"}}}
-" ------------------------------------------------------------------------- "
 "   Ansible-vim Plugin Settings
 " ------------------------------------------------------------------------- "
 "{{{
@@ -138,6 +121,27 @@ let g:ansible_attribute_highlight = "ob"
 let g:ansible_name_highlight = 'b'
 let g:ansible_extra_keywords_highlight = 1
 let g:ansible_template_syntaxes = { '*.rb.j2': 'ruby' }
+
+"}}}
+" ------------------------------------------------------------------------- "
+"   FZF Plugin Settings
+" ------------------------------------------------------------------------- "
+"{{{
+
+let g:fzf_layout = { 'down': '40%'}
+let $FZF_DEFAULT_COMMAND = 'rg --files --ignore-case --hidden -g "!{.git,.pyc}/*"'
+command! -bang -nargs=? -complete=dir Files
+     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
+nnoremap <silent> <leader>f :Files<CR>
+nnoremap <silent> <leader>g :GFiles<CR>
+nnoremap <silent> <leader>s :Rg<CR>
+" nnoremap <silent> <leader><space> :Buffers<CR>
+" nnoremap <silent> <leader>A :Windows<CR>
+" nnoremap <silent> <leader>l :BLines<CR>
+" nnoremap <silent> <leader>o :BTags<CR>
+" nnoremap <silent> <leader>t :Tags<CR>
+" nnoremap <silent> <leader>? :History<CR>
 
 "}}}
 " ------------------------------------------------------------------------- "
@@ -249,6 +253,15 @@ endfunction
 
 "}}}
 " ------------------------------------------------------------------------- "
+"   VimSession Plugin Settings
+" ------------------------------------------------------------------------- "
+"{{{
+
+let g:session_autosave = 'yes'
+let g:session_autosave_periodic = 30
+
+"}}}
+" ------------------------------------------------------------------------- "
 "   VimWiki Plugin Settings
 " ------------------------------------------------------------------------- "
 "{{{
@@ -257,15 +270,6 @@ let wiki = {}
 let g:vimwikidir = $HOME . "/Dropbox/personal/administrativa/vimwiki"
 let wiki.path = g:vimwikidir
 let g:vimwiki_list=[wiki]
-
-"}}}
-" ------------------------------------------------------------------------- "
-"   VimSession Plugin Settings
-" ------------------------------------------------------------------------- "
-"{{{
-
-let g:session_autosave = 'yes'
-let g:session_autosave_periodic = 30
 
 "}}}
 "}}}
