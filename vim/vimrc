@@ -91,7 +91,7 @@ set wildmode=full
 set wildmenu
 
 " Shortcut to rapidly toggle 'set list'
-nnoremap <leader>l :set list!<cr>
+nnoremap <leader>l :set list!<CR>
 
 " Use symbols for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
@@ -353,7 +353,7 @@ call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#151515')
 
 "}}}
 " ------------------------------------------------------------------------- "
-"   Powerline Pluging Settings
+"   Powerline Plugin Settings
 " ------------------------------------------------------------------------- "
 "{{{
 
@@ -422,7 +422,16 @@ endfunction
 
 "}}}
 " ------------------------------------------------------------------------- "
-"   Vimwiki Plugin Settings
+"   VimSession Plugin Settings
+" ------------------------------------------------------------------------- "
+"{{{
+
+let g:session_autosave = 'yes'
+let g:session_autosave_periodic = 30
+
+"}}}
+" ------------------------------------------------------------------------- "
+"   VimWiki Plugin Settings
 " ------------------------------------------------------------------------- "
 "{{{
 
@@ -432,17 +441,7 @@ let wiki.path = g:vimwikidir
 let g:vimwiki_list=[wiki]
 
 "}}}
-" ------------------------------------------------------------------------- "
-"   VimSession Plugin Settings
-" ------------------------------------------------------------------------- "
-"{{{
-
-let g:session_autosave = 'yes'
-let g:session_autosave_periodic = 30
-
 "}}}
-"}}}
-
 
 " Use the below highlight group when displaying bad whitespace is desired.
 highlight BadWhitespace ctermbg=red guibg=red
