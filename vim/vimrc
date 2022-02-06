@@ -246,7 +246,9 @@ let g:syntastic_c_auto_refresh_includes = 1
 let g:syntastic_quiet_messages={'level':'warnings'}
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': ['.py'] }
 
-nnoremap <C-w>E :SyntasticCheck<CR>
+nnoremap <leader>sc :SyntasticCheck<CR>
+nnoremap <leader>st :SyntasticToggleMode<CR>
+"nnoremap <C-w>E :SyntasticCheck<CR>
 
 function! SyntasticCheckHook(errors)
 	if !empty(a:errors)
