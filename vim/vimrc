@@ -93,6 +93,9 @@ set wildmenu
 " Shortcut to rapidly toggle 'set list'
 nnoremap <leader>l :set list!<CR>
 
+" Source vimrc
+nnoremap <leader>sv :source ~/.vimrc<CR>
+
 " Use symbols for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
 
