@@ -25,6 +25,8 @@ set undofile
 set updatetime=300
 set encoding=utf-8
 set t_Co=256
+set hidden
+set termguicolors
 set showcmd
 let mapleader = ","
 
@@ -51,6 +53,23 @@ Plug 'xolox/vim-session'
 call plug#end()
 
 colorscheme murphy
+""" Customize colors
+func! s:my_colors_setup() abort
+    hi Pmenu ctermfg=4 guifg=#000080 guibg=#808000 gui=NONE
+    hi PmenuSel ctermfg=4 guifg=#000080 guibg=#b7c7b7 gui=NONE
+    "hi CocErrorSign ctermfg=9 guifg=#ff0000
+    hi CocErrorSign ctermfg=4 guifg=#000080 guibg=#ffff00
+    "hi CocErrorSign ctermfg=4 guifg=#000080
+    hi PmenuSbar guibg=#bcbcbc
+    hi PmenuThumb guibg=#585858
+endfunc
+
+augroup colorscheme_coc_setup | au!
+    au ColorScheme * call s:my_colors_setup()
+augroup END
+
+"colorscheme murphy
+"colorscheme koehler
 syntax on
 filetype plugin indent on
 let python_highlight_all=1
@@ -268,6 +287,9 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 " Personal coc.nvim modifications
 " autocmd FileType python let b:coc_suggest_disable = 1
+"augroup colorscheme_coc_setup | au!
+"    au ColorScheme * call s:my_colors_setup()
+"augroup END
 
 "}}}
 " ------------------------------------------------------------------------- "
@@ -301,7 +323,7 @@ command! -bang -nargs=? -complete=dir Files
 
 nnoremap <silent> <leader>f :Files<CR>
 nnoremap <silent> <leader>g :GFiles<CR>
-nnoremap <silent> <leader>s :Rg<CR>
+nnoremap <silent> <leader>rg :Rg<CR>
 " nnoremap <silent> <leader><space> :Buffers<CR>
 " nnoremap <silent> <leader>A :Windows<CR>
 " nnoremap <silent> <leader>l :BLines<CR>
