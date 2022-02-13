@@ -1,7 +1,7 @@
-# added 20220114
+# updated 20220207
 # from: https://github.com/github/gitignore
 #
-#
+.idea/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -62,11 +62,13 @@ cover/
 # Django stuff:
 *.log
 local_settings.py
+*.sqlite
 db.sqlite3
 db.sqlite3-journal
 
 # Flask stuff:
 instance/
+.flaskenv
 .webassets-cache
 
 # Scrapy stuff:
@@ -116,7 +118,7 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
+.env*
 .venv
 env/
 venv/
