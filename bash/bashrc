@@ -275,8 +275,8 @@ fi
 
 #}}}
 
-export DATABASE_URL=postgres://$(whoami)
-export PGPASS='/home/kbowen/.pgpass'
+#export DATABASE_URL=postgresql://$(whoami)
+#export PGPASS='/home/kbowen/.pgpass'
 
 # directories for virtualenvwrapper - 20210922
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
@@ -289,11 +289,6 @@ export PYCHARM_JDK="/home/kbowen/.jbr/jbr_jcef-11_0_11-linux-x64-b1504.16/"
 
 # poetry tab completions - 2022014
 poetry completions bash > /etc/bash_completion.d/poetry.bash-completion
-
-# for use with flask_chat dev - 20220120
-export FLASK_APP=flask_chat.py
-export FLASK_DEBUG=1
-export FLASK_ADMIN=kevinbowen@protonmail.com
 
 # 20220114
 # BEGIN_KITTY_SHELL_INTEGRATION 
