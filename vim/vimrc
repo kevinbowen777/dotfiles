@@ -306,7 +306,8 @@ nnoremap <leader>ge :Gedit<CR>
 nnoremap <leader>dg :diffget<CR>
 nnoremap <leader>dp :diffput<CR>
 nnoremap <leader>gl :Gclog<CR>
-nnoremap <silent> <leader>gp :silent Git push<CR>
+"nnoremap <silent> <leader>gp :silent Git push<CR>
+nnoremap <silent> <leader>gp :silent Git push origin master<CR>
 
 "}}}
 " ------------------------------------------------------------------------- "
