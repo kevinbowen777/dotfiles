@@ -37,4 +37,4 @@ fi
 export GPG_TTY=$(tty)
 
 export PATH="$HOME/.poetry/bin:$PATH"
-export LC_COLLATE=C
+#export LC_COLLATE=C
