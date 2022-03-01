@@ -1,4 +1,16 @@
-
+"{{{ ---------------------------------------------------------------------- "   
+"                                                                               
+" Name: .vimrc                                                                  
+" Purpose: Set vim configuration                                                
+" Requirements: vim-plug                                                        
+"                                                                               
+" Version: 1.22                                                                 
+" Author: Kevin Bowen kevin.bowen@gmail.com                                     
+"                                                                               
+" Updated: 20220301                                                             
+"                                                                               
+" ------------------------------------------------------------------------- "   
+"}}}
 
 set nobackup
 set nowritebackup
