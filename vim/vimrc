@@ -339,8 +339,8 @@ au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
 " Automatically add headers to new bash, perl, and python files.
 au bufnewfile *.sh 0r ~/dotfiles/vim/templates/bash_basic_header.template
 au bufnewfile *.pl 0r ~/dotfiles/vim/templates/perl_basic_header.template
-au bufnewfile *.py 0r ~/dotfiles/vim/templates/python_basic_header.template
-au bufnewfile *.html 0r ~/dotfiles/vim/templates/html_boilerplate.template
+" au bufnewfile *.py 0r ~/dotfiles/vim/templates/python_basic_header.template
+" au bufnewfile *.html 0r ~/dotfiles/vim/templates/html_boilerplate.template
 
 autocmd FileType *.c,*.h setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType yaml setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
