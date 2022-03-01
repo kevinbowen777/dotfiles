@@ -52,6 +52,19 @@ Plug 'xolox/vim-session'
 call plug#end()
 
 colorscheme murphy
+""" Customize colors
+func! s:my_colors_setup() abort
+    hi Pmenu ctermfg=4 guifg=#000080 guibg=#808000 gui=NONE
+    hi PmenuSel ctermfg=4 guifg=#000080 guibg=#b7c7b7 gui=NONE
+    hi CocErrorSign ctermfg=4 guifg=#000080
+    hi PmenuSbar guibg=#bcbcbc
+    hi PmenuThumb guibg=#585858
+endfunc
+ 
+augroup colorscheme_coc_setup | au!
+    au ColorScheme * call s:my_colors_setup()
+augroup END
+
 syntax on
 filetype plugin indent on
 let python_highlight_all=1
