@@ -419,6 +419,33 @@ set statusline+=%*
 set showtabline=2 " Always display the tabline, even if there is only one tab.
 
 "}}}
+" ------------------------------------------------------------------------- "
+"   Python-mode Plugin Settings
+" ------------------------------------------------------------------------- "
+"{{{
+
+let g:pymode = 1
+let g:pymode_options = 1
+let g:pymode_options_max_line_length = 79
+let g:pymode_options_colorcolumn = 1
+let g:pymode_quickfix_minheight = 3
+let g:pymode_quickfix_maxheight = 6
+let g:pymode_preview_height = &previewheight
+let g:pymode_preview_position = 'botright'
+let g:pymode_python = 'python3'
+let g:pymode_indent = 1
+let g:pymode_motion = 1
+let g:pymode_doc = 1
+let g:pymode_doc_bind = 'K'
+let g:pymode_folding = 0
+let g:pymode_lint_on_write = 0
+let g:pymode_syntax = 1
+let g:pymode_syntax_all = 1
+" :PymodeVirtualenv <path> - Activate
+let g:pymode_virtualenv = 1
+let g_pymode_virtualenv_path = "$HOME/dev/python/venvs"
+
+"}}}
 " ------------------------------------------------------------------------- " 
 "   Syntastic Plugin Settings
 " ------------------------------------------------------------------------- "
