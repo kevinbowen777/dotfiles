@@ -155,6 +155,10 @@ alias ed='ed -p"★ > " --verbose'
 alias egrep='egrep --color=auto'
 alias etym='etym.py'
 alias fgrep='fgrep --color=auto'
+alias gits='git status'
+alias gita='git add .'
+alias gitl='git log'
+alias gitp='git push origin master'
 alias grep='grep --color=auto'
 alias hist='history | grep $1' #Requires one input
 alias info='pinfo'
@@ -181,6 +185,9 @@ alias psmem='ps auxf | sort -nr -k -4'
 alias psmem10='ps auxf | sort -nr -k -4 | head -10'
 alias pscpu='ps auxf | sort -nr -k 3'
 alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
+alias pyst='cd ~/dev/python/study'
+alias pyth='cd ~/dev/python'
+alias pytmp='cd ~/dev/python/tmp'
 alias renlow='rename 'y/A-Z/a-z/''
 alias renup='rename 'y/a-z/A-Z/''
 alias sourceb='source ~/.bashrc'
@@ -198,6 +205,7 @@ alias vi='/usr/bin/vim'
 alias vimwik='vi ~/Dropbox/personal/administrativa/vimwiki/index.wiki'
 alias ws='~/bin/wiki_search.py'
 alias xfdev='cd ~/dev/xfce'
+alias xfork='cd ~/dev/xfce/forks'
 alias xfrepo='cd ~/dev/xfce/xfce-repocapp'
 
 
@@ -236,12 +244,14 @@ if [ -n "$DISPLAY" -a "$TERM" == "xterm" ]; then
     export TERM=xterm-256color
 fi
 #
+. ~/bin/git-prompt.sh
 [[ $DISPLAY ]] && shopt -s checkwinsize
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
     xterm*|xfce4*|rxvt*)
 #    export PS1="\[\033[38;5;5m\]\u\[$(tput sgr0)\]@\[$(tput sgr0)\]\[\033[38;5;33m\]\h\[$(tput sgr0)\]\[\033[38;5;196m\]:\[$(tput sgr0)\]\[\033[38;5;87m\]\w\[$(tput sgr0)\]\[\033[38;5;40m\]\\$ "
-     export PS1="\[\033[35m\]\u\[$(tput sgr0)\]@\[$(tput sgr0)\]\[\033[36m\]\h\[$(tput sgr0)\]\[\033[91m\]:\[$(tput sgr0)\]\[\033[96m\]\w\[$(tput sgr0)\]\[\033[92m\]\\$ "
+     export PS1="\[\033[35m\]\u\[$(tput sgr0)\]@\[$(tput sgr0)\]\[\033[36m\]\h\[$(tput sgr0)\]\[\033[91m\]:\[$(tput sgr0)\]\[\033[96m\]\w\[$(tput sgr0)\]\[\033[92m\]\[$(__git_ps1 " (%s)")]\$ "
+#     export PS1="\[\033[35m\]\u\[$(tput sgr0)\]@\[$(tput sgr0)\]\[\033[36m\]\h\[$(tput sgr0)\]\[\033[91m\]:\[$(tput sgr0)\]\[\033[96m\]\w\[$(tput sgr0)\]\[\033[92m\]\\$ "
 #    PS1='\[\e[35m\]\u\[\e[0m\]@\[\e[36m\]\h\[\033[91m\]:\[\033[96m\]\w\[\033[92m\]\$ '
 #    PS1='\[\e[0;35m\]\u\[\e[0m\]@\[\e[0;36m\]\h\[\033[91m\]:\[\033[01;96m\]\w\[\033[01;92m\]\$ '
     ;;
@@ -297,3 +307,12 @@ if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integr
 
 # FZF export default layout - 20220131
 export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --preview '(highlight -O ansi {} || bat --color=always {}) 2> /dev/null | head -500'"
+
+# Export Elasticsearch vars - 20220217
+export ES_HOME='/home/kbowen/bin/elasticsearch-8.0.0'
+
+# https://git-scm.com/book/en/v2/Appendix-A%3A-Git-in-Other-Environments-Git-in-Bash
+. ~/bin/git-completion.bash
+. ~/bin/git-prompt.sh
+export GIT_PS1_SHOWDIRTYSTATE=1
+#export PS1='\w$(__git_ps1 " (%s)")\$ '

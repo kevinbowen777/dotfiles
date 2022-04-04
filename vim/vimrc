@@ -427,11 +427,12 @@ let g:pymode_motion = 1
 let g:pymode_doc = 1
 let g:pymode_doc_bind = 'K'
 let g:pymode_folding = 0
+let g:pymode_lint = 0
 let g:pymode_lint_on_write = 0
 let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
 " :PymodeVirtualenv <path> - Activate
-let g:pymode_virtualenv = 1
+let g:pymode_virtualenv = 0
 let g_pymode_virtualenv_path = "$HOME/dev/python/venvs"
 
 "}}}
@@ -504,9 +505,10 @@ au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
 au bufnewfile *.sh 0r ~/dotfiles/vim/templates/bash_basic_header.template
 au bufnewfile *.pl 0r ~/dotfiles/vim/templates/perl_basic_header.template
 " au bufnewfile *.py 0r ~/dotfiles/vim/templates/python_basic_header.template
-au bufnewfile *.html 0r ~/dotfiles/vim/templates/html_boilerplate.template
+" au bufnewfile *.html 0r ~/dotfiles/vim/templates/html_boilerplate.template
 
 autocmd FileType *.c,*.h setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType yaml setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType css setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType *.js setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType html setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2

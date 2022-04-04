@@ -1,7 +1,9 @@
 # updated 20220207
 # from: https://github.com/github/gitignore
 #
+app.db
 .idea/
+logs/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
