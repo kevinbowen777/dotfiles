@@ -53,6 +53,7 @@ Plug 'xolox/vim-session'
 call plug#end()
 
 colorscheme murphy
+
 """ Customize colors
 func! s:my_colors_setup() abort
     hi Pmenu ctermfg=4 guifg=#000080 guibg=#808000 gui=NONE
