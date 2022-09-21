@@ -1,8 +1,13 @@
 #
 # ~/.bash_profile
 #
-#  Version: 0.0.1
-#  Modified: 20190809
+#  Version: 0.0.2
+#  Modified: 20220922
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 export GPG_TTY=$(tty)
+
+# Added pyenv - 20220922
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
