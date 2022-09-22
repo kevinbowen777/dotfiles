@@ -196,6 +196,8 @@ alias pscpu='ps auxf | sort -nr -k 3'
 alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
 alias pyenv_list='pyenv install --list | grep " 3\.[891]"'
 alias pymrun='python manage.py runserver'
+alias pydj='cd ~/dev/python/repos/django'
+alias pyr='cd ~/dev/python/repos'
 alias pyst='cd ~/dev/python/study'
 alias pyth='cd ~/dev/python'
 alias pytmp='cd ~/dev/python/tmp'
@@ -291,7 +293,7 @@ export ANSIBLE_HOSTS=/etc/ansible/hosts
 export ANSIBLE_INVENTORY=/etc/ansible/hosts
 complete -C /home/kbowen/bin/vault vault
 
-export DATABASE_URL=postgresql://$(whoami)
+# export DATABASE_URL=postgresql://$(whoami)
 export PGPASS='/home/kbowen/.pgpass'
 # Install Ruby Gems to ~/gems
 export GEM_HOME="$HOME/bin/gems"
