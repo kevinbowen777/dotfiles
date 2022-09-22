@@ -295,6 +295,7 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 " Personal coc.nvim modifications
+let g:coc_disable_startup_warning = 1
 " autocmd FileType python let b:coc_suggest_disable = 1
 "augroup colorscheme_coc_setup | au!
 "    au ColorScheme * call s:my_colors_setup()
