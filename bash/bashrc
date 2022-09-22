@@ -157,6 +157,13 @@ alias ed='ed -p"★ > " --verbose'
 alias egrep='egrep --color=auto'
 alias etym='etym.py'
 alias fgrep='fgrep --color=auto'
+alias ghic='gh issue close $1'  # Requires on input
+alias ghicb='gh issue create --label bug'
+alias ghicd='gh issue create --label documentation'
+alias ghice='gh issue create --label enhancement'
+alias ghict='gh issue create --label testing'
+alias ghie='gh issue edit $1'  #Requires one input
+alias ghil='gh issue list'
 alias gits='git status'
 alias gita='git add .'
 alias gitl='git log'
