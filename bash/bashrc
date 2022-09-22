@@ -299,6 +299,9 @@ export PGPASS='/home/kbowen/.pgpass'
 export GEM_HOME="$HOME/bin/gems"
 export PATH="$HOME/bin/gems/bin:$PATH"
 
+# poetry tab completions - 20220922
+poetry completions bash > /etc/bash_completion.d/poetry.bash-completion
+
 # directories for virtualenvwrapper - 20210922
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 export WORKON_HOME=$HOME/dev/python/venvs
