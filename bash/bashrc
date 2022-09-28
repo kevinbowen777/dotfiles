@@ -148,6 +148,7 @@ fi
 #fi
 
 #### Aliases  
+alias bat='bat --theme=Dracula'
 alias cdoc='cdoc.sh'
 alias cl='clear -x'
 alias dict='sdcv'
