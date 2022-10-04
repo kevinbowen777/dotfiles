@@ -218,7 +218,7 @@ alias vi='/usr/bin/vim'
 alias vimwik='vi ~/Dropbox/personal/administrativa/vimwiki/index.wiki'
 alias ws='~/bin/wiki_search.py'
 alias xfdev='cd ~/dev/xfce'
-alias xfrepo='cd ~/dev/xfce/xfce-repocapp'
+alias xfrepo='cd ~/dev/xfce/repos/xfce/xfce-repocapp'
 
 
 #}}}
@@ -319,3 +319,9 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+
+# nvm installation - 20221004
+# https://github.com/nvm-sh/nvm
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
