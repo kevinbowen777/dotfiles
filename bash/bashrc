@@ -158,7 +158,7 @@ alias ed='ed -p"★ > " --verbose'
 alias egrep='egrep --color=auto'
 alias etym='etym.py'
 alias fgrep='fgrep --color=auto'
-alias ghic='gh issue close $1'  # Requires on input
+alias ghic='gh issue close $1'  # Requires one input
 alias ghicb='gh issue create --label bug'
 alias ghicd='gh issue create --label documentation'
 alias ghice='gh issue create --label enhancement'
@@ -209,6 +209,7 @@ alias sucharm='sudo /opt/pycharm/bin/pycharm.sh'
 alias sug='sudo apt upgrade'
 alias sup='sudo apt update'
 alias sur='sudo apt autoremove'
+alias toolbox='cd ~/dev/projects/repos/toolbox'
 alias trace='traceroute --resolve-hostnames'
 alias traceroute='traceroute --resolve-hostnames'
 alias ts='~/bin/torrent_search.py'
@@ -281,7 +282,7 @@ if [ ! -S ~/.ssh/ssh_auth_sock ]; then
 fi
 
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
-ssh-add -l > /dev/null || ssh-add ~/.ssh/wintermute_local_key_2022
+ssh-add -l > /dev/null || ssh-add ~/.ssh/leeuin_key_2022
 # ssh-add -l > /dev/null || ssh-add ~/.ssh/jabberwock_local_key_2022
 
 # Changes prompt when remotely ssh'd into host
@@ -301,13 +302,16 @@ export GEM_HOME="$HOME/bin/gems"
 export PATH="$HOME/bin/gems/bin:$PATH"
 
 # poetry tab completions - 20220922
-poetry completions bash > /etc/bash_completion.d/poetry.bash-completion
+# poetry completions bash > /etc/bash_completion.d/poetry.bash-completion
+poetry completions bash > ~/.bash-completion
 
 # directories for virtualenvwrapper - 20210922
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+# export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+export VIRTUALENVWRAPPER_PYTHON=/home/kbowen/.pyenv/versions/3.11.0/bin/python3
 export WORKON_HOME=$HOME/dev/python/venvs
 export PROJECT_HOME=$HOME/dev/
-source /home/kbowen/.local/bin/virtualenvwrapper.sh
+# source /home/kbowen/.local/bin/virtualenvwrapper.sh
+source /home/kbowen/.pyenv/versions/3.11.0/bin/virtualenvwrapper.sh
 
 # FZF export default layout - 20220131
 export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --preview '(highlight
