@@ -50,6 +50,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-fugitive'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
+Plug 'dense-analysis/ale'
 
 call plug#end()
 
@@ -160,6 +161,9 @@ let g:ansible_template_syntaxes = { '*.rb.j2': 'ruby' }
 " ------------------------------------------------------------------------- "
 "{{{
 
+let g:coc_node_path='/home/kbowen/.config/nvm/versions/node/v19.0.0/bin/node'
+let g:coc_disable_startup_warning = 1
+
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
@@ -206,7 +210,7 @@ function! s:show_documentation()
 endfunction
 
 " Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
+autocmd CursorHold * silent! call CocActionAsync('highlight')
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
@@ -412,7 +416,8 @@ call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#151515')
 " ------------------------------------------------------------------------- "
 "{{{
 
-set rtp+=~/.local/lib/python3.8/site-packages/powerline/bindings/vim/
+set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
+" set rtp+=~/.local/lib/python3.8/site-packages/powerline/bindings/vim/
 set statusline+=%#warningmsg#
 set statusline+=%{FugitiveStatusline()}
 set statusline+=%{SyntasticStatuslineFlag()}
