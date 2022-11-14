@@ -67,13 +67,6 @@ export LESS_TERMCAP_so=$(printf '\e[01;33m') # enter standout mode -
 export LESS_TERMCAP_ue=$(printf '\e[0m') # leave underline mode
 export LESS_TERMCAP_us=$(printf '\e[04;36m') # enter underline mode
  
-# Perl paths
-PATH="/home/kbowen/bin/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/home/kbowen/bin/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/home/kbowen/bin/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/home/kbowen/bin/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/kbowen/bin/perl5"; export PERL_MM_OPT;
-
 PATH="${PATH}:/home/kbowen/bin:/home/kbowen/.local/bin:"; export PATH;
 
 # Color Definitions
@@ -152,6 +145,12 @@ alias bat='bat --theme=Dracula'
 alias cdoc='cdoc.sh'
 alias cl='clear -x'
 alias dict='sdcv'
+alias docu='docker compose up'
+alias docd='docker compose down'
+alias docub='docker compose up --build'
+alias docup='docker compose exec web coverage run -m pytest'
+alias docur='docker compose exec web coverage report'
+alias docuh='docker compose exec web coverage html'
 alias dot='cd /home/kbowen/dotfiles'
 alias dotf='cd ~/dotfiles'
 alias ed='ed -p"★ > " --verbose'
@@ -210,6 +209,7 @@ alias sug='sudo apt upgrade'
 alias sup='sudo apt update'
 alias sur='sudo apt autoremove'
 alias toolbox='cd ~/dev/projects/repos/toolbox'
+alias tools='cd ~/dev/projects/repos/toolbox'
 alias trace='traceroute --resolve-hostnames'
 alias traceroute='traceroute --resolve-hostnames'
 alias ts='~/bin/torrent_search.py'
@@ -297,35 +297,34 @@ complete -C /home/kbowen/bin/vault vault
 
 # export DATABASE_URL=postgresql://$(whoami)
 export PGPASS='/home/kbowen/.pgpass'
-# Install Ruby Gems to ~/gems
-export GEM_HOME="$HOME/bin/gems"
-export PATH="$HOME/bin/gems/bin:$PATH"
 
 # poetry tab completions - 20220922
 # poetry completions bash > /etc/bash_completion.d/poetry.bash-completion
-poetry completions bash > ~/.bash-completion
+# poetry completions bash > ~/.bash-completion
 
 # directories for virtualenvwrapper - 20210922
 # export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-export VIRTUALENVWRAPPER_PYTHON=/home/kbowen/.pyenv/versions/3.11.0/bin/python3
-export WORKON_HOME=$HOME/dev/python/venvs
+# export VIRTUALENVWRAPPER_PYTHON=/home/kbowen/.pyenv/versions/3.11.0/bin/python3
+# export WORKON_HOME=$HOME/dev/python/venvs
 export PROJECT_HOME=$HOME/dev/
 # source /home/kbowen/.local/bin/virtualenvwrapper.sh
-source /home/kbowen/.pyenv/versions/3.11.0/bin/virtualenvwrapper.sh
+# source /home/kbowen/.pyenv/versions/3.11.0/bin/virtualenvwrapper.sh
 
 # FZF export default layout - 20220131
 export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --preview '(highlight
 -O ansi {} || batcat --color=always {}) 2> /dev/null | head -500'"
-
-# pyenv installation - 20220922
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
 
 # nvm installation - 20221004
 # https://github.com/nvm-sh/nvm
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# pyenv installation - 20220922
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+export PATH="$PYENV_ROOT/shims:$PATH"
+# export PATH="$HOME/.pyenv/bin:$PATH"
+# eval "$(pyenv init -)"
+# eval "$(pyenv virtualenv-init -)"
+eval "$(pyenv init --path)"
