@@ -6,7 +6,7 @@
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
 # Version: 2.7
 # Source : http://www.github.com/kevinbowen777/dotfiles.git
-# Last modified: 20220922
+# Last modified: 20221128
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # 
 # To pick up the latest default .bashrc content,
@@ -36,6 +36,10 @@ set -o vi
 shopt -s histappend
 shopt -s checkwinsize
 export MYVIMRC=~/.vimrc
+
+# Disable system bell
+xset b off
+xset b 0 0 0
 
 # History control
 unset HISTFILESIZE
