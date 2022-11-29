@@ -1,7 +1,18 @@
+# .inputrc
+
+# Change the timeout for key sequences as 500ms is too fast.
+set keyseq-timeout 1200
+
+# By default, completions are not highlighted in color.
+set colored-stats on
+set colored-completion-prefix on
+
 set meta-flag on
 set input-meta on
 set convert-meta on
 set output-meta on
+
+# Add mode indicators to command line
 set show-mode-in-prompt on
 set vi-ins-mode-string "+"
 set vi-cmd-mode-string ":"
