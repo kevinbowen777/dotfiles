@@ -269,7 +269,8 @@ fi
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
     xterm*|xfce4*|rxvt*)
-    PS1='\[\e[0;35m\]\u\[\e[0m\]@\[\e[0;36m\]\h\[\033[91m\]:\[\033[01;96m\]\w\[\033[01;92m\]\$ '
+    PS1='\[\e[0;35m\]\u\[\e[0m\]@\[\e[0;36m\]\h\[\e[91m\]:\[\e[01;96m\]\w\[\e[01;92m\]\$ '
+    # PS1='\[\e[0;35m\]\u\[\e[0m\]@\[\e[0;36m\]\h\[\033[91m\]:\[\033[01;96m\]\w\[\033[01;92m\]\$ '
     ;;
     *)
     ;;
@@ -296,7 +297,8 @@ ssh-add -l > /dev/null || ssh-add ~/.ssh/leeuin_key_2022
 
 # Changes prompt when remotely ssh'd into host
 if [ -n "$SSH_CLIENT" ]; then text=" [remote]"
-    export PS1='\[\033[01;35m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w${text}$\[\033[01;37m\] '
+    export PS1='\[\e[01;35m\]\u@\h\[\e[00m\]:\[\e[01;34m\]\w${text}$\[\e[01;37m\] '
+    # export PS1='\[\033[01;35m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w${text}$\[\033[01;37m\] '
 fi
 
 #}}}
