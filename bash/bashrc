@@ -292,7 +292,7 @@ if [ ! -S ~/.ssh/ssh_auth_sock ]; then
 fi
 
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
-ssh-add -l > /dev/null || ssh-add ~/.ssh/leeuin_key_2022
+ssh-add -l > /dev/null || ssh-add ~/.ssh/leeuin_key_2023
 # ssh-add -l > /dev/null || ssh-add ~/.ssh/jabberwock_local_key_2022
 
 # Changes prompt when remotely ssh'd into host
