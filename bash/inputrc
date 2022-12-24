@@ -1,4 +1,8 @@
 # .inputrc
+# updated: 20221221
+# References:
+# https://wiki.archlinux.org/title/readline
+#
 
 # Change the timeout for key sequences as 500ms is too fast.
 set keyseq-timeout 1200
