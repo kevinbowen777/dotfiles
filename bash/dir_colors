@@ -102,7 +102,8 @@ OTHER_WRITABLE 34;42 # dir that is other-writable (o+w) and not sticky
 STICKY 37;44	# dir with the sticky bit set (+t) and not other-writable
 
 # This is for files with execute permission:
-EXEC 01;32
+EXEC 01;31
+# EXEC 01;32
 
 # List any file extensions like '.gz' or '.tar' that you would like ls
 # to colorize below. Put the extension, a space, and the color init string.
@@ -119,7 +120,8 @@ EXEC 01;32
 .sh  01;32
 .csh 01;32
 .pl  01;32
-.py  01;32
+.py  01;31
+# .py  01;32
 .pyc  01;32
 
 
@@ -220,7 +222,9 @@ EXEC 01;32
 .ogx 01;35
 
 # Document files
-.cfg 00;32
+.cfg 01;33
+.ini 01;33
+# .cfg 00;32
 .md 00;32
 .pdf 00;32
 .ps 00;32
@@ -229,8 +233,15 @@ EXEC 01;32
 .diff 00;32
 .log 00;32
 .tex 00;32
+.json 00;32
 .toml 00;32
+.yaml 00;32
+.yml 00;32
 .doc 00;32
+
+# Database files
+.sqlite 00;36
+.sqlite3 00;36
 
 # audio formats
 .aac 00;36
