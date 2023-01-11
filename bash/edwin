@@ -1,0 +1,38 @@
+;;;; ~/.edwin
+;;;; Configuration file for the Edwin text editor.
+;;;; Created: 20230111
+;;;; Shamelessly copied from:
+;;;; https://www.monolune.com/articles/a-sample-edwin-configuration-file/
+
+;;; Settings to use only when Edwin is in a graphical window (as opposed to
+;;; being in a terminal).
+(when (not (member 'console create-editor-args))
+  ((ref-command set-foreground-color) "green")
+  ((ref-command set-background-color) "black")
+  ((ref-command set-mouse-color) "black")
+  ((ref-command set-cursor-color) "black")
+  ((ref-command set-font) "10x20")
+  ((ref-command set-frame-size) 85 40)
+  ((ref-command set-frame-position) 550 150))
+
+;;; Auto-saves.
+;; Number of keyboard input characters between auto-saves.
+(set-variable! auto-save-interval 100)
+
+;;; Backups.
+(set-variable! backup-by-copying #t)
+(set-variable! kept-new-versions 5)
+(set-variable! kept-old-versions 0)
+;; Delete excess backup versions silently.
+(set-variable! trim-versions-without-asking #t)
+;; Always use version numbers for backup files.
+(set-variable! version-control #t)
+;; Create backup files even for files covered by version control.
+(set-variable! vc-make-backup-files #t)
+
+;;; Other.
+(set-variable! require-final-newline #t)
+;; Protect against I/O errors while saving files.
+(set-variable! file-precious-flag #t)
+;; Uncomment below message for troubleshooting
+;;(message ".edwin is loaded!")
