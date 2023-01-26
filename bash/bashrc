@@ -55,7 +55,8 @@ export HISTTIMEFORMAT="$(echo -e ${CYAN})[%d/%m %H:%M:%S]$(echo -e ${PURPLE}) "
 PROMPT_COMMAND='echo -en "\033]0; $("pwd") \a"'
 
 # Set XDG User-level variables
-export XDG_DATA_DIRS=$HOME/.local/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/share
+export XDG_DATA_DIRS=$HOME/.local/share:/usr/share
+# export XDG_DATA_DIRS=$HOME/.local/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/share
 export XDG_DATA_HOME=$HOME/.local
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
@@ -175,7 +176,7 @@ alias gits='git status'
 alias gita='git add .'
 alias gitl='git log'
 alias gitp='git push all master;git push origin master'
-# alias gitp='git push origin master'
+alias gitpom='git push origin master'
 alias grep='grep --color=auto'
 alias hist='history | grep $1' #Requires one input
 alias howto='cd /home/kbowen/docs/tech/howto'
