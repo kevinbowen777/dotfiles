@@ -147,6 +147,7 @@ fi
 
 #### Aliases  
 alias bat='bat --theme=Dracula'
+alias bashed='cd ~/dotfiles && vi bash/bashrc'
 alias bestp='cd /home/kbowen/docs/tech/best_practices'
 alias cdoc='cdoc.sh'
 alias cl='clear -x'
@@ -196,6 +197,7 @@ alias mstop='audtool --playback-stop'
 alias mlb='mlbscores.py'
 alias mlbwest='mlb -s | head -n21 | tail -n6'
 alias ms='~/bin/movie_search.py'
+alias odin='cd ~/dev/projects/learning/odin-project/'
 alias pd='perldoc'
 alias perdoc='perldoc'
 alias ports='netstat -tulanp'
