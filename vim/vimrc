@@ -160,7 +160,7 @@ let g:ansible_template_syntaxes = { '*.rb.j2': 'ruby' }
 " ------------------------------------------------------------------------- "
 "{{{
 
-let g:coc_global_extensions = ['coc-html', 'coc-css', 'coc-json', 'coc-pyright']
+let g:coc_global_extensions = ['coc-html', 'coc-css', 'coc-json', 'coc-pyright', 'coc-tsserver']
 let g:coc_user_config = {'diagnostic.checkCurrentLine': 1}
 let g:coc_node_path='/home/kbowen/.config/nvm/versions/node/v19.1.0/bin/node'
 let g:coc_disable_startup_warning = 1
