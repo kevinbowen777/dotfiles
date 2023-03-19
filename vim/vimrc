@@ -508,6 +508,7 @@ let wiki = {}
 let g:vimwikidir = $HOME . "/Dropbox/personal/administrativa/vimwiki"
 let wiki.path = g:vimwikidir
 let g:vimwiki_list=[wiki]
+let g:vimwiki_url_maxsave=0
 
 highlight VimwikiHeader1 guifg=#FF00FF
 highlight VimwikiHeader2 guifg=#FF0000
