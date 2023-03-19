@@ -331,7 +331,8 @@ nnoremap <silent> <leader>gp :silent Git push origin master<CR>
 "{{{
 
 let g:fzf_layout = { 'down': '40%'}
-let $FZF_DEFAULT_COMMAND = 'rg --files --ignore-case --hidden -g "!{.git,.pyc}/*"'
+" let $FZF_DEFAULT_COMMAND = 'rg --files --ignore-case --hidden -g "!{.git,.pyc}/*"'
+let $FZF_DEFAULT_COMMAND='rg --files --hidden -g "!{.git,tmp,bundle,po,htmlcov,staticfiles,migrations,.ssh,.npm,.vscode,__pycache__,bundle,.mozilla,.ipython,.pip-audit-cache,.fzf,.dotnet,.cert,.dropbox,downloads,.cache,.dropbox-dist,.config}/*"'
 command! -bang -nargs=? -complete=dir Files
      \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
@@ -495,6 +496,7 @@ endfunction
 
 let g:session_autosave = 'yes'
 let g:session_autosave_periodic = 30
+let g:session_autoload = 'no'
 
 "}}}
 " ------------------------------------------------------------------------- "
