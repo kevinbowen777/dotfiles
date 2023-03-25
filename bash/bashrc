@@ -4,9 +4,9 @@
 #{{{
 # Personal $HOME/.bashrc file
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
-# Version: 2.3
+# Version: 2.4
 # Source : http://www.github.com/kevinbowen777/dotfiles.git
-# Last modified: 20230310
+# Last modified: 20230325
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # 
 # To pick up the latest default .bashrc content,
@@ -72,7 +72,9 @@ export LESS_TERMCAP_so=$(printf '\e[01;33m') # enter standout mode -
 export LESS_TERMCAP_ue=$(printf '\e[0m') # leave underline mode
 export LESS_TERMCAP_us=$(printf '\e[04;36m') # enter underline mode
  
-PATH="${PATH}:/home/kbowen/bin:/home/kbowen/.local/bin:"; export PATH;
+# PATH="${PATH}:/home/kbowen/bin:/home/kbowen/.local/bin"; export PATH;
+export PATH="${PATH}:/home/kbowen/bin:/home/kbowen/.local/bin"
+# PATH="${PATH}"; export PATH;
 
 # Color Definitions
 # {{{ -----------------------------------------------------------------
@@ -347,9 +349,11 @@ export PROJECT_HOME=$HOME/dev/
 # source /home/kbowen/.local/bin/virtualenvwrapper.sh
 # source /home/kbowen/.pyenv/versions/3.11.0/bin/virtualenvwrapper.sh
 
-# FZF export default layout - 20220131
+# FZF export default layout - 20230325
+# export FZF_DEFAULT_OPTS="--height 40% --layout=reverse"
 # export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --preview '(highlight -O ansi {} || batcat --color=always {}) 2> /dev/null | head -500'"
-export FZF_DEFAULT_OPTS="--multi --height=50% --margin=5%,2%,2%,5% --reverse --preview='bat {} | head -n 50' --preview-window=70%,border-double --border=double --prompt='▶' --pointer='→' --marker='✗' --header='CTRL-c or ESC to quit' --color='dark,fg:magenta,border:green'"
+# export FZF_DEFAULT_OPTS="--multi --height=50% --margin=5%,2%,2%,5% --reverse --preview='bat {} | head -n 50' --preview-window=70%,border-double --border=double --prompt='▶' --pointer='→' --marker='✗' --header='CTRL-c or ESC to quit' --color='dark,fg:magenta,border:green'"
+export FZF_DEFAULT_OPTS="--multi --height=50% --margin=5%,2%,2%,5% --reverse --preview='(highlight -O ansi {} || bat {}) 2> /dev/null | head -n 50' --preview-window=45%,border-double --border=double --prompt='▶' --pointer='→' --marker='✗' --header='CTRL-c or ESC to quit' --color='dark,fg:magenta,border:green'"
 # FZF_DEFAULT_OPTS="+s --layout=reverse --height 40% --multi --cycle --no-color --border=rounded --preview-window=border-rounded --info=hidden --bind 'alt-p:preview-page-up,alt-n:preview-page-down' --bind 'ctrl-a:select-all' --bind 'ctrl-s:toggle-sort' --bind 'ctrl-p:toggle-preview' "
 
 # Use the CLI find to get all files, excluding any filepath
