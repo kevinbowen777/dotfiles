@@ -108,6 +108,10 @@ set shiftwidth=4
 set softtabstop=4
 
 " Folding
+" set foldmethod=indent
+" set foldnestmax=10
+" set nofoldenable
+" set foldlevel=2
 set foldmethod=marker
 nnoremap <space> za
 
@@ -139,7 +143,7 @@ for key in ['<Up>', '<Down>', '<Left>', '<Right>']
 endfor
 
 " set highlight links in help
-autocmd BufEnter * set conceallevel=0
+autocmd BufEnter * set conceallevel=2
 autocmd BufEnter * hi link HelpBar Normal
 autocmd BufEnter * hi link HelpStar Normal
 
@@ -501,9 +505,12 @@ let g:session_autoload = 'no'
 "{{{
 
 let wiki = {}
-let g:vimwikidir = $HOME . "/Dropbox/personal/administrativa/vimwiki"
+" let g:vimwikidir = $HOME . "/Dropbox/personal/administrativa/vimwiki"
+let g:vimwikidir = $HOME . "/docs/vimwiki"
 let wiki.path = g:vimwikidir
-let g:vimwiki_list=[wiki]
+" let g:vimwiki_list=[wiki]
+let g:vimwiki_list=[{'path': '~/docs/vimwiki/',
+                    \ 'syntax': 'markdown', 'ext': '.md'}]
 let g:vimwiki_url_maxsave=0
 
 highlight VimwikiHeader1 guifg=#FF00FF
@@ -514,6 +521,14 @@ highlight VimwikiHeader5 guifg=#FF00FF
 highlight VimwikiHeader6 guifg=#FFF000
 highlight VimwikiHeader7 guifg=#FFFF00
 
+highlight htmlH1 guifg=#FF00FF
+highlight htmlH2 guifg=#FF0000
+highlight htmlH3 guifg=#FFFF00
+highlight htmlH4 guifg=#00FFFF
+highlight htmlH5 guifg=#FF00FF
+highlight htmlH6 guifg=#FFF000
+highlight htmlH7 guifg=#FFFF00
+
 "}}}
 " ------------------------------------------------------------------------- "
 "   Vim-Markdown & Preview Plugin Settings
@@ -521,6 +536,9 @@ highlight VimwikiHeader7 guifg=#FFFF00
 "{{{
 
 let g:vim_markdown_open_url_under_cursor = 1
+let g:vim_markdown_follow_anchor = 1
+" let g:vim_markdown_conceallevel = 1
+" let g:vim_markdown_folding_style_pythonic = 1
 
 "Markdown-Preview configuration
 
