@@ -4,10 +4,10 @@
 " Purpose: Set vim configuration                                                
 " Requirements: vim-plug                                                        
 "                                                                               
-" Version: 1.24                                                                 
+" Version: 1.25                                                                 
 " Author: Kevin Bowen kevin.bowen@gmail.com                                     
 "                                                                               
-" Updated: 20230325
+" Updated: 20230405
 "                                                                               
 " ------------------------------------------------------------------------- "   
 "}}}
@@ -48,6 +48,8 @@ Plug 'vim-syntastic/syntastic'
 Plug 'vimwiki/vimwiki'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-repeat'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 Plug 'godlygeek/tabular'
@@ -516,16 +518,16 @@ let g:vimwiki_url_maxsave=0
 highlight VimwikiHeader1 guifg=#FF00FF
 highlight VimwikiHeader2 guifg=#FF0000
 highlight VimwikiHeader3 guifg=#FFFF00
-highlight VimwikiHeader4 guifg=#00FFFF
-highlight VimwikiHeader5 guifg=#FF00FF
+highlight VimwikiHeader5 guifg=#00FFFF
+highlight VimwikiHeader4 guifg=#FF00FF
 highlight VimwikiHeader6 guifg=#FFF000
 highlight VimwikiHeader7 guifg=#FFFF00
 
 highlight htmlH1 guifg=#FF00FF
 highlight htmlH2 guifg=#FF0000
 highlight htmlH3 guifg=#FFFF00
-highlight htmlH4 guifg=#00FFFF
-highlight htmlH5 guifg=#FF00FF
+highlight htmlH4 guifg=#FF00FF
+highlight htmlH5 guifg=#00FFFF
 highlight htmlH6 guifg=#FFF000
 highlight htmlH7 guifg=#FFFF00
 
@@ -656,6 +658,11 @@ au bufnewfile *.sh 0r ~/dotfiles/vim/templates/bash_basic_header.template
 au bufnewfile *.pl 0r ~/dotfiles/vim/templates/perl_basic_header.template
 " au bufnewfile *.py 0r ~/dotfiles/vim/templates/python_basic_header.template
 " au bufnewfile *.html 0r ~/dotfiles/vim/templates/html_boilerplate.template
+
+" Quickly insert an empty new line without entering insert mode
+" https://vi.stackexchange.com/a/29278/6196
+" nnoremap <Leader>o o<Esc>0"_D
+" nnoremap <Leader>O O<Esc>0"_D
 
 autocmd FileType *.c,*.h setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType yaml setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
