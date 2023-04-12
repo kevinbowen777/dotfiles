@@ -48,7 +48,7 @@ HISTSIZE=1000   # History size for current shell only
 HISTFILESIZE=5000
 export HISTSIZE
 export HISTCONTROL=ignoredups:erasedups
-export HISTIGNORE="ls:ps:docstop:docstart:history:cl:exit:sourceb:ll:cd:gits:gita:ghic:ghil:run:gitp:cd -"
+export HISTIGNORE="ls:ps:docstop:docstart:history:cl:exit:sourceb:ll:cd:gits:ghic:ghil:run:gitp:cd -"
 export HISTTIMEFORMAT="$(echo -e ${CYAN})[%d/%m %H:%M:%S]$(echo -e ${PURPLE}) "
 # export HISTTIMEFORMAT="$(echo -e ${CYAN})[%d/%m %H:%M:%S]${NC} "
 # export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
