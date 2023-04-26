@@ -29,8 +29,8 @@ Xft.autohint:	false
 Xft.lcdfilter:	lcddefault
 !
 ! URxvt terminal ----------------------------------------
-URxvt.perl-ext-common: default,matcher,tabbed,-confirm-paste,font-size,fullscreen,keyboard-select
-! URxvt.perl-ext-common: default,matcher,tabbed,-confirm-paste,selection-to-clipboard,font-size,fullscreen,keyboard-select
+! URxvt.perl-ext-common: default,matcher,tabbed,-confirm-paste,font-size,fullscreen,keyboard-select
+URxvt.perl-ext-common: default,matcher,tabbed,-confirm-paste,selection-to-clipboard,font-size,fullscreen,keyboard-select
 URxvt.font:		    xft:DroidSansMono Nerd Font:size=11
 URxvt.boldFont:		xft:DroidSansMono Nerd Font:size=11
 URxvt.letterSpace: -1
