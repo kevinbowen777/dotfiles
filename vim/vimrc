@@ -355,7 +355,8 @@ nnoremap <silent> <leader>s :Rg<CR>
 "{{{
 
 " load NerdFont
-set guifont=DroidSansMono\ Nerd\ Font\ 11
+" set guifont=DroidSansMono\ Nerd\ Font\ 12
+set guifont=BitstreamVeraSansMono\ Nerd\ Font\ Mono\ 12
 let g:webdevicons_enable = 1
 let g:webdevicons_enable_nerdtree = 1
 
