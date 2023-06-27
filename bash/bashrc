@@ -219,6 +219,7 @@ alias pscpu='ps auxf | sort -nr -k 3'
 alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
 alias pyenv_list='pyenv install --list | grep " 3\.[891]"'
 alias pymrun='python manage.py runserver'
+alias pymrun+='python manage.py runserver_plus --cert-file cert.crt'
 alias pydj='cd ~/dev/python/repos/django'
 alias pyr='cd ~/dev/python/repos'
 alias pysand='cd ~/dev/python/sandbox'
@@ -396,3 +397,7 @@ export PATH="$PYENV_ROOT/shims:$PATH"
 # eval "$(pyenv init -)"
 # eval "$(pyenv virtualenv-init -)"
 eval "$(pyenv init --path)"
+
+# Ruby - rbenv - 20230625
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
