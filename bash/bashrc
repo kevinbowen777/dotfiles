@@ -157,6 +157,7 @@ alias cl='clear -x'
 alias dict='sdcv'
 # alias dictw='curl dict://dict.org/d:$1'
 alias djstart='cd ~/dev/python/repos/django/django-start'
+alias djtree='tree -I "staticfiles|templates|__pycache__|htmlcov|static|media|docs|migrations|images"'
 alias docu='docker compose up'
 alias docd='docker compose down'
 alias docnox='docker compose exec web nox'
@@ -173,10 +174,10 @@ alias egrep='egrep --color=auto'
 alias etym='etym.py'
 alias fgrep='fgrep --color=auto'
 alias ghic='gh issue close $1'  # Requires one input
-alias ghicb='gh issue create --label bug'
-alias ghicd='gh issue create --label documentation'
-alias ghice='gh issue create --label enhancement'
-alias ghict='gh issue create --label testing'
+alias ghicb='gh issue create --label bug --assignee @me'
+alias ghicd='gh issue create --label documentation --assignee @me'
+alias ghice='gh issue create --label enhancement --assignee @me'
+alias ghict='gh issue create --label testing --assignee @me'
 alias ghie='gh issue edit $1'  #Requires one input
 alias ghil='gh issue list --limit 100'
 alias gits='git status'
@@ -290,6 +291,18 @@ docstop () {
     echo "docker service stopped"
     sudo systemctl stop containerd
     echo "containerd service stopped. Good night, moon!"
+}
+pybaseinstall () {
+    python -m pip install ipython \
+        friendly \
+        colorama \
+        glances \
+        frogmouth \
+        pip-check \
+        pip-audit \
+        pydf \
+        pyright \
+        tldr
 }
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
