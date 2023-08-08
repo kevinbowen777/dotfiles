@@ -200,8 +200,16 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
+" nmap <silent> gi <Plug>(coc-implementation) Not implemented in pyright
+" See: https://github.com/fannheyward/coc-pyright/issues/420#issuecomment-1347943845
+nmap <silent> gi yiw:Rg <C-R>" <CR>
 nmap <silent> gr <Plug>(coc-references)
+
+" Refer to note above for gi - 20230722
+command! -bang -nargs=* Rg
+    \ call fzf#vim#grep('rg --column --line-number --no-heading --color=always --case-sensitive '
+    \ . (len(<q-args>) > 0 ? <q-args> : '""'), 0,
+    \ fzf#vim#with_preview({'options': ['--delimiter=:', '--nth=2..', '--layout=reverse', '--info=inline']}), <bang>0)
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call ShowDocumentation()<CR>
@@ -300,16 +308,16 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 " Personal coc.nvim modifications
-let g:coc_disable_startup_warning = 1
+
 " autocmd FileType python let b:coc_suggest_disable = 1
 "augroup colorscheme_coc_setup | au!
 "    au ColorScheme * call s:my_colors_setup()
 "augroup END
 
 "}}}
-" ------------------------------------------------------------------------- "   
-"   Fugitive Plugin Settings                                                    
-" ------------------------------------------------------------------------- "   
+" ------------------------------------------------------------------------- "
+"   Fugitive Plugin Settings
+" ------------------------------------------------------------------------- "
 "{{{                                                                            
                                                                                  
 nnoremap <leader>gs :Git status<CR>                                             
@@ -414,7 +422,7 @@ call NERDTreeHighlightFile('bashrc', 'Gray', 'none', '#686868', '#151515')
 call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#151515')
 
 "}}}
-" ------------------------------------------------------------------------- " 
+" ------------------------------------------------------------------------- "
 "   Powerline Plugin Settings
 " ------------------------------------------------------------------------- "
 "{{{
@@ -456,7 +464,7 @@ let g:pymode_virtualenv = 0
 let g_pymode_virtualenv_path = "$HOME/dev/python/venvs"
 
 "}}}
-" ------------------------------------------------------------------------- " 
+" ------------------------------------------------------------------------- "
 "   Syntastic Plugin Settings
 " ------------------------------------------------------------------------- "
 "{{{
@@ -670,3 +678,4 @@ autocmd FileType yaml setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType css setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType *.js setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType html setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType python let b:coc_root_patterns = ['.git', '.env', 'venv', '.venv', 'setup.cfg', 'setup.py', 'pyproject.toml', 'pyrightconfig.json']
