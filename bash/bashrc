@@ -414,3 +414,6 @@ eval "$(pyenv init --path)"
 # Ruby - rbenv - 20230625
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+# pyright - 20230811
+export PYRIGHT_PYTHON_FORCE_VERSION="latest"
