@@ -4,10 +4,10 @@
 " Purpose: Set vim configuration                                                
 " Requirements: vim-plug                                                        
 "                                                                               
-" Version: 1.25                                                                 
+" Version: 1.30                                                                 
 " Author: Kevin Bowen kevin.bowen@gmail.com                                     
 "                                                                               
-" Updated: 20230405
+" Updated: 20230906
 "                                                                               
 " ------------------------------------------------------------------------- "   
 "}}}
@@ -31,20 +31,21 @@ set termguicolors
 set showcmd
 let mapleader = ","
 
+" Load Plug
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/dotfiles/vim/'
 if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+" Load Plugins
 call plug#begin('~/dotfiles/vim/bundle')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
-Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
-Plug 'vim-syntastic/syntastic'
+Plug 'dense-analysis/ale'
 Plug 'vimwiki/vimwiki'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-fugitive'
@@ -58,8 +59,8 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd ~/dotfiles/vim/bundle/markdown-
 
 call plug#end()
 
+" Customize colors
 colorscheme murphy
-""" Customize colors
 func! s:my_colors_setup() abort
     hi Pmenu ctermfg=4 guifg=#000080 guibg=#808000 gui=NONE
     hi PmenuSel ctermfg=4 guifg=#000080 guibg=#b7c7b7 gui=NONE
@@ -75,7 +76,36 @@ augroup END
 
 syntax on
 filetype plugin indent on
+" https://www.reddit.com/r/vim/wiki/where_to_put_filetype_specific_stuff
+augroup my_filetypes
+    autocmd!
+    autocmd BufNewFile,BufRead *.c,*.h setlocal expandtab shiftwidth=2 tabstop=2
+    autocmd BufNewFile,BufRead *.js,*.html,*.css,*.yaml setlocal expandtab tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.py setlocal
+        \ tabstop=4
+        \ softtabstop=4
+        \ shiftwidth=4
+        \ textwidth=88
+        \ expandtab
+        \ autoindent
+        \ fileformat=unix
+augroup END
+
 let python_highlight_all=1
+
+" Use the below highlight group when displaying bad whitespace is desired.
+" See: https://alvinalexander.com/linux/vi-vim-editor-color-scheme-syntax/
+highlight BadWhitespace ctermbg=DarkMagenta guibg=DarkMagenta
+
+" Display tabs at the beginning of a line in Python mode as bad.
+au BufNewFile,BufRead *.py,*.pyw match BadWhitespace /^\t\+/
+
+" Make trailing whitespace be flagged as bad.
+au BufNewFile,BufRead *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+" Automatically add headers to new bash & perl files.
+au BufNewFile *.sh 0r ~/dotfiles/vim/templates/bash_basic_header.template
+au BufNewFile *.pl 0r ~/dotfiles/vim/templates/perl_basic_header.template
 
 " Appearance
 set cmdheight=2
@@ -110,11 +140,11 @@ set shiftwidth=4
 set softtabstop=4
 
 " Folding
-" set foldmethod=indent
-" set foldnestmax=10
-" set nofoldenable
-" set foldlevel=2
-set foldmethod=marker
+set foldmethod=indent
+" set foldmethod=marker
+set foldnestmax=10
+set foldenable
+set foldlevel=99
 nnoremap <space> za
 
 " Tab-completion in command-line mode
@@ -124,11 +154,11 @@ set wildmenu
 " Shortcut to rapidly toggle 'set list'
 nnoremap <leader>l :set list!<CR>
 
-" Source vimrc
-nnoremap <leader>sv :source ~/.vimrc<CR>
-
 " Use symbols for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
+
+" Source vimrc
+nnoremap <leader>sv :source ~/.vimrc<CR>
 
 " Simplify moving between windows
 map <C-h> <C-w>h
@@ -157,6 +187,7 @@ set directory=~/tmp/.swp//
 " ------------------------------------------------------------------------- "
 "   Plugin Settings Section
 " ------------------------------------------------------------------------- "
+
 "{{{
 " ------------------------------------------------------------------------- "
 "   COC coc.nvim Plugin Settings
@@ -167,6 +198,8 @@ let g:coc_global_extensions = ['coc-html', 'coc-css', 'coc-json', 'coc-pyright',
 let g:coc_user_config = {'diagnostic.checkCurrentLine': 1}
 let g:coc_node_path='/home/kbowen/.config/nvm/versions/node/v19.8.1/bin/node'
 let g:coc_disable_startup_warning = 1
+
+autocmd FileType python let b:coc_root_patterns = ['.git', '.env', 'venv', '.venv', 'setup.cfg', 'setup.py', 'pyproject.toml', 'pyrightconfig.json']
 
 " You have to remap <cr> to make it confirm completion.
 inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
@@ -429,85 +462,48 @@ call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#151515')
 
 set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
 " set rtp+=~/.local/lib/python3.8/site-packages/powerline/bindings/vim/
+" set statusline=%{FugitiveStatusline()}%f%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
 set statusline+=%#warningmsg#
 set statusline+=%{FugitiveStatusline()}
-set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-set showtabline=2 " Always display the tabline, even if there is only one tab.
+" Always display the tabline, even if there is only one tab
+set showtabline=2
 
 "}}}
 " ------------------------------------------------------------------------- "
-"   Python-mode Plugin Settings
+"   Ale Plugin Settings
 " ------------------------------------------------------------------------- "
 "{{{
 
-let g:pymode = 1
-let g:pymode_options = 1
-let g:pymode_options_max_line_length = 79
-let g:pymode_options_colorcolumn = 1
-let g:pymode_quickfix_minheight = 3
-let g:pymode_quickfix_maxheight = 6
-let g:pymode_preview_height = &previewheight
-let g:pymode_preview_position = 'botright'
-let g:pymode_python = 'python3'
-let g:pymode_indent = 1
-let g:pymode_motion = 1
-let g:pymode_doc = 1
-let g:pymode_doc_bind = 'K'
-let g:pymode_folding = 0
-let g:pymode_lint = 0
-let g:pymode_lint_on_write = 0
-let g:pymode_syntax = 1
-let g:pymode_syntax_all = 1
-" :PymodeVirtualenv <path> - Activate
-let g:pymode_virtualenv = 0
-let g_pymode_virtualenv_path = "$HOME/dev/python/venvs"
+let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_insert_leave = 1
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_filetype_changed = 0
+let g:ale_lint_delay = 500
+"
+let g:ale_change_sign_column_color = 0
+let g:ale_set_signs = 1
+" let g:ale_linters = {'python': ['ruff']}
+let g:ale_linters = {'python': ['pyright', 'ruff']}
+let g:ale_linters_ignore = {'python': ['flake8', 'mypy', 'pylint']}
+"
+let g:ale_python_auto_poetry = 1
+let g:ale_python_auto_virtualenv = 1
+let g:ale_python_pyright_use_global = 1
+let g:ale_python_pyright_config = {
+\ 'python': {
+\   'pythonPath': '',
+\   'venvPath': '~/dev/python/venvs',
+\ },
+\}
+let g:ale_python_ruff_auto_poetry = 1
 
-"}}}
-" ------------------------------------------------------------------------- "
-"   Syntastic Plugin Settings
-" ------------------------------------------------------------------------- "
-"{{{
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-let g:syntastic_error_symbol = "✗"
-let g:syntastic_warning_symbol = "⚠"
-let g:syntastic_python_checkers = ['python', 'flake8', 'pep8', 'python3']
-
-let g:syntastic_enable_perl_checker = 1
-let g:syntastic_perl_checkers = ['perl', 'podchecker', 'perlcritic']
-
-let g:syntastic_c_compiler = 'gcc'
-let g:syntastic_c_config_file = '~/dotfiles/vim/vim_config_c'
-let g:syntastic_check_header = 0
-let g:syntastic_c_no_include_search = 1
-let g:syntastic_c_auto_refresh_includes = 1
-
-let g:syntastic_quiet_messages={'level':'warnings'}
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': ['.py'] }
-
-nnoremap <leader>sc :SyntasticCheck<CR>
-nnoremap <leader>st :SyntasticToggleMode<CR>
-"nnoremap <C-w>E :SyntasticCheck<CR>
-
-function! SyntasticCheckHook(errors)
-	if !empty(a:errors)
-		let g:syntastic_loc_list_height = min([len(a:errors), 5])
-	endif
-endfunction
-
-"}}}
-" ------------------------------------------------------------------------- "
-"   VimSession Plugin Settings
-" ------------------------------------------------------------------------- "
-"{{{
-
-let g:session_autosave = 'yes'
-let g:session_autosave_periodic = 30
-let g:session_autoload = 'no'
+nnoremap <leader>ad :ALEDisable<CR>
+nnoremap <leader>ae :ALEEnable<CR>
+nnoremap <leader>af :ALEFix<CR>
+nnoremap <leader>ai :ALEInfo<CR>
+nnoremap <leader>al :ALELint<CR>
+nnoremap <leader>at :ALEToggle<CR>
 
 "}}}
 " ------------------------------------------------------------------------- "
@@ -654,28 +650,3 @@ let g:mkdp_theme = 'dark'
 
 "}}}
 "}}}
-
-" Use the below highlight group when displaying bad whitespace is desired.
-highlight BadWhitespace ctermbg=red guibg=red
-" Display tabs at the beginning of a line in Python mode as bad.
-au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
-" Make trailing whitespace be flagged as bad.
- au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
-
-" Automatically add headers to new bash, perl, and python files.
-au bufnewfile *.sh 0r ~/dotfiles/vim/templates/bash_basic_header.template
-au bufnewfile *.pl 0r ~/dotfiles/vim/templates/perl_basic_header.template
-" au bufnewfile *.py 0r ~/dotfiles/vim/templates/python_basic_header.template
-" au bufnewfile *.html 0r ~/dotfiles/vim/templates/html_boilerplate.template
-
-" Quickly insert an empty new line without entering insert mode
-" https://vi.stackexchange.com/a/29278/6196
-" nnoremap <Leader>o o<Esc>0"_D
-" nnoremap <Leader>O O<Esc>0"_D
-
-autocmd FileType *.c,*.h setlocal expandtab shiftwidth=2 tabstop=2
-autocmd FileType yaml setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType css setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType *.js setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType html setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType python let b:coc_root_patterns = ['.git', '.env', 'venv', '.venv', 'setup.cfg', 'setup.py', 'pyproject.toml', 'pyrightconfig.json']

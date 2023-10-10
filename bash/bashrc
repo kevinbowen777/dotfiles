@@ -169,6 +169,7 @@ alias docur='docker compose exec web coverage report'
 alias docuh='docker compose exec web coverage html'
 alias dot='cd /home/kbowen/dotfiles'
 alias dotf='cd ~/dotfiles'
+alias drun='./drun'
 alias ed='ed -p"★ > " --verbose'
 alias egrep='egrep --color=auto'
 alias etym='etym.py'
@@ -303,6 +304,12 @@ pybaseinstall () {
         pydf \
         pyright \
         tldr
+}
+chkfont () {
+    for family in serif sans-serif monospace Arial Helvetica Verdana "Times New Roman" "Courier New"; do
+  echo -n "$family: "
+  fc-match "$family"
+done
 }
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
