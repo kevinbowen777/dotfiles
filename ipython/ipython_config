@@ -27,9 +27,9 @@
 
 ## List of files to run at IPython startup.
 #c.InteractiveShellApp.exec_files = []
-c.InteractiveShellApp.exec_files = [
-    '/home/kbowen/.local/lib/vars_ids.py'
-    ]
+# c.InteractiveShellApp.exec_files = [
+#     '/home/kbowen/.local/lib/vars_ids.py'
+#     ]
 
 ## lines of code to run at IPython startup.
 #c.InteractiveShellApp.exec_lines = []
@@ -336,6 +336,7 @@ c.TerminalInteractiveShell.highlighting_style = 'monokai'
 
 ## Display the current vi mode (when using vi editing mode).
 #c.TerminalInteractiveShell.prompt_includes_vi_mode = True
+c.TerminalInteractiveShell.prompt_includes_vi_mode = False
 
 ## Class used to generate Prompt token for prompt_toolkit
 #c.TerminalInteractiveShell.prompts_class = 'IPython.terminal.prompts.Prompts'
