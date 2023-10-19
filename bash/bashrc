@@ -148,12 +148,15 @@ fi
 #fi
 
 #### Aliases  
+alias act="source .venv/bin/activate"
 alias bat='bat --theme=Dracula'
 alias batp='bat -p --theme=Dracula'
 alias bashed='cd ~/dotfiles && vi bash/bashrc'
 alias bestp='cd /home/kbowen/docs/tech/best_practices'
 alias cdoc='cdoc.sh'
 alias cl='clear -x'
+alias deact='deactivate'
+alias delenv='rm -rf .venv'
 alias dict='sdcv'
 # alias dictw='curl dict://dict.org/d:$1'
 alias djstart='cd ~/dev/python/repos/django/django-start'
@@ -206,12 +209,14 @@ alias mstop='audtool --playback-stop'
 alias mlb='mlbscores.py'
 alias mlbwest='mlb -s | head -n21 | tail -n6'
 alias ms='~/bin/movie_search.py'
+alias newenv="python3.12 -m venv --prompt . .venv && .venv/bin/pip install -U pip setuptools wheel"
 alias odin='cd ~/dev/projects/learning/odin-project/'
 alias pd='perldoc'
 alias perdoc='perldoc'
 alias pgstat='ps -ef | grep postgres'
 alias pgstart='sudo systemctl start postgresql.service'
 alias pgstop='sudo systemctl stop postgresql.service'
+alias pip="python3 -m pip"
 alias ports='netstat -tulanp'
 alias proj='cd ~/dev/projects'
 alias psc='ps xawf -eo pid,user,cgroup,args'
