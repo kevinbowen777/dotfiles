@@ -316,6 +316,16 @@ chkfont () {
   fc-match "$family"
 done
 }
+dictw () {
+    echo
+    def="$(curl -s dict://dict.org/define:$1: | grep -vP '^\d\d\d')";
+    if [ "$def" = "" ];
+    then
+        echo No definition;
+    else
+        echo "$def" | bat -p --theme Dracula;
+    fi
+}
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
@@ -361,9 +371,9 @@ if [ -n "$SSH_CLIENT" ]; then text=" [remote]"
 fi
 
 #}}}
-export ANSIBLE_HOSTS=/etc/ansible/hosts
-export ANSIBLE_INVENTORY=/etc/ansible/hosts
-complete -C /home/kbowen/bin/vault vault
+# export ANSIBLE_HOSTS=/etc/ansible/hosts
+# export ANSIBLE_INVENTORY=/etc/ansible/hosts
+# complete -C /home/kbowen/bin/vault vault
 
 # export DATABASE_URL=postgresql://$(whoami)
 export PGPASS='/home/kbowen/.pgpass'
@@ -422,6 +432,8 @@ export PATH="$PYENV_ROOT/shims:$PATH"
 # eval "$(pyenv init -)"
 # eval "$(pyenv virtualenv-init -)"
 eval "$(pyenv init --path)"
+
+export PYTHONSTARTUP=~/.pythonstartup
 
 # Ruby - rbenv - 20230625
 export PATH="$HOME/.rbenv/bin:$PATH"

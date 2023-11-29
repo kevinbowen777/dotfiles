@@ -1,0 +1,38 @@
+.tasklist button {
+  background: #09142C;
+  border-color: darkblue;
+  /* border-top: 4px ridge black; */
+  border-radius: 5px;
+}
+.tasklist button:checked {
+  border-top: 3px groove purple;
+}
+wnck-pager:selected {
+  background-color: purple;
+}
+wnck-pager:hover {  
+  background-color: yellow; 
+}
+.xfce4-panel widget grid button.flat.toggle:hover {
+  background: darkblue;
+  font-family: 'Sans Bold'; 
+  font-size: 24px;
+  font-style: oblique;
+  padding: 5px;
+}
+.xfce4-panel widget grid button.flat.toggle:checked {
+  background: darkblue;
+  font-family: 'Sans Bold';
+  font-size: 16px;
+  border-color: darkblue;
+  border-bottom: 5px groove purple;
+  padding: 5px;
+}
+#pulseaudio-button menu .linked button {
+  background: steelblue;
+  color: black;
+  border-color: purple;
+}
+/* .xfce4-panel {
+  border-radius: 25px;
+} */
