@@ -23,7 +23,7 @@
 
 ## Run the file referenced by the PYTHONSTARTUP environment variable at IPython
 #  startup.
-#c.InteractiveShellApp.exec_PYTHONSTARTUP = True
+c.InteractiveShellApp.exec_PYTHONSTARTUP = True
 
 ## List of files to run at IPython startup.
 #c.InteractiveShellApp.exec_files = []
@@ -135,7 +135,7 @@ c.InteractiveShellApp.exec_lines = [
 #------------------------------------------------------------------------------
 
 ## Whether to display a banner upon starting IPython.
-#c.TerminalIPythonApp.display_banner = True
+# c.TerminalIPythonApp.display_banner = True
 c.TerminalIPythonApp.display_banner = False
 
 ## If a command or file is given via the command-line, e.g. 'ipython foo.py',

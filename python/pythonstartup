@@ -2,12 +2,18 @@
 
 from importlib import reload
 from pprint import pp
+from friendly.ipython import *
+import warnings
+
+
+warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 try:
-    from rich import inspect, pretty, traceback
+    from rich import inspect, pretty
+    # from rich import inspect, pretty, traceback
     from rich import print as rprint
 except ModuleNotFoundError:
     pass
 else:
     pretty.install()
-    traceback.install(show_locals=False)
+    # traceback.install(show_locals=False)
