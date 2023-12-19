@@ -299,17 +299,40 @@ docstop () {
     echo "containerd service stopped. Good night, moon!"
 }
 pybaseinstall () {
-    python -m pip install ipython \
-        friendly \
-        colorama \
-        glances \
-        frogmouth \
-        pip-check \
-        pip-audit \
-        pydf \
-        pyright \
-        tldr
+    python -m pip install --upgrade pip
+    python -m pip install pipx
 }
+pipxpackageinstall () {
+    pipx install ipython
+    pipx inject ipython friendly colorama
+    pipx install glances
+    pipx install frogmouth
+    pipx install pip-check
+    pipx install pydf
+    pipx install pyright
+    pipx install tldr
+}
+#    python -m pip install ipython \
+#        friendly \
+#        colorama \
+#        glances \
+#        frogmouth \
+#        pip-check \
+#        pip-audit \
+#        pydf \
+#        pyright \
+#        tldr
+
+pipx-outdated() {
+    # See: https://github.com/pypa/pipx/issues/149#issuecomment-684042303
+    # Pre-release packages may show and are not able to be auto-upgraded to
+	echo "OUTDATED PACKAGES:"
+	while read -sr pyPkgName pyPkyVersion; do
+		local pypi_latest="$(curl -sS https://pypi.org/simple/${pyPkgName}/ | grep -o '>.*</' | tail -n 1 | grep -o -E '[0-9]([0-9]|[-._])*[0-9]')"
+		[ "$pyPkyVersion" != "$pypi_latest" ] && printf "%s\n\tCurrent: %s\tLatest: %s\n" "$pyPkgName" "$pyPkyVersion" "$pypi_latest"
+	done < <( pipx list | grep -o 'package.*,' | tr -d ',' | cut -d ' ' -f 2- )
+}
+
 chkfont () {
     for family in serif sans-serif monospace Arial Helvetica Verdana "Times New Roman" "Courier New"; do
   echo -n "$family: "
@@ -441,3 +464,6 @@ eval "$(rbenv init -)"
 
 # pyright - 20230811
 export PYRIGHT_PYTHON_FORCE_VERSION="latest"
+
+# pipx - 20231205
+eval "$(register-python-argcomplete pipx)"
