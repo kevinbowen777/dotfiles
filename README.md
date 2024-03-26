@@ -27,6 +27,7 @@ Create symlinks:
     ln -s ~/dotfiles/bash/dir_colors ~/.dir_colors
     ln -s ~/dotfiles/python/pythonstartup ~/.pythonstartup
     ln -s ~/dotfiles/gtk/gtk.css ~/.config/gtk-3.0/gtk.css
+    ln -s ~/dotfiles/python/ruff/pyproject.toml ~/.config/ruff/pyproject.toml
 
 Vim's backup and swap files are stored in `~/tmp`, so that directory must exist.
 
