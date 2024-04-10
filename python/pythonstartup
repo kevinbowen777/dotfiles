@@ -2,7 +2,7 @@
 
 from importlib import reload
 from pprint import pp
-from friendly.ipython import *
+# from friendly.ipython import *
 import warnings
 
 

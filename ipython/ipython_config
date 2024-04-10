@@ -33,16 +33,19 @@ c.InteractiveShellApp.exec_PYTHONSTARTUP = True
 
 ## lines of code to run at IPython startup.
 #c.InteractiveShellApp.exec_lines = []
-c.InteractiveShellApp.exec_lines = [
+c.InteractiveShellApp.exec_lines = ["from friendly.ipython import *",]
+c.InteractiveShellApp.exec_lines.append('%load_ext autoreload')
+c.InteractiveShellApp.exec_lines.append('%autoreload 2')
+# c.InteractiveShellApp.exec_lines = [
     # silence command-line output temporarily
     # N.B. Enabling will remove pretty-printing/rich output from friendly -
     # 2023095
     # "import os",
     # "import sys",
     # "sys.stdout = os.devnull",
-    "from friendly.ipython import *",
+    # "from friendly.ipython import *",
     # "sys.stdout = sys.__stdout__",
-    ]
+#     ]
 ## A list of dotted module names of IPython extensions to load.
 #c.InteractiveShellApp.extensions = []
 
@@ -626,6 +629,3 @@ c.PlainTextFormatter.pprint = False
 #  starts.
 #c.StoreMagics.autorestore = False
 c.AliasManager.user_aliases = [('cl', 'clear')]
-c.InteractiveShellApp.exec_lines = []
-c.InteractiveShellApp.exec_lines.append('%load_ext autoreload')
-c.InteractiveShellApp.exec_lines.append('%autoreload 2')
