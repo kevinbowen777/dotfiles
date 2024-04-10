@@ -14,6 +14,7 @@ running the commands:
 Create symlinks:
 
     ln -s ~/dotfiles/bash/bashrc ~/.bashrc
+    ln -s ~/dotfiles/bash/bash_aliases ~/.bash_aliases
 	ln -s ~/dotfiles/bash/bash_profile ~/.bash_profile
 	ln -s ~/dotfiles/bash/profile ~/.profile
     ln -s ~/dotfiles/bash/inputrc ~/.inputrc

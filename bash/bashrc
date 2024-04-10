@@ -1,12 +1,12 @@
-### ==================================================================== ###
+### ======================================================================= ###
 #   Section 1: Header
-### ==================================================================== ###
-#{{{
+### ======================================================================= ###
+
 # Personal $HOME/.bashrc file
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
-# Version: 2.4
+# Version: 2.5
 # Source : http://www.github.com/kevinbowen777/dotfiles.git
-# Last modified: 20240320
+# Last modified: 20240410
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # 
 # To pick up the latest default .bashrc content,
@@ -16,21 +16,18 @@
 #
 #  1)    Header                     (This section)
 #  2)    Exports                    (Set history, paths, editors, colors, etc,) 
-#  3)    Sourced aliases            (Shortcuts)
-#  4)    Workstation aliases        (SSH to local machines) 
-#  5)    Remote Server aliases      (SSH to remote servers) 
-#  6)    Script aliases             (Links to some bashscripts) 
-#  7)    Hardware control aliases   (Control cd/dvd/scanners/audio/etc) 
-#  8)    Special functions          (More of a function than an alias) 
+#  3)    Sourced aliases (see also: ~/$HOME/dotfiles/bash/bash_aliases
+#  4)    Special functions          (More of a function than an alias) 
 #
-### =================================================== ###
+### ======================================================================= ###
+
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
-#}}}
-### ==================================================================== ###
+
+### ======================================================================= ###
 #   Section 2: Exports (Set history, paths, editors, colors) 
-### ==================================================================== ###
-#{{{
+### ======================================================================= ###
+
 set -o vi
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -56,12 +53,18 @@ PROMPT_COMMAND='echo -en "\033]0; $("pwd") \a"'
 
 # Set XDG User-level variables
 export XDG_DATA_DIRS=$HOME/.local/share:/usr/share
-# export XDG_DATA_DIRS=$HOME/.local/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/share
+
 export XDG_DATA_HOME=$HOME/.local
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 #
 export SSL_CERT_DIR=/etc/ssl/certs/
+
+export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
+ssh-add -l > /dev/null || ssh-add ~/.ssh/leeuin_key_2023
+# ssh-add -l > /dev/null || ssh-add ~/.ssh/jabberwock_local_key_2022
+
+export PROJECT_HOME=$HOME/dev/
 
 # For colorizing man pages and info
 export LESS_TERMCAP_mb=$(printf '\e[01;31m') # enter blinking mode - red
@@ -72,12 +75,50 @@ export LESS_TERMCAP_so=$(printf '\e[01;33m') # enter standout mode -
 export LESS_TERMCAP_ue=$(printf '\e[0m') # leave underline mode
 export LESS_TERMCAP_us=$(printf '\e[04;36m') # enter underline mode
  
-# PATH="${PATH}:/home/kbowen/bin:/home/kbowen/.local/bin"; export PATH;
 export PATH="${PATH}:/home/kbowen/bin:/home/kbowen/.local/bin"
-# PATH="${PATH}"; export PATH;
+
+# Workaround for suppressing d-bus spurious errors: Launchpad bug #1193236
+export NO_AT_BRIDGE=1
+
+# FZF export layout - 20230325
+export FZF_DEFAULT_OPTS="--multi --height=50% --margin=5%,2%,2%,5% --reverse --preview='(highlight -O ansi {} || bat {}) 2> /dev/null | head -n 50' --preview-window=45%,border-double --border=double --prompt='▶' --pointer='→' --marker='✗' --header='CTRL-c or ESC to quit' --color='dark,fg:magenta,border:green'"
+
+export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!{.git,.ssh,.npm,.vscode,__pycache__,bundle,.mozilla,.ipython,.pip-audit-cache,tmp,bundle,po,htmlcov,staticfiles,migrations}/*"'
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# Postgresql
+export PGPASS='/home/kbowen/.pgpass'
+
+# nvm installation - 20221004
+# https://github.com/nvm-sh/nvm
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# pyenv installation - 20220922
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+export PATH="$PYENV_ROOT/shims:$PATH"
+
+eval "$(pyenv init --path)"
+
+export PYTHONSTARTUP=~/.pythonstartup
+
+# Ruby - rbenv - 20230625
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+# pyright - 20230811
+export PYRIGHT_PYTHON_FORCE_VERSION="latest"
+
+# pipx - 20231205
+eval "$(register-python-argcomplete pipx)"
+
+# rust - 20240410
+. "$HOME/.cargo/env"
 
 # Color Definitions
-# {{{ -----------------------------------------------------------------
 
 # Normal colors
 export BLACK='\e[0;30m'
@@ -114,16 +155,11 @@ export ON_CYAN='\e[0;46m'
 export ON_WHITE='\e[1;47m'
 
 export NC='\e[0m'	# No Color
-#}}} -------------------------------------------------------------------
 
-# Workaround for suppressing d-bus spurious errors: Launchpad bug #1193236
-export NO_AT_BRIDGE=1
+### ======================================================================= ###
+#   Section 3: Special functions 
+### ======================================================================= ###
 
-#}}}
-### ==================================================================== ###
-#   Section 3: Sourced aliases and alias definitions.
-### ==================================================================== ###
-#{{{
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
@@ -131,360 +167,3 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
-# enable color support of ls 
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dir_colors && eval "$(dircolors -b ~/.dir_colors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-# uncomment following three lines to enable powerline for bash
-#if [ -f /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh ]; then
-#    source /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh
-#fi
-
-#### Aliases  
-alias act="source .venv/bin/activate"
-alias bat='bat --theme=Dracula'
-alias batp='bat -p --theme=Dracula'
-alias bashed='cd ~/dotfiles && vi bash/bashrc'
-alias bestp='cd /home/kbowen/docs/tech/best_practices'
-alias cdoc='cdoc.sh'
-alias cl='clear -x'
-alias deact='deactivate'
-alias delenv='rm -rf .venv'
-alias dict='sdcv'
-# alias dictw='curl dict://dict.org/d:$1'
-alias djstart='cd ~/dev/python/repos/django/django-start'
-alias djtree='tree -I "staticfiles|templates|__pycache__|htmlcov|static|media|docs|migrations|images"'
-alias docu='docker compose up'
-alias docd='docker compose down'
-alias docnox='docker compose exec web nox'
-alias docsh='cd /home/kbowen/docs'
-alias docstat='ps -ef | grep docker'
-alias docub='docker compose up --build'
-alias docup='docker compose exec web coverage run -m pytest'
-alias docur='docker compose exec web coverage report'
-alias docuh='docker compose exec web coverage html'
-alias dot='cd /home/kbowen/dotfiles'
-alias dotf='cd ~/dotfiles'
-alias drun='./drun'
-alias ed='ed -p"★ > " --verbose'
-alias egrep='egrep --color=auto'
-alias etym='etym.py'
-alias fgrep='fgrep --color=auto'
-alias ghic='gh issue close $1'  # Requires one input
-alias ghicb='gh issue create --label bug --assignee @me'
-alias ghicd='gh issue create --label documentation --assignee @me'
-alias ghice='gh issue create --label enhancement --assignee @me'
-alias ghict='gh issue create --label testing --assignee @me'
-alias ghie='gh issue edit $1'  #Requires one input
-alias ghil='gh issue list --limit 100'
-alias gits='git status'
-alias gita='git add .'
-alias gitl='git log'
-alias gitp='git push all master;git push origin master'
-alias gitpom='git push origin master'
-alias grep='grep --color=auto'
-alias hist='history | grep $1' #Requires one input
-alias howto='cd /home/kbowen/docs/tech/howto'
-alias info='pinfo'
-alias ip='ip -color'
-alias ipy='ipython3'
-alias l='ls -CF'
-alias la='ls -aF'
-alias lh='ls -1 --hyperlink=always'
-alias ll='ls -lF'
-alias ls='ls --color -h --group-directories-first'
-# alias ls='ls --color=auto'
-alias lsql='cd ~/dev/projects/learning/sql/'
-alias meminfo='free -m -l -t'
-alias mi='~/bin/map_it.py'
-alias mpause='audtool --playback-pause'
-alias mplay='audtool --playback-play'
-alias mstop='audtool --playback-stop'
-alias mlb='mlbscores.py'
-alias mlbwest='mlb -s | head -n21 | tail -n6'
-alias ms='~/bin/movie_search.py'
-alias newenv="python3.12 -m venv --prompt . .venv && .venv/bin/pip install -U pip setuptools wheel"
-alias odin='cd ~/dev/projects/learning/odin-project/'
-alias pd='perldoc'
-alias perdoc='perldoc'
-alias pgstat='ps -ef | grep postgres'
-alias pgstart='sudo systemctl start postgresql.service'
-alias pgstop='sudo systemctl stop postgresql.service'
-alias pip="python3 -m pip"
-alias ports='netstat -tulanp'
-alias proj='cd ~/dev/projects'
-alias psc='ps xawf -eo pid,user,cgroup,args'
-alias psmem='ps auxf | sort -nr -k -4'
-alias psmem10='ps auxf | sort -nr -k -4 | head -10'
-alias pscpu='ps auxf | sort -nr -k 3'
-alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
-alias pyenv_list='pyenv install --list | grep " 3\.[891]"'
-alias pymrun='python manage.py runserver'
-alias pymrun+='python manage.py runserver_plus --cert-file cert.crt'
-alias pydj='cd ~/dev/python/repos/django'
-alias pyr='cd ~/dev/python/repos'
-alias pysand='cd ~/dev/python/sandbox'
-alias pyth='cd ~/dev/python'
-alias pytmp='cd ~/dev/python/tmp'
-alias renlow='rename 'y/A-Z/a-z/''
-alias renup='rename 'y/a-z/A-Z/''
-alias prsand='cd ~/dev/projects/sandbox'
-alias run='./run'
-alias setkb='setxkbmap -option caps:escape'
-alias sn='cd ~/.notes && ./sn.sh'
-alias sourceb='source ~/.bashrc'
-alias sucharm='sudo /opt/pycharm/bin/pycharm.sh'
-alias sug='sudo apt upgrade'
-alias sup='sudo apt update'
-alias sur='sudo apt autoremove'
-alias toolbox='cd ~/dev/projects/repos/toolbox'
-alias tools='cd ~/dev/projects/repos/toolbox'
-alias trace='traceroute --resolve-hostnames'
-alias traceroute='traceroute --resolve-hostnames'
-alias ts='~/bin/torrent_search.py'
-alias venv='cd ~/dev/python/venvs'
-alias venvs='cd ~/dev/python/venvs'
-alias vi='/usr/bin/vim'
-alias vimwik='vi ~/docs/vimwiki/index.md'
-alias ws='~/bin/wiki_search.py'
-alias xfdev='cd ~/dev/xfce'
-# alias xfrepo='cd ~/dev/xfce/repos/xfce/xfce-repocapp'
-alias xfrepo='cd ~/dev/xfce/gitlab.xfce.org'
-
-
-#}}}
-### ==================================================================== ###
-#   Section 4: Workstation aliases
-### ==================================================================== ###
-#{{{
-# aliases for remote boxes
-#}}}
-### ==================================================================== ###
-#   Section 5: Hardware control aliases(Control cd/dvd/scanners/audio/etc) 
-### ==================================================================== ###
-#{{{
-setxkbmap -option caps:escape
-# volume controla
-alias mu1='amixer sset Master 1%+'
-alias md1='amixer sset Master 1%-'
-alias mu5='amixer sset Master 5%+'
-alias md5='amixer sset Master 5%-'
-alias mu='amixer set Master 10%+'
-alias md='amixer sset Master 10%-'
-#
-#}}}
-### ==================================================================== ###
-#   Section 6: Special functions (More of a function than an alias.. here) 
-### ==================================================================== ###
-#{{{
-
-edwin () {
-    scheme -eval "(edit 'console)"
-}
-docstart () {
-    sudo systemctl start containerd
-    echo "containerd service started"
-    sudo systemctl start docker.service
-    echo "docker service started. Good morning, sunshine!"
-}
-docstop () {
-    sudo systemctl stop docker.service
-    echo "docker service stopped"
-    sudo systemctl stop containerd
-    echo "containerd service stopped. Good night, moon!"
-}
-hidden_python () {
-    # https://til.simonwillison.net/python/stdlib-cli-tools
-    PY_VERSION=$(python -V | awk '{print $2}')
-    PY_MAJOR=${PY_VERSION::-2}
-    cd ~/.pyenv/versions/$PY_VERSION/lib/python$PY_MAJOR
-    rg 'if __name__ =' -l | grep -v \
-        -e test \
-        -e tests \
-        -e idlelib \
-        -e site-packages \
-        -e turtledemo \
-        | sort
-}
-pybaseinstall () {
-    python -m pip install --upgrade pip
-    python -m pip install pipx
-}
-pipxpackageinstall () {
-    pipx install frogmouth
-    pipx install glances
-    pipx install ipython
-    pipx inject ipython friendly colorama
-    pipx install pdm
-    pipx install pip-audit
-    pipx install pip-check
-    pipx install poetry
-    pipx install pydf
-    pipx install pyright
-    pipx install thonny
-    pipx install tldr
-
-}
-#    python -m pip install ipython \
-#        friendly \
-#        colorama \
-#        glances \
-#        frogmouth \
-#        pip-check \
-#        pip-audit \
-#        pydf \
-#        pyright \
-#        tldr
-
-pipx-outdated() {
-    # See: https://github.com/pypa/pipx/issues/149#issuecomment-684042303
-    # Pre-release packages may show and are not able to be auto-upgraded to
-	echo "OUTDATED PACKAGES:"
-	while read -sr pyPkgName pyPkgVersion; do
-		local pypi_latest="$(curl -sS https://pypi.org/simple/${pyPkgName}/ | grep -o '>.*</' | tail -n 1 | grep -o -E '[0-9]([0-9]|[-._])*[0-9]')"
-		[ "$pyPkgVersion" != "$pypi_latest" ] && printf "%s\n\tCurrent: %s\tLatest: %s\n" "$pyPkgName" "$pyPkgVersion" "$pypi_latest"
-	done < <( pipx list | grep -o 'package.*,' | tr -d ',' | cut -d ' ' -f 2- )
-}
-
-chkfont () {
-    for family in serif sans-serif monospace Arial Helvetica Verdana "Times New Roman" "Courier New"; do
-  echo -n "$family: "
-  fc-match "$family"
-done
-}
-dictw () {
-    echo
-    def="$(curl -s dict://dict.org/define:$1: | grep -vP '^\d\d\d')";
-    if [ "$def" = "" ];
-    then
-        echo No definition;
-    else
-        echo "$def" | bat -p --theme Dracula;
-    fi
-}
-# set a fancy prompt (non-color, unless we know we "want" color)
-case "$TERM" in
-    xterm-color|*-256color) color_prompt=yes;;
-esac
-#
-if [ -n "$DISPLAY" -a "$TERM" == "xterm" ]; then
-    export TERM=xterm-256color
-fi
-#
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-    xterm*|xfce4*|rxvt*)
-    PS1='\[\e[0;35m\]\u\[\e[0m\]@\[\e[0;36m\]\h\[\e[91m\]:\[\e[01;96m\]\w\[\e[01;92m\]\$ '
-    # PS1='\[\e[0;35m\]\u\[\e[0m\]@\[\e[0;36m\]\h\[\033[91m\]:\[\033[01;96m\]\w\[\033[01;92m\]\$ '
-    ;;
-    *)
-    ;;
-esac
-#
-force_color_prompt=yes
-if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-    color_prompt=yes
-    else
-    color_prompt=
-    fi
-fi
-
-# Check ssh-agent and add keys. 
-if [ ! -S ~/.ssh/ssh_auth_sock ]; then
-    eval `ssh-agent`
-        ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
-fi
-
-export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
-ssh-add -l > /dev/null || ssh-add ~/.ssh/leeuin_key_2023
-# ssh-add -l > /dev/null || ssh-add ~/.ssh/jabberwock_local_key_2022
-
-# Changes prompt when remotely ssh'd into host
-if [ -n "$SSH_CLIENT" ]; then text=" [remote]"
-    export PS1='\[\e[01;35m\]\u@\h\[\e[00m\]:\[\e[01;34m\]\w${text}$\[\e[01;37m\] '
-    # export PS1='\[\033[01;35m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w${text}$\[\033[01;37m\] '
-fi
-
-#}}}
-# export ANSIBLE_HOSTS=/etc/ansible/hosts
-# export ANSIBLE_INVENTORY=/etc/ansible/hosts
-# complete -C /home/kbowen/bin/vault vault
-
-# export DATABASE_URL=postgresql://$(whoami)
-export PGPASS='/home/kbowen/.pgpass'
-
-# poetry tab completions - 20220922
-# See issue: https://github.com/python-poetry/poetry/issues/4572
-# Currently using a substitute completion file provided in above issue
-# poetry completions bash > /etc/bash_completion.d/poetry.bash-completion
-# poetry completions bash > ~/.bash-completion
-
-# directories for virtualenvwrapper - 20210922
-# export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-# export VIRTUALENVWRAPPER_PYTHON=/home/kbowen/.pyenv/versions/3.11.0/bin/python3
-# export WORKON_HOME=$HOME/dev/python/venvs
-export PROJECT_HOME=$HOME/dev/
-# source /home/kbowen/.local/bin/virtualenvwrapper.sh
-# source /home/kbowen/.pyenv/versions/3.11.0/bin/virtualenvwrapper.sh
-
-# FZF export default layout - 20230325
-# export FZF_DEFAULT_OPTS="--height 40% --layout=reverse"
-# export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --preview '(highlight -O ansi {} || batcat --color=always {}) 2> /dev/null | head -500'"
-# export FZF_DEFAULT_OPTS="--multi --height=50% --margin=5%,2%,2%,5% --reverse --preview='bat {} | head -n 50' --preview-window=70%,border-double --border=double --prompt='▶' --pointer='→' --marker='✗' --header='CTRL-c or ESC to quit' --color='dark,fg:magenta,border:green'"
-export FZF_DEFAULT_OPTS="--multi --height=50% --margin=5%,2%,2%,5% --reverse --preview='(highlight -O ansi {} || bat {}) 2> /dev/null | head -n 50' --preview-window=45%,border-double --border=double --prompt='▶' --pointer='→' --marker='✗' --header='CTRL-c or ESC to quit' --color='dark,fg:magenta,border:green'"
-# FZF_DEFAULT_OPTS="+s --layout=reverse --height 40% --multi --cycle --no-color --border=rounded --preview-window=border-rounded --info=hidden --bind 'alt-p:preview-page-up,alt-n:preview-page-down' --bind 'ctrl-a:select-all' --bind 'ctrl-s:toggle-sort' --bind 'ctrl-p:toggle-preview' "
-
-# Use the CLI find to get all files, excluding any filepath
-# containing the string "git".
-# export FZF_DEFAULT_COMMAND='find . -type f ! -path "*git*"'
-# export FZF_DEFAULT_COMMAND='find . -type d \( -path "*git*" -prune -o -path "*npm*" -prune -o -path  "*vscode*" -prune -o -path "*__pycache__*" -prune -o -path "*nox*" -prune -o -path "*pytest_cache*" -prune -o -path "*bundle*" -prune \) -o -print'
-
-# Use the CLI fd to respect ignore files (like '.gitignore'),
-# display hidden files, and exclude the '.git' directory.
-# export FZF_DEFAULT_COMMAND='fd . --hidden --exclude ".git"'
-# export FZF_DEFAULT_COMMAND='fd . --exclude "downloads"'
-
-# Use the CLI ripgrep to respect ignore files (like '.gitignore'),
-# display hidden files, and exclude the '.git' directory.
-# export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
-export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!{.git,.ssh,.npm,.vscode,__pycache__,bundle,.mozilla,.ipython,.pip-audit-cache,tmp,bundle,po,htmlcov,staticfiles,migrations}/*"'
-# export FZF_DEFAULT_COMMAND='rg --files -g "!downloads" -g "!tmp" -g "!bundle" -g "!po" -g "!htmlcov" -g "!staticfiles" -g "!migrations"'
-# export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!.git" -g "!.npm" -g "!.vscode" -g "!__pycache__" -g "!.nox" -g "!pytest_cache" -g "!bundle" -g "!.ssh" -g "!.mozilla" -g "!tmp" -g "!.ipython" -g "!.pip-audit-cache"'
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-# nvm installation - 20221004
-# https://github.com/nvm-sh/nvm
-export NVM_DIR="$HOME/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# pyenv installation - 20220922
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-export PATH="$PYENV_ROOT/shims:$PATH"
-# export PATH="$HOME/.pyenv/bin:$PATH"
-# eval "$(pyenv init -)"
-# eval "$(pyenv virtualenv-init -)"
-eval "$(pyenv init --path)"
-
-export PYTHONSTARTUP=~/.pythonstartup
-
-# Ruby - rbenv - 20230625
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
-# pyright - 20230811
-export PYRIGHT_PYTHON_FORCE_VERSION="latest"
-
-# pipx - 20231205
-eval "$(register-python-argcomplete pipx)"
-. "$HOME/.cargo/env"
