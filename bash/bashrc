@@ -6,7 +6,7 @@
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
 # Version: 2.4
 # Source : http://www.github.com/kevinbowen777/dotfiles.git
-# Last modified: 20230325
+# Last modified: 20240320
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # 
 # To pick up the latest default .bashrc content,
@@ -197,6 +197,7 @@ alias ip='ip -color'
 alias ipy='ipython3'
 alias l='ls -CF'
 alias la='ls -aF'
+alias lh='ls -1 --hyperlink=always'
 alias ll='ls -lF'
 alias ls='ls --color -h --group-directories-first'
 # alias ls='ls --color=auto'
@@ -236,6 +237,7 @@ alias renlow='rename 'y/A-Z/a-z/''
 alias renup='rename 'y/a-z/A-Z/''
 alias prsand='cd ~/dev/projects/sandbox'
 alias run='./run'
+alias setkb='setxkbmap -option caps:escape'
 alias sn='cd ~/.notes && ./sn.sh'
 alias sourceb='source ~/.bashrc'
 alias sucharm='sudo /opt/pycharm/bin/pycharm.sh'
@@ -298,19 +300,37 @@ docstop () {
     sudo systemctl stop containerd
     echo "containerd service stopped. Good night, moon!"
 }
+hidden_python () {
+    # https://til.simonwillison.net/python/stdlib-cli-tools
+    PY_VERSION=$(python -V | awk '{print $2}')
+    PY_MAJOR=${PY_VERSION::-2}
+    cd ~/.pyenv/versions/$PY_VERSION/lib/python$PY_MAJOR
+    rg 'if __name__ =' -l | grep -v \
+        -e test \
+        -e tests \
+        -e idlelib \
+        -e site-packages \
+        -e turtledemo \
+        | sort
+}
 pybaseinstall () {
     python -m pip install --upgrade pip
     python -m pip install pipx
 }
 pipxpackageinstall () {
+    pipx install frogmouth
+    pipx install glances
     pipx install ipython
     pipx inject ipython friendly colorama
-    pipx install glances
-    pipx install frogmouth
+    pipx install pdm
+    pipx install pip-audit
     pipx install pip-check
+    pipx install poetry
     pipx install pydf
     pipx install pyright
+    pipx install thonny
     pipx install tldr
+
 }
 #    python -m pip install ipython \
 #        friendly \
@@ -327,9 +347,9 @@ pipx-outdated() {
     # See: https://github.com/pypa/pipx/issues/149#issuecomment-684042303
     # Pre-release packages may show and are not able to be auto-upgraded to
 	echo "OUTDATED PACKAGES:"
-	while read -sr pyPkgName pyPkyVersion; do
+	while read -sr pyPkgName pyPkgVersion; do
 		local pypi_latest="$(curl -sS https://pypi.org/simple/${pyPkgName}/ | grep -o '>.*</' | tail -n 1 | grep -o -E '[0-9]([0-9]|[-._])*[0-9]')"
-		[ "$pyPkyVersion" != "$pypi_latest" ] && printf "%s\n\tCurrent: %s\tLatest: %s\n" "$pyPkgName" "$pyPkyVersion" "$pypi_latest"
+		[ "$pyPkgVersion" != "$pypi_latest" ] && printf "%s\n\tCurrent: %s\tLatest: %s\n" "$pyPkgName" "$pyPkgVersion" "$pypi_latest"
 	done < <( pipx list | grep -o 'package.*,' | tr -d ',' | cut -d ' ' -f 2- )
 }
 
@@ -467,3 +487,4 @@ export PYRIGHT_PYTHON_FORCE_VERSION="latest"
 
 # pipx - 20231205
 eval "$(register-python-argcomplete pipx)"
+. "$HOME/.cargo/env"
