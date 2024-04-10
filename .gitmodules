@@ -37,3 +37,6 @@
 [submodule "vim/bundle/vim-repeat"]
 	path = vim/bundle/vim-repeat
 	url = https://github.com/tpope/vim-repeat
+[submodule "vim/bundle/SimpylFold"]
+	path = vim/bundle/SimpylFold
+	url = https://github.com/tmhedberg/SimpylFold

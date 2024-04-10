@@ -4,10 +4,10 @@
 " Purpose: Set vim configuration                                                
 " Requirements: vim-plug                                                        
 "                                                                               
-" Version: 1.30                                                                 
+" Version: 1.31                                                                 
 " Author: Kevin Bowen kevin.bowen@gmail.com                                     
 "                                                                               
-" Updated: 20230906
+" Updated: 20240326
 "                                                                               
 " ------------------------------------------------------------------------- "   
 "}}}
@@ -48,6 +48,7 @@ Plug 'preservim/nerdtree'
 Plug 'dense-analysis/ale'
 Plug 'vimwiki/vimwiki'
 Plug 'ryanoasis/vim-devicons'
+Plug 'tmhedberg/SimpylFold'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
@@ -74,13 +75,21 @@ augroup colorscheme_coc_setup | au!
     au ColorScheme * call s:my_colors_setup()
 augroup END
 
+let python_highlight_all=1
 syntax on
 filetype plugin indent on
 " https://www.reddit.com/r/vim/wiki/where_to_put_filetype_specific_stuff
 augroup my_filetypes
     autocmd!
-    autocmd BufNewFile,BufRead *.c,*.h setlocal expandtab shiftwidth=2 tabstop=2
-    autocmd BufNewFile,BufRead *.js,*.html,*.css,*.yaml setlocal expandtab tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.c,*.h setlocal
+        \ tabstop=2
+        \ expandtab
+        \ shiftwidth=2
+    autocmd BufNewFile,BufRead *.js,*.html,*.css,*.yaml setlocal
+        \ tabstop=2
+        \ expandtab
+        \ shiftwidth=2
+        \ softtabstop=2
     autocmd BufNewFile,BufRead *.py setlocal
         \ tabstop=4
         \ softtabstop=4
@@ -91,7 +100,6 @@ augroup my_filetypes
         \ fileformat=unix
 augroup END
 
-let python_highlight_all=1
 
 " Use the below highlight group when displaying bad whitespace is desired.
 " See: https://alvinalexander.com/linux/vi-vim-editor-color-scheme-syntax/
@@ -109,7 +117,7 @@ au BufNewFile *.pl 0r ~/dotfiles/vim/templates/perl_basic_header.template
 
 " Appearance
 set cmdheight=2
-set colorcolumn=80
+set colorcolumn=88
 highlight ColorColumn ctermbg=DarkMagenta guibg=DarkMagenta
 set laststatus=2
 set linebreak
@@ -412,7 +420,7 @@ let NERDTreeShowBookmarks=1
 
 " Ignore displaying the following file types in NERDTree
 let NERDTreeIgnore=[ '\.ncb$', '\.dummy$', '\.suo$', '\.vcproj\.RIMNET', '\.obj$',
-                   \ '\.ilk$', '^BuildLog.htm$', '\.pdb$', '\.idb$',
+                   \ '\.ilk$', '^BuildLog.htm$', '\.pdb$', '\.idb$', '__pycache__',
                    \ '\.embed\.manifest$', '\.embed\.manifest.res$',
                    \  '\.intermediate\.manifest$', '^mt.deps' ]
 
@@ -471,6 +479,16 @@ set showtabline=2
 
 "}}}
 " ------------------------------------------------------------------------- "
+"   SimpylFold Plugin Settings
+" ------------------------------------------------------------------------- "
+"{{{
+
+let g:SimpylFold_docstring_preview = 1
+let g:SimpylFold_fold_docstring = 1
+let g:SimpylFold_fold_import = 1
+
+"}}}
+" ------------------------------------------------------------------------- "
 "   Ale Plugin Settings
 " ------------------------------------------------------------------------- "
 "{{{
@@ -484,8 +502,10 @@ let g:ale_lint_delay = 500
 let g:ale_change_sign_column_color = 0
 let g:ale_set_signs = 1
 " let g:ale_linters = {'python': ['ruff']}
-let g:ale_linters = {'python': ['pyright', 'ruff']}
-let g:ale_linters_ignore = {'python': ['flake8', 'mypy', 'pylint']}
+let g:ale_linters = {'python': ['pyright', 'flake8']}
+" let g:ale_linters = {'python': ['pyright', 'flake8', 'ruff']}
+let g:ale_linters_ignore = {'python': ['mypy', 'pylint']}
+" let g:ale_linters_ignore = {'python': ['flake8', 'mypy', 'pylint']}
 "
 let g:ale_python_auto_poetry = 1
 let g:ale_python_auto_virtualenv = 1
