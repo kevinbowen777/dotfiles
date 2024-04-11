@@ -39,17 +39,15 @@ xset b off
 xset b 0 0 0
 
 # History control
-unset HISTFILESIZE
-HISTCONTROL=ignoredups:erasedups
-HISTSIZE=1000   # History size for current shell only
-HISTFILESIZE=5000
-export HISTSIZE
-export HISTCONTROL=ignoredups:erasedups
-export HISTIGNORE="ls:ps:docstop:docstart:history:cl:exit:sourceb:ll:cd:gits:ghic:ghil:run:gitp:cd -"
+export HISTCONTROL=ignoreboth:erasedups
+shopt -s histappend
+export PROMPT_COMMAND='echo -en "\033]0; $("pwd") \a"'
+export HISTIGNORE="ls:ll:cd:pwd:history:ps:docstop:docstart:history:cl:exit:sourceb:gits:ghic:ghil:run:gitp:cd -"
+export HISTSIZE=100000
+export HISTFILESIZE=10000000
+shopt -s histappend histreedit histverify
+shopt -s no_empty_cmd_completion
 export HISTTIMEFORMAT="$(echo -e ${CYAN})[%d/%m %H:%M:%S]$(echo -e ${PURPLE}) "
-# export HISTTIMEFORMAT="$(echo -e ${CYAN})[%d/%m %H:%M:%S]${NC} "
-# export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
-PROMPT_COMMAND='echo -en "\033]0; $("pwd") \a"'
 
 # Set XDG User-level variables
 export XDG_DATA_DIRS=$HOME/.local/share:/usr/share
