@@ -45,7 +45,7 @@ fi
 alias act="source .venv/bin/activate"
 alias bat='bat --theme=Dracula'
 alias batp='bat -p --theme=Dracula'
-alias bashed='cd ~/dotfiles && vi bash/bashrc'
+alias bashed='vi ~/.bashrc; source ~/.bashrc && source $HOME/.bashrc && echo "bashrc sourced  --ok."'
 alias bestp='cd /home/kbowen/docs/tech/best_practices'
 alias cdoc='cdoc.sh'
 alias cl='clear -x'
@@ -67,6 +67,7 @@ alias docuh='docker compose exec web coverage html'
 alias dot='cd /home/kbowen/dotfiles'
 alias dotf='cd ~/dotfiles'
 alias drun='./drun'
+alias ea='vi ~/.bash_aliases; source ~/.bash_aliases && source $HOME/.bash_aliases && echo "aliases sourced  --ok."'
 alias ed='ed -p"★ > " --verbose'
 alias egrep='egrep --color=auto'
 alias etym='etym.py'
@@ -202,6 +203,9 @@ hidden_python () {
         -e site-packages \
         -e turtledemo \
         | sort
+}
+mkcd () {
+    mkdir -p -- "$1" && cd -P -- "$1"
 }
 pybaseinstall () {
     python -m pip install --upgrade pip

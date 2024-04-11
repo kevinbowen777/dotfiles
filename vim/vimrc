@@ -98,7 +98,6 @@ augroup my_filetypes
         \ expandtab
         \ autoindent
         \ fileformat=unix
-    autocmd BufEnter *bash_aliases colorscheme murphy
 augroup END
 
 
