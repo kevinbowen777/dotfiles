@@ -60,10 +60,6 @@ export XDG_CACHE_HOME=$HOME/.cache
 #
 export SSL_CERT_DIR=/etc/ssl/certs/
 
-export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
-ssh-add -l > /dev/null || ssh-add ~/.ssh/leeuin_key_2023
-# ssh-add -l > /dev/null || ssh-add ~/.ssh/jabberwock_local_key_2022
-
 export PROJECT_HOME=$HOME/dev/
 
 # For colorizing man pages and info
@@ -114,6 +110,7 @@ export PYRIGHT_PYTHON_FORCE_VERSION="latest"
 
 # pipx - 20231205
 eval "$(register-python-argcomplete pipx)"
+export USE_EMOJI=false
 
 # rust - 20240410
 . "$HOME/.cargo/env"
@@ -167,3 +164,13 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
+
+# Check ssh-agent and add keys. 
+if [ ! -S ~/.ssh/ssh_auth_sock ]; then
+    eval `ssh-agent`
+        ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
+fi
+
+export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
+ssh-add -l > /dev/null || ssh-add ~/.ssh/leeuin_key_2023
+# ssh-add -l > /dev/null || ssh-add ~/.ssh/jabberwock_local_key_2022
