@@ -243,6 +243,7 @@ chkfont () {
   fc-match "$family"
 done
 }
+
 dictw () {
     echo
     def="$(curl -s dict://dict.org/define:$1: | grep -vP '^\d\d\d')";
@@ -253,37 +254,3 @@ dictw () {
         echo "$def" | bat -p --theme Dracula;
     fi
 }
-
-# set a fancy prompt (non-color, unless we know we "want" color)
-case "$TERM" in
-    xterm-color|*-256color) color_prompt=yes;;
-esac
-
-if [ -n "$DISPLAY" -a "$TERM" == "xterm" ]; then
-    export TERM=xterm-256color
-fi
-
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-    xterm*|xfce4*|rxvt*)
-    PS1='\[\e[0;35m\]\u\[\e[0m\]@\[\e[0;36m\]\h\[\e[91m\]:\[\e[01;96m\]\w\[\e[01;92m\]\$ '
-    # PS1='\[\e[0;35m\]\u\[\e[0m\]@\[\e[0;36m\]\h\[\033[91m\]:\[\033[01;96m\]\w\[\033[01;92m\]\$ '
-    ;;
-    *)
-    ;;
-esac
-
-force_color_prompt=yes
-if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-    color_prompt=yes
-    else
-    color_prompt=
-    fi
-fi
-
-# Changes prompt when remotely ssh'd into host
-if [ -n "$SSH_CLIENT" ]; then text=" [remote]"
-    export PS1='\[\e[01;35m\]\u@\h\[\e[00m\]:\[\e[01;34m\]\w${text}$\[\e[01;37m\] '
-    # export PS1='\[\033[01;35m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w${text}$\[\033[01;37m\] '
-fi
