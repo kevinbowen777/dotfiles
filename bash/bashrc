@@ -42,7 +42,7 @@ xset b 0 0 0
 export HISTCONTROL=ignoreboth:erasedups
 shopt -s histappend
 export PROMPT_COMMAND='echo -en "\033]0; $("pwd") \a"'
-export HISTIGNORE="ls:ll:cd:pwd:history:ps:docstop:docstart:history:cl:exit:sourceb:gits:ghic:ghil:run:gitp:cd -"
+export HISTIGNORE="cd:cd -:cl:docstart:docstop:exit:gits:ghic:ghil:gitp:history:killfox:la:ls:ll:ps:pwd:run:sourceb"
 export HISTSIZE=100000
 export HISTFILESIZE=10000000
 shopt -s histappend histreedit
