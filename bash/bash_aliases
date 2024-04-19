@@ -215,7 +215,7 @@ pipxpackageinstall () {
     pipx install frogmouth
     pipx install glances
     pipx install ipython
-    pipx inject ipython friendly colorama
+    pipx inject ipython friendly colorama pickleshare
     pipx install pdm
     pipx install pip-audit
     pipx install pip-check
