@@ -224,6 +224,7 @@ pipxpackageinstall () {
     pipx install pyright
     pipx install thonny
     pipx install tldr
+    pipx install pispy
 
 }
 
