@@ -4,13 +4,6 @@
 
     git clone git://github.com/kevinbowen777/dotfiles.git
 
-Where possible, Vim plugins are installed as git submodules. Check these out by
-running the commands:
-
-    cd dotfiles
-    git submodule init
-    git submodule update
-
 Create symlinks:
 
     ln -s ~/dotfiles/bash/bashrc ~/.bashrc
@@ -29,6 +22,7 @@ Create symlinks:
     ln -s ~/dotfiles/python/pythonstartup ~/.pythonstartup
     ln -s ~/dotfiles/gtk/gtk.css ~/.config/gtk-3.0/gtk.css
     ln -s ~/dotfiles/python/ruff/pyproject.toml ~/.config/ruff/pyproject.toml
+    ln -s ~/dotfiles/ruby/irbrc ~/.irbrc
 
 Vim's backup and swap files are stored in `~/tmp`, so that directory must exist.
 

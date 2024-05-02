@@ -1,0 +1,77 @@
+require 'readline'
+
+# created: 20240501
+# 
+#
+# https://rubyreferences.github.io/rubyref/developing/irb.html
+
+IRB.conf[:SAVE_HISTORY] = 150
+IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb-history"
+
+IRB.conf[:PROMPT][:MY_PROMPT] = {   # name of prompt mode
+  :AUTO_INDENT => true,             # enables auto-indent mode
+  :PROMPT_I => "%N(%m):%03n:%i> ",  # simple prompt
+  :PROMPT_N => "%N(%m):%03n:%i> ",
+  :PROMPT_S => "%N(%m):%03n:%i%l ", # prompt for continuated strings
+  :PROMPT_C => "%N(%m):%03n:%i* ",  # prompt for continuated statement
+  :RETURN => "    ==>%s\n"          # format to return value
+}
+
+IRB.conf[:PROMPT_MODE] = :MY_PROMPT
+# IRB.conf[:PROMPT_MODE] = :NULL
+# IRB.conf[:PROMPT_MODE] = :DEFAULT
+# IRB.conf[:PROMPT_MODE] = :CLASSIC
+# IRB.conf[:PROMPT_MODE] = :SIMPLE
+# IRB.conf[:PROMPT_MODE] = :INF_RUBY
+# IRB.conf[:PROMPT_MODE] = :XMP
+
+# History command
+def past(count = 0)
+  # Get history into an array
+  history_array = Readline::HISTORY.to_a
+
+  # if count > 0, we'll use it
+  # otherwise set to 0
+  count = count > 0 ? count : 0
+
+  # TODO: Add error handling for when count > history_array.length
+  if count > 0
+    from = history_array.length - count
+    history_array = history_array[from..-1]
+  end
+
+  print history_array.join("\n")
+end
+
+def time(&block)
+  # Usage: time { 1_000_000.times { "cat".upcase } }
+  require 'benchmark'
+  result = nil
+  timing = Benchmark.measure do
+    result = block.()
+  end
+  puts "It took: #{timing}"
+  result
+end
+
+# reloads the irb console
+def reload_irb
+  load File.expand_path("~/.irbrc")
+  # will reload rails env if running ./script/console
+  reload! if @script_console_running
+  puts "Console Reloaded!"
+end
+
+# exit using 'q'
+alias q exit
+
+# all available methods explaination
+def ll
+  puts '======================================================'
+  puts 'List of pre-defined methods.'
+  puts '======================================================'
+  puts 'past(n) --------------> command history e.g past(10)'
+  puts 'reload_irb -----------> reloads the .irbrc file'
+  puts 'time(block) ----------> benchmarking a command'
+  puts '======================================================'
+end
