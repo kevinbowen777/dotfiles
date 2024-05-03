@@ -562,6 +562,15 @@ highlight htmlH7 guifg=#FFFF00
 " ------------------------------------------------------------------------- "
 "{{{
 
+" for normal mode
+nmap <silent> <F8> <Plug>MarkdownPreview
+" for insert mode
+imap <silent> <F8> <Plug>MarkdownPreview
+" for normal mode
+nmap <silent> <F9> <Plug>StopMarkdownPreview
+" for insert mode
+imap <silent> <F9> <Plug>StopMarkdownPreview
+
 let g:vim_markdown_open_url_under_cursor = 1
 let g:vim_markdown_follow_anchor = 1
 " let g:vim_markdown_conceallevel = 1
