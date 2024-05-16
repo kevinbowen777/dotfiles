@@ -23,6 +23,7 @@ Create symlinks:
     ln -s ~/dotfiles/gtk/gtk.css ~/.config/gtk-3.0/gtk.css
     ln -s ~/dotfiles/python/ruff/pyproject.toml ~/.config/ruff/pyproject.toml
     ln -s ~/dotfiles/ruby/irbrc ~/.irbrc
+    ln -s ~/Dropbox/personal/administrativa/vimwiki ~/docs/vimwiki
 
 Vim's backup and swap files are stored in `~/tmp`, so that directory must exist.
 

@@ -1,16 +1,14 @@
-"{{{ ---------------------------------------------------------------------- "   
 "                                                                               
 " Name: .vimrc                                                                  
 " Purpose: Set vim configuration                                                
 " Requirements: vim-plug                                                        
 "                                                                               
-" Version: 1.31                                                                 
+" Version: 1.35                                                                 
 " Author: Kevin Bowen kevin.bowen@gmail.com                                     
 "                                                                               
-" Updated: 20240326
+" Updated: 20240503
 "                                                                               
 " ------------------------------------------------------------------------- "   
-"}}}
 
 set nobackup
 set nowritebackup
@@ -48,7 +46,6 @@ Plug 'preservim/nerdtree'
 Plug 'dense-analysis/ale'
 Plug 'vimwiki/vimwiki'
 Plug 'ryanoasis/vim-devicons'
-Plug 'tmhedberg/SimpylFold'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
@@ -85,7 +82,7 @@ augroup my_filetypes
         \ tabstop=2
         \ expandtab
         \ shiftwidth=2
-    autocmd BufNewFile,BufRead *.js,*.html,*.css,*.yaml setlocal
+    autocmd BufNewFile,BufRead *.js,*.html,*.css,*.tcss,*.yaml setlocal
         \ tabstop=2
         \ expandtab
         \ shiftwidth=2
@@ -98,6 +95,7 @@ augroup my_filetypes
         \ expandtab
         \ autoindent
         \ fileformat=unix
+    au BufRead,BufNewFile *.tcss set filetype=css
 augroup END
 
 
@@ -148,11 +146,11 @@ set shiftwidth=4
 set softtabstop=4
 
 " Folding
-set foldmethod=indent
+" set foldmethod=indent
 " set foldmethod=marker
 set foldnestmax=10
 set foldenable
-set foldlevel=99
+" set foldlevel=99
 nnoremap <space> za
 
 " Tab-completion in command-line mode
@@ -196,11 +194,9 @@ set directory=~/tmp/.swp//
 "   Plugin Settings Section
 " ------------------------------------------------------------------------- "
 
-"{{{
 " ------------------------------------------------------------------------- "
 "   COC coc.nvim Plugin Settings
 " ------------------------------------------------------------------------- "
-"{{{
 
 let g:coc_global_extensions = ['coc-html', 'coc-css', 'coc-json', 'coc-pyright', 'coc-tsserver']
 let g:coc_user_config = {'diagnostic.checkCurrentLine': 1}
@@ -355,11 +351,9 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 "    au ColorScheme * call s:my_colors_setup()
 "augroup END
 
-"}}}
 " ------------------------------------------------------------------------- "
 "   Fugitive Plugin Settings
 " ------------------------------------------------------------------------- "
-"{{{                                                                            
                                                                                  
 nnoremap <leader>gs :Git status<CR>                                             
 nnoremap <leader>ga :Git add .<CR>                                              
@@ -375,11 +369,9 @@ nnoremap <leader>gl :Gclog<CR>
 "nnoremap <silent> <leader>gp :silent Git push<CR>                              
 nnoremap <silent> <leader>gp :silent Git push origin master<CR>                 
                                                                                   
-"}}}
 " ------------------------------------------------------------------------- "
 "   FZF Plugin Settings
 " ------------------------------------------------------------------------- "
-"{{{
 
 let g:fzf_layout = { 'down': '40%'}
 " let $FZF_DEFAULT_COMMAND = 'rg --files --ignore-case --hidden -g "!{.git,.pyc}/*"'
@@ -397,11 +389,9 @@ nnoremap <silent> <leader>s :Rg<CR>
 " nnoremap <silent> <leader>t :Tags<CR>
 " nnoremap <silent> <leader>? :History<CR>
 
-"}}}
 " ------------------------------------------------------------------------- "
 "   NERDTree Plugin Settings
 " ------------------------------------------------------------------------- "
-"{{{
 
 " load NerdFont
 " set guifont=DroidSansMono\ Nerd\ Font\ 12
@@ -454,6 +444,7 @@ call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
 call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
 call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
 call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
+call NERDTreeHighlightFile('tcss', 'cyan', 'none', 'cyan', '#151515')
 call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
 call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
 call NERDTreeHighlightFile('py', 'blue', 'none', '#3366FF', '#151515')
@@ -462,11 +453,9 @@ call NERDTreeHighlightFile('gitignore', 'Gray', 'none', '#686868', '#151515')
 call NERDTreeHighlightFile('bashrc', 'Gray', 'none', '#686868', '#151515')
 call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#151515')
 
-"}}}
 " ------------------------------------------------------------------------- "
 "   Powerline Plugin Settings
 " ------------------------------------------------------------------------- "
-"{{{
 
 set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
 " set rtp+=~/.local/lib/python3.8/site-packages/powerline/bindings/vim/
@@ -477,21 +466,9 @@ set statusline+=%*
 " Always display the tabline, even if there is only one tab
 set showtabline=2
 
-"}}}
-" ------------------------------------------------------------------------- "
-"   SimpylFold Plugin Settings
-" ------------------------------------------------------------------------- "
-"{{{
-
-let g:SimpylFold_docstring_preview = 1
-let g:SimpylFold_fold_docstring = 1
-let g:SimpylFold_fold_import = 1
-
-"}}}
 " ------------------------------------------------------------------------- "
 "   Ale Plugin Settings
 " ------------------------------------------------------------------------- "
-"{{{
 
 let g:ale_lint_on_text_changed = 0
 let g:ale_lint_on_insert_leave = 1
@@ -525,36 +502,48 @@ nnoremap <leader>ai :ALEInfo<CR>
 nnoremap <leader>al :ALELint<CR>
 nnoremap <leader>at :ALEToggle<CR>
 
-"}}}
 " ------------------------------------------------------------------------- "
 "   VimWiki Plugin Settings
 " ------------------------------------------------------------------------- "
-"{{{
 
 let wiki = {}
-" let g:vimwikidir = $HOME . "/Dropbox/personal/administrativa/vimwiki"
+
 let g:vimwikidir = $HOME . "/docs/vimwiki"
 let wiki.path = g:vimwikidir
-" let g:vimwiki_list=[wiki]
+let g:vimwiki_global_ext = 0
+let g:vimwiki_list=[wiki]
 let g:vimwiki_list=[{'path': '~/docs/vimwiki/',
-                    \ 'syntax': 'markdown', 'ext': '.md'}]
+                   \ 'syntax': 'markdown',
+                   \ 'ext': '.md'}]
+" let g:vimwiki_syntax_list = {}
+" let g:vimwiki_syntax_list['markdown'] = {}
+" let g:vimwiki_syntax_list['markdown']['typeface'] = {'bold': [], 'italic': [], 'underline': [], 'bold_italic': [], 'code': [], 'del':  [], 'sup':  [], 'sub':  [], 'eq': []}
 let g:vimwiki_url_maxsave=0
+
 
 highlight VimwikiHeader1 guifg=#FF00FF
 highlight VimwikiHeader2 guifg=#FF0000
 highlight VimwikiHeader3 guifg=#FFFF00
-highlight VimwikiHeader5 guifg=#00FFFF
-highlight VimwikiHeader4 guifg=#FF00FF
+highlight VimwikiHeader4 guifg=#00FFFF
+highlight VimwikiHeader5 guifg=#FF00FF
 highlight VimwikiHeader6 guifg=#FFF000
 highlight VimwikiHeader7 guifg=#FFFF00
 
 highlight htmlH1 guifg=#FF00FF
 highlight htmlH2 guifg=#FF0000
 highlight htmlH3 guifg=#FFFF00
-highlight htmlH4 guifg=#FF00FF
-highlight htmlH5 guifg=#00FFFF
+highlight htmlH4 guifg=#00FFFF
+highlight htmlH5 guifg=#FF00FF
 highlight htmlH6 guifg=#FFF000
 highlight htmlH7 guifg=#FFFF00
+
+highlight markdownH1 guifg=#FF00FF
+highlight markdownH2 guifg=#FF0000
+highlight markdownH3 guifg=#FFFF00
+highlight markdownH4 guifg=#00FFFF
+highlight markdownH5 guifg=#FF00FF
+highlight markdownH6 guifg=#FFF000
+highlight markdownH7 guifg=#FFFF00
 
 "}}}
 " ------------------------------------------------------------------------- "
@@ -566,17 +555,14 @@ highlight htmlH7 guifg=#FFFF00
 nmap <silent> <F8> <Plug>MarkdownPreview
 " for insert mode
 imap <silent> <F8> <Plug>MarkdownPreview
-" for normal mode
-nmap <silent> <F9> <Plug>StopMarkdownPreview
-" for insert mode
-imap <silent> <F9> <Plug>StopMarkdownPreview
 
 let g:vim_markdown_open_url_under_cursor = 1
 let g:vim_markdown_follow_anchor = 1
-" let g:vim_markdown_conceallevel = 1
-" let g:vim_markdown_folding_style_pythonic = 1
+let g:vim_markdown_conceallevel = 1
+let g:vim_markdown_folding_style_pythonic = 1
+let g:vim_markdown_folding_level = 6
 
-"Markdown-Preview configuration
+" Markdown-Preview configuration
 
 " set to 1, nvim will open the preview window after entering the markdown buffer
 " default: 0
@@ -676,6 +662,3 @@ let g:mkdp_filetypes = ['markdown']
 " set default theme (dark or light)
 " By default the theme is define according to the preferences of the system
 let g:mkdp_theme = 'dark'
-
-"}}}
-"}}}
