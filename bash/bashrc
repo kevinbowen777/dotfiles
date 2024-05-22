@@ -106,6 +106,9 @@ export USE_EMOJI=false
 # rust - 20240410
 . "$HOME/.cargo/env"
 
+# Go - 20240518
+export PATH=$PATH:/usr/local/go/bin
+
 # Color Definitions
 
 # Normal colors
