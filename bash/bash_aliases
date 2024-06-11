@@ -221,12 +221,12 @@ pipxpackageinstall () {
     pipx install pdm
     pipx install pip-audit
     pipx install pip-check
+    pipx install pispy
     pipx install poetry
     pipx install pydf
     pipx install pyright
     pipx install thonny
     pipx install tldr
-    pipx install pispy
 
 }
 
