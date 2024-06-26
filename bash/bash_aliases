@@ -4,9 +4,9 @@
 #{{{
 # Personal $HOME/.bash_aliases file
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
-# Version: 0.0
+# Version: 0.1
 # Source : http://www.github.com/kevinbowen777/dotfiles.git
-# Last modified: 20240410
+# Last modified: 20240625
 # ~/.bash_aliases: called by ~/.bashrc
 # 
 #  Create symlink in ~/$HOME 
@@ -151,6 +151,7 @@ alias venvs='cd ~/dev/python/venvs'
 alias vi='/usr/bin/vim'
 alias vimwik='vi ~/docs/vimwiki/index.md'
 alias ws='~/bin/wiki_search.py'
+alias xdis='xfce4-display-settings'
 alias xfdev='cd ~/dev/xfce'
 # alias xfrepo='cd ~/dev/xfce/repos/xfce/xfce-repocapp'
 alias xfrepo='cd ~/dev/xfce/gitlab.xfce.org'
