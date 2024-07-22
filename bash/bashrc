@@ -50,7 +50,7 @@ shopt -s histappend histreedit
 export HISTTIMEFORMAT="$(echo -e ${CYAN})[%d/%m %H:%M:%S]$(echo -e ${PURPLE}) "
 
 # Set XDG User-level variables
-export XDG_DATA_DIRS=$HOME/.local/share:/usr/share
+export XDG_DATA_DIRS=$HOME/.local/share:$HOME/.local/flatpak/exports/share:/usr/share:/var/lib/flatpak/exports/share
 
 export XDG_DATA_HOME=$HOME/.local
 export XDG_CONFIG_HOME=$HOME/.config
