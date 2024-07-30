@@ -223,7 +223,8 @@ pipxpackageinstall () {
     pipx install pdm
     pipx install pip-audit
     pipx install pip-check
-    pipx install pispy
+    # pipx install pispy
+    pipx install pispy-client --python python3.12
     pipx install poetry
     pipx install pydf
     pipx install pyright
