@@ -24,6 +24,7 @@ Create symlinks:
     ln -s ~/dotfiles/python/ruff/pyproject.toml ~/.config/ruff/pyproject.toml
     ln -s ~/dotfiles/ruby/irbrc ~/.irbrc
     ln -s ~/Dropbox/personal/administrativa/vimwiki ~/docs/vimwiki
+    ln -s ~/dotfiles/config/zathura/zathurarc ~/.config/zathura/zathurarc
 
 Vim's backup and swap files are stored in `~/tmp`, so that directory must exist.
 
