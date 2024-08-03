@@ -25,6 +25,7 @@ Create symlinks:
     ln -s ~/dotfiles/ruby/irbrc ~/.irbrc
     ln -s ~/Dropbox/personal/administrativa/vimwiki ~/docs/vimwiki
     ln -s ~/dotfiles/config/zathura/zathurarc ~/.config/zathura/zathurarc
+    ln -s ~/dotfiles/config/user-dirs.dirs ~/.config/user-dirs.dirs
 
 Vim's backup and swap files are stored in `~/tmp`, so that directory must exist.
 
@@ -32,7 +33,7 @@ Vim's backup and swap files are stored in `~/tmp`, so that directory must exist.
     mkdir ~/tmp/.backup
     mkdir ~/tmp/.swp
     mkdir ~/tmp/.undo
-      
+
 ## VIM #
 
 Preferences for Vim are stored in `dotfiles/vim/vimrc` and `dotfiles/vim/gvimrc`
