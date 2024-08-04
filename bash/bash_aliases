@@ -68,7 +68,7 @@ alias docuh='docker compose exec web coverage html'
 alias dot='cd /home/kbowen/dotfiles'
 alias dotf='cd ~/dotfiles'
 alias drun='./drun'
-alias ea='vi ~/.bash_aliases; source ~/.bash_aliases && source $HOME/.bash_aliases && echo "aliases sourced  --ok."'
+alias ea='vi ~/.bash_aliases; source $HOME/.bash_aliases && echo "aliases sourced  --ok."'
 alias ed='ed -p"★ > " --verbose'
 alias egrep='egrep --color=auto'
 alias etym='etym.py'
@@ -137,7 +137,7 @@ alias rbsand='cd ~/dev/ruby/sandbox'
 alias run='./run'
 alias setkb='setxkbmap -option caps:escape'
 alias sn='cd ~/.notes && ./sn.sh'
-alias sourceb='source ~/.bashrc'
+alias sourceb='source ~/.bashrc && echo bashrc sourced --ok'
 alias sucharm='sudo /opt/pycharm/bin/pycharm.sh'
 alias sug='sudo apt upgrade'
 alias sup='sudo apt update'
@@ -214,6 +214,7 @@ mkcd () {
 pybaseinstall () {
     python -m pip install --upgrade pip
     python -m pip install pipx
+    source ~/.bashrc
 }
 pipxpackageinstall () {
     pipx install frogmouth
