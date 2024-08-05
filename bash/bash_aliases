@@ -6,7 +6,7 @@
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
 # Version: 0.1
 # Source : http://www.github.com/kevinbowen777/dotfiles.git
-# Last modified: 20240625
+# Last modified: 20240804
 # ~/.bash_aliases: called by ~/.bashrc
 # 
 #  Create symlink in ~/$HOME 
@@ -35,11 +35,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
-
-# uncomment following three lines to enable powerline for bash
-#if [ -f /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh ]; then
-#    source /usr/local/lib/python2.7/dist-packages/powerline/bindings/bash/powerline.sh
-#fi
 
 #### Aliases  
 alias act="source .venv/bin/activate"
@@ -168,7 +163,7 @@ alias xfrepo='cd ~/dev/xfce/gitlab.xfce.org'
 ### ======================================================================= ###
 
 setxkbmap -option caps:escape
-# volume controla
+# volume controls
 alias mu1='amixer sset Master 1%+'
 alias md1='amixer sset Master 1%-'
 alias mu5='amixer sset Master 5%+'
