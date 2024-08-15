@@ -1,171 +1,40 @@
-"{{{ ----------------------------------------------------------------------- "
+" -------------------------------------------------------------------------- "
 "
 " Name: gvimrc 
 " Purpose: Set gvim configuration
 " Requirements:
 "
-" Version: 1.21
+" Version: 1.36
 " Author: Kevin Bowen kevin.bowen@gmail.com
 " 
-" Updated: 20190817
+" Updated: 20240814
 "
 " -------------------------------------------------------------------------- "
-"}}}
 
-set nocompatible
-set modelines=0
-set nomodeline
 set clipboard^=unnamed,unnamedplus
 set sessionoptions+=resize
 set sessionoptions+=winpos
 set undofile
 
 " Set colorscheme, encoding, session, and sytax
-syntax on
-let python_highlight_all=1
-let g:session_autoload='yes'
-colorscheme adaryn 
-set encoding=utf-8
-set t_Co=256
-set fileformat=unix
-
-" Enable file type detection and do language-dependent indenting.
-filetype off              " force reloading *after* pathogen loaded
-execute pathogen#infect()
-call pathogen#helptags()
-filetype plugin indent on " enable detection, plugins, and indentation in one step
+" colorscheme adaryn 
 
 " Appearance
-set relativenumber
-set laststatus=2
 set wrap
-set linebreak
 set textwidth=79
-set colorcolumn=80
-
-" Behavior
-set backspace=indent,eol,start
-set history=50
-set hlsearch
-set incsearch
-
-" Indentation
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set expandtab
-set autoindent
-
-" Folding
-set foldmethod=marker
-nnoremap <space> za
-
-" Tab-completion in command-line mode
-set wildmode=full
-set wildmenu
-
-" Disable the arrow keys in normal and insert mode. Leave for visual mode.
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
-
+"
 " Temp file locations. Make sure subdirectories are created in ~/tmp
-set undodir=~/tmp/.undo//
-set backupdir=~/tmp/.backup//
-set directory=~/tmp/.swp//
-
 " enable right mouse click functionality
 set mousemodel=popup
 
-"--------------------------------------------------------------------------- "
-"   NERD Tree Plugin Settings
-"--------------------------------------------------------------------------- "
-"{{{
-""" Toggle NERDTree on and off with F7
-nmap <F7> :NERDTreeToggle<CR>
-
-" Close NERDTree with Shift-F7
-nmap <S-F7> :NERDTreeClose<CR>
-"
-" Show the bookmarks table on startup
-let NERDTreeShowBookmarks=1
-"
-" Ignore displaying the following file types in NERDTree
-let NERDTreeIgnore=[ '\.ncb$', '\.dummy$', '\.suo$', '\.vcproj\.RIMNET', '\.obj$',
-                   \ '\.ilk$', '^BuildLog.htm$', '\.pdb$', '\.idb$',
-                   \ '\.embed\.manifest$', '\.embed\.manifest.res$',
-                   \  '\.intermediate\.manifest$', '^mt.deps' ]
-
-map,r :NERDTreeFind<CR>
-"}}}
-
-" --------------------------------------------------------------------------- " 
-"   Powerline settings
-" --------------------------------------------------------------------------- "
-set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
-set showtabline=2 " Always display the tabline, even if there is only one tab."
-
-" --------------------------------------------------------------------------- " 
-"   syntastic plugin settings
-" --------------------------------------------------------------------------- "
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_error_symbol = "✗"
-let g:syntastic_warning_symbol = "⚠"
-let g:syntastic_python_checkers = ['pep8', 'python', 'flake8', 'python3']
-
-function! SyntasticCheckHook(errors)
-	if !empty(a:errors)
-		let g:syntastic_loc_list_height = min([len(a:errors), 10])
-	endif
-endfunction
-
-" --------------------------------------------------------------------------- "
-"  vimwiki plugin settings
-" --------------------------------------------------------------------------- "
-let wiki = {}
-let g:vimwikidir = $HOME . "/Dropbox/personal/administrativa/vimwiki"
-let wiki.path = g:vimwikidir
-let g:vimwiki_list=[wiki]
-
-" --------------------------------------------------------------------------- "
-"  VimSession plugin settings
-" --------------------------------------------------------------------------- "
-" let g:session_autosave = 'yes'
-" let g:session_autosave_periodic = 30
-
-" --------------------------------------------------------------------------- "
-"  pymode plugin settings
-" --------------------------------------------------------------------------- "
-let g:pymode_python = 'python3'
-
 " load NerdFont
 set guifont=DroidSansMono\ Nerd\ Font\ 11
-let g:webdevicons_enable = 1
-let g:webdevicons_enable_nerdtree = 1
 
-" Use the below highlight group when displaying bad whitespace is desired.
-highlight BadWhitespace ctermbg=red guibg=red
-" Display tabs at the beginning of a line in Python mode as bad.
-au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
-" Make trailing whitespace be flagged as bad.
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+" Behavior
 
-" Clear filter when using the browse dialog
-autocmd FileType * let b:browsefilter = ''
+" Indentation
 
-" Mappings to move lines
-nnoremap <A-j> :m .+1<CR>==
-nnoremap <A-k> :m .-2<CR>==
-inoremap <A-j> <ESC>:m .+1<CR>==gi
-inoremap <A-k> <ESC>:m .-2<CR>==gi
-vnoremap <A-j> :m '>+1<CR>gv==gv
-vnoremap <A-k> :m '<-2<CR>gv==gv
+" Folding
+
+" Tab-completion in command-line mode
+

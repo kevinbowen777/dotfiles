@@ -1,14 +1,15 @@
-"                                                                               
-" Name: .vimrc                                                                  
-" Purpose: Set vim configuration                                                
-" Requirements: vim-plug                                                        
-"                                                                               
-" Version: 1.35                                                                 
-" Author: Kevin Bowen kevin.bowen@gmail.com                                     
-"                                                                               
-" Updated: 20240503
-"                                                                               
-" ------------------------------------------------------------------------- "   
+" -------------------------------------------------------------------------- "
+"
+" Name: .vimrc
+" Purpose: Set vim configuration
+" Requirements: vim-plug
+"
+" Version: 1.36
+" Author: Kevin Bowen kevin.bowen@gmail.com
+"
+" Updated: 20240814
+"
+" -------------------------------------------------------------------------- "
 
 set nobackup
 set nowritebackup
@@ -16,8 +17,6 @@ set nocompatible
 set modelines=0
 set nomodeline
 " set cursorline
-" Don't persist options and mappings - may corrupt sessions.
-set sessionoptions-=options
 set shortmess+=c
 set undofile
 " set timeoutlen=500 ttimeoutlen=300
@@ -95,6 +94,10 @@ augroup my_filetypes
         \ expandtab
         \ autoindent
         \ fileformat=unix
+    autocmd BufNewFile,BufRead *.md set filetype=markdown
+        \ tabstop=2
+        \ expandtab
+        \ shiftwidth=2
     au BufRead,BufNewFile *.tcss set filetype=css
 augroup END
 
@@ -137,6 +140,18 @@ set fileformat=unix
 " See https://vi.stackexchange.com/questions/22459/gx-doesnt-open-the-url-and-complains-netrw-no-line-in-buffer/22505#22505
 " Most likely just need to upgrade to a 9.x version
 " nnoremap gx :!xdg-open <cWORD> &<CR><CR>
+
+" Tab switching
+nnoremap <C-Left> :tabprevious<CR>
+nnoremap <C-Right> :tabnext<CR>
+" Go to last active tab (Ctrl+L)
+" Can also use g<Tab>
+if !exists('g:lasttab')
+  let g:lasttab = 1
+endif
+au TabLeave * let g:lasttab = tabpagenr()
+nnoremap <Leader><C-L> :exe "tabn ".g:lasttab<CR>
+vnoremap <Leader><C-L> :exe "tabn ".g:lasttab<CR>
 
 " Indentation
 set autoindent
@@ -193,6 +208,22 @@ set directory=~/tmp/.swp//
 " ------------------------------------------------------------------------- "
 "   Plugin Settings Section
 " ------------------------------------------------------------------------- "
+
+" --------------------------------------------------------------------------- "
+"  VimSession plugin settings
+" --------------------------------------------------------------------------- "
+
+" Don't persist options and mappings - may corrupt sessions.
+set sessionoptions-=buffers
+set sessionoptions-=options
+
+let g:session_default_to_last = "yes"
+let g:session_default_name = "daily"
+let g:session_autoload = 'yes'
+let g:session_autosave = 'yes'
+let g:session_autosave_periodic = 30
+let g:session_autosave_silent = 1
+let g:session_command_aliases = 1
 
 " ------------------------------------------------------------------------- "
 "   COC coc.nvim Plugin Settings
@@ -561,6 +592,8 @@ let g:vim_markdown_follow_anchor = 1
 let g:vim_markdown_conceallevel = 1
 let g:vim_markdown_folding_style_pythonic = 1
 let g:vim_markdown_folding_level = 6
+
+let g:markdown_fenced_languages = ['bash=sh', 'css', 'django', 'html', 'python']
 
 " Markdown-Preview configuration
 
