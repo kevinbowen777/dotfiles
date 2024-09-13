@@ -105,6 +105,7 @@ alias ms='~/bin/movie_search.py'
 alias newenv="python3.12 -m venv --prompt . .venv && .venv/bin/pip install -U pip setuptools wheel"
 alias odin='cd ~/dev/projects/learning/odin-project/'
 alias pd='perldoc'
+alias pathdup='echo "$PATH" | tr : "\n" | sort | uniq -d'
 alias perdoc='perldoc'
 alias pgstat='ps -ef | grep postgres'
 alias pgstart='sudo systemctl start postgresql.service'
@@ -117,7 +118,8 @@ alias psmem='ps auxf | sort -nr -k -4'
 alias psmem10='ps auxf | sort -nr -k -4 | head -10'
 alias pscpu='ps auxf | sort -nr -k 3'
 alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
-alias pyenv_list='pyenv install --list | grep " 3\.[891]"'
+alias pyenv_list='pyenv install --list | grep -E " 3\.([89]|1[0-4])"'
+# alias pyenv_list='pyenv install --list | grep " 3\.\([89]\|1[0-4]\)"'
 alias pymrun='python manage.py runserver'
 alias pymrun+='python manage.py runserver_plus --cert-file cert.crt'
 alias pydj='cd ~/dev/python/repos/django'
@@ -139,8 +141,7 @@ alias sup='sudo apt update'
 alias sur='sudo apt autoremove'
 alias toolbox='cd ~/dev/projects/repos/toolbox'
 alias tools='cd ~/dev/projects/repos/toolbox'
-alias trace='traceroute --resolve-hostnames'
-alias traceroute='traceroute --resolve-hostnames'
+alias trace='traceroute'
 alias ts='~/bin/torrent_search.py'
 alias venv='cd ~/dev/python/venvs'
 alias venvs='cd ~/dev/python/venvs'
@@ -193,7 +194,7 @@ docstop () {
 hidden_python () {
     # https://til.simonwillison.net/python/stdlib-cli-tools
     PY_VERSION=$(python -V | awk '{print $2}')
-    PY_MAJOR=${PY_VERSION::-2}
+    PY_MAJOR=${PY_VERSION::-5}
     cd ~/.pyenv/versions/$PY_VERSION/lib/python$PY_MAJOR
     rg 'if __name__ =' -l | grep -v \
         -e test \
@@ -212,6 +213,7 @@ pybaseinstall () {
     source ~/.bashrc
 }
 pipxpackageinstall () {
+    pipx install argcomplete
     pipx install frogmouth
     pipx install glances
     pipx install ipython
@@ -224,17 +226,17 @@ pipxpackageinstall () {
     pipx install poetry
     pipx install pydf
     pipx install pyright
+    pipx install rich --include-deps
     pipx install thonny
     pipx install tldr
 
 }
 
 pipx-outdated() {
-    # See: https://github.com/pypa/pipx/issues/149#issuecomment-684042303
-    # Pre-release packages may show and are not able to be auto-upgraded to
+    # See: https://github.com/pypa/pipx/issues/149#issuecomment-23427482060
 	echo "OUTDATED PACKAGES:"
 	while read -sr pyPkgName pyPkgVersion; do
-		local pypi_latest="$(curl -sS https://pypi.org/simple/${pyPkgName}/ | grep -o '>.*</' | tail -n 1 | grep -o -E '[0-9]([0-9]|[-._])*[0-9]')"
+		local pypi_latest="$(curl -sS "https://pypi.org/pypi/${pyPkgName}/json" | jq --raw-output '.info.version')"
 		[ "$pyPkgVersion" != "$pypi_latest" ] && printf "%s\n\tCurrent: %s\tLatest: %s\n" "$pyPkgName" "$pyPkgVersion" "$pypi_latest"
 	done < <( pipx list | grep -o 'package.*,' | tr -d ',' | cut -d ' ' -f 2- )
 }
