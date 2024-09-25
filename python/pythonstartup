@@ -1,19 +1,25 @@
 # .pythonstartup
 
-from importlib import reload
-from pprint import pp
+# from importlib import reload
 # from friendly.ipython import *
-import warnings
+# import datetime, warnings, os, sys
+import datetime, os, pprint, sys
 
 
-warnings.filterwarnings("ignore", category=DeprecationWarning)
+print("(imported datetime, os, pprint, sys, warnings)")
+
+pp = pprint.pprint
+# warnings.filterwarnings("ignore", category=DeprecationWarning)
 
 try:
     from rich import inspect, pretty
     # from rich import inspect, pretty, traceback
     from rich import print as rprint
+    print("(rich module installed)")
 except ModuleNotFoundError:
     pass
 else:
     pretty.install()
     # traceback.install(show_locals=False)
+
+print("...Startup file loaded...")
