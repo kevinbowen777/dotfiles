@@ -1,4 +1,4 @@
-" -------------------------------------------------------------------------- "
+" ------------------------------------------------------------------------- "
 "
 " Name: gvimrc 
 " Purpose: Set gvim configuration
@@ -7,23 +7,19 @@
 " Version: 1.36
 " Author: Kevin Bowen kevin.bowen@gmail.com
 " 
-" Updated: 20240814
+" Updated: 20240825
 "
-" -------------------------------------------------------------------------- "
+" ------------------------------------------------------------------------- "
 
 set clipboard^=unnamed,unnamedplus
-set sessionoptions+=resize
-set sessionoptions+=winpos
-set undofile
 
-" Set colorscheme, encoding, session, and sytax
+" Set colorscheme, encoding, session, and syntax
 " colorscheme adaryn 
 
 " Appearance
 set wrap
-set textwidth=79
-"
-" Temp file locations. Make sure subdirectories are created in ~/tmp
+set textwidth=88
+
 " enable right mouse click functionality
 set mousemodel=popup
 
@@ -31,10 +27,7 @@ set mousemodel=popup
 set guifont=DroidSansMono\ Nerd\ Font\ 11
 
 " Behavior
-
-" Indentation
-
-" Folding
+" set sessionoptions+=resize
+" set sessionoptions+=winpos
 
 " Tab-completion in command-line mode
-
