@@ -1,4 +1,4 @@
-" -------------------------------------------------------------------------- "
+" ------------------------------------------------------------------------- "
 "
 " Name: .vimrc
 " Purpose: Set vim configuration
@@ -7,29 +7,28 @@
 " Version: 1.36
 " Author: Kevin Bowen kevin.bowen@gmail.com
 "
-" Updated: 20240814
+" Updated: 20240825
 "
-" -------------------------------------------------------------------------- "
+" ------------------------------------------------------------------------- "
 
-set nobackup
-set nowritebackup
-set nocompatible
-set modelines=0
-set nomodeline
-" set cursorline
-set shortmess+=c
-set undofile
-" set timeoutlen=500 ttimeoutlen=300
-set updatetime=100
 set encoding=utf-8
-set t_Co=256
 set hidden
-set termguicolors
+set modelines=0
+set nobackup
+set nocompatible
+set nomodeline
+set nowritebackup
+set shortmess+=c
 set showcmd
+set t_Co=256
+set termguicolors
+set undofile
+set updatetime=100
+
 let mapleader = ","
 
 " Load Plug
-let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/dotfiles/vim/'
+let data_dir = '~/dotfiles/vim/'
 if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
@@ -38,21 +37,22 @@ endif
 " Load Plugins
 call plug#begin('~/dotfiles/vim/bundle')
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'dense-analysis/ale'
+Plug 'godlygeek/tabular'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'preservim/nerdtree'
-Plug 'dense-analysis/ale'
-Plug 'vimwiki/vimwiki'
+Plug 'preservim/tagbar'
+Plug 'preservim/vim-markdown'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
+Plug 'vimwiki/vimwiki'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
-Plug 'godlygeek/tabular'
-Plug 'preservim/vim-markdown'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd ~/dotfiles/vim/bundle/markdown-preview.nvim/app && yarn install' }
 
 call plug#end()
 
@@ -110,7 +110,7 @@ highlight BadWhitespace ctermbg=DarkMagenta guibg=DarkMagenta
 au BufNewFile,BufRead *.py,*.pyw match BadWhitespace /^\t\+/
 
 " Make trailing whitespace be flagged as bad.
-au BufNewFile,BufRead *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+au BufNewFile,BufRead *.md,*.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 " Automatically add headers to new bash & perl files.
 au BufNewFile *.sh 0r ~/dotfiles/vim/templates/bash_basic_header.template
@@ -118,7 +118,7 @@ au BufNewFile *.pl 0r ~/dotfiles/vim/templates/perl_basic_header.template
 
 " Appearance
 set cmdheight=2
-set colorcolumn=88
+set colorcolumn=79
 highlight ColorColumn ctermbg=DarkMagenta guibg=DarkMagenta
 set laststatus=2
 set linebreak
@@ -179,13 +179,17 @@ nnoremap <leader>l :set list!<CR>
 set listchars=tab:▸\ ,eol:¬
 
 " Source vimrc
-nnoremap <leader>sv :source ~/.vimrc<CR>
+" gvim does not auto reload powerline after source .vimrc
+nnoremap <leader>sv :source ~/.vimrc \| py3 powerline.reload()<CR>
 
 " Simplify moving between windows
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+
+" Toggle spellcheck functionality
+:map <F5> :setlocal spell! spelllang=en_us<CR>
 
 " Disable arrow keys
 for key in ['<Up>', '<Down>', '<Left>', '<Right>']
@@ -209,20 +213,63 @@ set directory=~/tmp/.swp//
 "   Plugin Settings Section
 " ------------------------------------------------------------------------- "
 
-" --------------------------------------------------------------------------- "
-"  VimSession plugin settings
-" --------------------------------------------------------------------------- "
+" ------------------------------------------------------------------------- "
+"   Ale Plugin Settings
+" ------------------------------------------------------------------------- "
 
-" Don't persist options and mappings - may corrupt sessions.
+let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_insert_leave = 1
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_filetype_changed = 0
+let g:ale_lint_delay = 500
+"
+let g:ale_change_sign_column_color = 0
+let g:ale_set_signs = 1
+" let g:ale_linters = {'python': ['ruff']}
+let g:ale_linters = {'python': ['pyright', 'flake8']}
+" let g:ale_linters = {'python': ['pyright', 'flake8', 'ruff']}
+let g:ale_linters_ignore = {'python': ['mypy', 'pylint']}
+" let g:ale_linters_ignore = {'python': ['flake8', 'mypy', 'pylint']}
+"
+let g:ale_python_auto_poetry = 1
+let g:ale_python_auto_virtualenv = 1
+let g:ale_python_pyright_use_global = 1
+let g:ale_python_pyright_config = {
+\ 'python': {
+\   'pythonPath': '',
+\   'venvPath': '~/dev/python/venvs',
+\ },
+\}
+let g:ale_python_ruff_auto_poetry = 1
+
+nnoremap <leader>ad :ALEDisable<CR>
+nnoremap <leader>ae :ALEEnable<CR>
+nnoremap <leader>af :ALEFix<CR>
+nnoremap <leader>ai :ALEInfo<CR>
+nnoremap <leader>al :ALELint<CR>
+nnoremap <leader>at :ALEToggle<CR>
+
+" ------------------------------------------------------------------------- "
+"  vim-session plugin settings
+" ------------------------------------------------------------------------- "
+
+" Don't save hidden and unloaded buffers in sessions.
 set sessionoptions-=buffers
+" Don't persist options and mappings because it can corrupt sessions.
 set sessionoptions-=options
 
 let g:session_default_to_last = "yes"
-let g:session_default_name = "daily"
+
+if has("gui_running")
+    let g:session_default_name = "daily"
+    let g:session_autosave = 'yes'
+    let g:session_autosave_periodic = 30
+    let g:session_autosave_silent = 1
+    set sessionoptions+=resize
+    set sessionoptions+=winpos
+endif
+
 let g:session_autoload = 'yes'
-let g:session_autosave = 'yes'
-let g:session_autosave_periodic = 30
-let g:session_autosave_silent = 1
 let g:session_command_aliases = 1
 
 " ------------------------------------------------------------------------- "
@@ -421,177 +468,38 @@ nnoremap <silent> <leader>s :Rg<CR>
 " nnoremap <silent> <leader>? :History<CR>
 
 " ------------------------------------------------------------------------- "
-"   NERDTree Plugin Settings
-" ------------------------------------------------------------------------- "
-
-" load NerdFont
-" set guifont=DroidSansMono\ Nerd\ Font\ 12
-set guifont=BitstreamVeraSansMono\ Nerd\ Font\ Mono\ 12
-let g:webdevicons_enable = 1
-let g:webdevicons_enable_nerdtree = 1
-
-" Toggle the NERD Tree on and off with F7
-nmap <F7> :NERDTreeToggle<CR>
-
-" Close the NERD Tree with Shift-F7
-nmap <S-F7> :NERDTreeClose<CR>
-
-" Show the bookmarks table on startup
-let NERDTreeShowBookmarks=1
-
-" Ignore displaying the following file types in NERDTree
-let NERDTreeIgnore=[ '\.ncb$', '\.dummy$', '\.suo$', '\.vcproj\.RIMNET', '\.obj$',
-                   \ '\.ilk$', '^BuildLog.htm$', '\.pdb$', '\.idb$', '__pycache__',
-                   \ '\.embed\.manifest$', '\.embed\.manifest.res$',
-                   \  '\.intermediate\.manifest$', '^mt.deps' ]
-
-map,r :NERDTreeFind<CR>
-
-" Refresh the current folder if any changes
-autocmd BufEnter NERD_tree_* | execute 'normal R'
-au CursorHold * if exists("t:NerdTreeBufName") | call <SNR>15_refreshRoot() | endif
-
-"Reload the window if directory is changed
-augroup DIRCHANGE
-    au!
-    autocmd DirChanged global :NERDTreeCWD
-augroup END
-
-" Exit Vim if NERDTree is the only window remaining in the only tab.
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-
-" NERDTress File highlighting
-function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
-exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
-exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
-endfunction
-
-call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
-call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('config', 'green', 'none', 'green', '#151515')
-call NERDTreeHighlightFile('conf', 'green', 'none', 'green', '#151515')
-call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
-call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
-call NERDTreeHighlightFile('tcss', 'cyan', 'none', 'cyan', '#151515')
-call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
-call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
-call NERDTreeHighlightFile('py', 'blue', 'none', '#3366FF', '#151515')
-call NERDTreeHighlightFile('gitconfig', 'Gray', 'none', '#686868', '#151515')
-call NERDTreeHighlightFile('gitignore', 'Gray', 'none', '#686868', '#151515')
-call NERDTreeHighlightFile('bashrc', 'Gray', 'none', '#686868', '#151515')
-call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#151515')
-
-" ------------------------------------------------------------------------- "
 "   Powerline Plugin Settings
 " ------------------------------------------------------------------------- "
 
 set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
+" set rtp+=/usr/lib/python3/dist-packages/powerline/bindings/vim/
 " set rtp+=~/.local/lib/python3.8/site-packages/powerline/bindings/vim/
 " set statusline=%{FugitiveStatusline()}%f%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
 set statusline+=%#warningmsg#
 set statusline+=%{FugitiveStatusline()}
 set statusline+=%*
+set statusline+=%{tagbar#currenttag([%f])}
 " Always display the tabline, even if there is only one tab
 set showtabline=2
 
 " ------------------------------------------------------------------------- "
-"   Ale Plugin Settings
-" ------------------------------------------------------------------------- "
-
-let g:ale_lint_on_text_changed = 0
-let g:ale_lint_on_insert_leave = 1
-let g:ale_lint_on_enter = 0
-let g:ale_lint_on_filetype_changed = 0
-let g:ale_lint_delay = 500
-"
-let g:ale_change_sign_column_color = 0
-let g:ale_set_signs = 1
-" let g:ale_linters = {'python': ['ruff']}
-let g:ale_linters = {'python': ['pyright', 'flake8']}
-" let g:ale_linters = {'python': ['pyright', 'flake8', 'ruff']}
-let g:ale_linters_ignore = {'python': ['mypy', 'pylint']}
-" let g:ale_linters_ignore = {'python': ['flake8', 'mypy', 'pylint']}
-"
-let g:ale_python_auto_poetry = 1
-let g:ale_python_auto_virtualenv = 1
-let g:ale_python_pyright_use_global = 1
-let g:ale_python_pyright_config = {
-\ 'python': {
-\   'pythonPath': '',
-\   'venvPath': '~/dev/python/venvs',
-\ },
-\}
-let g:ale_python_ruff_auto_poetry = 1
-
-nnoremap <leader>ad :ALEDisable<CR>
-nnoremap <leader>ae :ALEEnable<CR>
-nnoremap <leader>af :ALEFix<CR>
-nnoremap <leader>ai :ALEInfo<CR>
-nnoremap <leader>al :ALELint<CR>
-nnoremap <leader>at :ALEToggle<CR>
-
-" ------------------------------------------------------------------------- "
-"   VimWiki Plugin Settings
-" ------------------------------------------------------------------------- "
-
-let wiki = {}
-
-let g:vimwikidir = $HOME . "/docs/vimwiki"
-let wiki.path = g:vimwikidir
-let g:vimwiki_global_ext = 0
-let g:vimwiki_list=[wiki]
-let g:vimwiki_list=[{'path': '~/docs/vimwiki/',
-                   \ 'syntax': 'markdown',
-                   \ 'ext': '.md'}]
-" let g:vimwiki_syntax_list = {}
-" let g:vimwiki_syntax_list['markdown'] = {}
-" let g:vimwiki_syntax_list['markdown']['typeface'] = {'bold': [], 'italic': [], 'underline': [], 'bold_italic': [], 'code': [], 'del':  [], 'sup':  [], 'sub':  [], 'eq': []}
-let g:vimwiki_url_maxsave=0
-
-
-highlight VimwikiHeader1 guifg=#FF00FF
-highlight VimwikiHeader2 guifg=#FF0000
-highlight VimwikiHeader3 guifg=#FFFF00
-highlight VimwikiHeader4 guifg=#00FFFF
-highlight VimwikiHeader5 guifg=#FF00FF
-highlight VimwikiHeader6 guifg=#FFF000
-highlight VimwikiHeader7 guifg=#FFFF00
-
-highlight htmlH1 guifg=#FF00FF
-highlight htmlH2 guifg=#FF0000
-highlight htmlH3 guifg=#FFFF00
-highlight htmlH4 guifg=#00FFFF
-highlight htmlH5 guifg=#FF00FF
-highlight htmlH6 guifg=#FFF000
-highlight htmlH7 guifg=#FFFF00
-
-highlight markdownH1 guifg=#FF00FF
-highlight markdownH2 guifg=#FF0000
-highlight markdownH3 guifg=#FFFF00
-highlight markdownH4 guifg=#00FFFF
-highlight markdownH5 guifg=#FF00FF
-highlight markdownH6 guifg=#FFF000
-highlight markdownH7 guifg=#FFFF00
-
-"}}}
-" ------------------------------------------------------------------------- "
 "   Vim-Markdown & Preview Plugin Settings
 " ------------------------------------------------------------------------- "
-"{{{
 
 " for normal mode
-nmap <silent> <F8> <Plug>MarkdownPreview
+nmap <silent> <F9> <Plug>MarkdownPreview
 " for insert mode
-imap <silent> <F8> <Plug>MarkdownPreview
+imap <silent> <F9> <Plug>MarkdownPreview
 
 let g:vim_markdown_open_url_under_cursor = 1
 let g:vim_markdown_follow_anchor = 1
+" See: https://github.com/preservim/vim-markdown/issues/493#issuecomment-1876093874
+let g:vim_markdown_anchorexpr = "'# ' .. substitute(v:anchor, '-', '[- ]', 'g') .. ' \*\\n\\c'"
+" let g:vim_markdown_anchorexpr = "'<<'.v:anchor.'>>'"
 let g:vim_markdown_conceallevel = 1
 let g:vim_markdown_folding_style_pythonic = 1
 let g:vim_markdown_folding_level = 6
+let g:vim_markdown_new_list_item_indent = 2
 
 let g:markdown_fenced_languages = ['bash=sh', 'css', 'django', 'html', 'python']
 
@@ -695,3 +603,127 @@ let g:mkdp_filetypes = ['markdown']
 " set default theme (dark or light)
 " By default the theme is define according to the preferences of the system
 let g:mkdp_theme = 'dark'
+
+" ------------------------------------------------------------------------- "
+"   NERDTree Plugin Settings
+" ------------------------------------------------------------------------- "
+
+" load NerdFont
+" set guifont=DroidSansMono\ Nerd\ Font\ 12
+set guifont=BitstreamVeraSansMono\ Nerd\ Font\ Mono\ 12
+let g:webdevicons_enable = 1
+let g:webdevicons_enable_nerdtree = 1
+
+" Toggle the NERD Tree on and off with F7
+nmap <F7> :NERDTreeToggle<CR>
+
+" Close the NERD Tree with Shift-F7
+nmap <S-F7> :NERDTreeClose<CR>
+
+" Show the bookmarks table on startup
+let NERDTreeShowBookmarks=1
+
+" Show number of lines in files
+" 20240829 - Seems to override file highlighting.
+" let g:NERDTreeFileLines = 1
+
+" Ignore displaying the following file types in NERDTree
+let NERDTreeIgnore=[ '__pycache__',]
+
+" map,r :NERDTreeFind<CR>
+
+" Reload the NERDTree window when there is a change in directory structure
+autocmd BufEnter NERD_tree_* | execute 'normal R'
+au CursorHold * if exists("t:NerdTreeBufName") | call <SNR>15_refreshRoot() | endif
+
+" Reload the NERDTree window if directory is changed
+" NOTE: 20240829 - Not optimal. Leave empty buffer on session restore.
+" augroup DIRCHANGE
+"   au!
+"   autocmd DirChanged global :NERDTreeCWD
+" augroup END
+
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | call feedkeys(":quit\<CR>:\<BS>") | endif
+" Close the tab if NERDTree is the only window remaining in it.
+autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | call feedkeys(":quit\<CR>:\<BS>") | endif
+
+" NERDTree File highlighting
+function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+  exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+  exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+endfunction
+
+call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
+call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('config', 'green', 'none', 'green', '#151515')
+call NERDTreeHighlightFile('conf', 'green', 'none', 'green', '#151515')
+call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
+call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
+call NERDTreeHighlightFile('tcss', 'cyan', 'none', 'cyan', '#151515')
+call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
+call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
+call NERDTreeHighlightFile('py', 'blue', 'none', '#3366FF', '#151515')
+call NERDTreeHighlightFile('gitconfig', 'Gray', 'none', '#686868', '#151515')
+call NERDTreeHighlightFile('gitignore', 'Gray', 'none', '#686868', '#151515')
+call NERDTreeHighlightFile('bashrc', 'Gray', 'none', '#686868', '#151515')
+call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#151515')
+
+" ------------------------------------------------------------------------- "
+"   Tagbar Plugin Settings & ctag customizations
+" ------------------------------------------------------------------------- "
+nmap <F8> :TagbarToggle<CR>
+
+" Open tagbar automatically in C files, optional
+autocmd FileType c call tagbar#autoopen(0)
+" Open tagbar automatically in Python files, optional
+autocmd FileType python call tagbar#autoopen(0)
+
+map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+
+" ------------------------------------------------------------------------- "
+"   VimWiki Plugin Settings
+" ------------------------------------------------------------------------- "
+
+let wiki = {}
+
+let g:vimwikidir = $HOME . "/docs/vimwiki"
+let wiki.path = g:vimwikidir
+let g:vimwiki_global_ext = 0
+let g:vimwiki_list=[wiki]
+let g:vimwiki_list=[{'path': '~/docs/vimwiki/',
+                   \ 'syntax': 'markdown',
+                   \ 'ext': '.md'}]
+" let g:vimwiki_syntax_list = {}
+" let g:vimwiki_syntax_list['markdown'] = {}
+" let g:vimwiki_syntax_list['markdown']['typeface'] = {'bold': [], 'italic': [], 'underline': [], 'bold_italic': [], 'code': [], 'del':  [], 'sup':  [], 'sub':  [], 'eq': []}
+let g:vimwiki_url_maxsave=0
+
+
+highlight VimwikiHeader1 guifg=#FF00FF
+highlight VimwikiHeader2 guifg=#FF0000
+highlight VimwikiHeader3 guifg=#FFFF00
+highlight VimwikiHeader4 guifg=#00FFFF
+highlight VimwikiHeader5 guifg=#FF00FF
+highlight VimwikiHeader6 guifg=#FFF000
+highlight VimwikiHeader7 guifg=#FFFF00
+
+highlight htmlH1 guifg=#FF00FF
+highlight htmlH2 guifg=#FF0000
+highlight htmlH3 guifg=#FFFF00
+highlight htmlH4 guifg=#00FFFF
+highlight htmlH5 guifg=#FF00FF
+highlight htmlH6 guifg=#FFF000
+highlight htmlH7 guifg=#FFFF00
+
+highlight markdownH1 guifg=#FF00FF
+highlight markdownH2 guifg=#FF0000
+highlight markdownH3 guifg=#FFFF00
+highlight markdownH4 guifg=#00FFFF
+highlight markdownH5 guifg=#FF00FF
+highlight markdownH6 guifg=#FFF000
+highlight markdownH7 guifg=#FFFF00
