@@ -1,66 +1,72 @@
-### ======================================================================= ###
+#!/usr/bin/env bash
+
+# ========================================================================= #
 #   Section 1: Header
-### ======================================================================= ###
-#{{{
+# ========================================================================= #
+#
 # Personal $HOME/.bash_aliases file
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
-# Version: 0.1
-# Source : http://www.github.com/kevinbowen777/dotfiles.git
-# Last modified: 20240804
+# Version: 3.0.0
+# Source : http://codeberg.org/kevinbowen/dotfiles
+# Last modified: 20240925
 # ~/.bash_aliases: called by ~/.bashrc
-# 
-#  Create symlink in ~/$HOME 
-#    ln -s ~/dotfiles/bash/bash_aliases ~/.bash_aliases
-# 
-# 
-#                               Sections
 #
-#  1)    Sourced aliases            (See .bash_aliases)
-#  2)    Workstation aliases        (See .bash_aliases)
-#  3)    Remote Server aliases      (See .bash_aliases)
-#  4)    Custom Functions(See .bash_aliases)
+#  Create symlink in ~/$HOME
+#    ln -s ~/dotfiles/bash/bash_aliases ~/.bash_aliases
+#
+#       Sections
+#
+#  1. Header (This section)
+#  2. Sourced aliases
+#  3. Workstation aliases
+#  4. Remote Server aliases
+#  5. Custom Functions
 
-### ======================================================================= ###
-#   Section 1: Sourced aliases and alias definitions.
-### ======================================================================= ###
+# ========================================================================= #
+#   Section 2: Sourced aliases and alias definitions.
+# ========================================================================= #
 
-# enable color support of ls 
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dir_colors && eval "$(dircolors -b ~/.dir_colors)" || eval "$(dircolors -b)"
+# enable color support of ls
+if [ -x /usr/bin/dircolors ]
+then
+    test -r ~/.dir_colors && eval "$(dircolors -b ~/.dir_colors)"
     alias ls='ls --color=auto'
-    alias dir='dir --color=auto'
+    alias dir='dir --color'
     alias vdir='vdir --color=auto'
 
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
+else
+    eval "$(dircolors -b)"
+    # test -r ~/.dir_colors && eval "$(dircolors -b ~/.dir_colors)" || eval "$(dircolors -b)"
 fi
 
-#### Aliases  
-alias act="source .venv/bin/activate"
+#### Aliases
+alias act='source .venv/bin/activate'
 alias bat='bat --theme=Dracula'
 alias batp='bat -p --theme=Dracula'
-alias bashed='vi ~/.bashrc; source ~/.bashrc && source $HOME/.bashrc && echo "bashrc sourced  --ok."'
-alias bestp='cd /home/kbowen/docs/tech/best_practices'
+alias bashed='vi ~/.bashrc; source $HOME/.bashrc && echo "bashrc sourced  --ok."'
+alias bestp='cd $HOME/docs/tech/best_practices'
 alias cdoc='cdoc.sh'
 alias cl='clear -x'
+alias ctags='ctags --options=$HOME/.ctags'
 alias deact='deactivate'
 alias delenv='rm -rf .venv'
 alias dict='sdcv'
-# alias dictw='curl dict://dict.org/d:$1'
 alias djstart='cd ~/dev/python/repos/django/django-start'
 alias djtree='tree -I "staticfiles|templates|__pycache__|htmlcov|static|media|docs|migrations|images"'
-alias docs='cd /home/kbowen/docs'
+alias docs='cd $HOME/docs'
 alias docu='docker compose up'
 alias docd='docker compose down'
 alias docnox='docker compose exec web nox'
-alias docsh='cd /home/kbowen/docs'
+alias docsh='cd $HOME/docs'
 alias docstat='ps -ef | grep docker'
 alias docub='docker compose up --build'
 alias docup='docker compose exec web coverage run -m pytest'
 alias docur='docker compose exec web coverage report'
 alias docuh='docker compose exec web coverage html'
-alias dot='cd /home/kbowen/dotfiles'
+alias dot='cd $HOME/dotfiles'
 alias dotf='cd ~/dotfiles'
 alias drun='./drun'
 alias ea='vi ~/.bash_aliases; source $HOME/.bash_aliases && echo "aliases sourced  --ok."'
@@ -68,12 +74,12 @@ alias ed='ed -p"★ > " --verbose'
 alias egrep='egrep --color=auto'
 alias etym='etym.py'
 alias fgrep='fgrep --color=auto'
-alias ghic='gh issue close $1'  # Requires one input
+function ghic() { gh issue close "$1"; }
 alias ghicb='gh issue create --label bug --assignee @me'
 alias ghicd='gh issue create --label documentation --assignee @me'
 alias ghice='gh issue create --label enhancement --assignee @me'
 alias ghict='gh issue create --label testing --assignee @me'
-alias ghie='gh issue edit $1'  #Requires one input
+function ghie() { gh issue edit "$1"; }
 alias ghil='gh issue list --limit 100'
 alias gits='git status'
 alias gita='git add .'
@@ -81,8 +87,8 @@ alias gitl='git log'
 alias gitp='git push all master;git push origin master'
 alias gitpom='git push origin master'
 alias grep='grep --color=auto'
-alias hist='history | grep $1' #Requires one input
-alias howto='cd /home/kbowen/docs/tech/howto'
+function hist() { history | grep "$1"; }
+alias howto='cd $HOME/docs/tech/howto'
 alias info='pinfo'
 alias ip='ip -color'
 alias ipy='ipython3'
@@ -91,7 +97,6 @@ alias la='ls -aF'
 alias lh='ls -1 --hyperlink=always'
 alias ll='ls -lF'
 alias ls='ls --color -h --group-directories-first'
-# alias ls='ls --color=auto'
 alias lsql='cd ~/dev/projects/learning/sql/'
 alias matrix='gomuks'
 alias meminfo='free -m -l -t'
@@ -102,15 +107,14 @@ alias mstop='audtool --playback-stop'
 alias mlb='mlbscores.py'
 alias mlbwest='mlb -s | head -n21 | tail -n6'
 alias ms='~/bin/movie_search.py'
-alias newenv="python3.12 -m venv --prompt . .venv && .venv/bin/pip install -U pip setuptools wheel"
+alias newenv='python3.12 -m venv --prompt . .venv && .venv/bin/pip install -U pip setuptools wheel'
 alias odin='cd ~/dev/projects/learning/odin-project/'
 alias pd='perldoc'
 alias pathdup='echo "$PATH" | tr : "\n" | sort | uniq -d'
-alias perdoc='perldoc'
 alias pgstat='ps -ef | grep postgres'
 alias pgstart='sudo systemctl start postgresql.service'
 alias pgstop='sudo systemctl stop postgresql.service'
-alias pip="python3 -m pip"
+alias pip='python3 -m pip'
 alias ports='netstat -tulanp'
 alias proj='cd ~/dev/projects'
 alias psc='ps xawf -eo pid,user,cgroup,args'
@@ -119,12 +123,13 @@ alias psmem10='ps auxf | sort -nr -k -4 | head -10'
 alias pscpu='ps auxf | sort -nr -k 3'
 alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
 alias pyenv_list='pyenv install --list | grep -E " 3\.([89]|1[0-4])"'
-# alias pyenv_list='pyenv install --list | grep " 3\.\([89]\|1[0-4]\)"'
 alias pymrun='python manage.py runserver'
 alias pymrun+='python manage.py runserver_plus --cert-file cert.crt'
 alias pydj='cd ~/dev/python/repos/django'
 alias pyr='cd ~/dev/python/repos'
 alias pysand='cd ~/dev/python/sandbox'
+alias pysource='cd ~/dev/python/src/cpython'
+alias pysrc='cd ~/dev/python/src/cpython'
 alias pyth='cd ~/dev/python'
 alias pytmp='cd ~/dev/python/tmp'
 alias renlow='rename 'y/A-Z/a-z/''
@@ -134,8 +139,8 @@ alias rbsand='cd ~/dev/ruby/sandbox'
 alias run='./run'
 alias setkb='setxkbmap -option caps:escape'
 alias sn='cd ~/.notes && ./sn.sh'
+alias sourcea='source ~/.bash_aliases && echo bash_aliases sourced --ok'
 alias sourceb='source ~/.bashrc && echo bashrc sourced --ok'
-alias sucharm='sudo /opt/pycharm/bin/pycharm.sh'
 alias sug='sudo apt upgrade'
 alias sup='sudo apt update'
 alias sur='sudo apt autoremove'
@@ -150,18 +155,17 @@ alias vimwik='vi ~/docs/vimwiki/index.md'
 alias ws='~/bin/wiki_search.py'
 alias xdis='xfce4-display-settings'
 alias xfdev='cd ~/dev/xfce'
-# alias xfrepo='cd ~/dev/xfce/repos/xfce/xfce-repocapp'
 alias xfrepo='cd ~/dev/xfce/gitlab.xfce.org'
 
-### ======================================================================= ###
-#   Section 2: Workstation aliases
-### ======================================================================= ###
+# ========================================================================= #
+#   Section 3: Workstation aliases
+# ========================================================================= #
 
 # aliases for remote boxes
 
-### ======================================================================= ###
-#   Section 3: Hardware control aliases(Control cd/dvd/scanners/audio/etc) 
-### ======================================================================= ###
+# ========================================================================= #
+#   Section 4: Hardware control aliases(Control cd/dvd/scanners/audio/etc)
+# ========================================================================= #
 
 setxkbmap -option caps:escape
 # volume controls
@@ -172,9 +176,9 @@ alias md5='amixer sset Master 5%-'
 alias mu='amixer set Master 10%+'
 alias md='amixer sset Master 10%-'
 
-### ======================================================================= ###
-#   Section 4: Custom Functions (More of a function than an alias.. here) 
-### ======================================================================= ###
+# ========================================================================= #
+#   Section 5: Custom Functions (More of a function than an alias.. here)
+# ========================================================================= #
 
 edwin () {
     scheme -eval "(edit 'console)"
@@ -195,7 +199,7 @@ hidden_python () {
     # https://til.simonwillison.net/python/stdlib-cli-tools
     PY_VERSION=$(python -V | awk '{print $2}')
     PY_MAJOR=${PY_VERSION::-5}
-    cd ~/.pyenv/versions/$PY_VERSION/lib/python$PY_MAJOR
+    cd "$HOME/.pyenv/versions/${PY_VERSION}/lib/python${PY_MAJOR}" || return
     rg 'if __name__ =' -l | grep -v \
         -e test \
         -e tests \
@@ -205,12 +209,12 @@ hidden_python () {
         | sort
 }
 mkcd () {
-    mkdir -p -- "$1" && cd -P -- "$1"
+    mkdir -p -- "$1" && cd -P -- "$1" || return 
 }
 pybaseinstall () {
     python -m pip install --upgrade pip
     python -m pip install pipx
-    source ~/.bashrc
+    source "$HOME/.bashrc"
 }
 pipxpackageinstall () {
     pipx install argcomplete
@@ -221,7 +225,6 @@ pipxpackageinstall () {
     pipx install pdm
     pipx install pip-audit
     pipx install pip-check
-    # pipx install pispy
     pipx install pispy-client --python python3.12
     pipx install poetry
     pipx install pydf
@@ -236,7 +239,8 @@ pipx-outdated() {
     # See: https://github.com/pypa/pipx/issues/149#issuecomment-23427482060
 	echo "OUTDATED PACKAGES:"
 	while read -sr pyPkgName pyPkgVersion; do
-		local pypi_latest="$(curl -sS "https://pypi.org/pypi/${pyPkgName}/json" | jq --raw-output '.info.version')"
+        pyPkgURL="https://pypi.org/pypi/${pyPkgName}/json"
+		pypi_latest="$(curl -sS "${pyPkgURL}" | jq --raw-output '.info.version')"
 		[ "$pyPkgVersion" != "$pypi_latest" ] && printf "%s\n\tCurrent: %s\tLatest: %s\n" "$pyPkgName" "$pyPkgVersion" "$pypi_latest"
 	done < <( pipx list | grep -o 'package.*,' | tr -d ',' | cut -d ' ' -f 2- )
 }
@@ -250,11 +254,15 @@ done
 
 dictw () {
     echo
-    def="$(curl -s dict://dict.org/define:$1: | grep -vP '^\d\d\d')";
+    def="$(curl -s dict://dict.org/define:"$1": | grep -vP '^\d\d\d')";
     if [ "$def" = "" ];
     then
-        echo No definition;
+        echo No definition available;
     else
-        echo "$def" | bat -p --theme Dracula;
+        echo "$def" | bat -p --theme "Solarized (light)";
     fi
+}
+
+find_largest_file() {
+    du -h -x -s -- * | sort -r -h | head -20;
 }
