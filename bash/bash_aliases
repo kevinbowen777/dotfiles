@@ -214,6 +214,7 @@ mkcd () {
 pybaseinstall () {
     python -m pip install --upgrade pip
     python -m pip install pipx
+    python -m pip install rich
     source "$HOME/.bashrc"
 }
 pipxpackageinstall () {
@@ -227,6 +228,7 @@ pipxpackageinstall () {
     pipx install pip-check
     pipx install pispy-client --python python3.12
     pipx install poetry
+    pipx install posting --python python3.12
     pipx install pydf
     pipx install pyright
     pipx install rich --include-deps
