@@ -1,25 +1,61 @@
 # .pythonstartup
 
-# from importlib import reload
-# from friendly.ipython import *
-# import datetime, warnings, os, sys
-import datetime, os, pprint, sys
+# created: 20231129
+# 
+# adapted from: https://github.com/ambv/.dot_files/blob/master/pythonstartup
+def autoimport(*modules):
+    autoimported = set()
+    for module in modules:
+        if module.endswith(".*"):
+            base = module[:-2]
+            try:
+                exec(
+                    f"from {base} import *",
+                    globals(),
+                    globals(),
+                )
+            except ImportError:
+                print(f"Failed to import {module}")
+            autoimported.add(module)
+        elif "." in module:
+            base, name = module.rsplit(".", 1)
+            try:
+                exec(
+                    f"from {base} import {name}",
+                    globals(),
+                    globals(),
+                )
+            except ImportError:
+                print(f"Failed to import {module}")
+            autoimported.add(name)
+        else:
+            try:
+                exec(
+                    f"import {module}",
+                    globals(),
+                    globals(),
+                )
+            except ImportError:
+                print(f"Failed to import {module}")
+            autoimported.add(module)
+
+    print("Packages auto-imported for your convenience:")
+    print(", ".join(sorted(autoimported)))
 
 
-print("(imported datetime, os, pprint, sys, warnings)")
+import os
 
-pp = pprint.pprint
-# warnings.filterwarnings("ignore", category=DeprecationWarning)
-
-try:
-    from rich import inspect, pretty
-    # from rich import inspect, pretty, traceback
-    from rich import print as rprint
-    print("(rich module installed)")
-except ModuleNotFoundError:
-    pass
-else:
-    pretty.install()
-    # traceback.install(show_locals=False)
+if not os.environ.get("TESTING"):
+    autoimport(
+        "sys",
+        "os",
+        "re",
+        "datetime",
+        "time",
+        # "asyncio",
+        # "typing.*",
+        "pathlib.Path",
+        # "dataclasses.dataclass",
+    )
 
 print("...Startup file loaded...")
