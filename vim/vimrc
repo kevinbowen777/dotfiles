@@ -4,10 +4,10 @@
 " Purpose: Set vim configuration
 " Requirements: vim-plug
 "
-" Version: 1.36
+" Version: 1.37
 " Author: Kevin Bowen kevin.bowen@gmail.com
 "
-" Updated: 20240825
+" Updated: 20241030
 "
 " ------------------------------------------------------------------------- "
 
@@ -152,6 +152,9 @@ endif
 au TabLeave * let g:lasttab = tabpagenr()
 nnoremap <Leader><C-L> :exe "tabn ".g:lasttab<CR>
 vnoremap <Leader><C-L> :exe "tabn ".g:lasttab<CR>
+
+" Run program in current buffer
+nnoremap <F10> :!clear && %:p<Enter>
 
 " Indentation
 set autoindent
@@ -680,7 +683,7 @@ nmap <F8> :TagbarToggle<CR>
 " Open tagbar automatically in C files, optional
 autocmd FileType c call tagbar#autoopen(0)
 " Open tagbar automatically in Python files, optional
-autocmd FileType python call tagbar#autoopen(0)
+" autocmd FileType python call tagbar#autoopen(0)
 
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
