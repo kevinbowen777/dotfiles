@@ -253,6 +253,10 @@ chkfont () {
   fc-match "$family"
 done
 }
+cxfile () {
+    # Create an executable file and edit created file
+    touch "$1" && chmod +x "$_" && vi "$_" || return
+}
 
 dictw () {
     echo
