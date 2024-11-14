@@ -6,9 +6,9 @@
 #
 # Personal $HOME/.bash_aliases file
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
-# Version: 3.0.0
+# Version: 3.0.1
 # Source : http://codeberg.org/kevinbowen/dotfiles
-# Last modified: 20240925
+# Last modified: 20241114
 # ~/.bash_aliases: called by ~/.bashrc
 #
 #  Create symlink in ~/$HOME
@@ -90,7 +90,9 @@ alias grep='grep --color=auto'
 function hist() { history | grep "$1"; }
 alias howto='cd $HOME/docs/tech/howto'
 alias info='pinfo'
-alias ip='ip -color'
+alias ip='ip -color address'
+alias ipb='/usr/sbin/ip -brief address'
+alias ipr='/usr/sbin/ip route'
 alias ipy='ipython3'
 alias l='ls -CF'
 alias la='ls -aF'
@@ -107,6 +109,9 @@ alias mstop='audtool --playback-stop'
 alias mlb='mlbscores.py'
 alias mlbwest='mlb -s | head -n21 | tail -n6'
 alias ms='~/bin/movie_search.py'
+alias myip='curl myip.wtf && curl ipv4.text.myip.wtf'
+alias myip4='curl ipv4.text.myip.wtf'
+alias myip6='curl myip.wtf'
 alias newenv='python3.13 -m venv --prompt . .venv && .venv/bin/pip install -U pip setuptools wheel'
 alias odin='cd ~/dev/projects/learning/odin-project/'
 alias pd='perldoc'
