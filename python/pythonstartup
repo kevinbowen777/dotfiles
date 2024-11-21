@@ -70,8 +70,8 @@ except ImportError:
     pass  # Not in the new pyrepl OR _pyrepl implementation change.
 else:
     cmds = {
-        r"\C-n": "x = [2, 1, 3, 4, 7, 11, 18, 29]",
-        r"\C-o": 'y =["apples", "oranges", "bananas", "strawberries", "pears"]',
+        r"\C-n": "lucas = [2, 1, 3, 4, 7, 11, 18, 29]",
+        r"\C-o": 'fruits = ["apples", "oranges", "bananas", "strawberries", "pears"]',
     }
     from textwrap import dedent
     reader = _get_reader()
