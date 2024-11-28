@@ -8,7 +8,7 @@
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
 # Version: 3.0.1
 # Source : http://codeberg.org/kevinbowen/dotfiles
-# Last modified: 20241114
+# Last modified: 20241126
 # ~/.bash_aliases: called by ~/.bashrc
 #
 #  Create symlink in ~/$HOME
@@ -233,7 +233,7 @@ pipxpackageinstall () {
     pipx install pdm
     pipx install pip-audit
     pipx install pip-check
-    pipx install pispy-client --python python3.12
+    pipx install pispy-client
     pipx install poetry
     pipx install posting --python python3.12
     pipx install pydf
