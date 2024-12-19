@@ -32,7 +32,9 @@ Xft.lcdfilter:	lcddefault
 ! URxvt.perl-ext-common: default,matcher,tabbed,-confirm-paste,font-size,fullscreen,keyboard-select
 URxvt.perl-ext-common: default,matcher,tabbed,-confirm-paste,selection-to-clipboard,font-size,fullscreen,keyboard-select
 URxvt.font:		    xft:BitstreamVeraSansMono Nerd Font Mono:size=12
+! URxvt.font:		    xft:Recursive Mono Casual:size=12
 URxvt.boldfont:		    xft:BitstreamVeraSansMono Nerd Font Mono:size=12
+! URxvt.boldfont:		    xft:Recursive Mono Casual:size=12
 URxvt.letterSpace: -1.15
 URxvt.foreground: Green
 URxvt.background: #011622
@@ -70,6 +72,7 @@ xterm*renderFont: true
 xterm.termName: xterm-256color
 xterm.vt100.geometry: 90x48
 xterm*faceName: xft:DroidSansMono Nerd Font
+! xterm*faceName: xft:Recursive Mono Casual
 xterm*faceSize: 11
 xterm*background: #011622
 xterm*foreground: Green
