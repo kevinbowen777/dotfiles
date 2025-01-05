@@ -6,9 +6,9 @@
 #
 # Personal $HOME/.bash_aliases file
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
-# Version: 3.0.1
+# Version: 3.0.2
 # Source : http://codeberg.org/kevinbowen/dotfiles
-# Last modified: 20241126
+# Last modified: 20250105
 # ~/.bash_aliases: called by ~/.bashrc
 #
 #  Create symlink in ~/$HOME
@@ -122,6 +122,7 @@ alias pgstat='ps -ef | grep postgres'
 alias pgstart='sudo systemctl start postgresql.service'
 alias pgstop='sudo systemctl stop postgresql.service'
 alias pip='python3 -m pip'
+alias poetry_shell='eval $(poetry env activate)'
 alias ports='netstat -tulanp'
 alias proj='cd ~/dev/projects'
 alias psc='ps xawf -eo pid,user,cgroup,args'
@@ -237,6 +238,7 @@ pipxpackageinstall () {
     pipx install pip-check
     pipx install pispy-client
     pipx install poetry
+    pipx inject poetry poetry-plugin-shell
     pipx install posting --python python3.12
     pipx install pydf
     pipx install pyright
