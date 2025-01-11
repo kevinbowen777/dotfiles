@@ -6,9 +6,9 @@
 #
 # Personal $HOME/.bash_aliases file
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
-# Version: 3.0.3
+# Version: 3.0.4
 # Source : http://codeberg.org/kevinbowen/dotfiles
-# Last modified: 20250108
+# Last modified: 20250110
 # ~/.bash_aliases: called by ~/.bashrc
 #
 #  Create symlink in ~/$HOME
@@ -143,6 +143,7 @@ alias pyth='cd ~/dev/python'
 alias pytmp='cd ~/dev/python/tmp'
 alias renlow='rename 'y/A-Z/a-z/''
 alias renup='rename 'y/a-z/A-Z/''
+alias rust_list='cargo install --list'
 alias prsand='cd ~/dev/projects/sandbox'
 alias rbsand='cd ~/dev/ruby/sandbox'
 alias run='./run'
