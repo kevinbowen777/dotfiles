@@ -4,13 +4,14 @@
 " Purpose: Set vim configuration
 " Requirements: vim-plug
 "
-" Version: 1.37
+" Version: 1.38
 " Author: Kevin Bowen kevin.bowen@gmail.com
 "
-" Updated: 20241030
+" Updated: 20250110
 "
 " ------------------------------------------------------------------------- "
 
+set autochdir
 set encoding=utf-8
 set hidden
 set modelines=0
@@ -101,6 +102,8 @@ augroup my_filetypes
     au BufRead,BufNewFile *.tcss set filetype=css
 augroup END
 
+" Don't filter by file type when opening file browser(gvim mostly)
+autocmd FileType * let b:browsefilter = ''
 
 " Use the below highlight group when displaying bad whitespace is desired.
 " See: https://alvinalexander.com/linux/vi-vim-editor-color-scheme-syntax/
