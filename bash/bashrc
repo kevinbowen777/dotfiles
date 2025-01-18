@@ -72,6 +72,8 @@ export ON_WHITE="\e[47m"
 
 export NC="\e[0m"	# No Color
 
+export LC_COLLATE=C.utf8
+
 # History control
 export HISTCONTROL=ignoreboth:erasedups
 shopt -s histappend
