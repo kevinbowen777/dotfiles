@@ -23,8 +23,8 @@
     path = vim/bundle/vim-fugitive
     url = https://github.com/tpope/vim-fugitive
 [submodule "vim/bundle/vim-markdown"]
-    path = vim/bundle/vim-markdown
-    url = https://github.com/preservim/vim-markdown
+	path = vim/bundle/vim-markdown
+	url = https://github.com/preservim/vim-markdown.git
 [submodule "vim/bundle/markdown-preview.nvim"]
     path = vim/bundle/markdown-preview.nvim
     url = https://github.com/iamcco/markdown-preview.nvim
