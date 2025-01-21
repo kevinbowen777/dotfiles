@@ -4,10 +4,10 @@
 " Purpose: Set vim configuration
 " Requirements: vim-plug
 "
-" Version: 1.38
+" Version: 1.39
 " Author: Kevin Bowen kevin.bowen@gmail.com
 "
-" Updated: 20250110
+" Updated: 20250120
 "
 " ------------------------------------------------------------------------- "
 
@@ -104,6 +104,8 @@ augroup END
 
 " Don't filter by file type when opening file browser(gvim mostly)
 autocmd FileType * let b:browsefilter = ''
+" Keep python files unfolded by default when opening
+autocmd FileType python,toml normal zR
 
 " Use the below highlight group when displaying bad whitespace is desired.
 " See: https://alvinalexander.com/linux/vi-vim-editor-color-scheme-syntax/
@@ -167,11 +169,9 @@ set shiftwidth=4
 set softtabstop=4
 
 " Folding
-" set foldmethod=indent
-" set foldmethod=marker
 set foldnestmax=10
 set foldenable
-" set foldlevel=99
+set foldmethod=indent
 nnoremap <space> za
 
 " Tab-completion in command-line mode
