@@ -6,9 +6,9 @@
 #
 # Personal $HOME/.bash_aliases file
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
-# Version: 3.0.5
+# Version: 3.0.6
 # Source : http://codeberg.org/kevinbowen/dotfiles
-# Last modified: 20250119
+# Last modified: 20250129
 # ~/.bash_aliases: called by ~/.bashrc
 #
 #  Create symlink in ~/$HOME
@@ -285,4 +285,23 @@ dictw () {
 
 find_largest_file() {
     du -h -x -s -- * | sort -r -h | head -20;
+}
+
+xf_change () {
+# toggle light/dark xfce4-terminal themes
+  xf_set () { #xfce
+    xfconf-query -c "xfce4-terminal" -p "/$1" -s "$2"
+  }
+if [ "$(basename "$1")" = "mode-dark" ]
+then
+  xf_set "color-foreground" "#839496"
+  xf_set "color-background" "#002b36"
+  xf_set "color-cursor"     "#93a1a1"
+  xf_set "color-bold"       "#93a1a1"
+else
+  xf_set "color-foreground" "#073642"
+  xf_set "color-background" "#fdf6e3"
+  xf_set "color-cursor"     "#073642"
+  xf_set "color-bold"       "#073642"
+fi
 }
