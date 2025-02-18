@@ -6,9 +6,9 @@
 #
 # Personal $HOME/.bash_aliases file
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
-# Version: 3.0.6
+# Version: 3.0.8
 # Source : http://codeberg.org/kevinbowen/dotfiles
-# Last modified: 20250129
+# Last modified: 20250217
 # ~/.bash_aliases: called by ~/.bashrc
 #
 #  Create symlink in ~/$HOME
@@ -73,6 +73,7 @@ alias ea='vi ~/.bash_aliases; source $HOME/.bash_aliases && echo "aliases source
 alias ed='ed -p"★ > " --verbose'
 alias egrep='egrep --color=auto'
 alias etym='etym.py'
+alias fixkb='setxkbmap -option caps:escape'
 alias fgrep='fgrep --color=auto'
 alias fontfix='sudo fc-cache -vf'
 alias fontfix_local='fc-cache -vf ~/.fonts'
@@ -118,6 +119,7 @@ alias newenv='python3.13 -m venv --prompt . .venv && .venv/bin/pip install -U pi
 alias odin='cd ~/dev/projects/learning/odin-project/'
 alias pd='perldoc'
 alias pathdup='echo "$PATH" | tr : "\n" | sort | uniq -d'
+alias pep='peplum'
 alias pgstat='ps -ef | grep postgres'
 alias pgstart='sudo systemctl start postgresql.service'
 alias pgstop='sudo systemctl stop postgresql.service'
@@ -131,7 +133,7 @@ alias psmem10='ps auxf | sort -nr -k -4 | head -10'
 alias pscpu='ps auxf | sort -nr -k 3'
 alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
 alias py='python'
-alias pyenv_list='pyenv install --list | grep -E " 3\.([89]|1[0-4])"'
+alias pyenv_list='pyenv install --list | grep -E " 3\.([9]|1[0-4])"'
 alias pymrun='python manage.py runserver'
 alias pymrun+='python manage.py runserver_plus --cert-file cert.crt'
 alias pydj='cd ~/dev/python/repos/django'
@@ -235,6 +237,7 @@ pipxpackageinstall () {
     pipx install glances
     pipx install ipython
     pipx inject ipython friendly colorama pickleshare
+    pipx install peplum
     pipx install pdm
     pipx install pip-audit
     pipx install pip-check
@@ -245,9 +248,33 @@ pipxpackageinstall () {
     pipx install posting --python python3.12
     pipx install pydf
     pipx install pyright
+    pipx install requests --include-deps
     pipx install rich --include-deps
     pipx install thonny
     pipx install tldr
+
+}
+pipxforceinstall () {
+    pipx install --force argcomplete
+    pipx install --force frogmouth
+    pipx install --force glances
+    pipx install --force ipython
+    pipx inject ipython friendly colorama pickleshare
+    pipx install --force peplum
+    pipx install --force pdm
+    pipx install --force pip-audit
+    pipx install --force pip-check
+    pipx install --force pispy-client
+    pipx install --force poetry
+    pipx inject poetry poetry-plugin-export
+    pipx inject poetry poetry-plugin-shell
+    pipx install --force posting --python python3.12
+    pipx install --force pydf
+    pipx install --force pyright
+    pipx install --force requests --include-deps
+    pipx install --force rich --include-deps
+    pipx install --force thonny
+    pipx install --force tldr
 
 }
 
