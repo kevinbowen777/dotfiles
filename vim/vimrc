@@ -136,7 +136,7 @@ set wrap
 
 " Behavior
 set backspace=indent,eol,start
-set history=50
+set history=1000
 set hlsearch
 set incsearch
 set fileformat=unix
