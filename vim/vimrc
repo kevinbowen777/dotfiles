@@ -142,7 +142,7 @@ set incsearch
 set fileformat=unix
 
 " Possible Bugfix for gx
-" See https://vi.stackexchange.com/questions/22459/gx-doesnt-open-the-url-and-complains-netrw-no-line-in-buffer/22505#22505
+" See https://vi.stackexchange.com/questions/22459/gx-doesnt-open-the-url-and-complains-netrw-no-line-in-buffer/22505
 " Most likely just need to upgrade to a 9.x version
 " nnoremap gx :!xdg-open <cWORD> &<CR><CR>
 
