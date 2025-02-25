@@ -104,8 +104,9 @@ augroup END
 
 " Don't filter by file type when opening file browser(gvim mostly)
 autocmd FileType * let b:browsefilter = ''
-" Keep python files unfolded by default when opening
-autocmd FileType python,toml,yaml normal zR
+" Keep the following file types unfolded by default when opening
+" autocmd FileType python,toml,yaml normal zR
+autocmd FileType * normal zR
 
 " Use the below highlight group when displaying bad whitespace is desired.
 " See: https://alvinalexander.com/linux/vi-vim-editor-color-scheme-syntax/
@@ -504,7 +505,7 @@ let g:vim_markdown_anchorexpr = "'# ' .. substitute(v:anchor, '-', '[- ]', 'g') 
 " let g:vim_markdown_anchorexpr = "'<<'.v:anchor.'>>'"
 let g:vim_markdown_conceallevel = 1
 let g:vim_markdown_folding_style_pythonic = 1
-let g:vim_markdown_folding_level = 6
+let g:vim_markdown_folding_level = 1
 let g:vim_markdown_new_list_item_indent = 2
 
 let g:markdown_fenced_languages = ['bash=sh', 'css', 'django', 'html', 'python']

@@ -6,9 +6,9 @@
 
 # Personal $HOME/.bashrc file
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
-# Version: 3.0.1
+# Version: 3.0.2
 # Source : http://codeberg.org/kevinbowen/dotfiles
-# Last modified: 20250222
+# Last modified: 20250225
 # 
 #                               Sections
 #
@@ -112,6 +112,14 @@ LESS_TERMCAP_ue=$(printf "\e[0m") # leave underline mode
 export LESS_TERMCAP_ue
 LESS_TERMCAP_us=$(printf "\e[04;36m") # enter underline mode(cyan)
 export LESS_TERMCAP_us
+
+# See https://bbs.archlinux.org/viewtopic.php?id=287185 for explanation
+export GROFF_NO_SGR=1
+# export MANROFFOPT=-c
+
+export MANPAGER='/usr/bin/less -s -M +Gg'
+# export PAGER='/usr/bin/less +Gg'
+export PAGER='/usr/bin/less -s -M +Gg'
  
 export PATH="${PATH}:/home/kbowen/bin:/home/kbowen/.local/bin"
 
@@ -205,7 +213,7 @@ if [ ! -S ~/.ssh/ssh_auth_sock ]; then
 fi
 
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
-ssh-add -l > /dev/null || ssh-add ~/.ssh/leeuin_key_2026
+ssh-add -l > /dev/null || ssh-add ~/.ssh/leeuin_2026
 
 # Changes prompt when remotely ssh'd into host
 if [ -n "$SSH_CLIENT" ]; then text=" [remote]"
