@@ -10,6 +10,7 @@ Create symlinks:
     ln -s ~/dotfiles/bash/bash_aliases ~/.bash_aliases
     ln -s ~/dotfiles/bash/bash_profile ~/.bash_profile
     ln -s ~/dotfiles/bash/dir_colors ~/.dir_colors
+    ln -s ~/dotfiles/bash/lesskey ~/.lesskey
     ln -s ~/dotfiles/bash/profile ~/.profile
     ln -s ~/dotfiles/bash/inputrc ~/.inputrc
     ln -s ~/dotfiles/bash/shellcheckrc ~/.shellcheckrc

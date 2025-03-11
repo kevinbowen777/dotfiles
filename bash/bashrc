@@ -6,9 +6,9 @@
 
 # Personal $HOME/.bashrc file
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
-# Version: 3.0.3
+# Version: 3.0.4
 # Source : http://codeberg.org/kevinbowen/dotfiles
-# Last modified: 20250305
+# Last modified: 20250311
 # 
 #                               Sections
 #
@@ -120,6 +120,8 @@ export GROFF_NO_SGR=1
 # Show percentage of page completion for man pages
 export MANPAGER='/usr/bin/less -s -M +Gg'
 export PAGER='/usr/bin/less -s -M'
+# Remove "(press h for help..." message
+export MANLESS="\ Manual\ page\ \$MAN_PN\ %lt/%L %pB\%"
  
 export PATH="${PATH}:/home/kbowen/bin:/home/kbowen/.local/bin"
 

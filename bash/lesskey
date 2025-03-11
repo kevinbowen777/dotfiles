@@ -1,0 +1,14 @@
+# Prior to this being able to work, a section of commands needs to be added
+# to /usr/share/groff/site-tmac/man.local
+# .\" man.local
+# .\" Add a searchable string before each section header
+# .rn SH SH-orig
+# .de SH
+# .SH-orig \(sc \\$*
+# ..
+# See the following for details:
+# https://russellparker.me/post/2018/03/12/more-man-improvements/
+# created: 20250311
+#command
+    # remap tab to search for section
+    \t forw-search §\r
