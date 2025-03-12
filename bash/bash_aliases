@@ -6,9 +6,9 @@
 #
 # Personal $HOME/.bash_aliases file
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
-# Version: 3.0.8
+# Version: 3.0.9
 # Source : http://codeberg.org/kevinbowen/dotfiles
-# Last modified: 20250217
+# Last modified: 20250311
 # ~/.bash_aliases: called by ~/.bashrc
 #
 #  Create symlink in ~/$HOME
@@ -77,6 +77,7 @@ alias fixkb='setxkbmap -option caps:escape'
 alias fgrep='fgrep --color=auto'
 alias fontfix='sudo fc-cache -vf'
 alias fontfix_local='fc-cache -vf ~/.fonts'
+alias fzf_update='cd ~/.fzf && git pull && ./install && cd -'
 function ghic() { gh issue close "$1"; }
 alias ghicb='gh issue create --label bug --assignee @me'
 alias ghicd='gh issue create --label documentation --assignee @me'
