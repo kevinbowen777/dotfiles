@@ -18,6 +18,7 @@ Create symlinks:
     ln -s ~/dotfiles/config/zathura/zathurarc ~/.config/zathura/zathurarc
     ln -s ~/dotfiles/config/user-dirs.dirs ~/.config/user-dirs.dirs
     ln -s ~/dotfiles/config/ctags ~/.ctags
+    ln -s ~/dotfiles/git/git-completion.bash ~/.git-completion.bash
     ln -s ~/dotfiles/gtk/gtk.css ~/.config/gtk-3.0/gtk.css
     ln -s ~/dotfiles/ipython/ipython_config ~/.ipython/profile_default/ipython_config.py
     ln -s ~/dotfiles/ipython/vars_ids.py ~/.local/lib/vars_ids.py
