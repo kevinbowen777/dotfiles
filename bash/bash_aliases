@@ -73,11 +73,12 @@ alias ea='vi ~/.bash_aliases; source $HOME/.bash_aliases && echo "aliases source
 alias ed='ed -p"★ > " --verbose'
 alias egrep='egrep --color=auto'
 alias etym='etym.py'
+alias fd='fdfind'
 alias fixkb='setxkbmap -option caps:escape'
 alias fgrep='fgrep --color=auto'
 alias fontfix='sudo fc-cache -vf'
 alias fontfix_local='fc-cache -vf ~/.fonts'
-alias fzf_update='cd ~/.fzf && git pull && ./install && cd -'
+alias fzf_update='cd ~/.config/fzf && git pull && ./install && cd -'
 function ghic() { gh issue close "$1"; }
 alias ghicb='gh issue create --label bug --assignee @me'
 alias ghicd='gh issue create --label documentation --assignee @me'
