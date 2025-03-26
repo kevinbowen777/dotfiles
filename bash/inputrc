@@ -4,6 +4,7 @@
 # https://wiki.archlinux.org/title/readline
 #
 
+set editing-mode vi
 # Change the timeout for key sequences as 500ms is too fast.
 set keyseq-timeout 1200
 
@@ -22,14 +23,12 @@ set vi-ins-mode-string "+"
 set vi-cmd-mode-string ":"
 
 # "\C-l":clear-screen
-set editing-mode vi
 $if mode=vi
 
 set keymap vi-command
-# these are for vi-command mode
 Control-l: clear-screen
 
 set keymap vi-insert
-# these are for vi-insert mode
 Control-l: clear-screen
+
 $endif
