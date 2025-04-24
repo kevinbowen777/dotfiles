@@ -27,3 +27,8 @@ kbowen
 config
 STDOUT
 subdirectory
+filesystem
+sed
+xargs
+GitLab
+CLI
