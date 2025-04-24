@@ -6,16 +6,16 @@
 
 # Personal $HOME/.bashrc file
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
-# Version: 3.0.5
+# Version: 3.0.6
 # Source : http://codeberg.org/kevinbowen/dotfiles
-# Last modified: 20250322
+# Last modified: 20250524
 # 
 #                               Sections
 #
 #  1. Header                (This section)
 #  2. Exports               (Set history, paths, editors, colors, etc,)
 #  3. Special functions     (More of a function than an alias)
-#  *. Sourced aliases       (see: $HOME/dotfiles/bash/bash_aliases)
+#  4. Sourced aliases       (see: $HOME/dotfiles/bash/bash_aliases)
 #
 # ========================================================================= #
 
@@ -27,7 +27,6 @@
 # ========================================================================= #
 
 set -o vi
-shopt -s checkwinsize
 export MYVIMRC=~/.vimrc
 
 # Disable system bell
@@ -74,15 +73,22 @@ export NC="\e[0m"	# No Color
 
 export LC_COLLATE=C.utf8
 
-# History control
-export HISTCONTROL=ignoreboth:erasedups
-shopt -s histappend
 export PROMPT_COMMAND='echo -en "\033]0; $("pwd") \a"'
-export HISTIGNORE="cd:cd -:cl:docstart:docstop:exit:gits:ghic:ghil:gitp:hist:history:killfox:la:ls:ll:mlb:pip-check:pipx-outdated:playball:ps:pwd:pyenv:run:sourceb"
-export HISTSIZE=100000
+
+# History control
+# Save 5,000 lines of history in memory
+export HISTSIZE=10000
+# Save 10,000,000 lines of history to disk (will have to grep ~/.bash_history for full listing)
 export HISTFILESIZE=10000000
-shopt -s histappend histreedit
-# shopt -s no_empty_cmd_completion
+# Append to history instead of overwrite
+shopt -s histappend
+# Allows re-editing of a failed history substitution
+shopt -s histreedit
+# Ignore redundant or space commands. Remove duplicate commands
+export HISTCONTROL=ignoreboth:erasedups
+# Ignore specific commands
+export HISTIGNORE="cd:cd -:cl:docstart:docstop:exit:gits:ghic:ghil:gitp:hist:history:killfox:la:ls:ll:mlb:pip-check:pipx-outdated:playball:ps:pwd:pyenv:run:sourceb"
+# Set time format
 HISTTIMEFORMAT="$(echo -e "${CYAN}")[%d/%m %H:%M:%S]$(echo -e "${PURPLE}") "
 export HISTTIMEFORMAT
 
