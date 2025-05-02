@@ -6,9 +6,9 @@
 #
 # Personal $HOME/.bash_aliases file
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
-# Version: 3.0.9
+# Version: 3.0.10
 # Source : http://codeberg.org/kevinbowen/dotfiles
-# Last modified: 20250311
+# Last modified: 20250502
 # ~/.bash_aliases: called by ~/.bashrc
 #
 #  Create symlink in ~/$HOME
@@ -50,6 +50,7 @@ alias bashed='vi ~/.bashrc; source $HOME/.bashrc && echo "bashrc sourced  --ok."
 alias bestp='cd $HOME/docs/tech/best_practices'
 alias cdoc='cdoc.sh'
 alias cl='clear -x'
+alias color=gcolor3
 alias ctags='ctags --options=$HOME/.ctags'
 alias deact='deactivate'
 alias delenv='rm -rf .venv'
