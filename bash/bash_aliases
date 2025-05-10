@@ -6,9 +6,9 @@
 #
 # Personal $HOME/.bash_aliases file
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
-# Version: 3.0.10
+# Version: 3.0.11
 # Source : http://codeberg.org/kevinbowen/dotfiles
-# Last modified: 20250502
+# Last modified: 20250509
 # ~/.bash_aliases: called by ~/.bashrc
 #
 #  Create symlink in ~/$HOME
@@ -232,6 +232,7 @@ pybaseinstall () {
     python -m pip install --upgrade pip
     python -m pip install pipx
     python -m pip install rich
+    # shellcheck source=/home/kbowen/.bashrc
     source "$HOME/.bashrc"
 }
 pipxpackageinstall () {
@@ -240,6 +241,7 @@ pipxpackageinstall () {
     pipx install glances
     pipx install ipython
     pipx inject ipython friendly colorama pickleshare
+    pipx install norwegianblue
     pipx install peplum
     pipx install pdm
     pipx install pip-audit
