@@ -6,9 +6,9 @@
 
 # Personal $HOME/.bashrc file
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
-# Version: 3.0.6
+# Version: 3.0.7
 # Source : http://codeberg.org/kevinbowen/dotfiles
-# Last modified: 20250524
+# Last modified: 20250515
 # 
 #                               Sections
 #
@@ -28,6 +28,10 @@
 
 set -o vi
 export MYVIMRC=~/.vimrc
+VISUAL="$(command -v vim 2>/dev/null || command -v vi)"
+EDITOR="$(command -v vi 2>/dev/null || command -v ed)"
+export VISUAL
+export EDITOR
 
 # Disable system bell
 xset b off
