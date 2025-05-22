@@ -6,9 +6,9 @@
 #
 # Personal $HOME/.bash_aliases file
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
-# Version: 3.0.11
+# Version: 3.0.12
 # Source : http://codeberg.org/kevinbowen/dotfiles
-# Last modified: 20250509
+# Last modified: 20250521
 # ~/.bash_aliases: called by ~/.bashrc
 #
 #  Create symlink in ~/$HOME
@@ -115,7 +115,7 @@ alias mstop='audtool --playback-stop'
 alias mlb='mlbscores.py'
 alias mlbwest='mlb -s | head -n21 | tail -n6'
 alias ms='~/bin/movie_search.py'
-alias myip='curl myip.wtf && curl ipv4.text.myip.wtf'
+alias myip='curl myip.wtf && curl ipv4.text.myip.wtf && curl json.myip.wtf'
 alias myip4='curl ipv4.text.myip.wtf'
 alias myip6='curl myip.wtf'
 alias newenv='python3.13 -m venv --prompt . .venv && .venv/bin/pip install -U pip setuptools wheel'
