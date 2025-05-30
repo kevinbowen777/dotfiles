@@ -8,7 +8,7 @@
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
 # Version: 3.0.12
 # Source : http://codeberg.org/kevinbowen/dotfiles
-# Last modified: 20250521
+# Last modified: 20250530
 # ~/.bash_aliases: called by ~/.bashrc
 #
 #  Create symlink in ~/$HOME
@@ -152,6 +152,7 @@ alias rust_list='cargo install --list'
 alias prsand='cd ~/dev/projects/sandbox'
 alias rbsand='cd ~/dev/ruby/sandbox'
 alias run='./run'
+alias services='sudo systemctl list-units --type=service --state=running'
 alias setkb='setxkbmap -option caps:escape'
 alias sicp='cd ~/docs/learning/sicp'
 alias sn='cd ~/.notes && ./sn.sh'
