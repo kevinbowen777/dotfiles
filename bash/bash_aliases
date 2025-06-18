@@ -6,9 +6,9 @@
 #
 # Personal $HOME/.bash_aliases file
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
-# Version: 3.0.13
+# Version: 3.0.14
 # Source : http://codeberg.org/kevinbowen/dotfiles
-# Last modified: 20250607
+# Last modified: 20250617
 # ~/.bash_aliases: called by ~/.bashrc
 #
 #  Create symlink in ~/$HOME
@@ -92,6 +92,7 @@ alias gita='git add .'
 alias gitl='git log'
 alias gitp='git push all master;git push origin master'
 alias gitpom='git push origin master'
+alias gpg_list='gpg --list-secret-keys --keyid-format=long'
 alias grep='grep --color=auto'
 function hist() { history | grep "$1"; }
 alias howto='cd $HOME/docs/tech/howto'
