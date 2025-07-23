@@ -200,7 +200,7 @@ c.TerminalIPythonApp.display_banner = False
 ## Use colors for displaying information about objects. Because this information
 #  is passed through a pager (like 'less'), and some pagers get confused with
 #  color codes, this capability can be turned off.
-c.InteractiveShell.color_info = True
+# c.InteractiveShell.color_info = True
 
 ## Set the color scheme (NoColor, Neutral, Linux, or LightBG).
 c.InteractiveShell.colors = 'Linux'
@@ -326,12 +326,22 @@ c.TerminalInteractiveShell.editing_mode = 'vi'
 ## Highlight matching brackets.
 c.TerminalInteractiveShell.highlight_matching_brackets = True
 
+# colors and highlighting_style have been deprecated since 9.0
+# https://ipython.readthedocs.io/en/stable/config/details.html#theme-details
 ## The name or class of a Pygments style to use for syntax highlighting. To see
 #  available styles, run `pygmentize -L styles`.
-#c.TerminalInteractiveShell.highlighting_style = traitlets.Undefined
-c.TerminalInteractiveShell.highlighting_style = 'monokai'
+# c.TerminalInteractiveShell.highlighting_style = traitlets.Undefined
+# c.TerminalInteractiveShell.themeing = 'monokai'
+# c.TerminalInteractiveShell.highlighting_style = 'monokai'
 ## Override highlighting format for specific tokens
 #c.TerminalInteractiveShell.highlighting_style_overrides = {}
+# See: https://github.com/ipython/ipython/issues/14809
+from IPython.utils.PyColorize import linux_theme, theme_table
+from copy import deepcopy
+
+my_theme = deepcopy(linux_theme)
+my_theme.base = 'monokai'
+theme_table["my_theme"] = my_theme
 
 ## Enable mouse support in the prompt (Note: prevents selecting text with the
 #  mouse)
