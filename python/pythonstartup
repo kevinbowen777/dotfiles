@@ -1,5 +1,6 @@
 # .pythonstartup
 
+# updated: 20250807
 # created: 20231129
 # 
 # adapted from: https://github.com/ambv/.dot_files/blob/master/pythonstartup
@@ -43,14 +44,15 @@ def autoimport(*modules):
     print(", ".join(sorted(autoimported)))
 
 
+import builtins
 import os
 
 if not os.environ.get("TESTING"):
     autoimport(
-        "sys",
+        "datetime",
         "os",
         "re",
-        "datetime",
+        "sys",
         "time",
         # "asyncio",
         # "typing.*",
@@ -58,6 +60,18 @@ if not os.environ.get("TESTING"):
         # "dataclasses.dataclass",
         "pprint.pp",
     )
+
+class _Help:
+    def __call__(self, o):
+        return builtins.help(o)
+
+    def __truediv__(self, o):
+        return builtins.help(o)
+
+    def __rtruediv__(self, o):
+        return builtins.help(o)
+
+help = _Help()
 
 
 # The following code pilfered from:
