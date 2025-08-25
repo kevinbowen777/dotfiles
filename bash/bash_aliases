@@ -6,9 +6,9 @@
 #
 # Personal $HOME/.bash_aliases file
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
-# Version: 3.0.17
+# Version: 3.0.18
 # Source : http://codeberg.org/kevinbowen/dotfiles
-# Last modified: 20250723
+# Last modified: 20250825
 # ~/.bash_aliases: called by ~/.bashrc
 #
 #  Create symlink in ~/$HOME
@@ -94,7 +94,6 @@ alias gitp='git push all master;git push origin master'
 alias gitpom='git push origin master'
 alias gpg_list='gpg --list-secret-keys --keyid-format=long'
 alias grep='grep --color=auto'
-function hist() { history | grep "$1"; }
 alias howto='cd $HOME/docs/tech/howto'
 alias info='pinfo'
 alias ip='ip -color address'
@@ -226,6 +225,13 @@ hidden_python () {
         -e site-packages \
         -e turtledemo \
         | sort
+}
+hist() { 
+    history | grep "$1"; 
+}
+mdcheck () {
+    # Use https://github.com/rvben/rumdl to lint Markdown files
+    rumdl check "$1";
 }
 mkcd () {
     mkdir -p -- "$1" && cd -P -- "$1" || return 
