@@ -1,6 +1,6 @@
 # dotfiles
 
-## Installation #
+## Installation
 
     git clone git://github.com/kevinbowen777/dotfiles.git
 
@@ -38,33 +38,39 @@ Vim's backup and swap files are stored in `~/tmp`, so that directory must exist.
     mkdir ~/tmp/.swp
     mkdir ~/tmp/.undo
 
-## VIM #
+## VIM
 
 Preferences for Vim are stored in `dotfiles/vim/vimrc` and `dotfiles/vim/gvimrc`
 respectively. Plugins and scripts are stored in the `dotfiles/vim/bundle`
 directory.
 
-## Powerline plug-in installation
+## Powerline plug-in
+
 The current vim configuration depends upon having the powerline plug-in
 installed.
 
-To install powerline:
+- To install powerline:
     Where possible, just use the package available in the current, active
-    distro. If that is not possible, try:
-    ```
-	pip install --user git+git://github.com/Lokaltog/powerline
-    ```
-For detailed instructions, [see the wiki](https://github.com/kevinbowen777/dotfiles/wiki/Powerline-Plugin-Installation-Instructions).
+    distro.  
+    `sudo apt install python3-powerline`
 
-### Adding Plugin Bundles ##
+- If that is not possible, try:  
+    pip install --user git+git://github.com/Lokaltog/powerline
 
-N.B.: As of 202201, plugins are installed using
-[vim-plug](https://github.com/junegunn/vim-plug)
+- Add the following lines to the top of the `/etc/vim/vimrc` file:
 
-N.B.: 
+    python3 from powerline.vim import setup as powerline_setup
+    python3 powerline_setup()
+    python3 del powerline_setup
 
-On first run of tmux, remember to initialize your tmux plugins. Before 
-starting any sessions, enter `<prefix>+<shift>+<I>`.
+### Adding Plugin Bundles
+
+N.B.: As of 202201, plugins are installed using [vim-plug](https://github.com/junegunn/vim-plug)
+
+N.B.:
+
+On first run of tmux, remember to initialize your tmux plugins. Before starting any sessions, enter `<prefix>+<shift>+<I>`.
 
 ## License
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)

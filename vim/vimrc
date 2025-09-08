@@ -2,12 +2,12 @@
 "
 " Name: .vimrc
 " Purpose: Set vim configuration
-" Requirements: vim-plug
+" Requirements: vim-plug, python3-powerline
 "
-" Version: 1.39
+" Version: 1.40
 " Author: Kevin Bowen kevin.bowen@gmail.com
 "
-" Updated: 20250120
+" Updated: 20250907
 "
 " ------------------------------------------------------------------------- "
 
@@ -478,10 +478,7 @@ nnoremap <silent> <leader>s :Rg<CR>
 "   Powerline Plugin Settings
 " ------------------------------------------------------------------------- "
 
-set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
-" set rtp+=/usr/lib/python3/dist-packages/powerline/bindings/vim/
-" set rtp+=~/.local/lib/python3.8/site-packages/powerline/bindings/vim/
-" set statusline=%{FugitiveStatusline()}%f%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
+" see README.md for plugin installation instructions
 set statusline+=%#warningmsg#
 set statusline+=%{FugitiveStatusline()}
 set statusline+=%*

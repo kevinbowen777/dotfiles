@@ -75,7 +75,7 @@ export ON_WHITE="\e[47m"
 
 export NC="\e[0m"	# No Color
 
-export LC_COLLATE=C.utf8
+# export LC_COLLATE=C.utf8
 
 export PROMPT_COMMAND='echo -en "\033]0; $("pwd") \a"'
 
