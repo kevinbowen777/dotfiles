@@ -6,9 +6,9 @@
 #
 # Personal $HOME/.bash_aliases file
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
-# Version: 3.0.18
+# Version: 3.0.19
 # Source : http://codeberg.org/kevinbowen/dotfiles
-# Last modified: 20250825
+# Last modified: 20250923
 # ~/.bash_aliases: called by ~/.bashrc
 #
 #  Create symlink in ~/$HOME
@@ -212,6 +212,16 @@ docstop () {
     echo "docker service stopped"
     sudo systemctl stop containerd
     echo "containerd service stopped. Good night, moon!"
+}
+gh_new_note () {
+    gh api notifications |
+        jq '.[] |
+        {
+            id,
+            title: .subject.title,
+            repo: .repository.full_name,
+            "last comment": .subject.latest_comment_url,
+        }'
 }
 hidden_python () {
     # https://til.simonwillison.net/python/stdlib-cli-tools
