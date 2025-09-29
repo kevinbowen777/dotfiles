@@ -6,9 +6,9 @@
 #
 # Personal $HOME/.bash_aliases file
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
-# Version: 3.0.19
+# Version: 3.0.20
 # Source : http://codeberg.org/kevinbowen/dotfiles
-# Last modified: 20250923
+# Last modified: 20250928
 # ~/.bash_aliases: called by ~/.bashrc
 #
 #  Create symlink in ~/$HOME
@@ -158,6 +158,7 @@ alias sicp='cd ~/docs/learning/sicp'
 alias sn='cd ~/.notes && ./sn.sh'
 alias sourcea='source ~/.bash_aliases && echo bash_aliases sourced --ok'
 alias sourceb='source ~/.bashrc && echo bashrc sourced --ok'
+alias sphinx_build='sphinx-build -M html source build'
 alias suf='sudo apt full-upgrade'
 alias sug='sudo apt upgrade'
 alias sup='sudo apt update'
