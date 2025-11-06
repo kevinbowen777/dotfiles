@@ -192,7 +192,7 @@ alias mu1='amixer sset Master 1%+'
 alias md1='amixer sset Master 1%-'
 alias mu5='amixer sset Master 5%+'
 alias md5='amixer sset Master 5%-'
-alias mu='amixer set Master 10%+'
+alias mu='amixer sset Master 10%+'
 alias md='amixer sset Master 10%-'
 
 # ========================================================================= #
