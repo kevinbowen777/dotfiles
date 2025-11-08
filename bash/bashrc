@@ -6,9 +6,9 @@
 
 # Personal $HOME/.bashrc file
 # Author: Kevin Bowen <kevinbowen@protonmail.com>
-# Version: 3.0.10
+# Version: 3.0.11
 # Source : http://codeberg.org/kevinbowen/dotfiles
-# Last modified: 20250618
+# Last modified: 20251107
 # 
 #                               Sections
 #
@@ -175,7 +175,7 @@ export USE_EMOJI=false
 source "$HOME/.cargo/env"
 
 # Go
-export PATH=$PATH:/usr/local/go/bin:"$HOME/go/bin"
+export PATH=/usr/local/go/bin:"$HOME/go/bin":$PATH
 
 # fzf
 
