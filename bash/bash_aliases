@@ -6,9 +6,9 @@
 #
 # Personal $HOME/.bash_aliases file
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
-# Version: 3.0.20
+# Version: 3.0.21
 # Source : http://codeberg.org/kevinbowen/dotfiles
-# Last modified: 20250928
+# Last modified: 20251125
 # ~/.bash_aliases: called by ~/.bashrc
 #
 #  Create symlink in ~/$HOME
@@ -204,13 +204,13 @@ edwin () {
 }
 docstart () {
     sudo systemctl start containerd
-    echo "containerd service started"
+    echo "containerd service starting..."
     sudo systemctl start docker.service
     echo "docker service started. Good morning, sunshine!"
 }
 docstop () {
     sudo systemctl stop docker.service
-    echo "docker service stopped"
+    echo "docker service stopping..."
     sudo systemctl stop containerd
     echo "containerd service stopped. Good night, moon!"
 }
