@@ -4,10 +4,10 @@
 " Purpose: Set vim configuration
 " Requirements: vim-plug, python3-powerline
 "
-" Version: 1.40
+" Version: 1.41
 " Author: Kevin Bowen kevin.bowen@gmail.com
 "
-" Updated: 20250907
+" Updated: 20251215
 "
 " ------------------------------------------------------------------------- "
 
@@ -41,6 +41,7 @@ call plug#begin('~/dotfiles/vim/bundle')
 Plug 'dense-analysis/ale'
 Plug 'godlygeek/tabular'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
