@@ -4,10 +4,10 @@
 " Purpose: Set vim configuration
 " Requirements: vim-plug, python3-powerline
 "
-" Version: 1.41
+" Version: 1.42
 " Author: Kevin Bowen kevin.bowen@gmail.com
 "
-" Updated: 20251215
+" Updated: 20251230
 "
 " ------------------------------------------------------------------------- "
 
@@ -101,6 +101,23 @@ augroup my_filetypes
         \ expandtab
         \ shiftwidth=2
     au BufRead,BufNewFile *.tcss set filetype=css
+augroup END
+
+augroup go
+    autocmd!
+    autocmd BufNewFile,BufRead *.go setlocal
+        \ noexpandtab
+        \ tabstop=4
+        \ shiftwidth=4
+    autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+    autocmd FileType go nmap <leader>d <Plug>(go-doc)
+    autocmd FileType go nmap <leader>f <Plug>(go-fmt)
+    autocmd FileType go nmap <leader>i <Plug>(go-info)
+    autocmd FileType go nmap <leader>l <Plug>(go-lint)
+    autocmd FileType go nmap <leader>r <Plug>(go-run)
+    autocmd FileType go nmap <leader>v <Plug>(go-vet)
+    autocmd FileType go nmap <leader>t <Plug>(go-test)
+    autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
 augroup END
 
 " Don't filter by file type when opening file browser(gvim mostly)
