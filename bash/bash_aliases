@@ -6,9 +6,9 @@
 #
 # Personal $HOME/.bash_aliases file
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
-# Version: 3.0.23
+# Version: 3.0.25
 # Source : http://codeberg.org/kevinbowen/dotfiles
-# Last modified: 20260112
+# Last modified: 20260212
 # ~/.bash_aliases: called by ~/.bashrc
 #
 #  Create symlink in ~/$HOME
@@ -94,7 +94,7 @@ alias gitp='git push all master;git push origin master'
 alias gitpom='git push origin master'
 alias gobase='cd ~/dev/projects/golang/'
 alias gosand='cd ~/dev/projects/golang/sandbox'
-alias gotut='cd ~dev/projects/golang/tutorials'
+alias gotut='cd ~/dev/projects/golang/tutorials'
 alias gpg_list='gpg --list-secret-keys --keyid-format=long'
 alias grep='grep --color=auto'
 alias howto='cd $HOME/docs/tech/howto'
@@ -140,7 +140,7 @@ alias psmem10='ps auxf | sort -nr -k -4 | head -10'
 alias pscpu='ps auxf | sort -nr -k 3'
 alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
 alias py='python'
-alias pyenv_list='pyenv install --list | grep -E " 3\.([9]|1[0-4])"'
+alias pyenv_list='pyenv install --list | grep -E " 3\.([9]|1[0-5])"'
 alias pymrun='python manage.py runserver'
 alias pymrun+='python manage.py runserver_plus --cert-file cert.crt'
 alias pydj='cd ~/dev/python/repos/django'
