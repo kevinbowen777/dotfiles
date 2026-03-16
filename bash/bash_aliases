@@ -6,9 +6,9 @@
 #
 # Personal $HOME/.bash_aliases file
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
-# Version: 3.0.25
+# Version: 3.0.26
 # Source : http://codeberg.org/kevinbowen/dotfiles
-# Last modified: 20260212
+# Last modified: 20260316
 # ~/.bash_aliases: called by ~/.bashrc
 #
 #  Create symlink in ~/$HOME
@@ -344,11 +344,29 @@ find_largest_file() {
 }
 
 pc() {
+    # Python calculator
     ip_expr="$1"
     if [[ $# -eq 0 || $1 = '-' ]]; then
         read -r ip_expr
     fi
     python -c 'print('"$ip_expr"')'
+}
+
+time_between() {
+    # Usage:
+    # time between 20:30 and 23:00
+    # > time_between "2026-01-01T20:30:00Z" "2026-01-01T23:00:00Z"
+    # 0d 2h 30m 0s
+    # # time between the Apolo 11 lunar landing and my current time
+    # > time_between "1969-07-20T20:17:00Z" $(date --utc +%Y-%m-%dT%H:%M:%SZ)
+    START_SECONDS=$(date -d "$1" +%s)
+    END_SECONDS=$(date -d "$2" +%s)
+    DIFF_SECONDS=$(("$END_SECONDS" - "$START_SECONDS"))
+    SECONDS=$(("$DIFF_SECONDS" % 60))
+    MINUTES=$(("$DIFF_SECONDS" / 60 % 60))
+    HOURS=$(("$DIFF_SECONDS" / 3600 % 24))
+    DAYS=$(("$DIFF_SECONDS" / 86400))
+    echo ${DAYS}d ${HOURS}h ${MINUTES}m ${SECONDS}s
 }
 
 xf_change () {
