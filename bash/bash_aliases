@@ -6,9 +6,9 @@
 #
 # Personal $HOME/.bash_aliases file
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
-# Version: 3.0.27
+# Version: 3.0.28
 # Source : http://codeberg.org/kevinbowen/dotfiles
-# Last modified: 20260317
+# Last modified: 20260330
 # ~/.bash_aliases: called by ~/.bashrc
 #
 #  Create symlink in ~/$HOME
@@ -282,33 +282,9 @@ pipxpackageinstall () {
     pipx install tldr
 
 }
-pipxforceinstall () {
-    pipx install --force argcomplete
-    pipx install --force frogmouth
-    pipx install --force glances
-    pipx install --force ipython
-    pipx inject ipython friendly colorama pickleshare
-    pipx install --force norwegianblue
-    pipx install --force peplum
-    pipx install --force pdm
-    pipx install --force pip-audit
-    pipx install --force pip-check
-    pipx install --force pispy-client
-    pipx install --force poetry
-    pipx inject poetry poetry-plugin-export
-    pipx inject poetry poetry-plugin-shell
-    pipx install --force posting --python python3.13
-    pipx install --force pydf
-    pipx install --force pylint
-    pipx install --force pyright
-    pipx install --force ruff
-    pipx install --force thonny
-    pipx install --force tldr
-
-}
 
 pipx-outdated() {
-    # See: https://github.com/pypa/pipx/issues/149#issuecomment-23427482060
+    # See: https://github.com/pypa/pipx/issues/149#issuecomment-684042303
 	echo "OUTDATED PACKAGES:"
 	while read -sr pyPkgName pyPkgVersion; do
         pyPkgURL="https://pypi.org/pypi/${pyPkgName}/json"
