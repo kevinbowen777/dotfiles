@@ -4,10 +4,10 @@
 " Purpose: Set vim configuration
 " Requirements: vim-plug, python3-powerline
 "
-" Version: 1.42
+" Version: 1.43
 " Author: Kevin Bowen kevin.bowen@gmail.com
 "
-" Updated: 20251230
+" Updated: 20260415
 "
 " ------------------------------------------------------------------------- "
 
@@ -52,7 +52,6 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
-Plug 'vimwiki/vimwiki'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 
@@ -706,46 +705,3 @@ autocmd FileType c call tagbar#autoopen(0)
 
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
-
-" ------------------------------------------------------------------------- "
-"   VimWiki Plugin Settings
-" ------------------------------------------------------------------------- "
-
-let wiki = {}
-
-let g:vimwikidir = $HOME . "/docs/vimwiki"
-let wiki.path = g:vimwikidir
-let g:vimwiki_global_ext = 0
-let g:vimwiki_list=[wiki]
-let g:vimwiki_list=[{'path': '~/docs/vimwiki/',
-                   \ 'syntax': 'markdown',
-                   \ 'ext': '.md'}]
-" let g:vimwiki_syntax_list = {}
-" let g:vimwiki_syntax_list['markdown'] = {}
-" let g:vimwiki_syntax_list['markdown']['typeface'] = {'bold': [], 'italic': [], 'underline': [], 'bold_italic': [], 'code': [], 'del':  [], 'sup':  [], 'sub':  [], 'eq': []}
-let g:vimwiki_url_maxsave=0
-
-
-highlight VimwikiHeader1 guifg=#FF00FF
-highlight VimwikiHeader2 guifg=#FF0000
-highlight VimwikiHeader3 guifg=#FFFF00
-highlight VimwikiHeader4 guifg=#00FFFF
-highlight VimwikiHeader5 guifg=#FF00FF
-highlight VimwikiHeader6 guifg=#FFF000
-highlight VimwikiHeader7 guifg=#FFFF00
-
-highlight htmlH1 guifg=#FF00FF
-highlight htmlH2 guifg=#FF0000
-highlight htmlH3 guifg=#FFFF00
-highlight htmlH4 guifg=#00FFFF
-highlight htmlH5 guifg=#FF00FF
-highlight htmlH6 guifg=#FFF000
-highlight htmlH7 guifg=#FFFF00
-
-highlight markdownH1 guifg=#FF00FF
-highlight markdownH2 guifg=#FF0000
-highlight markdownH3 guifg=#FFFF00
-highlight markdownH4 guifg=#00FFFF
-highlight markdownH5 guifg=#FF00FF
-highlight markdownH6 guifg=#FFF000
-highlight markdownH7 guifg=#FFFF00
