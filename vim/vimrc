@@ -4,10 +4,10 @@
 " Purpose: Set vim configuration
 " Requirements: vim-plug, python3-powerline
 "
-" Version: 1.43
+" Version: 1.44
 " Author: Kevin Bowen kevin.bowen@gmail.com
 "
-" Updated: 20260415
+" Updated: 20260416
 "
 " ------------------------------------------------------------------------- "
 
@@ -241,19 +241,18 @@ set directory=~/tmp/.swp//
 "   Ale Plugin Settings
 " ------------------------------------------------------------------------- "
 
-let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_text_changed = 1
 let g:ale_lint_on_insert_leave = 1
-let g:ale_lint_on_enter = 0
+let g:ale_lint_on_enter = 0 
 let g:ale_lint_on_filetype_changed = 0
 let g:ale_lint_delay = 500
 "
 let g:ale_change_sign_column_color = 0
 let g:ale_set_signs = 1
-" let g:ale_linters = {'python': ['ruff']}
-let g:ale_linters = {'python': ['pyright', 'flake8']}
-" let g:ale_linters = {'python': ['pyright', 'flake8', 'ruff']}
+let g:ale_linters = { 'python': ['pyright', 'ruff'], 'markdown': ['rumdl'] }
 let g:ale_linters_ignore = {'python': ['mypy', 'pylint']}
-" let g:ale_linters_ignore = {'python': ['flake8', 'mypy', 'pylint']}
+"
+let g:ale_fixers = { 'markdown': ['rumdl'] }
 "
 let g:ale_python_auto_poetry = 1
 let g:ale_python_auto_virtualenv = 1
