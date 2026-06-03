@@ -29,45 +29,16 @@ Create symlinks:
     ln -s ~/dotfiles/vim/vimrc ~/.vimrc
     ln -s ~/dotfiles/vim/gvimrc ~/.gvimrc
     ln -s ~/dotfiles/vim ~/.vim
+    ln -s ~/dotfiles/nvim ~/.config/nvim/init.vim
     ln -s ~/Dropbox/personal/administrativa/vimwiki ~/docs/vimwiki
 
-Vim's backup and swap files are stored in `~/tmp`, so that directory must exist.
+### NVIM & VIM notes
 
-    mkdir ~/tmp
-    mkdir ~/tmp/.backup
-    mkdir ~/tmp/.swp
-    mkdir ~/tmp/.undo
+Nvim/Vim's backup, swap, and undo files are stored in `~/tmp/nvim` and `~/tmp/vim`, respectively. Create the required directories with the following command:
 
-## VIM
+    mkdir -p ~/tmp/{nvim,vim}/{.backup,.swp,.undo}
 
-Preferences for Vim are stored in `dotfiles/vim/vimrc` and `dotfiles/vim/gvimrc`
-respectively. Plugins and scripts are stored in the `dotfiles/vim/bundle`
-directory.
-
-## Powerline plug-in
-
-The current vim configuration depends upon having the powerline plug-in
-installed.
-
-- To install powerline:
-    Where possible, just use the package available in the current, active
-    distro.  
-    `sudo apt install python3-powerline`
-
-- If that is not possible, try:  
-    pip install --user git+git://github.com/Lokaltog/powerline
-
-- Add the following lines to the top of the `/etc/vim/vimrc` file:
-
-    python3 from powerline.vim import setup as powerline_setup
-    python3 powerline_setup()
-    python3 del powerline_setup
-
-### Adding Plugin Bundles
-
-N.B.: As of 202201, plugins are installed using [vim-plug](https://github.com/junegunn/vim-plug)
-
-N.B.:
+### Tmux note
 
 On first run of tmux, remember to initialize your tmux plugins. Before starting any sessions, enter `<prefix>+<shift>+<I>`.
 

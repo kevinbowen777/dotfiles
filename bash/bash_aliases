@@ -6,9 +6,9 @@
 #
 # Personal $HOME/.bash_aliases file
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
-# Version: 3.0.31
+# Version: 3.0.32
 # Source : http://codeberg.org/kevinbowen/dotfiles
-# Last modified: 20260516
+# Last modified: 20260601
 # ~/.bash_aliases: called by ~/.bashrc
 #
 #  Create symlink in ~/$HOME
@@ -173,7 +173,7 @@ alias trace='traceroute'
 alias ts='~/bin/torrent_search.py'
 alias venv='cd ~/dev/python/venvs'
 alias venvs='cd ~/dev/python/venvs'
-alias vi='/usr/bin/vim'
+alias vi='/usr/bin/nvim'
 alias vimwik='vi ~/docs/vimwiki/index.md'
 alias ws='~/bin/wiki_search.py'
 alias xdis='xfce4-display-settings'

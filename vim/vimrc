@@ -2,16 +2,17 @@
 "
 " Name: .vimrc
 " Purpose: Set vim configuration
-" Requirements: vim-plug, python3-powerline
+" Requirements: vim-plug, vim-airline
 "
-" Version: 1.44
+" Version: 2.0
 " Author: Kevin Bowen kevin.bowen@gmail.com
 "
-" Updated: 20260416
+" Updated: 20260601
 "
 " ------------------------------------------------------------------------- "
 
 set autochdir
+set clipboard=unnamedplus
 set encoding=utf-8
 set hidden
 set modelines=0
@@ -39,9 +40,9 @@ endif
 call plug#begin('~/dotfiles/vim/bundle')
 
 Plug 'dense-analysis/ale'
-Plug 'godlygeek/tabular'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'godlygeek/tabular'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -52,6 +53,8 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 
@@ -67,7 +70,7 @@ func! s:my_colors_setup() abort
     hi PmenuSbar guibg=#bcbcbc
     hi PmenuThumb guibg=#585858
 endfunc
- 
+
 augroup colorscheme_coc_setup | au!
     au ColorScheme * call s:my_colors_setup()
 augroup END
@@ -159,11 +162,6 @@ set hlsearch
 set incsearch
 set fileformat=unix
 
-" Possible Bugfix for gx
-" See https://vi.stackexchange.com/questions/22459/gx-doesnt-open-the-url-and-complains-netrw-no-line-in-buffer/22505
-" Most likely just need to upgrade to a 9.x version
-" nnoremap gx :!xdg-open <cWORD> &<CR><CR>
-
 " Tab switching
 nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
@@ -202,9 +200,9 @@ nnoremap <leader>l :set list!<CR>
 " Use symbols for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
 
-" Source vimrc
-" gvim does not auto reload powerline after source .vimrc
-nnoremap <leader>sv :source ~/.vimrc \| py3 powerline.reload()<CR>
+" Source vimrc/init.vim
+" nnoremap <leader>sv :source ~/.vimrc
+nnoremap <leader>sv :source ~/.config/nvim/init.vim
 
 " Simplify moving between windows
 map <C-h> <C-w>h
@@ -229,9 +227,16 @@ autocmd BufEnter * hi link HelpBar Normal
 autocmd BufEnter * hi link HelpStar Normal
 
 " Temp file locations. Make sure subdirectories are created in ~/tmp
-set undodir=~/tmp/.undo//
-set backupdir=~/tmp/.backup//
-set directory=~/tmp/.swp//
+if !has('nvim')
+  set undodir=~/tmp/vim/.undo//
+  set backupdir=~/tmp/vim/.backup//
+  set directory=~/tmp/vim/.swp//
+endif
+if has('nvim')
+  set undodir=~/tmp/nvim/.undo//
+  set backupdir=~/tmp/nvim/.backup//
+  set directory=~/tmp/nvim/.swp//
+endif
 
 " ------------------------------------------------------------------------- "
 "   Plugin Settings Section
@@ -241,19 +246,25 @@ set directory=~/tmp/.swp//
 "   Ale Plugin Settings
 " ------------------------------------------------------------------------- "
 
-let g:ale_lint_on_text_changed = 1
+let g:ale_lint_on_text_changed = 'always'
 let g:ale_lint_on_insert_leave = 1
-let g:ale_lint_on_enter = 0 
+let g:ale_lint_on_enter = 1
 let g:ale_lint_on_filetype_changed = 0
 let g:ale_lint_delay = 500
-"
+
+let g:ale_echo_msg_format = '[%linter%] %code%: %s'
+let g:ale_fix_on_save = 0
+
 let g:ale_change_sign_column_color = 0
 let g:ale_set_signs = 1
 let g:ale_linters = { 'python': ['pyright', 'ruff'], 'markdown': ['rumdl'] }
 let g:ale_linters_ignore = {'python': ['mypy', 'pylint']}
-"
-let g:ale_fixers = { 'markdown': ['rumdl'] }
-"
+
+let g:ale_fixers = {
+            \ 'markdown': ['rumdl'],
+            \ '*': ['remove_trailing_lines', 'trim_whitespace', 'replace_emdash'],
+            \}
+
 let g:ale_python_auto_poetry = 1
 let g:ale_python_auto_virtualenv = 1
 let g:ale_python_pyright_use_global = 1
@@ -301,7 +312,8 @@ let g:session_command_aliases = 1
 
 let g:coc_global_extensions = ['coc-html', 'coc-css', 'coc-json', 'coc-pyright', 'coc-tsserver']
 let g:coc_user_config = {'diagnostic.checkCurrentLine': 1}
-let g:coc_node_path='/home/kbowen/.config/nvm/versions/node/v19.8.1/bin/node'
+let g:coc_node_path='/home/kbowen/.config/nvm/versions/node/v26.2.0/bin/node'
+" let g:coc_node_path='/home/kbowen/.config/nvm/versions/node/v19.8.1/bin/node'
 let g:coc_disable_startup_warning = 1
 
 autocmd FileType python let b:coc_root_patterns = ['.git', '.env', 'venv', '.venv', 'setup.cfg', 'setup.py', 'pyproject.toml', 'pyrightconfig.json']
@@ -447,29 +459,24 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 " Personal coc.nvim modifications
 
-" autocmd FileType python let b:coc_suggest_disable = 1
-"augroup colorscheme_coc_setup | au!
-"    au ColorScheme * call s:my_colors_setup()
-"augroup END
-
 " ------------------------------------------------------------------------- "
 "   Fugitive Plugin Settings
 " ------------------------------------------------------------------------- "
-                                                                                 
-nnoremap <leader>gs :Git status<CR>                                             
-nnoremap <leader>ga :Git add .<CR>                                              
-nnoremap <leader>gr :Git read<CR>                                               
-nnoremap <leader>gw :Git write<CR>                                              
-nnoremap <leader>gb :Git blame<CR>                                              
-nnoremap <leader>gd :Gdiff<CR>                                                  
-nnoremap <leader>gc :Git commit<CR>                                             
-nnoremap <leader>ge :Gedit<CR>                                                  
-nnoremap <leader>dg :diffget<CR>                                                
-nnoremap <leader>dp :diffput<CR>                                                
-nnoremap <leader>gl :Gclog<CR>                                                  
-"nnoremap <silent> <leader>gp :silent Git push<CR>                              
-nnoremap <silent> <leader>gp :silent Git push origin master<CR>                 
-                                                                                  
+
+nnoremap <leader>gs :Git status<CR>
+nnoremap <leader>ga :Git add .<CR>
+nnoremap <leader>gr :Git read<CR>
+nnoremap <leader>gw :Git write<CR>
+nnoremap <leader>gb :Git blame<CR>
+nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>gc :Git commit<CR>
+nnoremap <leader>ge :Gedit<CR>
+nnoremap <leader>dg :diffget<CR>
+nnoremap <leader>dp :diffput<CR>
+nnoremap <leader>gl :Gclog<CR>
+"nnoremap <silent> <leader>gp :silent Git push<CR>
+nnoremap <silent> <leader>gp :silent Git push origin master<CR>
+
 " ------------------------------------------------------------------------- "
 "   FZF Plugin Settings
 " ------------------------------------------------------------------------- "
@@ -491,16 +498,19 @@ nnoremap <silent> <leader>s :Rg<CR>
 " nnoremap <silent> <leader>? :History<CR>
 
 " ------------------------------------------------------------------------- "
-"   Powerline Plugin Settings
+"   vim-airline Plugin Settings
 " ------------------------------------------------------------------------- "
 
 " see README.md for plugin installation instructions
-set statusline+=%#warningmsg#
-set statusline+=%{FugitiveStatusline()}
-set statusline+=%*
-set statusline+=%{tagbar#currenttag([%f])}
-" Always display the tabline, even if there is only one tab
-set showtabline=2
+let g:airline_powerline_fonts = 1
+" let g:airline_theme='kolor'
+" let g:airline_theme='kalisi'
+let g:airline_theme='jellybeans'
+" let g:airline_theme='murmur'
+
+let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
 
 " ------------------------------------------------------------------------- "
 "   Vim-Markdown & Preview Plugin Settings
