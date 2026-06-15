@@ -12,7 +12,7 @@
 " ------------------------------------------------------------------------- "
 
 set autochdir
-set clipboard=unnamedplus
+set clipboard+=unnamedplus
 set encoding=utf-8
 set hidden
 set modelines=0
@@ -236,6 +236,13 @@ if has('nvim')
   set undodir=~/tmp/nvim/.undo//
   set backupdir=~/tmp/nvim/.backup//
   set directory=~/tmp/nvim/.swp//
+endif
+
+" Workaround for clipboard=autoselect not working in nvim
+" https://neovim.io/doc/user/faq/#_copying-to-x11-primary-selection-with-the-mouse-doesn%27t-work
+if has('nvim')
+  vnoremap <LeftRelease> "*ygv
+  vnoremap <2-LeftRelease> "*ygv
 endif
 
 " ------------------------------------------------------------------------- "

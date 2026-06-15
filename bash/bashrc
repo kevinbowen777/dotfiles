@@ -6,9 +6,9 @@
 
 # Personal $HOME/.bashrc file
 # Author: Kevin Bowen <kevinbowen@protonmail.com>
-# Version: 3.0.12
+# Version: 3.0.13
 # Source : http://codeberg.org/kevinbowen/dotfiles
-# Last modified: 20251216
+# Last modified: 20260615
 # 
 #                               Sections
 #
@@ -260,7 +260,7 @@ if [ ! -S ~/.ssh/ssh_auth_sock ]; then
 fi
 
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
-ssh-add -l > /dev/null || ssh-add ~/.ssh/leeuin_key_2026
+ssh-add -l > /dev/null || ssh-add ~/.ssh/leeuin_key_2027
 
 # Changes prompt when remotely ssh'd into host
 if [ -n "$SSH_CLIENT" ]; then text=" [remote]"
