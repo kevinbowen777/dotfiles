@@ -9,7 +9,7 @@
 # Version: 3.0.13
 # Source : http://codeberg.org/kevinbowen/dotfiles
 # Last modified: 20260615
-# 
+#
 #                               Sections
 #
 #  1. Header                (This section)
@@ -132,7 +132,7 @@ export MANPAGER='/usr/bin/less -s -M +Gg'
 export PAGER='/usr/bin/less -s -M'
 # Remove "(press h for help..." message
 export MANLESS="\ Manual\ page\ \$MAN_PN\ %lt/%L %pB\%"
- 
+
 export PATH="${PATH}:/home/kbowen/bin:/home/kbowen/.local/bin"
 
 # Workaround for suppressing d-bus spurious errors: Launchpad bug #1193236
@@ -201,6 +201,11 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.cache,.git,.ssh,.npm,.
 # shellcheck source=/dev/null
 [ -f "$HOME/.config/fzf/fzf.bash" ] && source "$HOME/.config/fzf/fzf.bash"
 
+# Python Poetry keyring unlock issue
+# https://github.com/python-poetry/poetry/issues/1917#issuecomment-1235998997
+# may also want to try "poetry config keyring.enabled false"
+# export PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
+
 # ========================================================================= #
 #   Section 3: Special functions
 # ========================================================================= #
@@ -253,7 +258,7 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-# Check ssh-agent and add keys. 
+# Check ssh-agent and add keys.
 if [ ! -S ~/.ssh/ssh_auth_sock ]; then
     eval "$(ssh-agent)"
         ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
@@ -266,5 +271,3 @@ ssh-add -l > /dev/null || ssh-add ~/.ssh/leeuin_key_2027
 if [ -n "$SSH_CLIENT" ]; then text=" [remote]"
     export PS1='\[\e[01;35m\]\u@\h\[\e[00m\]:\[\e[01;34m\]\w${text}$\[\e[01;37m\] '
 fi
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash

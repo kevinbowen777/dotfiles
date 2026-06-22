@@ -6,9 +6,9 @@
 #
 # Personal $HOME/.bash_aliases file
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
-# Version: 3.0.32
+# Version: 3.0.31
 # Source : http://codeberg.org/kevinbowen/dotfiles
-# Last modified: 20260601
+# Last modified: 20260622
 # ~/.bash_aliases: called by ~/.bashrc
 #
 #  Create symlink in ~/$HOME
@@ -44,6 +44,11 @@ fi
 
 #### Aliases
 alias act='source .venv/bin/activate'
+alias audstop='audtool playback-playpause'
+alias audshow='audtool mainwin-show'
+alias audshut='audtool shutdown'
+alias audsong='audtool current-song'
+alias audstart='audtool playback-play'
 alias bat='bat --theme=Dracula'
 alias batp='bat -p --theme=Dracula'
 alias bashed='vi ~/.bashrc; source $HOME/.bashrc && echo "bashrc sourced  --ok."'
@@ -241,15 +246,15 @@ hidden_python () {
         -e turtledemo \
         | sort
 }
-hist() { 
-    history | grep "$1"; 
+hist() {
+    history | grep "$1";
 }
 mdcheck () {
     # Use https://github.com/rvben/rumdl to lint Markdown files
     rumdl check "$1";
 }
 mkcd () {
-    mkdir -p -- "$1" && cd -P -- "$1" || return 
+    mkdir -p -- "$1" && cd -P -- "$1" || return
 }
 pybaseinstall () {
     python -m pip install --upgrade pip
@@ -293,12 +298,12 @@ pipxpackageinstall () {
 
 pipx-outdated() {
     # See: https://github.com/pypa/pipx/issues/149#issuecomment-684042303
-	echo "OUTDATED PACKAGES:"
-	while read -sr pyPkgName pyPkgVersion; do
+    echo "OUTDATED PACKAGES:"
+    while read -sr pyPkgName pyPkgVersion; do
         pyPkgURL="https://pypi.org/pypi/${pyPkgName}/json"
-		pypi_latest="$(curl -sS "${pyPkgURL}" | jq --raw-output '.info.version')"
-		[ "$pyPkgVersion" != "$pypi_latest" ] && printf "%s\n\tCurrent: %s\tLatest: %s\n" "$pyPkgName" "$pyPkgVersion" "$pypi_latest"
-	done < <( pipx list | grep -o 'package.*,' | tr -d ',' | cut -d ' ' -f 2- )
+        pypi_latest="$(curl -sS "${pyPkgURL}" | jq --raw-output '.info.version')"
+        [ "$pyPkgVersion" != "$pypi_latest" ] && printf "%s\n\tCurrent: %s\tLatest: %s\n" "$pyPkgName" "$pyPkgVersion" "$pypi_latest"
+    done < <( pipx list | grep -o 'package.*,' | tr -d ',' | cut -d ' ' -f 2- )
 }
 
 chkfont () {
