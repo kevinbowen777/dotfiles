@@ -4,8 +4,11 @@
 #  Version: 0.0.2
 #  Modified: 20221128
 
-[[ -f ~/.bashrc ]] && . ~/.bashrc
-export GPG_TTY=$(tty)
+[[ -f "$HOME"/.bashrc ]] && . "$HOME"/.bashrc
+
+# GPG_TTY=$(tty)
+# export GPG_TTY=$(tty)
+
 . "$HOME/.cargo/env"
 
 export PYENV_ROOT="$HOME/.pyenv"

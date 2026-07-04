@@ -271,3 +271,7 @@ ssh-add -l > /dev/null || ssh-add ~/.ssh/leeuin_key_2027
 if [ -n "$SSH_CLIENT" ]; then text=" [remote]"
     export PS1='\[\e[01;35m\]\u@\h\[\e[00m\]:\[\e[01;34m\]\w${text}$\[\e[01;37m\] '
 fi
+
+# set GPG agent to point to TTY
+GPG_TTY=$(tty)
+export GPG_TTY

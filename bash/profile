@@ -8,8 +8,8 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 #
-#	 Version: 0.0.1
-#	Modified: 20190809
+#    Version: 0.0.1
+#    Modified: 20190809
 
 export EDITOR=/usr/bin/vim
 # export QT_QPA_PLATFORMTHEME="gtk2"
@@ -22,7 +22,7 @@ export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
     if [ -f "$HOME/.bashrc" ]; then
-	. "$HOME/.bashrc"
+    "$HOME/.bashrc"
     fi
 fi
 
@@ -34,5 +34,8 @@ fi
 if [ -d "$HOME/.local/bin" ]; then
         PATH="$HOME/.local/bin:$PATH"
 fi
-export GPG_TTY=$(tty)
+
+# GPG_TTY=$(tty)
+# export GPG_TTY
+
 . "$HOME/.cargo/env"
