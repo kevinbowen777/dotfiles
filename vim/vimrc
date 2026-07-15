@@ -319,8 +319,9 @@ let g:session_command_aliases = 1
 
 let g:coc_global_extensions = ['coc-html', 'coc-css', 'coc-json', 'coc-pyright', 'coc-tsserver']
 let g:coc_user_config = {'diagnostic.checkCurrentLine': 1}
-let g:coc_node_path='/home/kbowen/.config/nvm/versions/node/v26.2.0/bin/node'
-" let g:coc_node_path='/home/kbowen/.config/nvm/versions/node/v19.8.1/bin/node'
+let g:coc_node_path='/opt/local/bin/node'
+" let g:coc_node_path='/Users/kbowen/.nvm/versions/node/v26.2.0/bin/'
+" let g:coc_node_path='/home/kbowen/.config/nvm/versions/node/v26.2.0/bin/node'
 let g:coc_disable_startup_warning = 1
 
 autocmd FileType python let b:coc_root_patterns = ['.git', '.env', 'venv', '.venv', 'setup.cfg', 'setup.py', 'pyproject.toml', 'pyrightconfig.json']

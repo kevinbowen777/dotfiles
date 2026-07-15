@@ -1,0 +1,19 @@
+# ========================================================================= #
+#
+# Personal $HOME/.zprofile file
+# Author: Kevin Bowen <kevinbowen@protonmail.com>
+# Version: 0.0.1
+# Source : http://codeberg.org/kevinbowen/dotfiles
+# Created: 20260701
+# Last modified: 20260707
+#
+# ========================================================================= #
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
+
+# export PATH="$PATH:/opt/local/bin:/opt/local/sbin:/Users/kbowen/.local/bin:/Users/kbowen/bin"
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH:/opt/local/bin:/opt/local/sbin:/Users/kbowen/.local/bin:/Users/kbowen/bin"
+
+eval "$(/usr/local/bin/brew shellenv)"
