@@ -6,9 +6,9 @@
 
 # Personal $HOME/.bashrc file
 # Author: Kevin Bowen <kevinbowen@protonmail.com>
-# Version: 3.0.13
+# Version: 3.0.14
 # Source : http://codeberg.org/kevinbowen/dotfiles
-# Last modified: 20260615
+# Last modified: 20260714
 #
 #                               Sections
 #
@@ -175,11 +175,12 @@ export USE_EMOJI=false
 source "$HOME/.cargo/env"
 
 # Go
+export GOROOT=/usr/local/go
 export GOPATH=$HOME/bin/go
-export PATH=/usr/local/go/bin:$GOPATH/bin:$PATH
+export GOBIN=$HOME/bin/go/bin
+export PATH=/usr/local/go/bin:$GOBIN:$PATH
 
 # fzf
-
 # Set the fzf display layout
 export FZF_DEFAULT_OPTS=" \
   --multi \
