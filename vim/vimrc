@@ -4,10 +4,10 @@
 " Purpose: Set vim configuration
 " Requirements: vim-plug, vim-airline
 "
-" Version: 2.0
+" Version: 2.1
 " Author: Kevin Bowen kevin.bowen@gmail.com
 "
-" Updated: 20260601
+" Updated: 20260714
 "
 " ------------------------------------------------------------------------- "
 
@@ -319,9 +319,16 @@ let g:session_command_aliases = 1
 
 let g:coc_global_extensions = ['coc-html', 'coc-css', 'coc-json', 'coc-pyright', 'coc-tsserver']
 let g:coc_user_config = {'diagnostic.checkCurrentLine': 1}
-let g:coc_node_path='/opt/local/bin/node'
-" let g:coc_node_path='/Users/kbowen/.nvm/versions/node/v26.2.0/bin/'
-" let g:coc_node_path='/home/kbowen/.config/nvm/versions/node/v26.2.0/bin/node'
+
+" Setup for different shells/machines using different node install locations
+if($SHELL == "/bin/zsh")
+  " For Mac/zsh setup
+  let g:coc_node_path='/opt/local/bin/node'
+else
+  " For Linux/Bash setup
+  let g:coc_node_path='/home/kbowen/.config/nvm/versions/node/v26.2.0/bin/node'
+endif
+
 let g:coc_disable_startup_warning = 1
 
 autocmd FileType python let b:coc_root_patterns = ['.git', '.env', 'venv', '.venv', 'setup.cfg', 'setup.py', 'pyproject.toml', 'pyrightconfig.json']
