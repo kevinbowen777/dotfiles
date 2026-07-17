@@ -6,9 +6,9 @@
 
 # Personal $HOME/.bashrc file
 # Author: Kevin Bowen <kevinbowen@protonmail.com>
-# Version: 3.0.14
+# Version: 3.0.15
 # Source : http://codeberg.org/kevinbowen/dotfiles
-# Last modified: 20260714
+# Last modified: 20260716
 #
 #                               Sections
 #
@@ -32,10 +32,6 @@ VISUAL="$(command -v vim 2>/dev/null || command -v vi)"
 EDITOR="$(command -v vi 2>/dev/null || command -v ed)"
 export VISUAL
 export EDITOR
-
-# Disable system bell
-xset b off
-xset b 0 0 0
 
 # Color Definitions
 

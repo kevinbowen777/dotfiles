@@ -4,6 +4,8 @@
 # https://wiki.archlinux.org/title/readline
 #
 
+set bell-style none
+
 set editing-mode vi
 # Change the timeout for key sequences as 500ms is too fast.
 set keyseq-timeout 1200
