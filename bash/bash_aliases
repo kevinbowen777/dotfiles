@@ -236,7 +236,8 @@ gh_note () {
 hidden_python () {
     # https://til.simonwillison.net/python/stdlib-cli-tools
     PY_VERSION=$(python -V | awk '{print $2}')
-    PY_MAJOR=${PY_VERSION::-5}
+    # TODO: Need to revert to "-5" after 3.15.x is released
+    PY_MAJOR=${PY_VERSION::-4}
     cd "$HOME/.pyenv/versions/${PY_VERSION}/lib/python${PY_MAJOR}" || return
     rg 'if __name__ =' -l | grep -v \
         -e test \

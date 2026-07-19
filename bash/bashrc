@@ -267,6 +267,9 @@ ssh-add -l > /dev/null || ssh-add ~/.ssh/leeuin_key_2027
 # Changes prompt when remotely ssh'd into host
 if [ -n "$SSH_CLIENT" ]; then text=" [remote]"
     export PS1='\[\e[01;35m\]\u@\h\[\e[00m\]:\[\e[01;34m\]\w${text}$\[\e[01;37m\] '
+else
+    xset b off
+    xset b 0 0 0
 fi
 
 # set GPG agent to point to TTY
