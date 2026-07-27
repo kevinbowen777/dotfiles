@@ -4,10 +4,10 @@
 " Purpose: Set vim configuration
 " Requirements: vim-plug, vim-airline
 "
-" Version: 2.1
+" Version: 2.1.0
 " Author: Kevin Bowen kevin.bowen@gmail.com
 "
-" Updated: 20260714
+" Updated: 20260727
 "
 " ------------------------------------------------------------------------- "
 
@@ -61,7 +61,11 @@ Plug 'xolox/vim-session'
 call plug#end()
 
 " Customize colors
-colorscheme murphy
+" colorscheme murphy
+colorscheme molokai-dark
+let g:molokaidark_undercolor_gui = 1
+let g:molokaidark_undercolor_cterm = 0
+
 func! s:my_colors_setup() abort
     hi Pmenu ctermfg=4 guifg=#000080 guibg=#808000 gui=NONE
     hi PmenuSel ctermfg=4 guifg=#000080 guibg=#b7c7b7 gui=NONE
