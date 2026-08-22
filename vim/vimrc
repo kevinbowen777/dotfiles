@@ -4,10 +4,10 @@
 " Purpose: Set vim configuration
 " Requirements: vim-plug, vim-airline
 "
-" Version: 2.1.0
+" Version: 2.1.1
 " Author: Kevin Bowen kevin.bowen@gmail.com
 "
-" Updated: 20260727
+" Updated: 20260729
 "
 " ------------------------------------------------------------------------- "
 
@@ -28,6 +28,8 @@ set undofile
 set updatetime=100
 
 let mapleader = ","
+
+let g:ale_disable_lsp = 1
 
 " Load Plug
 let data_dir = '~/dotfiles/vim/'
@@ -61,10 +63,9 @@ Plug 'xolox/vim-session'
 call plug#end()
 
 " Customize colors
-" colorscheme murphy
-colorscheme molokai-dark
-let g:molokaidark_undercolor_gui = 1
-let g:molokaidark_undercolor_cterm = 0
+colorscheme molokev
+let g:molokev_undercolor_gui = 1
+let g:molokev_undercolor_cterm = 0
 
 func! s:my_colors_setup() abort
     hi Pmenu ctermfg=4 guifg=#000080 guibg=#808000 gui=NONE
@@ -155,7 +156,12 @@ set linebreak
 set relativenumber
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
-set signcolumn=yes
+if !has('nvim')
+  set signcolumn=auto
+endif
+if has('nvim')
+  set signcolumn=number
+endif
 set textwidth=80
 set wrap
 
@@ -293,6 +299,7 @@ nnoremap <leader>af :ALEFix<CR>
 nnoremap <leader>ai :ALEInfo<CR>
 nnoremap <leader>al :ALELint<CR>
 nnoremap <leader>at :ALEToggle<CR>
+
 
 " ------------------------------------------------------------------------- "
 "  vim-session plugin settings
@@ -733,3 +740,8 @@ autocmd FileType c call tagbar#autoopen(0)
 
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+
+" Output the current syntax group
+nnoremap <f10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<cr>
