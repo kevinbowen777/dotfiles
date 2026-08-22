@@ -1,16 +1,18 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-#{{{ ======================================================================= #
+# ========================================================================== #
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
 # Script Name: basic_bash_header.template
 # Description:
-#		  Create executable files with templates
+#        Create executable files with templates
 #
-#			This script creates a skeleton file for bash scripts
+#        This script creates a skeleton file for bash scripts
 #
-# Source : http://www.github.com/kevinbowen777/dotfiles.git
-# Last modified: 20191003
+# Source : http://www.github.com/kevinbowen777/toolbox.git
+# Last modified: 20260802
+# Created: 20191003
 # Dependencies:
-#	None
-#     
-#}}} ======================================================================= #
+#    bash
+#
+# ========================================================================== #
+set -euo pipefail

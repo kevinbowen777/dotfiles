@@ -1,18 +1,18 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 
-# {{{ ---------------------------------------------------------------------- #
+# -------------------------------------------------------------------------- #
 #
-# Name:		example1.pl		
-# Purpose: This script ...
-# 
+# Name: example1.pl
+# Purpose: This script does ...X,Y, and Z.
 #
-# Version: 1.0
+# Version: 0.0.1
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
-# 
-# Original source: Chapter X, Beginning Perl, Lee
-# Updated: 20191108
 #
-# }}} ---------------------------------------------------------------------- #
+# Original source: Chapter X, Beginning Perl, Lee
+# Updated: 20260822
+# Created: 20191108
+#
+# -------------------------------------------------------------------------- #
 
 use strict;
 use warnings;
