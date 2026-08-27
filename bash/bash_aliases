@@ -6,9 +6,9 @@
 #
 # Personal $HOME/.bash_aliases file
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
-# Version: 3.0.34
+# Version: 3.0.35
 # Source : http://codeberg.org/kevinbowen/dotfiles
-# Last modified: 20260721
+# Last modified: 20260827
 # ~/.bash_aliases: called by ~/.bashrc
 #
 #  Create symlink in ~/$HOME
@@ -16,7 +16,7 @@
 #
 #       Sections
 #
-#  1. Header (This section)
+#  1. Header(this section)
 #  2. Sourced aliases
 #  3. Workstation aliases
 #  4. Remote Server aliases
@@ -108,6 +108,8 @@ alias ip='ip -color address'
 alias ipb='/usr/sbin/ip -brief address'
 alias ipr='/usr/sbin/ip route'
 alias ipy='ipython3'
+alias killfox='pgrep firefox | xargs kill'
+alias killwolf='pgrep librewolf | xargs kill'
 alias l='ls -CF'
 alias la='ls -aF'
 alias lh='ls -1 --hyperlink=always'
@@ -127,7 +129,7 @@ alias myip='curl myip.wtf && curl ipv4.text.myip.wtf && curl json.myip.wtf'
 alias myip4='curl ipv4.text.myip.wtf'
 alias myip6='curl myip.wtf'
 alias nb='norwegianblue'
-alias newenv='python3.13 -m venv --prompt . .venv && .venv/bin/pip install -U pip setuptools wheel'
+alias newenv='python3.14 -m venv --prompt . .venv && .venv/bin/pip install -U pip setuptools wheel'
 alias odin='cd ~/dev/projects/learning/odin-project/'
 alias pd='perldoc'
 alias pathdup='echo "$PATH" | tr : "\n" | sort | uniq -d'
@@ -208,22 +210,22 @@ alias md='amixer sset Master 10%-'
 #   Section 5: Custom Functions (More of a function than an alias.. here)
 # ========================================================================= #
 
-edwin () {
+edwin() {
     scheme -eval "(edit 'console)"
 }
-docstart () {
+docstart() {
     sudo systemctl start containerd
     echo "containerd service starting..."
     sudo systemctl start docker.service
     echo "docker service started. Good morning, sunshine!"
 }
-docstop () {
+docstop() {
     sudo systemctl stop docker.service
     echo "docker service stopping..."
     sudo systemctl stop containerd
     echo "containerd service stopped. Good night, moon!"
 }
-gh_note () {
+gh_note() {
     gh api notifications |
         jq '.[] |
         {
@@ -233,11 +235,11 @@ gh_note () {
             "last comment": .subject.latest_comment_url,
         }'
 }
-hidden_python () {
+hidden_python() {
     # https://til.simonwillison.net/python/stdlib-cli-tools
     PY_VERSION=$(python -V | awk '{print $2}')
     # TODO: Need to revert to "-5" after 3.15.x is released
-    PY_MAJOR=${PY_VERSION::-4}
+    PY_MAJOR=${PY_VERSION::-5}
     cd "$HOME/.pyenv/versions/${PY_VERSION}/lib/python${PY_MAJOR}" || return
     rg 'if __name__ =' -l | grep -v \
         -e test \
@@ -250,14 +252,14 @@ hidden_python () {
 hist() {
     history | grep "$1";
 }
-mdcheck () {
+mdcheck() {
     # Use https://github.com/rvben/rumdl to lint Markdown files
     rumdl check "$1";
 }
-mkcd () {
+mkcd() {
     mkdir -p -- "$1" && cd -P -- "$1" || return
 }
-pybaseinstall () {
+pybaseinstall() {
     python -m pip install --upgrade pip
     python -m pip install certifi
     python -m pip install pipx
@@ -266,7 +268,7 @@ pybaseinstall () {
     # shellcheck source=/home/kbowen/.bashrc
     source "$HOME/.bashrc"
 }
-pipxpackageinstall () {
+pipxpackageinstall() {
     pipx install argcomplete
     pipx install docutils
     pipx install epy-reader
@@ -281,7 +283,6 @@ pipxpackageinstall () {
     pipx install pip-audit
     pipx install pip-check
     pipx install pispy-client
-    pipx install pynvim
     pipx install poetry
     pipx inject poetry poetry-plugin-export
     pipx inject poetry poetry-plugin-shell
@@ -289,6 +290,7 @@ pipxpackageinstall () {
     pipx install pydf
     pipx install pygments
     pipx install pylint
+    pipx install pynvim
     pipx install pyright
     pipx install ruff
     pipx install rumdl
@@ -309,18 +311,18 @@ pipx-outdated() {
     done < <( pipx list | grep -o 'package.*,' | tr -d ',' | cut -d ' ' -f 2- )
 }
 
-chkfont () {
+chkfont() {
     for family in serif sans-serif monospace Arial Helvetica Verdana "Times New Roman" "Courier New"; do
   echo -n "$family: "
   fc-match "$family"
 done
 }
-cxfile () {
+cxfile() {
     # Create an executable file and edit created file
     touch "$1" && chmod +x "$_" && vi "$_" || return
 }
 
-dictw () {
+dictw() {
     echo
     def="$(curl -s dict://dict.org/define:"$1": | grep -vP '^\d\d\d')";
     if [ "$def" = "" ];
@@ -361,9 +363,9 @@ time_between() {
     echo ${DAYS}d ${HOURS}h ${MINUTES}m ${SECONDS}s
 }
 
-xf_change () {
+xf_change() {
 # toggle light/dark xfce4-terminal themes
-  xf_set () { #xfce
+  xf_set() { #xfce
     xfconf-query -c "xfce4-terminal" -p "/$1" -s "$2"
   }
 if [ "$(basename "$1")" = "mode-dark" ]
@@ -378,4 +380,10 @@ else
   xf_set "color-cursor"     "#073642"
   xf_set "color-bold"       "#073642"
 fi
+}
+
+weather() {
+  clear
+  date
+  curl -s wttr.in/bothell | head -7
 }
