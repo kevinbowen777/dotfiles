@@ -157,7 +157,7 @@ set relativenumber
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
 if !has('nvim')
-  set signcolumn=auto
+  set signcolumn=number
 endif
 if has('nvim')
   set signcolumn=number

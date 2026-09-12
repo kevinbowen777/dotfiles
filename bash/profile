@@ -39,3 +39,5 @@ fi
 # export GPG_TTY
 
 . "$HOME/.cargo/env"
+
+. "$HOME/.local/../bin/env"

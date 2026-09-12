@@ -6,9 +6,9 @@
 #
 # Personal $HOME/.bash_aliases file
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
-# Version: 3.0.35
+# Version: 3.0.36
 # Source : http://codeberg.org/kevinbowen/dotfiles
-# Last modified: 20260827
+# Last modified: 20260912
 # ~/.bash_aliases: called by ~/.bashrc
 #
 #  Create symlink in ~/$HOME
@@ -180,12 +180,21 @@ alias trace='traceroute'
 alias ts='~/bin/torrent_search.py'
 alias venv='cd ~/dev/python/venvs'
 alias venvs='cd ~/dev/python/venvs'
+# alias vi='/usr/bin/vim'
 alias vi='/usr/bin/nvim'
 alias vimwik='vi ~/docs/vimwiki/index.md'
 alias ws='~/bin/wiki_search.py'
 alias xdis='xfce4-display-settings'
 alias xfdev='cd ~/dev/xfce'
 alias xfrepo='cd ~/dev/xfce/gitlab.xfce.org'
+
+# aliases for use with mlbscores.py
+alias aleast='mlb -s | head -n7 | tail -n6'
+alias alcent='mlb -s | head -n14 | tail -n6'
+alias alwest='mlb -s | head -n21 | tail -n6'
+alias nleast='mlb -s | head -n28 | tail -n6'
+alias nlcent='mlb -s | head -n35 | tail -n6'
+alias nlwest='mlb -s | head -n42 | tail -n6'
 
 # ========================================================================= #
 #   Section 3: Workstation aliases
