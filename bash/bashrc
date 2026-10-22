@@ -275,5 +275,3 @@ fi
 # set GPG agent to point to TTY
 GPG_TTY=$(tty)
 export GPG_TTY
-
-. "$HOME/.local/../bin/env"
