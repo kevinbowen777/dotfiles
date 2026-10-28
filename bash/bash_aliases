@@ -6,9 +6,9 @@
 #
 # Personal $HOME/.bash_aliases file
 # Author: Kevin Bowen <kevin.bowen@gmail.com>
-# Version: 3.0.37
+# Version: 3.0.38
 # Source : http://codeberg.org/kevinbowen/dotfiles
-# Last modified: 20261022
+# Last modified: 20261027
 # ~/.bash_aliases: called by ~/.bashrc
 #
 #  Create symlink in ~/$HOME
@@ -67,7 +67,7 @@ alias docu='docker compose up'
 alias docd='docker compose down'
 alias docnox='docker compose exec web nox'
 alias docsh='cd $HOME/docs'
-alias docstat='ps -ef | grep docker'
+alias docstat='ps -ef | grep -v grep |grep docker'
 alias docub='docker compose up --build'
 alias docup='docker compose exec web coverage run -m pytest'
 alias docur='docker compose exec web coverage report'
@@ -134,7 +134,7 @@ alias odin='cd ~/dev/projects/learning/odin-project/'
 alias pd='perldoc'
 alias pathdup='echo "$PATH" | tr : "\n" | sort | uniq -d'
 alias pep='peplum'
-alias pgstat='ps -ef | grep postgres'
+alias pgstat='ps -ef | grep -v grep | grep postgres'
 alias pgstart='sudo systemctl start postgresql.service'
 alias pgstop='sudo systemctl stop postgresql.service'
 alias pip='python3 -m pip'
