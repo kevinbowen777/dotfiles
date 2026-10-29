@@ -1,9 +1,18 @@
-# .pythonstartup
+"""
+PYTHONSTARTUP is an enviroment variable that can be defined to point to a
+Python script. This script is then loaded into every REPL session.
 
-# updated: 20250807
-# created: 20231129
-# 
-# adapted from: https://github.com/ambv/.dot_files/blob/master/pythonstartup
+See: https://docs.python.org/3/using/cmdline.html#envvar-PYTHONSTARTUP
+
+updated: 20261029
+updated: 20250807
+created: 20231129
+
+"""
+
+# ruff: noqa: E402, I001, F821, S102
+
+# source: https://github.com/ambv/.dot_files/blob/master/pythonstartup
 def autoimport(*modules):
     autoimported = set()
     for module in modules:
@@ -74,7 +83,7 @@ class _Help:
 help = _Help()
 
 
-# The following code pilfered from:
+# The following code was pilfered from:
 # https://treyhunner.com/2024/10/adding-keyboard-shortcuts-to-the-python-repl/
 
 try:
@@ -84,7 +93,9 @@ except ImportError:
     pass  # Not in the new pyrepl OR _pyrepl implementation change.
 else:
     cmds = {
+        # Creates a simple list of numbers for testing
         r"\C-n": "lucas = [2, 1, 3, 4, 7, 11, 18, 29]",
+        # Creates a simple list of strings for testing
         r"\C-o": 'fruits = ["apples", "oranges", "bananas", "strawberries", "pears"]',
     }
     from textwrap import dedent
@@ -100,7 +111,19 @@ else:
                 reader.bind({key!r}, {name!r})
         """))
     # Clean up all the new variables
-del autoimport, _get_reader, Command, dedent, reader, cmds, text, key, name, _cmds, n
+    del (
+        autoimport,
+        _get_reader,
+        Command,
+        dedent,
+        reader,
+        cmds,
+        text,
+        key,
+        name,
+        _cmds,
+        n
+    )
 
 # See: https://realpython.com/python-repl-autocompletion-highlighting/
 try:
@@ -119,5 +142,6 @@ else:
         ),
     )
     set_theme(theme)
+    del set_theme, default_theme, ANSIColors, replace, theme
 
 print("...Startup file loaded...")
